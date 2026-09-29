@@ -53,10 +53,14 @@ public final class HangulComposer {
     }
 
     private static final int MAX_CLUSTER = 4;
+    /** Marker inserted between keystrokes that must not form one cluster. */
+    static final char BREAK = '\uE000';
 
     private boolean archaic;
     private boolean autoIeung;
     private final StringBuilder keys = new StringBuilder();
+    /** Index of the break inserted by the last split, or -1. */
+    private int lastBreak = -1;
 
     public HangulComposer(boolean archaic, boolean autoIeung) {
         this.archaic = archaic;
@@ -74,6 +78,7 @@ public final class HangulComposer {
 
     public void reset() {
         keys.setLength(0);
+        lastBreak = -1;
     }
 
     /** Adds one keystroke (see {@link Jamo#isKey}). */
@@ -82,6 +87,7 @@ public final class HangulComposer {
             throw new IllegalArgumentException("not a jamo key: " + key);
         }
         keys.append(key);
+        lastBreak = -1;
         List<Segment> segs = parse();
         int stable = 0;
         for (Segment s : segs) {
@@ -100,13 +106,67 @@ public final class HangulComposer {
             return null;
         }
         keys.setLength(keys.length() - 1);
+        while (keys.length() > 0 && keys.charAt(keys.length() - 1) == BREAK) {
+            keys.setLength(keys.length() - 1);
+        }
+        lastBreak = -1;
         return new Output("", current());
+    }
+
+    /**
+     * Splits the most recent archaic cluster back into plain letters, e.g.
+     * ᄛᅦ (ㄹㅇㅔ) -> ㄹ에, 주ᇮ (ㅈㅜㅇㅇ) -> 중ㅇ, ᄀᆍ (ㄱㅜㅜ) -> 구ㅜ.
+     * Returns null when nothing archaic is being composed.
+     */
+    public Output splitLastArchaic() {
+        List<Segment> segs = parse();
+        for (int i = segs.size() - 1; i >= 0; i--) {
+            Segment s = segs.get(i);
+            if (!s.isSyllable()) {
+                continue;
+            }
+            int at = -1;
+            if (s.end - s.vowelEnd >= 2 && !isModern(Jamo.TRAILING.get(spell(s.vowelEnd, s.end)), 'T')) {
+                at = s.end - 1;
+            } else if (s.vowelEnd - s.leadEnd >= 2 && !isModern(Jamo.VOWEL.get(spell(s.leadEnd, s.vowelEnd)), 'V')) {
+                at = s.vowelEnd - 1;
+            } else if (s.leadEnd - s.start >= 2) {
+                at = s.leadEnd - 1;
+            }
+            if (at > 0) {
+                keys.insert(at, BREAK);
+                lastBreak = at;
+                return new Output("", current());
+            }
+        }
+        return null;
+    }
+
+    /** Undoes {@link #splitLastArchaic}; null if the last change was not a split. */
+    public Output undoSplit() {
+        if (lastBreak < 0 || lastBreak >= keys.length() || keys.charAt(lastBreak) != BREAK) {
+            return null;
+        }
+        keys.deleteCharAt(lastBreak);
+        lastBreak = -1;
+        return new Output("", current());
+    }
+
+    private static boolean isModern(Character c, char part) {
+        if (c == null) {
+            return true;
+        }
+        switch (part) {
+            case 'L': return Jamo.isModernLeading(c);
+            case 'V': return Jamo.isModernVowel(c);
+            default: return Jamo.isModernTrailing(c);
+        }
     }
 
     /** Returns everything composed so far and clears the composer. */
     public String flush() {
         String s = current();
-        keys.setLength(0);
+        reset();
         return s;
     }
 
@@ -120,7 +180,7 @@ public final class HangulComposer {
      * before the cursor and shows the result as composing text.
      */
     public Output backspaceInto(Recaptured r) {
-        keys.setLength(0);
+        reset();
         keys.append(r.keys, 0, r.keys.length() - 1);
         return new Output("", current());
     }
@@ -279,7 +339,8 @@ public final class HangulComposer {
                 return s;
             }
         }
-        return to - 1;
+        // A break right before the vowel leaves the syllable without a leading consonant.
+        return keys.charAt(to - 1) == BREAK ? to : to - 1;
     }
 
     /**
@@ -288,6 +349,12 @@ public final class HangulComposer {
      * Returns the start of the next syllable's leading cluster; sets prev.end.
      */
     private int splitMiddle(Segment prev, int from, int to) {
+        int brk = lastIndexOf(BREAK, from, to);
+        if (brk >= 0) {
+            // Forced split: nothing on either side of a break joins across it.
+            prev.end = longestTrailing(prev, from, brk);
+            return brk + 1 == to ? to : longestLeadingSuffix(brk + 1, to);
+        }
         for (int k = Math.min(to - 1, from + MAX_CLUSTER); k >= from; k--) {
             if (validTrailing(prev, from, k) && validLeading(k, to)) {
                 prev.end = k;
@@ -296,6 +363,15 @@ public final class HangulComposer {
         }
         prev.end = longestTrailing(prev, from, to - 1);
         return to - 1;
+    }
+
+    private int lastIndexOf(char c, int from, int to) {
+        for (int i = to - 1; i >= from; i--) {
+            if (keys.charAt(i) == c) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private int longestTrailing(Segment syl, int from, int to) {
@@ -374,7 +450,9 @@ public final class HangulComposer {
                 continue;
             }
             if (!s.isSyllable()) {
-                sb.append(keys.charAt(s.start));
+                if (keys.charAt(s.start) != BREAK) {
+                    sb.append(keys.charAt(s.start));
+                }
                 continue;
             }
             Character v = Jamo.VOWEL.get(spell(s.leadEnd, s.vowelEnd));

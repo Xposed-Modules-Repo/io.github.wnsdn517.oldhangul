@@ -22,9 +22,11 @@ import de.robv.android.xposed.XSharedPreferences;
  * Samsung's key action (vibration, sound, releasing Shift, redrawing the
  * keyboard) still runs. Every other key first commits the composing text.
  *
- * <p>Samsung never composes Hangul while the module is on: backspace over Hangul
- * is handled here too, because Samsung's own recapture puts the syllable into its
- * composer and the next jamo typed here would overwrite it.
+ * <p>Samsung must not touch the text while a syllable is composed here: its
+ * finishComposingText/setComposingText calls are blocked meanwhile (see
+ * {@link #isComposing}), backspace over Hangul is handled here, and every edit
+ * first checks that our composing text is still right before the cursor and
+ * rewrites it, so a dropped composing region never duplicates text.
  *
  * <p>All calls arrive on the keyboard's main thread.
  */
@@ -37,6 +39,7 @@ final class OldHangulController {
     };
     private static final String CHARACTER_ACTION = "CharacterKeyA";
     private static final String BACKSPACE_ACTION = "BackspaceKeyA";
+    private static final String SPACE_ACTION = "SpaceKeyA";
     /** Key code of the sound/vibration event Samsung sends when any key goes down. */
     private static final int KEY_DOWN_FEEDBACK = -202;
 
@@ -44,6 +47,9 @@ final class OldHangulController {
     private static final String DUBEOLSIK_ONLY = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠ";
     /** 천지인's ㆍ key sends U+119E; ㆍ from this module never comes from a Samsung key. */
     private static final int CHEONJIIN_ARAEA = 0x119E;
+    /** Samsung sends the unshifted letter and applies Shift later; this is that mapping. */
+    private static final String UNSHIFTED = "ㄱㄷㅂㅅㅈㅐㅔ";
+    private static final String SHIFTED = "ㄲㄸㅃㅆㅉㅒㅖ";
 
     private static final long SUPPRESS_TIMEOUT_MS = 10_000;
     private static final long REPEAT_INTERVAL_MS = 60;
@@ -60,16 +66,19 @@ final class OldHangulController {
     private boolean longPressArchaic = true;
     private boolean archaic = true;
     private boolean recapture = true;
+    private boolean splitOnSpace = true;
 
     /** Whether the current Korean layout is dubeolsik (the only layout composed here). */
     private boolean dubeolsik = true;
     /** Korean was typed more recently than a Latin letter. */
     private boolean koreanActive;
+    /** Still inside the word being typed: backspace takes it apart jamo by jamo. */
+    private boolean inWord;
     /** Composing text last sent to the editor. */
     private String composing = "";
-    /** The editor reported no composing region while we had one (app committed it?). */
-    private boolean composingMaybeLost;
-    /** A backspace press was handled here, so Samsung's handling of its release is skipped too. */
+    /** The last key split an archaic cluster; a second space is a real space, backspace undoes it. */
+    private boolean justSplit;
+    /** The current backspace press was handled here. */
     private boolean backspaceOwned;
     /** Key code whose release is ignored after its long press was handled. */
     private int suppressedRelease;
@@ -112,7 +121,13 @@ final class OldHangulController {
         longPressRepeat = prefs.getBoolean(Prefs.LONG_PRESS_KKK, true);
         longPressArchaic = prefs.getBoolean(Prefs.LONG_PRESS_ARCHAIC, true);
         recapture = prefs.getBoolean(Prefs.RECAPTURE, true);
+        splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
+    }
+
+    /** A syllable is being composed here; Samsung must leave the composing text alone. */
+    boolean isComposing() {
+        return enabled && !composer.isEmpty();
     }
 
     // ------------------------------------------------------------ key actions
@@ -120,8 +135,10 @@ final class OldHangulController {
     /**
      * Called before Samsung runs a key action. Returns true when the key was
      * handled here and Samsung's text input for it must be switched off.
+     *
+     * @param shifted whether Samsung's Shift is on for this key
      */
-    boolean beforeKeyAction(String action, Object keyRequestInfo) {
+    boolean beforeKeyAction(String action, Object keyRequestInfo, boolean shifted) {
         if (!enabled) {
             return false;
         }
@@ -140,17 +157,28 @@ final class OldHangulController {
             }
         }
         stopRepeat();
-        if (CHARACTER_ACTION.equals(action)) {
-            return onCharacter(key);
-        }
         if (BACKSPACE_ACTION.equals(action)) {
             return onBackspace(key);
         }
+        boolean wasSplit = justSplit;
+        justSplit = false;
+        if (CHARACTER_ACTION.equals(action)) {
+            return onCharacter(key, shifted);
+        }
+        if (SPACE_ACTION.equals(action) && splitOnSpace && !wasSplit && archaic && !composer.isEmpty()) {
+            HangulComposer.Output out = composer.splitLastArchaic();
+            if (out != null) {
+                rewrite(out);
+                justSplit = true;
+                return true;
+            }
+        }
         commitComposing();
+        inWord = false;
         return false;
     }
 
-    private boolean onCharacter(KeyEventInfo key) {
+    private boolean onCharacter(KeyEventInfo key, boolean shifted) {
         int code = key.keyCode;
         if (suppressedRelease != 0 && code == suppressedRelease
                 && SystemClock.uptimeMillis() - suppressedAt < SUPPRESS_TIMEOUT_MS) {
@@ -166,7 +194,12 @@ final class OldHangulController {
         }
         if (!dubeolsik || !Jamo.isKey(code)) {
             commitComposing();
+            inWord = false;
             return false;
+        }
+        int i = UNSHIFTED.indexOf(code);
+        if (shifted && i >= 0) {
+            code = SHIFTED.charAt(i);
         }
         return type((char) code);
     }
@@ -185,17 +218,23 @@ final class OldHangulController {
     }
 
     private boolean onBackspace(KeyEventInfo key) {
-        if (key.touchAction == KeyEventInfo.TOUCH_UP) {
-            boolean owned = backspaceOwned;
-            backspaceOwned = false;
-            return owned;
+        switch (key.touchAction) {
+            case KeyEventInfo.TOUCH_UP: {
+                // Samsung's release cleanup only runs for presses it handled itself.
+                boolean owned = backspaceOwned;
+                backspaceOwned = false;
+                return owned;
+            }
+            case KeyEventInfo.TOUCH_REPEAT:
+                // A held backspace is always handled here so it deletes at one steady pace.
+                return backspace(true);
+            case KeyEventInfo.TOUCH_DOWN:
+            case 0:
+                backspaceOwned = backspace(false);
+                return backspaceOwned;
+            default:
+                return false;
         }
-        if (key.touchAction != KeyEventInfo.TOUCH_DOWN && key.touchAction != KeyEventInfo.TOUCH_REPEAT
-                && key.touchAction != 0) {
-            return false;
-        }
-        backspaceOwned = backspace();
-        return backspaceOwned;
     }
 
     /** Long press on a key. Returns true when handled (Samsung's long press is skipped). */
@@ -209,6 +248,7 @@ final class OldHangulController {
         }
         if (code == 'ㅋ' && longPressRepeat) {
             commitComposing();
+            inWord = false;
             ic.commitText("ㅋ", 1);
             repeating = 'ㅋ';
             repeatStartedAt = SystemClock.uptimeMillis();
@@ -258,31 +298,71 @@ final class OldHangulController {
         }
         ic.beginBatchEdit();
         try {
-            if (composer.isEmpty()) {
-                // Never overwrite a composing region someone else left behind.
-                ic.finishComposingText();
-                composingMaybeLost = false;
-            } else if (composingMaybeLost) {
-                reclaimComposing(ic);
-            }
+            takeBackComposing(ic);
             apply(ic, composer.type(key));
+            inWord = true;
         } finally {
             ic.endBatchEdit();
         }
         return true;
     }
 
-    private boolean backspace() {
+    /** Replaces the composing text after the composer changed without a new key. */
+    private void rewrite(HangulComposer.Output out) {
+        InputConnection ic = inputConnection();
+        if (ic == null) {
+            return;
+        }
+        ic.beginBatchEdit();
+        try {
+            takeBackComposing(ic);
+            apply(ic, out);
+        } finally {
+            ic.endBatchEdit();
+        }
+    }
+
+    /**
+     * Removes our composing text from the editor so the next {@link #apply}
+     * writes it fresh. Works whether or not the editor still has it marked as
+     * composing; if the text before the cursor is no longer ours, the composer
+     * starts over and the editor text is left alone.
+     */
+    private void takeBackComposing(InputConnection ic) {
+        ic.finishComposingText();
+        if (composing.isEmpty()) {
+            return;
+        }
+        CharSequence before = ic.getTextBeforeCursor(composing.length(), 0);
+        if (before != null && composing.contentEquals(before)) {
+            ic.deleteSurroundingText(composing.length(), 0);
+        } else {
+            composer.reset();
+        }
+        composing = "";
+    }
+
+    /**
+     * Backspace. Returns true when handled here. {@code repeat} is a held key,
+     * which also deletes non-Hangul text here, one character at a time.
+     */
+    private boolean backspace(boolean repeat) {
         InputConnection ic = inputConnection();
         if (ic == null) {
             return false;
         }
+        if (justSplit) {
+            justSplit = false;
+            HangulComposer.Output undo = composer.undoSplit();
+            if (undo != null) {
+                rewrite(undo);
+                return true;
+            }
+        }
         if (!composer.isEmpty()) {
             ic.beginBatchEdit();
             try {
-                if (composingMaybeLost) {
-                    reclaimComposing(ic);
-                }
+                takeBackComposing(ic);
                 HangulComposer.Output out = composer.backspace();
                 if (out != null) {
                     apply(ic, out);
@@ -292,23 +372,29 @@ final class OldHangulController {
                 ic.endBatchEdit();
             }
         }
-        if (!koreanActive || !dubeolsik || !TextUtils.isEmpty(ic.getSelectedText(0))) {
+        if (!TextUtils.isEmpty(ic.getSelectedText(0))) {
             return false;
         }
         CharSequence before = ic.getTextBeforeCursor(8, 0);
-        HangulComposer.Recaptured r = HangulComposer.recapture(before);
+        HangulComposer.Recaptured r = koreanActive && dubeolsik ? HangulComposer.recapture(before) : null;
         if (r == null) {
-            return false;
+            if (!repeat || TextUtils.isEmpty(before)) {
+                return false;
+            }
+            ic.deleteSurroundingTextInCodePoints(1, 0);
+            inWord = false;
+            return true;
         }
         ic.beginBatchEdit();
         try {
             ic.finishComposingText();
-            if (recapture) {
-                ic.deleteSurroundingText(r.length, 0);
+            ic.deleteSurroundingText(r.length, 0);
+            if (recapture && inWord && !repeat) {
+                // Inside the word being typed: take the syllable apart jamo by jamo.
                 apply(ic, composer.backspaceInto(r));
             } else {
-                // Still handled here so Samsung never recaptures Hangul: delete one jamo or syllable.
-                ic.deleteSurroundingText(1, 0);
+                // Finished text: delete a whole syllable, as Samsung does.
+                composing = "";
             }
         } finally {
             ic.endBatchEdit();
@@ -318,34 +404,12 @@ final class OldHangulController {
 
     private void apply(InputConnection ic, HangulComposer.Output out) {
         if (!out.commit.isEmpty()) {
-            // Replaces the old composing region with the finished syllables.
             ic.commitText(out.commit, 1);
         }
         if (!out.composing.isEmpty()) {
             ic.setComposingText(out.composing, 1);
-        } else if (out.commit.isEmpty()) {
-            ic.commitText("", 1);
         }
         composing = out.composing;
-    }
-
-    /**
-     * The editor dropped our composing region. If our text is still right before
-     * the cursor, delete it so it is rewritten as composing text; otherwise the
-     * editor changed it and composition starts over.
-     */
-    private void reclaimComposing(InputConnection ic) {
-        composingMaybeLost = false;
-        if (composing.isEmpty()) {
-            return;
-        }
-        CharSequence before = ic.getTextBeforeCursor(composing.length(), 0);
-        if (before != null && composing.contentEquals(before)) {
-            ic.deleteSurroundingText(composing.length(), 0);
-        } else {
-            composer.reset();
-            composing = "";
-        }
     }
 
     /** Finishes the current syllable, leaving its text in the editor. */
@@ -357,13 +421,15 @@ final class OldHangulController {
         if (ic != null) {
             ic.finishComposingText();
         }
-        resetState();
+        composer.reset();
+        composing = "";
     }
 
     void resetState() {
         composer.reset();
         composing = "";
-        composingMaybeLost = false;
+        inWord = false;
+        justSplit = false;
         backspaceOwned = false;
         stopRepeat();
     }
@@ -383,14 +449,13 @@ final class OldHangulController {
         int candidatesStart = (Integer) args[4];
         int candidatesEnd = (Integer) args[5];
         if (candidatesStart < 0 || candidatesEnd < 0) {
-            composingMaybeLost = true;
+            // Region dropped by the editor; the next edit checks the text and rewrites it.
             return;
         }
         if (newSelStart != newSelEnd || newSelEnd != candidatesEnd) {
             // The cursor left the syllable being composed (tap elsewhere, selection).
             commitComposing();
-        } else {
-            composingMaybeLost = false;
+            inWord = false;
         }
         args[4] = -1;
         args[5] = -1;

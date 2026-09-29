@@ -106,6 +106,49 @@ public class HangulComposerTest {
         assertNull(new HangulComposer(false, true).backspace());
     }
 
+    /** Types keys in archaic mode, then splits the last archaic cluster. */
+    private static String split(String input) {
+        HangulComposer c = new HangulComposer(true, true);
+        StringBuilder committed = new StringBuilder();
+        for (char k : input.toCharArray()) {
+            committed.append(c.type(k).commit);
+        }
+        HangulComposer.Output o = c.splitLastArchaic();
+        return o == null ? null : committed + o.composing;
+    }
+
+    @Test
+    public void splitArchaicCluster() {
+        assertEquals("ㄹ에", split("ㄹㅇㅔ"));     // ᄛᅦ
+        assertEquals("중ㅇ", split("ㅈㅜㅇㅇ"));    // 주ᇮ
+        assertEquals("구ㅜ", split("ㄱㅜㅜ"));     // ᄀᆍ
+        assertEquals("ㅂㅅ가", split("ㅂㅅㄱㅏ"));  // ᄢᅡ
+        assertNull(split("ㅎㅏㄴ"));              // nothing archaic
+        assertNull(split("ㄱㅏㅂㅅ"));             // 값 is modern
+    }
+
+    @Test
+    public void typingAfterSplitKeepsItSplit() {
+        HangulComposer c = new HangulComposer(true, true);
+        c.type('ㄹ');
+        c.type('ㅇ');
+        c.type('ㅔ');
+        c.splitLastArchaic();
+        HangulComposer.Output o = c.type('ㄴ');
+        assertEquals("ㄹ엔", o.commit + o.composing);
+    }
+
+    @Test
+    public void undoSplit() {
+        HangulComposer c = new HangulComposer(true, true);
+        c.type('ㄹ');
+        c.type('ㅇ');
+        c.type('ㅔ');
+        c.splitLastArchaic();
+        assertEquals("\u111B\u1166", c.undoSplit().composing); // ᄛᅦ again
+        assertNull(c.undoSplit());
+    }
+
     @Test
     public void recapture() {
         HangulComposer c = new HangulComposer(true, true);

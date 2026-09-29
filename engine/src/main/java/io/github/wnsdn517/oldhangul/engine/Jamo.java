@@ -70,6 +70,7 @@ public final class Jamo {
     /** Base-letter spelling of one keystroke, or null if it is not a key. */
     static String baseOf(char key) {
         switch (key) {
+            case HangulComposer.BREAK: return "\u0000";  // matches no jamo, so clusters stop here
             case 'ㄲ': return "ㄱㄱ";
             case 'ㄸ': return "ㄷㄷ";
             case 'ㅃ': return "ㅂㅂ";

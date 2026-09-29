@@ -6,6 +6,8 @@ import android.view.inputmethod.EditorInfo;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
 
 import io.github.wnsdn517.oldhangul.Prefs;
 
@@ -42,6 +44,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
             hookKeyActions(targets, controller);
             hookLongPress(targets, controller);
             hookKeyTouches(targets, controller);
+            hookSamsungInputConnection(targets, controller);
             XposedBridge.log("OldHangul: hooks installed");
         } catch (Throwable t) {
             XposedBridge.log("OldHangul: failed to hook Samsung Keyboard");
@@ -112,7 +115,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                     return;
                 }
                 String name = (String) targets.actionName.invoke(action);
-                swallowInput[0] = controller.beforeKeyAction(name, info);
+                swallowInput[0] = controller.beforeKeyAction(name, info, isShifted(targets, action));
             }
 
             @Override
@@ -129,6 +132,54 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 }
             }
         });
+    }
+
+    private static final Map<Class<?>, Field> SHIFT_FIELDS = new HashMap<>();
+
+    /** Reads Samsung's Shift state through the shift holder every key action keeps a reference to. */
+    private static boolean isShifted(HookTargets targets, Object action) {
+        try {
+            Field f;
+            if (SHIFT_FIELDS.containsKey(action.getClass())) {
+                f = SHIFT_FIELDS.get(action.getClass());
+            } else {
+                f = null;
+                for (Class<?> c = action.getClass(); c != null && f == null; c = c.getSuperclass()) {
+                    for (Field candidate : c.getDeclaredFields()) {
+                        if (candidate.getType() == targets.shiftState) {
+                            candidate.setAccessible(true);
+                            f = candidate;
+                            break;
+                        }
+                    }
+                }
+                SHIFT_FIELDS.put(action.getClass(), f);
+            }
+            Object state = f == null ? null : f.get(action);
+            return state != null && (Boolean) targets.isShifted.invoke(state);
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            return false;
+        }
+    }
+
+    /**
+     * While a syllable is composed here, Samsung's own finishComposingText /
+     * setComposingText / setComposingRegion would commit or erase it (the
+     * flashing underline and the duplicated text); those calls are dropped.
+     */
+    private static void hookSamsungInputConnection(HookTargets targets, OldHangulController controller) {
+        XC_MethodHook block = new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) {
+                if (controller.isComposing()) {
+                    param.setResult(true);
+                }
+            }
+        };
+        Class<?> ic = targets.samsungInputConnection;
+        XposedHelpers.findAndHookMethod(ic, "finishComposingText", block);
+        XposedHelpers.findAndHookMethod(ic, "setComposingText", CharSequence.class, int.class, block);
+        XposedHelpers.findAndHookMethod(ic, "setComposingRegion", int.class, int.class, block);
     }
 
     private static final String HANDLED_INPUT = "oldhangul_handled";

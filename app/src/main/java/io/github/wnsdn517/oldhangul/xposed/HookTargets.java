@@ -44,13 +44,21 @@ final class HookTargets {
     List<Method> keyTouch = new ArrayList<>();
     /** Command that feeds a key into Samsung's input engine, switched on a request type string. */
     Method inputCommand;
+    /** Samsung's own InputConnection wrapper, which every Samsung edit goes through. */
+    Class<?> samsungInputConnection;
+    /** Samsung's shift state holder and its "is the next letter shifted" query. */
+    Class<?> shiftState;
+    Method isShifted;
 
-    private static final int CACHE_VERSION = 2;
+    private static final int CACHE_VERSION = 3;
     private static final String KEY_REQUEST_INFO = "KeyRequestInfo{mKeyCode=";
     private static final String EXECUTE_ACTION = " execute end t : ";
     private static final String TALKBACK_LONG_CLICK = "onTalkBackLongClick: xy = (";
     private static final String TALKBACK_CLICK = "onTalkBackClick: xy = (";
     private static final String[] INPUT_COMMAND = {"input_key_chn_dot", "input_key_repeatable_up"};
+    private static final String SAMSUNG_IC = "[NRIC] isNoResponseState true";
+    private static final String SHIFT_STATE = "getCurrentShiftState()I";
+    private static final String USES_IS_SHIFTED = "keycode change to lowercase for auto caps flick";
     private static final String KEY_VO = "com.samsung.android.honeyboard.forms.model.KeyVO";
 
     static HookTargets load(ClassLoader cl, String apkPath, String dataDir) throws Exception {
@@ -111,6 +119,24 @@ final class HookTargets {
             t.inputCommand = single(bridge.findMethod(FindMethod.create()
                     .matcher(MethodMatcher.create().usingStrings(INPUT_COMMAND).paramCount(1))),
                     "inputCommand").getMethodInstance(cl);
+
+            t.samsungInputConnection = single(bridge.findClass(FindClass.create()
+                    .matcher(ClassMatcher.create().usingStrings(SAMSUNG_IC))), "Samsung InputConnection")
+                    .getInstance(cl);
+
+            ClassData shift = single(bridge.findClass(FindClass.create()
+                    .matcher(ClassMatcher.create().usingStrings(SHIFT_STATE))), "shift state");
+            t.shiftState = shift.getInstance(cl);
+            MethodData flick = single(bridge.findMethod(FindMethod.create()
+                    .matcher(MethodMatcher.create().usingStrings(USES_IS_SHIFTED))), "flick input");
+            List<MethodData> shifted = new ArrayList<>();
+            for (MethodData m : flick.getInvokes()) {
+                if (m.getClassName().equals(shift.getName()) && m.getParamCount() == 0
+                        && m.getReturnTypeName().equals("boolean") && !shifted.contains(m)) {
+                    shifted.add(m);
+                }
+            }
+            t.isShifted = single(shifted, "isShifted").getMethodInstance(cl);
             return t;
         }
     }
@@ -153,6 +179,8 @@ final class HookTargets {
         p.setProperty("executeAction", describe(executeAction));
         p.setProperty("longPress", describe(longPress));
         p.setProperty("inputCommand", describe(inputCommand));
+        p.setProperty("samsungInputConnection", samsungInputConnection.getName());
+        p.setProperty("isShifted", describe(isShifted));
         StringBuilder touch = new StringBuilder();
         for (Method m : keyTouch) {
             touch.append(touch.length() == 0 ? "" : "|").append(describe(m));
@@ -169,6 +197,9 @@ final class HookTargets {
         t.longPress = resolve(cl, p.getProperty("longPress"));
         t.presenterKey = findKeyField(t.longPress.getDeclaringClass());
         t.inputCommand = resolve(cl, p.getProperty("inputCommand"));
+        t.samsungInputConnection = Class.forName(p.getProperty("samsungInputConnection"), false, cl);
+        t.isShifted = resolve(cl, p.getProperty("isShifted"));
+        t.shiftState = t.isShifted.getDeclaringClass();
         String touch = p.getProperty("keyTouch", "");
         for (String d : touch.isEmpty() ? new String[0] : touch.split("\\|")) {
             t.keyTouch.add(resolve(cl, d));

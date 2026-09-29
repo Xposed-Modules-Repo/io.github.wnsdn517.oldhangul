@@ -12,4 +12,5 @@ public final class Prefs {
     public static final String LONG_PRESS_KKK = "long_press_kkk";
     public static final String LONG_PRESS_ARCHAIC = "long_press_archaic";
     public static final String RECAPTURE = "recapture";
+    public static final String SPLIT_ON_SPACE = "split_on_space";
 }
