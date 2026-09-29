@@ -32,6 +32,8 @@ public final class Prefs {
     public static final String PRELOAD_JAPANESE = "preload_japanese";
     /** Writes every key action and Samsung shift change to the LSPosed log. Off by default. */
     public static final String DEBUG_LOG = "debug_log";
+    /** Send Ctrl+Z to the editor when the device is shaken. */
+    public static final String SHAKE_UNDO = "shake_undo";
 
     /** Broadcast the hooked keyboard answers by restarting itself (sender needs {@link #RESTART_PERMISSION}). */
     public static final String ACTION_RESTART_KEYBOARD = "io.github.wnsdn517.oldhangul.RESTART_KEYBOARD";

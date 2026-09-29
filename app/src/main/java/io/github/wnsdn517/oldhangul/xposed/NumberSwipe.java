@@ -42,7 +42,7 @@ final class NumberSwipe {
     /** Downward travel (dp) that makes a touch a swipe. */
     private static final float SWIPE_DP = 22;
     /** Holding the swipe this long opens the variants. */
-    private static final long HOLD_MS = 450;
+    private static final long HOLD_MS = 250;
     private static final float CELL_DP = 44;
 
     private final OldHangulController controller;

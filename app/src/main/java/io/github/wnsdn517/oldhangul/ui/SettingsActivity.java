@@ -80,6 +80,10 @@ public final class SettingsActivity extends Activity {
         addChoice(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT, "한 줄에 보이는 칸 수  (칸이 적을수록 크게 보임)",
                 new String[][] {{"0", "삼성 기본"}, {"2", "2칸"}, {"3", "3칸"}, {"4", "4칸"}});
 
+        addSection("기타");
+        addSwitch(Prefs.SHAKE_UNDO, "흔들어서 실행 취소",
+                "기기를 흔들면 편집기에 Ctrl+Z(실행 취소)를 보냅니다");
+
         addSection("문제 해결");
         addSwitch(Prefs.DEBUG_LOG, "진단 로그",
                 "문제를 알려줄 때만 켜세요 · LSPosed 로그에 OldHangul: 로 기록 · 켜고 끈 뒤 키보드 재시작\n"

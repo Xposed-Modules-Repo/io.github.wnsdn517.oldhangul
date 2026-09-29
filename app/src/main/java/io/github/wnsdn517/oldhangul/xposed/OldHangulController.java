@@ -105,6 +105,7 @@ final class OldHangulController {
     /** Samsung's accelerating delete took over a held backspace. */
     private boolean samsungRepeating;
     private boolean fastDelete = true;
+    private boolean shakeUndo = true;
     /** The last key split an archaic cluster; a second space is a real space, backspace undoes it. */
     private boolean justSplit;
     /** The user undid a split: the next space keeps the cluster and types a space. */
@@ -118,6 +119,8 @@ final class OldHangulController {
     /** Letters of a held ㅋ, or null when not repeating. */
     private Laughter repeating;
     private Laughter.Style laughStyle = Laughter.Style.PLAIN;
+    /** Preference value for vowelIeung; applied dynamically based on inWord. */
+    private boolean vowelIeungPref = true;
     private final Random random = new Random();
     private long repeatStartedAt;
     private final Runnable repeatTick = new Runnable() {
@@ -169,10 +172,12 @@ final class OldHangulController {
         fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
         directInput = prefs.getBoolean(Prefs.DIRECT_INPUT, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
+        shakeUndo = prefs.getBoolean(Prefs.SHAKE_UNDO, true);
         notifyShiftLayer();
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
-        composer.setVowelIeung(prefs.getBoolean(Prefs.VOWEL_IEUNG, true));
+        vowelIeungPref = prefs.getBoolean(Prefs.VOWEL_IEUNG, true);
+        composer.setVowelIeung(vowelIeungPref && inWord);
     }
 
     /** Most clipboard tiles per row, or 0 to leave Samsung's layout alone. */
@@ -194,6 +199,10 @@ final class OldHangulController {
 
     boolean debugLog() {
         return debugLog;
+    }
+
+    boolean shakeUndo() {
+        return enabled && shakeUndo;
     }
 
     /**
@@ -236,6 +245,13 @@ final class OldHangulController {
         koreanQwerty = qwerty;
         dubeolsik = qwerty || !korean;
         koreanActive = qwerty;
+        // In bilingual/multilingual mode, disable archaic composition and auto-ㅇ
+        // to avoid interfering with Samsung's own predictions/swipe for the other language.
+        boolean effectiveArchaic = archaic && !bilingual;
+        boolean effectiveAutoIeung = prefs.getBoolean(Prefs.AUTO_IEUNG, true) && !bilingual;
+        composer.configure(effectiveArchaic, effectiveAutoIeung);
+        vowelIeungPref = prefs.getBoolean(Prefs.VOWEL_IEUNG, true) && !bilingual;
+        composer.setVowelIeung(false); // reset; will be set dynamically in type()
         notifyShiftLayer();
         if (debugLog) {
             de.robv.android.xposed.XposedBridge.log("OldHangul: language " + languageCode + "/" + inputType
@@ -458,8 +474,12 @@ final class OldHangulController {
         ic.beginBatchEdit();
         try {
             takeBackComposing(ic);
+            // Update vowelIeung: lone vowels outside a word don't get auto-ㅇ.
+            composer.setVowelIeung(vowelIeungPref && inWord);
             apply(ic, composer.type(key));
             inWord = true;
+            // After typing, update vowelIeung for subsequent keys in this word.
+            composer.setVowelIeung(vowelIeungPref && inWord);
         } finally {
             ic.endBatchEdit();
         }
@@ -726,5 +746,10 @@ final class OldHangulController {
 
     private InputConnection inputConnection() {
         return service == null ? null : service.getCurrentInputConnection();
+    }
+
+    /** Package-private access for {@link ShakeUndo}. */
+    InputConnection currentInputConnection() {
+        return inputConnection();
     }
 }

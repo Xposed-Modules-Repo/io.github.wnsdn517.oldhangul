@@ -32,10 +32,10 @@ public final class Laughter {
     /** The first letters appear at once and are always plain ㅋ. */
     public static final int CALM_COUNT = 3;
     /** Pause after the burst before repeating starts, like a key's repeat delay. */
-    private static final long PAUSE_AFTER_BURST_MS = 400;
-    private static final long START_DELAY_MS = 110;
-    private static final long STEP_MS = 15;
-    private static final long FAST_DELAY_MS = 20;
+    private static final long PAUSE_AFTER_BURST_MS = 200;
+    private static final long START_DELAY_MS = 80;
+    private static final long STEP_MS = 20;
+    private static final long FAST_DELAY_MS = 15;
 
     /** Chance of switching from ㅋ to a stray letter. */
     private static final double START_STRAY = 0.15;

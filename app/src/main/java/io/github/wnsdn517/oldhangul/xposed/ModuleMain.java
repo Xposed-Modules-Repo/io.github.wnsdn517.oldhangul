@@ -77,6 +77,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 InputMethodService ime = (InputMethodService) param.thisObject;
                 controller.attach(ime);
                 registerRestartReceiver(ime);
+                ShakeUndo.register(controller, ime);
                 if (preloader[0] != null && controller.preloadJapanese()) {
                     preloader[0].start();
                 }
