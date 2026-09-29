@@ -10,6 +10,7 @@ import java.lang.reflect.Modifier;
 import io.github.wnsdn517.oldhangul.Prefs;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
+import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
@@ -17,11 +18,16 @@ import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 /** LSPosed entry point: hooks Samsung Keyboard (HoneyBoard). */
-public final class ModuleMain implements IXposedHookLoadPackage {
+public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygoteInit {
 
     private static final String TARGET = "com.samsung.android.honeyboard";
     private static final String SERVICE = "com.samsung.android.honeyboard.service.HoneyBoardService";
     private static final String MODULE = "io.github.wnsdn517.oldhangul";
+
+    @Override
+    public void initZygote(StartupParam startupParam) {
+        NativeLoader.modulePath = startupParam.modulePath;
+    }
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
