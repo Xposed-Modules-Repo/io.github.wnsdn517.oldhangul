@@ -51,7 +51,10 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
             hookLongPress(targets, controller);
             hookKeyTouches(targets, controller);
             hookSamsungInputConnection(targets, controller);
-            hookShiftStateForDebug(targets, controller);
+            if (controller.debugLog()) {
+                // Only with the log on: these hooks sit on methods Samsung calls a lot.
+                hookShiftStateForDebug(targets, controller);
+            }
             hookLanguage(targets, controller);
             hookShiftLabels(cl, controller);
             XposedBridge.log("OldHangul: hooks installed");
@@ -269,9 +272,9 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
     /**
      * Shift layer of dubeolsik: ㄹ ㅇ ㅎ ㅏ show and type ㅿ ㆁ ㆆ ㆍ.
      *
-     * <p>Samsung calls this getter constantly (drawing keys, finding the key
-     * under a swipe), in every language, so it returns at once unless Korean
-     * dubeolsik with the Shift layer is active, and caches everything else.
+     * <p>Samsung calls this getter constantly (loading layouts, drawing keys,
+     * finding the key under a swipe), so the hook is only installed while Korean
+     * dubeolsik with the Shift layer is active and removed for other languages.
      */
     private static void hookShiftLabels(ClassLoader cl, OldHangulController controller) throws Exception {
         Class<?> labelClass = XposedHelpers.findClass(KEY_LABEL, cl);
@@ -282,7 +285,8 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         java.lang.reflect.Constructor<?> create =
                 labelClass.getConstructor(String.class, java.util.List.class, float.class);
         Map<Long, Object> made = new HashMap<>();
-        XposedBridge.hookMethod(letterClass.getMethod("getUpperKeyCodeLabel"), new XC_MethodHook() {
+        Method upper = letterClass.getMethod("getUpperKeyCodeLabel");
+        XC_MethodHook hook = new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 if (!controller.shiftLayerActive()) {
@@ -309,6 +313,16 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                     made.put(key, label);
                 }
                 param.setResult(label);
+            }
+        };
+        XC_MethodHook.Unhook[] installed = new XC_MethodHook.Unhook[1];
+        controller.setShiftLayerListener(() -> {
+            boolean wanted = controller.shiftLayerActive();
+            if (wanted && installed[0] == null) {
+                installed[0] = XposedBridge.hookMethod(upper, hook);
+            } else if (!wanted && installed[0] != null) {
+                installed[0].unhook();
+                installed[0] = null;
             }
         });
     }

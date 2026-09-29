@@ -156,6 +156,7 @@ final class OldHangulController {
         fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
         directInput = prefs.getBoolean(Prefs.DIRECT_INPUT, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
+        notifyShiftLayer();
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
     }
@@ -168,6 +169,20 @@ final class OldHangulController {
      * Samsung switched language or layout. Only Korean dubeolsik is composed
      * here; every other language (and 천지인, 나랏글, 단모음) is left to Samsung.
      */
+    /** Told whenever the Shift layer may have turned on or off (see {@link #shiftLayerActive}). */
+    private Runnable shiftLayerListener;
+
+    void setShiftLayerListener(Runnable listener) {
+        shiftLayerListener = listener;
+        listener.run();
+    }
+
+    private void notifyShiftLayer() {
+        if (shiftLayerListener != null) {
+            shiftLayerListener.run();
+        }
+    }
+
     void onLanguage(String languageCode, String inputType) {
         boolean korean = "ko".equalsIgnoreCase(languageCode);
         String type = inputType == null ? "" : inputType.toLowerCase(java.util.Locale.ROOT);
@@ -185,6 +200,7 @@ final class OldHangulController {
         koreanQwerty = qwerty;
         dubeolsik = qwerty || !korean;
         koreanActive = qwerty;
+        notifyShiftLayer();
         if (debugLog) {
             de.robv.android.xposed.XposedBridge.log("OldHangul: language " + languageCode + "/" + inputType
                     + " -> " + (qwerty ? "composing here" : "left to Samsung"));
