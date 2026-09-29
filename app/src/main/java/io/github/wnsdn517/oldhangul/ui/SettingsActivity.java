@@ -36,37 +36,36 @@ public final class SettingsActivity extends Activity {
         int pad = dp(16);
         list.setPadding(pad, pad, pad, pad);
 
-        addText("삼성 키보드 두벌식에서 동작합니다. 설정은 키보드를 다시 열 때 적용됩니다.", 14);
+        addTitle();
+        addText("한국어 쿼티(두벌식)에서만 동작합니다. 바꾼 설정은 키보드를 다시 열면 적용됩니다.", 13);
         addRestartButton();
-        addSwitch(Prefs.ENABLED, "모듈 사용", "끄면 삼성 키보드 기본 한글 입력으로 돌아갑니다.");
-        addSwitch(Prefs.ARCHAIC, "옛한글 조합",
-                "ㅂㅅㄱ+ㅏ → ᄢᅡ, ㅂㅇ+ㅏ → ᄫᅡ, ㄱ+ㆍ+ㄹ → ᄀᆞᆯ 처럼 옛 자모를 조합합니다.");
-        addSwitch(Prefs.SPLIT_ON_SPACE, "스페이스로 옛한글 풀기",
-                "옛한글로 합쳐진 상태에서 스페이스를 누르면 한 번 풀어 줍니다: ᄛᅦ → ㄹ에, 주ᇮ → 중ㅇ. "
-                        + "한 번 더 누르면 띄어쓰기, 바로 백스페이스를 누르면 되돌립니다.");
-        addSwitch(Prefs.AUTO_IEUNG, "자동 ㅇ 채우기",
-                "ㅏ 다음에 받침이 오면 ㅇ을 채웁니다: ㅏ+ㄴ → 안. ㅏㅏㅏㅏ 는 그대로 둡니다.");
-        addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ…", "누르고 있는 동안 ㅋ가 계속 입력됩니다.");
-        addLaughMix();
-        addSwitch(Prefs.SHIFT_ARCHAIC, "쉬프트로 옛 자모 입력",
-                "쉬프트를 누르면 ㄹ ㅇ ㅎ ㅏ 자리에 ㅿ ㆁ ㆆ ㆍ 가 표시되고 입력됩니다 "
-                        + "(옛한글 조합이 켜져 있을 때). 바꾼 뒤에는 키보드를 재시작하세요.");
-        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모 입력",
-                "ㄹ → ㅿ, ㅇ → ㆁ, ㅎ → ㆆ, ㅏ → ㆍ (옛한글 조합이 켜져 있을 때). "
-                        + "ㄱ ㄷ ㅂ ㅅ ㅈ 은 삼성 기본대로 쌍자음이 나옵니다.");
-        addSwitch(Prefs.DIRECT_INPUT, "터미널 앱 즉시 입력",
-                "Termux 처럼 조합 중인 글자를 보여주지 않는 앱에서는 치는 즉시 글자를 확정하고, "
-                        + "바뀌면 지우고 다시 씁니다 (한 글자씩 늦게 보이는 문제 해결).");
-        addSwitch(Prefs.FAST_DELETE, "길게 눌러 빠르게 지우기",
-                "백스페이스를 누르고 있으면 삼성 기본처럼 점점 빨라져 단어 단위로 지웁니다. "
-                        + "끄면 끝까지 한 글자씩 같은 속도로 지웁니다.");
-        addSwitch(Prefs.RECAPTURE, "지운 글자 다시 조합",
-                "치고 있는 단어는 백스페이스로 한 자모씩 지웁니다: 안 → 아. "
-                        + "띄어쓰기 뒤의 글자는 한 글자씩 지웁니다.");
 
+        addSection("기본");
+        addSwitch(Prefs.ENABLED, "모듈 켜기", "끄면 삼성 키보드 기본 입력으로 돌아갑니다");
+        addSwitch(Prefs.AUTO_IEUNG, "초성 ㅇ 자동 채우기", "ㅏ + ㄴ → 안     (ㅏㅏㅏ 처럼 모음만 칠 땐 그대로)");
+
+        addSection("옛한글");
+        addSwitch(Prefs.ARCHAIC, "옛한글 조합", "ㅂㅅㄱ+ㅏ → ᄢᅡ     ㄱ+ㆍ+ㄹ → ᄀᆞᆯ     ㅅㄱ → ㅺ");
+        addSwitch(Prefs.SHIFT_ARCHAIC, "쉬프트 자판에 ㅿ ㆁ ㆆ ㆍ",
+                "ㄹ ㅇ ㅎ ㅏ 자리에 나옵니다 · 바꾸면 키보드 재시작");
+        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모", "ㄹ → ㅿ     ㅇ → ㆁ     ㅎ → ㆆ     ㅏ → ㆍ");
+        addSwitch(Prefs.SPLIT_ON_SPACE, "스페이스로 풀기",
+                "ᄛᅦ → ㄹ에     ㅺ → ㅅㄱ\n한 번 더 누르면 띄어쓰기, 바로 ⌫ 누르면 되돌리기");
+
+        addSection("ㅋ 연타");
+        addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ", "ㅋㅋㅋ 까지는 보통 속도, 그 뒤로는 아주 빠르게");
+        addLaughMix();
+
+        addSection("지우기");
+        addSwitch(Prefs.RECAPTURE, "자모 단위로 지우기", "치고 있는 단어는 안 → 아 → ㅇ 처럼 한 자모씩");
+        addSwitch(Prefs.FAST_DELETE, "길게 누르면 빠르게 지우기", "누르고 있으면 삼성 기본처럼 점점 빨라져 단어째 지웁니다");
+
+        addSection("호환");
+        addSwitch(Prefs.DIRECT_INPUT, "터미널 즉시 입력", "Termux 등에서 치는 즉시 글자가 보이게 합니다");
+
+        addSection("문제 해결");
         addSwitch(Prefs.DEBUG_LOG, "진단 로그",
-                "문제를 보고할 때만 켜세요. 키 입력과 삼성 쉬프트 상태 변화를 LSPosed 로그에 남깁니다 "
-                        + "(OldHangul: 로 시작). 키보드를 다시 열면 적용됩니다.", false);
+                "문제를 알려줄 때만 켜세요 · LSPosed 로그에 OldHangul: 로 기록", false);
 
         ScrollView scroll = new ScrollView(this);
         scroll.addView(list);
@@ -82,6 +81,30 @@ public final class SettingsActivity extends Activity {
             // The module is not active in LSPosed yet; settings are kept but not visible to the hook.
             return getSharedPreferences(Prefs.FILE, Context.MODE_PRIVATE);
         }
+    }
+
+    private void addTitle() {
+        TextView v = new TextView(this);
+        String version = "";
+        try {
+            version = " " + getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (android.content.pm.PackageManager.NameNotFoundException ignored) {
+            // Our own package is always installed.
+        }
+        v.setText("삼성 키보드 옛한글" + version);
+        v.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+        v.setPadding(0, dp(8), 0, 0);
+        list.addView(v);
+    }
+
+    private void addSection(String name) {
+        TextView v = new TextView(this);
+        v.setText(name);
+        v.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        v.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
+        v.setTextColor(0xFF3D7BF7);
+        v.setPadding(0, dp(24), 0, dp(4));
+        list.addView(v);
     }
 
     private void addText(String text, int sp) {
@@ -115,15 +138,15 @@ public final class SettingsActivity extends Activity {
 
     private void addLaughMix() {
         TextView title = new TextView(this);
-        title.setText("ㅋ 사이에 섞기");
+        title.setText("사이에 다른 글자 섞기  (처음 ㅋㅋㅋ 는 그대로)");
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
         title.setPadding(0, dp(4), 0, 0);
         list.addView(title);
 
         String[][] options = {
-                {Prefs.LAUGH_MIX_OFF, "끄기 (ㅋㅋㅋㅋ)"},
-                {"cheonjiin", "천지인식 (ㅋㅋㅋㄱㅋㄱㄱㄲㄱㅋㅋ)"},
-                {"qwerty", "쿼티식 (ㅋㅋㅋㅌㅋㅋㅋㅌㅌㅋㅋ)"},
+                {Prefs.LAUGH_MIX_OFF, "섞지 않기     ㅋㅋㅋㅋㅋㅋㅋ"},
+                {"cheonjiin", "천지인 느낌     ㅋㅋㅋㄱㅋㄱㄱㄲㅋ"},
+                {"qwerty", "쿼티 느낌     ㅋㅋㅋㅌㅋㅋㅌㅌㅋ"},
         };
         String current = prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF);
         RadioGroup group = new RadioGroup(this);

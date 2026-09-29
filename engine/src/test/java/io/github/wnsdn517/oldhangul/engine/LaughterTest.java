@@ -26,7 +26,7 @@ public class LaughterTest {
     @Test
     public void cheonjiinMixesKiyeok() {
         String s = laugh(Laughter.Style.CHEONJIIN, 200);
-        assertTrue(s.startsWith("ㅋ"));
+        assertTrue(s.startsWith("ㅋㅋㅋ"));
         assertTrue(s.matches("[ㅋㄱㄲ]+"));
         assertTrue(s.contains("ㄱ"));
         assertTrue(count(s, 'ㅋ') > s.length() / 2);
@@ -35,10 +35,20 @@ public class LaughterTest {
     @Test
     public void qwertyMixesTieut() {
         String s = laugh(Laughter.Style.QWERTY, 200);
-        assertTrue(s.startsWith("ㅋ"));
+        assertTrue(s.startsWith("ㅋㅋㅋ"));
         assertTrue(s.matches("[ㅋㅌ]+"));
         assertTrue(s.contains("ㅌ"));
         assertTrue(count(s, 'ㅋ') > s.length() / 2);
+    }
+
+    @Test
+    public void firstThreeAreCalmThenFast() {
+        Laughter l = new Laughter(Laughter.Style.QWERTY, new Random(1));
+        long first = l.nextDelayMs();
+        for (int i = 0; i < Laughter.CALM_COUNT; i++) {
+            assertEquals('ㅋ', l.next());
+        }
+        assertTrue(l.nextDelayMs() < first);
     }
 
     @Test

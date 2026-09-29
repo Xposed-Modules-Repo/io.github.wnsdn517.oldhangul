@@ -14,7 +14,9 @@ import java.util.List;
  *
  * <p>Rules:
  * <ul>
- *   <li>Consonants with no vowel after them never merge: ㅎㅎ, ㅂㅅ, ㅋㅋ stay as typed.</li>
+ *   <li>Consonants with no vowel after them stay apart, except that archaic mode
+ *       merges different letters into a cluster letter (ㅅㄱ → ㅺ); repeated
+ *       letters such as ㅎㅎ and ㅋㅋ never merge.</li>
  *   <li>Vowels with no consonant before them only merge into modern compounds
  *       (ㅗ+ㅏ=ㅘ), so ㅏㅏㅏㅏ, ㅜㅜ and ㅡㅡ stay as typed.</li>
  *   <li>With auto-ㅇ on, a vowel-only syllable that receives a final consonant
@@ -127,7 +129,7 @@ public final class HangulComposer {
 
     /**
      * Splits the most recent archaic cluster back into plain letters, e.g.
-     * ᄛᅦ (ㄹㅇㅔ) -> ㄹ에, 주ᇮ (ㅈㅜㅇㅇ) -> 중ㅇ, ᄀᆍ (ㄱㅜㅜ) -> 구ㅜ.
+     * ᄛᅦ (ㄹㅇㅔ) -> ㄹ에, 주ᇮ (ㅈㅜㅇㅇ) -> 중ㅇ, ᄀᆍ (ㄱㅜㅜ) -> 구ㅜ, ㅺ (ㅅㄱ) -> ㅅㄱ.
      * Returns null when nothing archaic is being composed.
      */
     public Output splitLastArchaic() {
@@ -135,6 +137,10 @@ public final class HangulComposer {
         for (int i = segs.size() - 1; i >= 0; i--) {
             Segment s = segs.get(i);
             if (!s.isSyllable()) {
+                if (s.leadEnd - s.start >= 2) {
+                    // A merged consonant cluster without a vowel (ㅺ).
+                    return insertBreak(s.leadEnd - 1);
+                }
                 continue;
             }
             int at = -1;
@@ -146,12 +152,16 @@ public final class HangulComposer {
                 at = s.leadEnd - 1;
             }
             if (at > 0) {
-                keys.insert(at, BREAK);
-                lastBreak = at;
-                return new Output("", current());
+                return insertBreak(at);
             }
         }
         return null;
+    }
+
+    private Output insertBreak(int at) {
+        keys.insert(at, BREAK);
+        lastBreak = at;
+        return new Output("", current());
     }
 
     /** Undoes {@link #splitLastArchaic}; null if the last change was not a split. */
@@ -338,10 +348,36 @@ public final class HangulComposer {
         return last;
     }
 
+    /**
+     * Consonants without a vowel. In archaic mode different letters merge into a
+     * cluster letter (ㅅㄱ → ㅺ, ㅂㅅ → ㅄ); repeated letters (ㅎㅎ, ㅇㅇ, ㅋㅋ) never do.
+     */
     private void addOrphans(List<Segment> out, int from, int to) {
-        for (int i = from; i < to; i++) {
-            out.add(new Segment(i, i + 1, i + 1));
+        int i = from;
+        while (i < to) {
+            int j = Math.min(to, i + MAX_CLUSTER);
+            while (j > i + 1 && !validOrphanCluster(i, j)) {
+                j--;
+            }
+            out.add(new Segment(i, j, j));
+            i = j;
         }
+    }
+
+    private boolean validOrphanCluster(int from, int to) {
+        if (!archaic) {
+            return false;
+        }
+        String s = spell(from, to);
+        if (!Jamo.COMPAT.containsKey(s)) {
+            return false;
+        }
+        for (int k = 1; k < s.length(); k++) {
+            if (s.charAt(k) != s.charAt(0)) {
+                return true;
+            }
+        }
+        return false; // ㄱㄱ, ㅎㅎ, ...: laughter and chat, not a cluster
     }
 
     /** Start of the leading cluster for the first syllable (longest valid suffix). */
@@ -462,7 +498,9 @@ public final class HangulComposer {
                 continue;
             }
             if (!s.isSyllable()) {
-                if (keys.charAt(s.start) != BREAK) {
+                if (s.leadEnd - s.start > 1) {
+                    sb.append(Jamo.COMPAT.get(spell(s.start, s.leadEnd)).charValue());
+                } else if (keys.charAt(s.start) != BREAK) {
                     sb.append(keys.charAt(s.start));
                 }
                 continue;

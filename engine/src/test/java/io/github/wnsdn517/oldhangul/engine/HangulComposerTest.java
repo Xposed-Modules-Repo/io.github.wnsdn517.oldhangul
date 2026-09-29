@@ -63,7 +63,8 @@ public class HangulComposerTest {
         assertEquals("ㅡㅡ", archaic("ㅡㅡ"));
         assertEquals("ㅎㅎ", archaic("ㅎㅎ"));
         assertEquals("ㅋㅋㅋ", archaic("ㅋㅋㅋ"));
-        assertEquals("ㅂㅅ", archaic("ㅂㅅ"));
+        assertEquals("ㅂㅅ", modern("ㅂㅅ"));
+        assertEquals("ㅇㅇ", archaic("ㅇㅇ"));
         assertEquals("ㄱ가", modern("ㄱㄱㅏ"));
         assertEquals("각ㄱ", modern("ㄱㅏㄱㄱ"));
     }
@@ -137,9 +138,17 @@ public class HangulComposerTest {
         assertEquals("ㄹ에", split("ㄹㅇㅔ"));     // ᄛᅦ
         assertEquals("중ㅇ", split("ㅈㅜㅇㅇ"));    // 주ᇮ
         assertEquals("구ㅜ", split("ㄱㅜㅜ"));     // ᄀᆍ
-        assertEquals("ㅂㅅ가", split("ㅂㅅㄱㅏ"));  // ᄢᅡ
+        assertEquals("ㅄ가", split("ㅂㅅㄱㅏ"));   // ᄢᅡ; the rest stays a cluster letter
         assertNull(split("ㅎㅏㄴ"));              // nothing archaic
         assertNull(split("ㄱㅏㅂㅅ"));             // 값 is modern
+    }
+
+    @Test
+    public void consonantsMergeInArchaicMode() {
+        assertEquals("ㅺ", archaic("ㅅㄱ"));
+        assertEquals("ㅄ", archaic("ㅂㅅ"));
+        assertEquals("\u112D\u1161", archaic("ㅅㄱㅏ")); // a vowel makes it a leading cluster: ᄭᅡ
+        assertEquals("ㅅㄱ", split("ㅅㄱ"));
     }
 
     @Test

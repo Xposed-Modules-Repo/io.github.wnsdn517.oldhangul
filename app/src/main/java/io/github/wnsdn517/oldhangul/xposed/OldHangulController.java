@@ -54,7 +54,6 @@ final class OldHangulController {
     private static final int CHEONJIIN_ARAEA = 0x119E;
 
     private static final long SUPPRESS_TIMEOUT_MS = 10_000;
-    private static final long REPEAT_INTERVAL_MS = 60;
     private static final long REPEAT_MAX_MS = 30_000;
 
     private final XSharedPreferences prefs;
@@ -129,7 +128,7 @@ final class OldHangulController {
                 return;
             }
             ic.commitText(String.valueOf(repeating.next()), 1);
-            handler.postDelayed(this, REPEAT_INTERVAL_MS);
+            handler.postDelayed(this, repeating.nextDelayMs());
         }
     };
 
@@ -347,7 +346,7 @@ final class OldHangulController {
             repeating = new Laughter(laughStyle, random);
             ic.commitText(String.valueOf(repeating.next()), 1);
             repeatStartedAt = SystemClock.uptimeMillis();
-            handler.postDelayed(repeatTick, REPEAT_INTERVAL_MS);
+            handler.postDelayed(repeatTick, repeating.nextDelayMs());
         } else if (archaic && longPressArchaic && archaicVariant(code) != 0) {
             type(archaicVariant(code));
         } else {
