@@ -45,11 +45,14 @@ public class LaughterTest {
     public void burstThenAccelerate() {
         Laughter l = new Laughter(Laughter.Style.QWERTY, new Random(1));
         assertEquals("ㅋㅋㅋ", l.burst());
-        long afterBurst = l.nextDelayMs();
+        long pause = l.nextDelayMs();
+        l.next();
+        long first = l.nextDelayMs();
+        assertTrue(first < pause);
         for (int i = 0; i < 20; i++) {
             l.next();
         }
-        assertTrue(l.nextDelayMs() < afterBurst);
+        assertTrue(l.nextDelayMs() < first);
     }
 
     @Test

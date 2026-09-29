@@ -31,6 +31,8 @@ public final class Laughter {
 
     /** The first letters appear at once and are always plain ㅋ. */
     public static final int CALM_COUNT = 3;
+    /** Pause after the burst before repeating starts, like a key's repeat delay. */
+    private static final long PAUSE_AFTER_BURST_MS = 400;
     private static final long START_DELAY_MS = 110;
     private static final long STEP_MS = 15;
     private static final long FAST_DELAY_MS = 20;
@@ -75,9 +77,12 @@ public final class Laughter {
         return sb.toString();
     }
 
-    /** Delay before the next letter: speeds up after the burst until it is very fast. */
+    /** Delay before the next letter: a pause after the burst, then faster and faster. */
     public long nextDelayMs() {
-        long steps = Math.max(0, count - CALM_COUNT);
+        if (count <= CALM_COUNT) {
+            return PAUSE_AFTER_BURST_MS;
+        }
+        long steps = count - CALM_COUNT - 1;
         return Math.max(FAST_DELAY_MS, START_DELAY_MS - steps * STEP_MS);
     }
 }
