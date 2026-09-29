@@ -42,7 +42,9 @@ public final class SettingsActivity extends Activity {
 
         addSection("기본");
         addSwitch(Prefs.ENABLED, "모듈 켜기", "끄면 삼성 키보드 기본 입력으로 돌아갑니다");
-        addSwitch(Prefs.AUTO_IEUNG, "초성 ㅇ 자동 채우기", "ㅏ + ㄴ → 안     (ㅏㅏㅏ 처럼 모음만 칠 땐 그대로)");
+        addSwitch(Prefs.AUTO_IEUNG, "초성 ㅇ 자동 채우기", "ㅏ + ㄴ → 안");
+        addSwitch(Prefs.VOWEL_IEUNG, "모음만 쳐도 ㅇ 붙이기",
+                "세 + ㅛ → 세요     ㅏㅏ → 아아     ㅗ → 오\nㅠㅠ ㅜㅜ ㅡㅡ 는 그대로");
 
         addSection("옛한글");
         addSwitch(Prefs.ARCHAIC, "옛한글 조합", "ㅂㅅㄱ+ㅏ → ᄢᅡ     ㄱ+ㆍ+ㄹ → ᄀᆞᆯ     ㅅㄱ → ㅺ     ㅇㅇ → ㆀ     ㅆㅅ · ㅅㅅㅅ → ᄴ     ㅂㅆ → ᄥ");
@@ -62,9 +64,21 @@ public final class SettingsActivity extends Activity {
 
         addSection("호환");
         addSwitch(Prefs.DIRECT_INPUT, "터미널 즉시 입력", "Termux 등에서 치는 즉시 글자가 보이게 합니다");
+        addSwitch(Prefs.UNLIMITED_SIZE, "키보드 크기 제한 풀기",
+                "삼성 설정 > 크기 및 투명도에서 더 작게(최소의 절반), 더 높게(최대의 1.6배) 조절 · 바꾸면 키보드 재시작");
         addSwitch(Prefs.PRELOAD_JAPANESE, "일본어 미리 불러오기",
                 "삼성 키보드는 일본어로 처음 바꿀 때 사전을 불러오느라 멈추고 입력이 씹힙니다.\n"
                         + "일본어를 한 번 쓰고 나면, 키보드가 켜질 때 뒤에서 미리 불러옵니다");
+
+        addSection("숫자");
+        addSwitch(Prefs.NUMBER_SWIPE, "윗줄 아래로 밀어 숫자",
+                "ㅂ ㅈ ㄷ ㄱ ㅅ ㅛ ㅕ ㅑ ㅐ ㅔ (q … p) 를 아래로 밀면 1 … 0\n"
+                        + "밀고 잠깐 멈추면 ¹ ₁ ① ½ 같은 변형이 뜨고, 옆으로 옮겨 고릅니다\n"
+                        + "숫자 줄을 없애려면 삼성 설정 > 레이아웃 > 숫자 키 끄기, 대체 문자 켜기");
+
+        addSection("클립보드");
+        addChoice(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT, "한 줄에 보이는 칸 수  (칸이 적을수록 크게 보임)",
+                new String[][] {{"0", "삼성 기본"}, {"2", "2칸"}, {"3", "3칸"}, {"4", "4칸"}});
 
         addSection("문제 해결");
         addSwitch(Prefs.DEBUG_LOG, "진단 로그",
@@ -162,6 +176,31 @@ public final class SettingsActivity extends Activity {
             b.setOnCheckedChangeListener((v, checked) -> {
                 if (checked) {
                     prefs.edit().putString(Prefs.LAUGH_MIX, option[0]).apply();
+                }
+            });
+            group.addView(b);
+        }
+        group.setPadding(0, 0, 0, dp(12));
+        list.addView(group);
+    }
+
+    private void addChoice(String key, String defaultValue, String titleText, String[][] options) {
+        TextView title = new TextView(this);
+        title.setText(titleText);
+        title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+        title.setPadding(0, dp(4), 0, 0);
+        list.addView(title);
+        String current = prefs.getString(key, defaultValue);
+        RadioGroup group = new RadioGroup(this);
+        group.setOrientation(LinearLayout.HORIZONTAL);
+        for (String[] option : options) {
+            RadioButton b = new RadioButton(this);
+            b.setId(View.generateViewId());
+            b.setText(option[1]);
+            b.setChecked(option[0].equals(current));
+            b.setOnCheckedChangeListener((v, checked) -> {
+                if (checked) {
+                    prefs.edit().putString(key, option[0]).apply();
                 }
             });
             group.addView(b);

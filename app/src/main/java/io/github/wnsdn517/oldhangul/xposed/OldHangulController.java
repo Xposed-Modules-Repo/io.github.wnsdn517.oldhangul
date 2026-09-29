@@ -70,6 +70,9 @@ final class OldHangulController {
     private boolean splitOnSpace = true;
     private boolean debugLog;
     private boolean preloadJapanese;
+    private boolean unlimitedSize;
+    private boolean numberSwipe;
+    private int clipboardColumns;
 
     /** Whether the current Korean layout is dubeolsik (the only layout composed here). */
     private boolean dubeolsik = true;
@@ -155,12 +158,34 @@ final class OldHangulController {
         splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
         debugLog = prefs.getBoolean(Prefs.DEBUG_LOG, false);
         preloadJapanese = prefs.getBoolean(Prefs.PRELOAD_JAPANESE, true);
+        unlimitedSize = prefs.getBoolean(Prefs.UNLIMITED_SIZE, true);
+        numberSwipe = prefs.getBoolean(Prefs.NUMBER_SWIPE, true);
+        try {
+            clipboardColumns = Integer.parseInt(
+                    prefs.getString(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT));
+        } catch (NumberFormatException e) {
+            clipboardColumns = 0;
+        }
         fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
         directInput = prefs.getBoolean(Prefs.DIRECT_INPUT, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
         notifyShiftLayer();
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
+        composer.setVowelIeung(prefs.getBoolean(Prefs.VOWEL_IEUNG, true));
+    }
+
+    /** Most clipboard tiles per row, or 0 to leave Samsung's layout alone. */
+    int clipboardColumns() {
+        return enabled ? clipboardColumns : 0;
+    }
+
+    boolean numberSwipe() {
+        return enabled && numberSwipe;
+    }
+
+    boolean unlimitedSize() {
+        return unlimitedSize;
     }
 
     boolean preloadJapanese() {
@@ -189,27 +214,33 @@ final class OldHangulController {
         }
     }
 
-    void onLanguage(String languageCode, String inputType) {
+    /**
+     * @param bilingual Samsung's multilingual typing is on for this language: it
+     *     may be another language with Korean mixed in, so the keys decide.
+     */
+    void onLanguage(String languageCode, String inputType, boolean bilingual) {
         boolean korean = "ko".equalsIgnoreCase(languageCode);
         String type = inputType == null ? "" : inputType.toLowerCase(java.util.Locale.ROOT);
         boolean other = type.contains("phonepad") || type.contains("chunjiin") || type.contains("naratgul")
                 || type.contains("vega") || type.contains("single_vowel");
         boolean qwerty = korean && !other;
-        if (languageKnown && qwerty == koreanQwerty) {
+        boolean byKeys = bilingual && !korean;
+        if (byKeys ? !languageKnown : languageKnown && qwerty == koreanQwerty) {
             return;
         }
         commitComposing();
         resetState();
         // Leaving Korean: nothing of ours may stay composing, or Samsung's own
         // composing (kana, swipe words) would be blocked.
-        languageKnown = true;
+        languageKnown = !byKeys;
         koreanQwerty = qwerty;
         dubeolsik = qwerty || !korean;
         koreanActive = qwerty;
         notifyShiftLayer();
         if (debugLog) {
             de.robv.android.xposed.XposedBridge.log("OldHangul: language " + languageCode + "/" + inputType
-                    + " -> " + (qwerty ? "composing here" : "left to Samsung"));
+                    + (bilingual ? " (multilingual)" : "") + " -> "
+                    + (byKeys ? "decided by keys" : qwerty ? "composing here" : "left to Samsung"));
         }
     }
 
@@ -581,6 +612,29 @@ final class OldHangulController {
             ic.commitText(now.substring(same), 1);
         }
         composing = out.composing;
+    }
+
+    /**
+     * Types text that bypassed Samsung (a digit swiped down from the top row):
+     * whatever is being composed, ours or Samsung's, is finished first.
+     */
+    void commitSymbol(String text) {
+        InputConnection ic = inputConnection();
+        if (ic == null) {
+            return;
+        }
+        ic.beginBatchEdit();
+        try {
+            commitComposing();
+            if (!directMode) {
+                ic.finishComposingText();
+            }
+            ic.commitText(text, 1);
+            lastEditAt = SystemClock.uptimeMillis();
+        } finally {
+            ic.endBatchEdit();
+        }
+        inWord = false;
     }
 
     /** Finishes the current syllable, leaving its text in the editor. */

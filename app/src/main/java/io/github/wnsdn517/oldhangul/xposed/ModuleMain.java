@@ -51,13 +51,15 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
             preloader[0] = new JapanesePreloader(targets.engineFactory, lpparam.appInfo.dataDir);
             hookKeyActions(targets, controller);
             hookLongPress(targets, controller);
-            hookKeyTouches(targets, controller);
+            hookKeyTouches(targets, controller, NumberSwipe.hook(controller));
             hookSamsungInputConnection(targets, controller);
             if (controller.debugLog()) {
                 // Only with the log on: these hooks sit on methods Samsung calls a lot.
                 hookShiftStateForDebug(targets, controller);
             }
             hookLanguage(targets, controller, preloader[0]);
+            hookSizeLimits(targets, controller);
+            ClipboardColumns.hook(cl, controller::clipboardColumns);
             hookShiftLabels(cl, controller);
             XposedBridge.log("OldHangul: hooks installed");
         } catch (Throwable t) {
@@ -269,7 +271,8 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                                 String code = (String) XposedHelpers.callMethod(language[0], "getLanguageCode");
                                 preloader.onLanguage(code);
                                 controller.onLanguage(code,
-                                        (String) XposedHelpers.callMethod(language[0], "getInputType"));
+                                        (String) XposedHelpers.callMethod(language[0], "getInputType"),
+                                        isBilingual(language[0]));
                             } catch (RuntimeException e) {
                                 XposedBridge.log("OldHangul: could not read language: " + e);
                             }
@@ -277,6 +280,49 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                     });
         } catch (RuntimeException e) {
             XposedBridge.log("OldHangul: language changes not tracked: " + e);
+        }
+    }
+
+    /** How far the resize handles may go past Samsung's limits. */
+    private static final float SIZE_MIN_FACTOR = 0.5f;
+    private static final float SIZE_MAX_HEIGHT_FACTOR = 1.6f;
+
+    /**
+     * Samsung's keyboard size table answers (…, index, mask) with the minimum,
+     * default or maximum ratio (index 0/1/2; mask bit 32 forces the default).
+     * Minimums are halved and the maximum height raised; the maximum width stays,
+     * since it is already the full screen width.
+     */
+    private static void hookSizeLimits(HookTargets targets, OldHangulController controller) {
+        for (Method m : new Method[] {targets.sizeHeightRatio, targets.sizeWidthRatio}) {
+            if (m == null) {
+                continue;
+            }
+            boolean height = m == targets.sizeHeightRatio;
+            XposedBridge.hookMethod(m, new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) {
+                    if (!controller.unlimitedSize() || !(param.getResult() instanceof Float)) {
+                        return;
+                    }
+                    int index = ((Integer) param.args[5] & 32) != 0 ? 1 : (Integer) param.args[4];
+                    float ratio = (Float) param.getResult();
+                    if (index == 0) {
+                        param.setResult(ratio * SIZE_MIN_FACTOR);
+                    } else if (index == 2 && height) {
+                        param.setResult(ratio * SIZE_MAX_HEIGHT_FACTOR);
+                    }
+                }
+            });
+        }
+    }
+
+    /** Samsung's multilingual typing pairs the language with a second one (bilingual id). */
+    private static boolean isBilingual(Object language) {
+        try {
+            return (Integer) XposedHelpers.callMethod(language, "getBilingualId") > 0;
+        } catch (RuntimeException e) {
+            return false;
         }
     }
 
@@ -391,11 +437,15 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         }
     }
 
-    private static void hookKeyTouches(HookTargets targets, OldHangulController controller) {
+    private static void hookKeyTouches(HookTargets targets, OldHangulController controller,
+            NumberSwipe numberSwipe) {
         XC_MethodHook stopRepeat = new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) {
                 controller.onKeyTouch();
+                if (controller.numberSwipe()) {
+                    numberSwipe.onKeyDown(keyCodeOf(targets, param.thisObject));
+                }
             }
         };
         for (Method m : targets.keyTouch) {
@@ -409,21 +459,27 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         XposedBridge.hookMethod(longPress, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                Object key = targets.presenterKey.get(param.thisObject);
-                if (key == null) {
-                    return;
-                }
-                Object normal = XposedHelpers.callMethod(key, "getNormalKey");
-                Object label = normal == null ? null : XposedHelpers.callMethod(normal, "getKeyCodeLabel");
-                if (label == null) {
-                    return;
-                }
-                int code = (Integer) XposedHelpers.callMethod(label, "getKeyCode");
-                if (controller.onLongPress(code)) {
+                int code = keyCodeOf(targets, param.thisObject);
+                if (code != 0 && controller.onLongPress(code)) {
                     param.setResult(noneResult);
                 }
             }
         });
+    }
+
+    /** The code of the key a presenter handles, or 0. */
+    private static int keyCodeOf(HookTargets targets, Object presenter) {
+        try {
+            Object key = targets.presenterKey.get(presenter);
+            if (key == null) {
+                return 0;
+            }
+            Object normal = XposedHelpers.callMethod(key, "getNormalKey");
+            Object label = normal == null ? null : XposedHelpers.callMethod(normal, "getKeyCodeLabel");
+            return label == null ? 0 : (Integer) XposedHelpers.callMethod(label, "getKeyCode");
+        } catch (IllegalAccessException | RuntimeException e) {
+            return 0;
+        }
     }
 
     /** The long-press result that means "nothing happened" (its toString() is "NONE"). */

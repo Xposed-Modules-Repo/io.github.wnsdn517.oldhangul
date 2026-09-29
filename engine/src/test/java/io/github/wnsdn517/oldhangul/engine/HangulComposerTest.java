@@ -217,4 +217,27 @@ public class HangulComposerTest {
         assertNull(HangulComposer.recapture("abc"));
         assertNull(HangulComposer.recapture(""));
     }
+
+    private static String vowelIeung(String input) {
+        HangulComposer c = new HangulComposer(true, true);
+        c.setVowelIeung(true);
+        StringBuilder committed = new StringBuilder();
+        for (char k : input.toCharArray()) {
+            committed.append(c.type(k).commit);
+        }
+        return committed + c.flush();
+    }
+
+    @Test
+    public void loneVowelsGetIeung() {
+        assertEquals("안녕하세요", vowelIeung("ㅇㅏㄴㄴㅕㅇㅎㅏㅅㅔㅛ"));
+        assertEquals("아아아아", vowelIeung("ㅏㅏㅏㅏ"));
+        assertEquals("오", vowelIeung("ㅗ"));
+        assertEquals("와", vowelIeung("ㅗㅏ"));
+        assertEquals("아뇨", vowelIeung("ㅇㅏㄴㅛ"));
+        assertEquals("가유", vowelIeung("ㄱㅏㅠ"));
+        assertEquals("ㅠㅠ", vowelIeung("ㅠㅠ"));   // crying face stays
+        assertEquals("아ㅜㅜ", vowelIeung("ㅏㅜㅜ"));
+        assertEquals("ㅡㅡ", vowelIeung("ㅡㅡ"));
+    }
 }

@@ -3,6 +3,7 @@ package io.github.wnsdn517.oldhangul.xposed;
 import org.luckypray.dexkit.DexKitBridge;
 import org.luckypray.dexkit.query.FindClass;
 import org.luckypray.dexkit.query.FindMethod;
+import org.luckypray.dexkit.query.enums.StringMatchType;
 import org.luckypray.dexkit.query.matchers.ClassMatcher;
 import org.luckypray.dexkit.query.matchers.MethodMatcher;
 import org.luckypray.dexkit.result.ClassData;
@@ -49,10 +50,13 @@ final class HookTargets {
     /** Samsung's shift state holder and its "is the next letter shifted" query. */
     Class<?> shiftState;
     Method isShifted;
+    /** Keyboard size ratio lookups (min/default/max by index); height and width. Optional. */
+    Method sizeHeightRatio;
+    Method sizeWidthRatio;
     /** Static lookup of a prediction engine by name, e.g. "OMRON" (Japanese). Optional, may be null. */
     Method engineFactory;
 
-    private static final int CACHE_VERSION = 4;
+    private static final int CACHE_VERSION = 5;
     private static final String KEY_REQUEST_INFO = "KeyRequestInfo{mKeyCode=";
     private static final String EXECUTE_ACTION = " execute end t : ";
     private static final String TALKBACK_LONG_CLICK = "onTalkBackLongClick: xy = (";
@@ -62,6 +66,7 @@ final class HookTargets {
     private static final String SHIFT_STATE = "getCurrentShiftState()I";
     private static final String USES_IS_SHIFTED = "keycode change to lowercase for auto caps flick";
     private static final String ENGINE_FACTORY = "engineName is null";
+    private static final String SIZE_CONFIG = "sizeConfig";
     private static final String KEY_VO = "com.samsung.android.honeyboard.forms.model.KeyVO";
 
     static HookTargets load(ClassLoader cl, String apkPath, String dataDir) throws Exception {
@@ -149,8 +154,68 @@ final class HookTargets {
             } catch (RuntimeException | ReflectiveOperationException e) {
                 XposedBridge.log("OldHangul: engine factory not found, no Japanese preload: " + e);
             }
+            try {
+                findSizeRatios(bridge, cl, t);
+            } catch (RuntimeException | ReflectiveOperationException e) {
+                XposedBridge.log("OldHangul: keyboard size lookups not found: " + e);
+            }
             return t;
         }
+    }
+
+    /**
+     * Samsung's size table: two static float lookups (sizeConfig, ..., index) where
+     * index 0/1/2 is minimum/default/maximum. The width one goes through an instance
+     * method that reads the width rows of the table (22, 32).
+     */
+    private static void findSizeRatios(DexKitBridge bridge, ClassLoader cl, HookTargets t)
+            throws ReflectiveOperationException {
+        List<MethodData> lookups = new ArrayList<>();
+        for (MethodData m : bridge.findMethod(FindMethod.create().matcher(MethodMatcher.create()
+                .usingStrings(SIZE_CONFIG).paramCount(6)
+                .returnType("float", StringMatchType.Equals, false)))) {
+            if (Modifier.isStatic(m.getModifiers())) {
+                lookups.add(m);
+            }
+        }
+        if (lookups.size() != 2) {
+            throw new IllegalStateException("expected two size lookups, found " + lookups.size());
+        }
+        String owner = lookups.get(0).getClassName();
+        List<MethodData> widthRows = new ArrayList<>();
+        for (MethodData m : bridge.findMethod(FindMethod.create().searchPackages(packageOf(owner))
+                .matcher(MethodMatcher.create().paramCount(5)
+                        .returnType("float", StringMatchType.Equals, false).usingNumbers(22, 32)))) {
+            if (m.getClassName().equals(owner)) {
+                widthRows.add(m);
+            }
+        }
+        MethodData widthRow = single(widthRows, "width size rows");
+        for (MethodData m : lookups) {
+            boolean width = false;
+            for (MethodData callee : m.getInvokes()) {
+                if (callee.equals(widthRow)) {
+                    width = true;
+                }
+            }
+            Method method = m.getMethodInstance(cl);
+            method.setAccessible(true);
+            if (width) {
+                t.sizeWidthRatio = method;
+            } else {
+                t.sizeHeightRatio = method;
+            }
+        }
+        if (t.sizeWidthRatio == null || t.sizeHeightRatio == null) {
+            t.sizeWidthRatio = null;
+            t.sizeHeightRatio = null;
+            throw new IllegalStateException("could not tell size lookups apart");
+        }
+    }
+
+    private static String packageOf(String className) {
+        int dot = className.lastIndexOf('.');
+        return dot < 0 ? "" : className.substring(0, dot);
     }
 
     private static <T> T single(List<T> list, String what) {
@@ -199,6 +264,8 @@ final class HookTargets {
         }
         p.setProperty("keyTouch", touch.toString());
         p.setProperty("engineFactory", engineFactory == null ? "" : describe(engineFactory));
+        p.setProperty("sizeHeightRatio", sizeHeightRatio == null ? "" : describe(sizeHeightRatio));
+        p.setProperty("sizeWidthRatio", sizeWidthRatio == null ? "" : describe(sizeWidthRatio));
         return p;
     }
 
@@ -219,10 +286,14 @@ final class HookTargets {
         }
         String factory = p.getProperty("engineFactory", "");
         t.engineFactory = factory.isEmpty() ? null : resolve(cl, factory);
+        String height = p.getProperty("sizeHeightRatio", "");
+        String width = p.getProperty("sizeWidthRatio", "");
+        t.sizeHeightRatio = height.isEmpty() ? null : resolve(cl, height);
+        t.sizeWidthRatio = width.isEmpty() ? null : resolve(cl, width);
         return t;
     }
 
-    /** "declaringClass#name#paramType,paramType" (parameter types are never primitive here). */
+    /** "declaringClass#name#paramType,paramType". */
     private static String describe(Method m) {
         StringBuilder sb = new StringBuilder(m.getDeclaringClass().getName()).append('#').append(m.getName()).append('#');
         Class<?>[] params = m.getParameterTypes();
@@ -240,11 +311,25 @@ final class HookTargets {
         String[] names = parts[2].isEmpty() ? new String[0] : parts[2].split(",");
         Class<?>[] params = new Class<?>[names.length];
         for (int i = 0; i < names.length; i++) {
-            params[i] = Class.forName(names[i], false, cl);
+            params[i] = typeOf(names[i], cl);
         }
         Method m = Class.forName(parts[0], false, cl).getDeclaredMethod(parts[1], params);
         m.setAccessible(true);
         return m;
+    }
+
+    private static Class<?> typeOf(String name, ClassLoader cl) throws ClassNotFoundException {
+        switch (name) {
+            case "int": return int.class;
+            case "boolean": return boolean.class;
+            case "float": return float.class;
+            case "long": return long.class;
+            case "char": return char.class;
+            case "double": return double.class;
+            case "short": return short.class;
+            case "byte": return byte.class;
+            default: return Class.forName(name, false, cl);
+        }
     }
 
     private static Properties readCache(File f) {

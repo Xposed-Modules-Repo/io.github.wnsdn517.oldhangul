@@ -61,6 +61,8 @@ public final class HangulComposer {
 
     private boolean archaic;
     private boolean autoIeung;
+    /** Vowels typed on their own also get the silent ㅇ (ㅛ → 요), except ㅠㅠ ㅜㅜ ㅡㅡ. */
+    private boolean vowelIeung;
     /** Keep the whole word composing (as Samsung does) instead of committing finished syllables. */
     private boolean keepWord;
     /** Longest word kept composing; beyond it finished syllables are committed anyway. */
@@ -72,6 +74,10 @@ public final class HangulComposer {
     public HangulComposer(boolean archaic, boolean autoIeung) {
         this.archaic = archaic;
         this.autoIeung = autoIeung;
+    }
+
+    public void setVowelIeung(boolean on) {
+        vowelIeung = on;
     }
 
     public void configure(boolean archaic, boolean autoIeung) {
@@ -107,6 +113,14 @@ public final class HangulComposer {
         for (Segment s : segs) {
             if (s.isSyllable()) {
                 stable = s.start;
+            }
+        }
+        // Keep a run of ㅠ/ㅜ/ㅡ together: whether it is 유 or ㅠㅠ depends on the neighbours.
+        int last = segs.size() - 1;
+        char run = last >= 0 ? bareVowel(segs.get(last)) : 0;
+        if (vowelIeung && "ㅠㅜㅡ".indexOf(run) >= 0) {
+            for (int i = last; i >= 0 && bareVowel(segs.get(i)) == run; i--) {
+                stable = Math.min(stable, segs.get(i).start);
             }
         }
         String commit = render(segs, 0, stable);
@@ -519,9 +533,28 @@ public final class HangulComposer {
 
     // -------------------------------------------------------------- rendering
 
+    /** ㅠㅠ, ㅜㅜ, ㅡㅡ: a crying/flat face, not 유유. */
+    private boolean isEmoticonVowel(List<Segment> segs, int i) {
+        char k = bareVowel(segs.get(i));
+        if ("ㅠㅜㅡ".indexOf(k) < 0) {
+            return false;
+        }
+        return (i > 0 && bareVowel(segs.get(i - 1)) == k)
+                || (i + 1 < segs.size() && bareVowel(segs.get(i + 1)) == k);
+    }
+
+    /** The key of a one-vowel syllable without consonants, or 0. */
+    private char bareVowel(Segment s) {
+        if (!s.isSyllable() || s.hasLeading() || s.end != s.vowelEnd || s.vowelEnd - s.leadEnd != 1) {
+            return 0;
+        }
+        return keys.charAt(s.leadEnd);
+    }
+
     private String render(List<Segment> segs, int from, int to) {
         StringBuilder sb = new StringBuilder();
-        for (Segment s : segs) {
+        for (int si = 0; si < segs.size(); si++) {
+            Segment s = segs.get(si);
             if (s.start < from || s.start >= to) {
                 continue;
             }
@@ -545,7 +578,7 @@ public final class HangulComposer {
             Character l;
             if (s.hasLeading()) {
                 l = Jamo.LEADING.get(spell(s.start, s.leadEnd));
-            } else if (t != null) {
+            } else if (t != null || (vowelIeung && autoIeung && !isEmoticonVowel(segs, si))) {
                 l = Jamo.IEUNG_LEADING;
             } else {
                 Character compat = Jamo.COMPAT.get(spell(s.leadEnd, s.vowelEnd));
