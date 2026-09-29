@@ -15,8 +15,8 @@ import java.util.List;
  * <p>Rules:
  * <ul>
  *   <li>Consonants with no vowel after them stay apart, except that archaic mode
- *       merges different letters into a cluster letter (ㅅㄱ → ㅺ); repeated
- *       letters such as ㅎㅎ and ㅋㅋ never merge.</li>
+ *       merges them into a cluster letter where one exists (ㅅㄱ → ㅺ, ㅇㅇ → ㆀ);
+ *       space splits it again.</li>
  *   <li>Vowels with no consonant before them only merge into modern compounds
  *       (ㅗ+ㅏ=ㅘ), so ㅏㅏㅏㅏ, ㅜㅜ and ㅡㅡ stay as typed.</li>
  *   <li>With auto-ㅇ on, a vowel-only syllable that receives a final consonant
@@ -349,8 +349,8 @@ public final class HangulComposer {
     }
 
     /**
-     * Consonants without a vowel. In archaic mode different letters merge into a
-     * cluster letter (ㅅㄱ → ㅺ, ㅂㅅ → ㅄ); repeated letters (ㅎㅎ, ㅇㅇ, ㅋㅋ) never do.
+     * Consonants without a vowel. In archaic mode they merge into a cluster letter
+     * where Unicode has one (ㅅㄱ → ㅺ, ㅇㅇ → ㆀ, ㅅㅅ → ㅆ); ㅋㅋ has none and stays.
      */
     private void addOrphans(List<Segment> out, int from, int to) {
         int i = from;
@@ -365,19 +365,7 @@ public final class HangulComposer {
     }
 
     private boolean validOrphanCluster(int from, int to) {
-        if (!archaic) {
-            return false;
-        }
-        String s = spell(from, to);
-        if (!Jamo.COMPAT.containsKey(s)) {
-            return false;
-        }
-        for (int k = 1; k < s.length(); k++) {
-            if (s.charAt(k) != s.charAt(0)) {
-                return true;
-            }
-        }
-        return false; // ㄱㄱ, ㅎㅎ, ...: laughter and chat, not a cluster
+        return archaic && Jamo.COMPAT.containsKey(spell(from, to));
     }
 
     /** Start of the leading cluster for the first syllable (longest valid suffix). */

@@ -179,6 +179,8 @@ final class OldHangulController {
         }
         commitComposing();
         resetState();
+        // Leaving Korean: nothing of ours may stay composing, or Samsung's own
+        // composing (kana, swipe words) would be blocked.
         languageKnown = true;
         koreanQwerty = qwerty;
         dubeolsik = qwerty || !korean;
@@ -207,7 +209,17 @@ final class OldHangulController {
 
     /** A syllable is being composed here; Samsung must leave the composing text alone. */
     boolean isComposing() {
-        return enabled && !composer.isEmpty();
+        return enabled && !composer.isEmpty() && koreanLayoutActive();
+    }
+
+    /** Another language is active and nothing of ours is pending: key actions can be ignored cheaply. */
+    boolean idleInOtherLanguage() {
+        return !enabled || (languageKnown && !koreanQwerty && composer.isEmpty() && repeating == null);
+    }
+
+    /** Cheap check for the hot label hook: is the archaic Shift layer in use right now? */
+    boolean shiftLayerActive() {
+        return enabled && archaic && shiftArchaic && (!languageKnown || koreanQwerty);
     }
 
     // ------------------------------------------------------------ key actions
@@ -344,7 +356,7 @@ final class OldHangulController {
             commitComposing();
             inWord = false;
             repeating = new Laughter(laughStyle, random);
-            ic.commitText(String.valueOf(repeating.next()), 1);
+            ic.commitText(repeating.burst(), 1);
             repeatStartedAt = SystemClock.uptimeMillis();
             handler.postDelayed(repeatTick, repeating.nextDelayMs());
         } else if (archaic && longPressArchaic && archaicVariant(code) != 0) {

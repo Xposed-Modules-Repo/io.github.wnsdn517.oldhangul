@@ -42,13 +42,14 @@ public class LaughterTest {
     }
 
     @Test
-    public void firstThreeAreCalmThenFast() {
+    public void burstThenAccelerate() {
         Laughter l = new Laughter(Laughter.Style.QWERTY, new Random(1));
-        long first = l.nextDelayMs();
-        for (int i = 0; i < Laughter.CALM_COUNT; i++) {
-            assertEquals('ㅋ', l.next());
+        assertEquals("ㅋㅋㅋ", l.burst());
+        long afterBurst = l.nextDelayMs();
+        for (int i = 0; i < 20; i++) {
+            l.next();
         }
-        assertTrue(l.nextDelayMs() < first);
+        assertTrue(l.nextDelayMs() < afterBurst);
     }
 
     @Test

@@ -153,6 +153,9 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 // Actions may run nested; restore the outer value afterwards.
                 param.setObjectExtra("outer", swallowInput[0]);
                 swallowInput[0] = false;
+                if (controller.idleInOtherLanguage() && !controller.debugLog()) {
+                    return;
+                }
                 if (action == null || !targets.keyRequestInfo.isInstance(info)) {
                     return;
                 }
@@ -263,17 +266,33 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         }
     }
 
-    /** Shift layer of dubeolsik: ㄹ ㅇ ㅎ ㅏ show and type ㅿ ㆁ ㆆ ㆍ. */
-    private static void hookShiftLabels(ClassLoader cl, OldHangulController controller) {
+    /**
+     * Shift layer of dubeolsik: ㄹ ㅇ ㅎ ㅏ show and type ㅿ ㆁ ㆆ ㆍ.
+     *
+     * <p>Samsung calls this getter constantly (drawing keys, finding the key
+     * under a swipe), in every language, so it returns at once unless Korean
+     * dubeolsik with the Shift layer is active, and caches everything else.
+     */
+    private static void hookShiftLabels(ClassLoader cl, OldHangulController controller) throws Exception {
         Class<?> labelClass = XposedHelpers.findClass(KEY_LABEL, cl);
-        XposedHelpers.findAndHookMethod(LETTER_KEY_LABEL, cl, "getUpperKeyCodeLabel", new XC_MethodHook() {
+        Class<?> letterClass = XposedHelpers.findClass(LETTER_KEY_LABEL, cl);
+        Method getNormal = letterClass.getMethod("getKeyCodeLabel");
+        Method getCodes = labelClass.getMethod("getKeyCodes");
+        Method getSize = labelClass.getMethod("getKeyLabelSize");
+        java.lang.reflect.Constructor<?> create =
+                labelClass.getConstructor(String.class, java.util.List.class, float.class);
+        Map<Long, Object> made = new HashMap<>();
+        XposedBridge.hookMethod(letterClass.getMethod("getUpperKeyCodeLabel"), new XC_MethodHook() {
             @Override
-            protected void afterHookedMethod(MethodHookParam param) {
-                Object normal = XposedHelpers.callMethod(param.thisObject, "getKeyCodeLabel");
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                if (!controller.shiftLayerActive()) {
+                    return;
+                }
+                Object normal = getNormal.invoke(param.thisObject);
                 if (normal == null) {
                     return;
                 }
-                java.util.List<?> codes = (java.util.List<?>) XposedHelpers.callMethod(normal, "getKeyCodes");
+                java.util.List<?> codes = (java.util.List<?>) getCodes.invoke(normal);
                 if (codes == null || codes.size() != 1) {
                     return;
                 }
@@ -281,9 +300,15 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 if (variant == 0) {
                     return;
                 }
-                float size = (Float) XposedHelpers.callMethod(normal, "getKeyLabelSize");
-                param.setResult(XposedHelpers.newInstance(labelClass, String.valueOf(variant),
-                        java.util.Collections.singletonList((int) variant), size));
+                float size = (Float) getSize.invoke(normal);
+                long key = ((long) variant << 32) | Float.floatToIntBits(size);
+                Object label = made.get(key);
+                if (label == null) {
+                    label = create.newInstance(String.valueOf(variant),
+                            java.util.Collections.singletonList((int) variant), size);
+                    made.put(key, label);
+                }
+                param.setResult(label);
             }
         });
     }

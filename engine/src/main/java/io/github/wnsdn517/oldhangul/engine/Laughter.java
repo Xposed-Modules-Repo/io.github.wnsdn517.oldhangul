@@ -6,7 +6,8 @@ import java.util.Random;
  * Produces the letters of a held ㅋ key. Optionally mixes in the neighbouring
  * letters people hit when laughing fast: ㄱ/ㄲ on 천지인 (ㅋ shares the ㄱ key) or
  * ㅌ on qwerty (next to ㅋ), e.g. ㅋㅋㅋㄱㅋㄱㄱㄲㄱㅋㅋㅋ or ㅋㅋㅋㅌㅋㅋㅋㅋㅋㅌㅌㅋㅋㅋ.
- * The first {@link #CALM_COUNT} letters are plain ㅋ at a normal pace.
+ * The first {@link #CALM_COUNT} letters are a plain ㅋㅋㅋ typed at once; the
+ * rest follow faster and faster.
  */
 public final class Laughter {
 
@@ -28,9 +29,10 @@ public final class Laughter {
         }
     }
 
-    /** The first letters come at a normal pace and are always plain ㅋ. */
+    /** The first letters appear at once and are always plain ㅋ. */
     public static final int CALM_COUNT = 3;
-    private static final long CALM_DELAY_MS = 150;
+    private static final long START_DELAY_MS = 110;
+    private static final long STEP_MS = 15;
     private static final long FAST_DELAY_MS = 20;
 
     /** Chance of switching from ㅋ to a stray letter. */
@@ -64,8 +66,18 @@ public final class Laughter {
         return random.nextDouble() < 0.25 ? 'ㄲ' : 'ㄱ';
     }
 
-    /** Delay before the next letter: ㅋㅋㅋ at a normal pace, then very fast. */
+    /** The letters typed the moment the key is held: ㅋㅋㅋ. */
+    public String burst() {
+        StringBuilder sb = new StringBuilder();
+        while (count < CALM_COUNT) {
+            sb.append(next());
+        }
+        return sb.toString();
+    }
+
+    /** Delay before the next letter: speeds up after the burst until it is very fast. */
     public long nextDelayMs() {
-        return count < CALM_COUNT ? CALM_DELAY_MS : FAST_DELAY_MS;
+        long steps = Math.max(0, count - CALM_COUNT);
+        return Math.max(FAST_DELAY_MS, START_DELAY_MS - steps * STEP_MS);
     }
 }
