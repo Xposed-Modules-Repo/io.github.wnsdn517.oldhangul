@@ -81,6 +81,14 @@ final class OldHangulController {
     private String composing = "";
     /** The last key split an archaic cluster; a second space is a real space, backspace undoes it. */
     private boolean justSplit;
+    /** The user undid a split: the next space keeps the cluster and types a space. */
+    private boolean splitDeclined;
+    /**
+     * The Shift key was touched since Shift was last off. Samsung also turns Shift
+     * on by itself at the start of a sentence (auto-capitalization), which must not
+     * turn the first ㄱ of a word into ㄲ.
+     */
+    private boolean shiftTouched;
     /** The current backspace press was handled here. */
     private boolean backspaceOwned;
     /** Key code whose release is ignored after its long press was handled. */
@@ -157,6 +165,9 @@ final class OldHangulController {
             suppressedRelease = 0;
             stopRepeat();
         }
+        if ("ShiftKeyA".equals(action) || "CapslockKeyA".equals(action)) {
+            shiftTouched = true;
+        }
         for (String neutral : NEUTRAL_ACTIONS) {
             if (neutral.equals(action)) {
                 return false;
@@ -169,9 +180,13 @@ final class OldHangulController {
         boolean wasSplit = justSplit;
         justSplit = false;
         if (CHARACTER_ACTION.equals(action)) {
+            splitDeclined = false;
             return onCharacter(key, shifted);
         }
-        if (SPACE_ACTION.equals(action) && splitOnSpace && !wasSplit && archaic && !composer.isEmpty()) {
+        boolean declined = splitDeclined;
+        splitDeclined = false;
+        if (SPACE_ACTION.equals(action) && splitOnSpace && !wasSplit && !declined && archaic
+                && !composer.isEmpty()) {
             HangulComposer.Output out = composer.splitLastArchaic();
             if (out != null) {
                 rewrite(out);
@@ -203,8 +218,11 @@ final class OldHangulController {
             inWord = false;
             return false;
         }
+        if (!shifted) {
+            shiftTouched = false;
+        }
         int i = UNSHIFTED.indexOf(code);
-        if (shifted && i >= 0) {
+        if (shifted && shiftTouched && i >= 0) {
             code = SHIFTED.charAt(i);
         }
         return type((char) code);
@@ -362,6 +380,7 @@ final class OldHangulController {
             HangulComposer.Output undo = composer.undoSplit();
             if (undo != null) {
                 rewrite(undo);
+                splitDeclined = true;
                 return true;
             }
         }
@@ -436,6 +455,7 @@ final class OldHangulController {
         composing = "";
         inWord = false;
         justSplit = false;
+        splitDeclined = false;
         backspaceOwned = false;
         stopRepeat();
     }
