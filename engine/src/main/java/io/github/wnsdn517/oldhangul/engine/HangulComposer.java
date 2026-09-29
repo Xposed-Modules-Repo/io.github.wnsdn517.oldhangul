@@ -309,7 +309,7 @@ public final class HangulComposer {
             } else if (runEnd == n) {
                 // Final consonants: as many as possible become the previous syllable's
                 // trailing cluster, the rest wait as orphans.
-                int t = prev == null ? i : longestTrailing(prev, i, runEnd);
+                int t = prev == null ? i : longestTrailing(prev, i, tripleStart(i, runEnd));
                 if (prev != null) {
                     prev.end = t;
                 }
@@ -412,7 +412,8 @@ public final class HangulComposer {
             prev.end = longestTrailing(prev, from, brk);
             return brk + 1 == to ? to : longestLeadingSuffix(brk + 1, to);
         }
-        for (int k = Math.min(to - 1, from + MAX_CLUSTER); k >= from; k--) {
+        int cap = tripleStart(from, to);
+        for (int k = Math.min(Math.min(to - 1, from + MAX_CLUSTER), cap); k >= from; k--) {
             if (validTrailing(prev, from, k) && validLeading(k, to)) {
                 prev.end = k;
                 return k;
@@ -420,6 +421,24 @@ public final class HangulComposer {
         }
         prev.end = longestTrailing(prev, from, to - 1);
         return to - 1;
+    }
+
+    /**
+     * Where one key pressed three times in a row starts an archaic initial
+     * (ㅅㅅㅅ → ᄴ), or {@code to}. A trailing cluster may not reach into it, so
+     * 가+ㅅㅅㅅ is 가ᄴ, not 갔ㅅ. No modern word is typed that way.
+     */
+    private int tripleStart(int from, int to) {
+        if (!archaic) {
+            return to;
+        }
+        for (int i = from; i + 3 <= to; i++) {
+            char k = keys.charAt(i);
+            if (keys.charAt(i + 1) == k && keys.charAt(i + 2) == k && Jamo.LEADING.containsKey(spell(i, i + 3))) {
+                return i;
+            }
+        }
+        return to;
     }
 
     private int lastIndexOf(char c, int from, int to) {

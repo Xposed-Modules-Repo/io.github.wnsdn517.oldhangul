@@ -169,6 +169,16 @@ public class HangulComposerTest {
     }
 
     @Test
+    public void threeSiosPressesMakeTripleSios() {
+        assertEquals("\u1134\u1160", archaic("ㅅㅅㅅ"));
+        assertEquals("가\u1134\u1160", archaic("ㄱㅏㅅㅅㅅ"));  // not 갔ㅅ
+        assertEquals("아\u1134\u1175", archaic("ㅇㅏㅅㅅㅅㅣ")); // 아ᄴᅵ
+        assertEquals("갔", archaic("ㄱㅏㅅㅅ"));
+        assertEquals("갓사", archaic("ㄱㅏㅅㅅㅏ"));
+        assertEquals("갓ㅅㅅ", modern("ㄱㅏㅅㅅㅅ")); // modern mode unchanged
+    }
+
+    @Test
     public void typingAfterSplitKeepsItSplit() {
         HangulComposer c = new HangulComposer(true, true);
         c.type('ㄹ');
