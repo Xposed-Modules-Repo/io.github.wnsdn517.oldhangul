@@ -50,7 +50,7 @@ final class OldHangulController {
     private static final String DUBEOLSIK_ONLY = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠ";
     /** 천지인's ㆍ key sends U+119E; ㆍ from this module never comes from a Samsung key. */
     private static final int CHEONJIIN_ARAEA = 0x119E;
-    /** Samsung sends the unshifted letter and applies Shift later; this is that mapping. */
+    /** Shifted letters on the dubeolsik layout. */
     private static final String UNSHIFTED = "ㄱㄷㅂㅅㅈㅐㅔ";
     private static final String SHIFTED = "ㄲㄸㅃㅆㅉㅒㅖ";
 
@@ -70,6 +70,7 @@ final class OldHangulController {
     private boolean archaic = true;
     private boolean recapture = true;
     private boolean splitOnSpace = true;
+    private boolean debugLog;
 
     /** Whether the current Korean layout is dubeolsik (the only layout composed here). */
     private boolean dubeolsik = true;
@@ -84,11 +85,20 @@ final class OldHangulController {
     /** The user undid a split: the next space keeps the cluster and types a space. */
     private boolean splitDeclined;
     /**
-     * The Shift key was touched since Shift was last off. Samsung also turns Shift
-     * on by itself at the start of a sentence (auto-capitalization), which must not
-     * turn the first ㄱ of a word into ㄲ.
+     * Shift as the user operated it, tracked from the Shift key's own events.
+     * Samsung picks the shifted letter (ㅃ) from its shift state, which can be
+     * switched off before the letter key is released; this copy is what the
+     * module applies when a key still arrives unshifted. Samsung's automatic
+     * sentence-start Shift is deliberately not part of it.
      */
-    private boolean shiftTouched;
+    private static final int SHIFT_OFF = 0;
+    private static final int SHIFT_ONCE = 1;
+    private static final int SHIFT_LOCKED = 2;
+    private static final long SHIFT_DOUBLE_TAP_MS = 400;
+    private int shiftMode = SHIFT_OFF;
+    private boolean shiftHeld;
+    private boolean typedWhileShiftHeld;
+    private long lastShiftTapAt;
     /** The current backspace press was handled here. */
     private boolean backspaceOwned;
     /** Key code whose release is ignored after its long press was handled. */
@@ -135,8 +145,13 @@ final class OldHangulController {
         longPressArchaic = prefs.getBoolean(Prefs.LONG_PRESS_ARCHAIC, true);
         recapture = prefs.getBoolean(Prefs.RECAPTURE, true);
         splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
+        debugLog = prefs.getBoolean(Prefs.DEBUG_LOG, false);
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
+    }
+
+    boolean debugLog() {
+        return debugLog;
     }
 
     /** A syllable is being composed here; Samsung must leave the composing text alone. */
@@ -150,9 +165,8 @@ final class OldHangulController {
      * Called before Samsung runs a key action. Returns true when the key was
      * handled here and Samsung's text input for it must be switched off.
      *
-     * @param shifted whether Samsung's Shift is on for this key
      */
-    boolean beforeKeyAction(String action, Object keyRequestInfo, boolean shifted) {
+    boolean beforeKeyAction(String action, Object keyRequestInfo) {
         if (!enabled) {
             return false;
         }
@@ -165,8 +179,10 @@ final class OldHangulController {
             suppressedRelease = 0;
             stopRepeat();
         }
-        if ("ShiftKeyA".equals(action) || "CapslockKeyA".equals(action)) {
-            shiftTouched = true;
+        if ("ShiftKeyA".equals(action)) {
+            onShiftKey(key.touchAction);
+        } else if ("CapslockKeyA".equals(action) && key.touchAction != KeyEventInfo.TOUCH_DOWN) {
+            shiftMode = shiftMode == SHIFT_LOCKED ? SHIFT_OFF : SHIFT_LOCKED;
         }
         for (String neutral : NEUTRAL_ACTIONS) {
             if (neutral.equals(action)) {
@@ -181,7 +197,7 @@ final class OldHangulController {
         justSplit = false;
         if (CHARACTER_ACTION.equals(action)) {
             splitDeclined = false;
-            return onCharacter(key, shifted);
+            return onCharacter(key);
         }
         boolean declined = splitDeclined;
         splitDeclined = false;
@@ -199,7 +215,42 @@ final class OldHangulController {
         return false;
     }
 
-    private boolean onCharacter(KeyEventInfo key, boolean shifted) {
+    private void onShiftKey(int touch) {
+        switch (touch) {
+            case KeyEventInfo.TOUCH_DOWN:
+                shiftHeld = true;
+                typedWhileShiftHeld = false;
+                break;
+            case KeyEventInfo.TOUCH_UP: {
+                shiftHeld = false;
+                if (typedWhileShiftHeld) {
+                    // Shift was held down while typing: it only applied to those keys.
+                    shiftMode = SHIFT_OFF;
+                    break;
+                }
+                long now = SystemClock.uptimeMillis();
+                if (shiftMode == SHIFT_OFF) {
+                    shiftMode = SHIFT_ONCE;
+                } else if (shiftMode == SHIFT_ONCE && now - lastShiftTapAt < SHIFT_DOUBLE_TAP_MS) {
+                    shiftMode = SHIFT_LOCKED;
+                } else {
+                    shiftMode = SHIFT_OFF;
+                }
+                lastShiftTapAt = now;
+                break;
+            }
+            case KeyEventInfo.TOUCH_LONG:
+                shiftMode = SHIFT_LOCKED;
+                break;
+            case KeyEventInfo.TOUCH_CANCEL:
+                shiftHeld = false;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private boolean onCharacter(KeyEventInfo key) {
         int code = key.keyCode;
         if (suppressedRelease != 0 && code == suppressedRelease
                 && SystemClock.uptimeMillis() - suppressedAt < SUPPRESS_TIMEOUT_MS) {
@@ -218,11 +269,15 @@ final class OldHangulController {
             inWord = false;
             return false;
         }
-        if (!shifted) {
-            shiftTouched = false;
+        boolean shifted = shiftHeld || shiftMode != SHIFT_OFF;
+        if (shiftHeld) {
+            typedWhileShiftHeld = true;
+        }
+        if (shiftMode == SHIFT_ONCE) {
+            shiftMode = SHIFT_OFF;
         }
         int i = UNSHIFTED.indexOf(code);
-        if (shifted && shiftTouched && i >= 0) {
+        if (shifted && i >= 0) {
             code = SHIFTED.charAt(i);
         }
         return type((char) code);
@@ -457,6 +512,8 @@ final class OldHangulController {
         justSplit = false;
         splitDeclined = false;
         backspaceOwned = false;
+        shiftMode = SHIFT_OFF;
+        shiftHeld = false;
         stopRepeat();
     }
 

@@ -16,6 +16,8 @@ public final class Prefs {
     /** How a held ㅋ mixes in stray letters: {@link #LAUGH_MIX_OFF}, "cheonjiin" or "qwerty". */
     public static final String LAUGH_MIX = "laugh_mix";
     public static final String LAUGH_MIX_OFF = "plain";
+    /** Writes every key action and Samsung shift change to the LSPosed log. Off by default. */
+    public static final String DEBUG_LOG = "debug_log";
 
     /** Broadcast the hooked keyboard answers by restarting itself (sender needs {@link #RESTART_PERMISSION}). */
     public static final String ACTION_RESTART_KEYBOARD = "io.github.wnsdn517.oldhangul.RESTART_KEYBOARD";

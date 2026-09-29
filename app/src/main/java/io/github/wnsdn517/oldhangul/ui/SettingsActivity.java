@@ -55,6 +55,10 @@ public final class SettingsActivity extends Activity {
                 "치고 있는 단어는 백스페이스로 한 자모씩 지웁니다: 안 → 아. "
                         + "띄어쓰기 뒤의 글자나 길게 누를 때는 한 글자씩 지웁니다.");
 
+        addSwitch(Prefs.DEBUG_LOG, "진단 로그",
+                "문제를 보고할 때만 켜세요. 키 입력과 삼성 쉬프트 상태 변화를 LSPosed 로그에 남깁니다 "
+                        + "(OldHangul: 로 시작). 키보드를 다시 열면 적용됩니다.", false);
+
         ScrollView scroll = new ScrollView(this);
         scroll.addView(list);
         setContentView(scroll);
@@ -80,11 +84,15 @@ public final class SettingsActivity extends Activity {
     }
 
     private void addSwitch(String key, String title, String summary) {
+        addSwitch(key, title, summary, true);
+    }
+
+    private void addSwitch(String key, String title, String summary, boolean defaultValue) {
         Switch s = new Switch(this);
         s.setText(title);
         s.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
         s.setPadding(0, dp(12), 0, summary == null ? dp(12) : dp(2));
-        s.setChecked(prefs.getBoolean(key, true));
+        s.setChecked(prefs.getBoolean(key, defaultValue));
         s.setOnCheckedChangeListener((b, checked) -> prefs.edit().putBoolean(key, checked).apply());
         list.addView(s);
         if (summary != null) {

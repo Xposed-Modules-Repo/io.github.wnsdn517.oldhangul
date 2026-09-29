@@ -51,6 +51,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
             hookLongPress(targets, controller);
             hookKeyTouches(targets, controller);
             hookSamsungInputConnection(targets, controller);
+            hookShiftStateForDebug(targets, controller);
             XposedBridge.log("OldHangul: hooks installed");
         } catch (Throwable t) {
             XposedBridge.log("OldHangul: failed to hook Samsung Keyboard");
@@ -145,7 +146,11 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                     return;
                 }
                 String name = (String) targets.actionName.invoke(action);
-                swallowInput[0] = controller.beforeKeyAction(name, info, isShifted(targets, action));
+                if (controller.debugLog()) {
+                    XposedBridge.log("OldHangul: " + name + " samsungShift=" + isShifted(targets, action)
+                            + " " + info);
+                }
+                swallowInput[0] = controller.beforeKeyAction(name, info);
             }
 
             @Override
@@ -166,7 +171,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
 
     private static final Map<Class<?>, Field> SHIFT_FIELDS = new HashMap<>();
 
-    /** Reads Samsung's Shift state through the shift holder every key action keeps a reference to. */
+    /** Reads Samsung's Shift state (for the debug log) through the holder every key action references. */
     private static boolean isShifted(HookTargets targets, Object action) {
         try {
             Field f;
@@ -210,6 +215,41 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         XposedHelpers.findAndHookMethod(ic, "finishComposingText", block);
         XposedHelpers.findAndHookMethod(ic, "setComposingText", CharSequence.class, int.class, block);
         XposedHelpers.findAndHookMethod(ic, "setComposingRegion", int.class, int.class, block);
+    }
+
+    /** With the debug log on, records every change to Samsung's shift state and who made it. */
+    private static void hookShiftStateForDebug(HookTargets targets, OldHangulController controller) {
+        XC_MethodHook log = new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) {
+                if (!controller.debugLog()) {
+                    return;
+                }
+                StringBuilder sb = new StringBuilder("OldHangul: shiftState.")
+                        .append(param.method.getName()).append('(').append(param.args[0]).append(") from");
+                StackTraceElement[] stack = new Throwable().getStackTrace();
+                int shown = 0;
+                for (StackTraceElement e : stack) {
+                    String c = e.getClassName();
+                    if (c.startsWith("de.robv") || c.startsWith("LSPHooker") || c.startsWith("java.")
+                            || c.startsWith("io.github.wnsdn517") || c.equals(targets.shiftState.getName())) {
+                        continue;
+                    }
+                    sb.append(' ').append(c).append('.').append(e.getMethodName());
+                    if (++shown == 4) {
+                        break;
+                    }
+                }
+                XposedBridge.log(sb.toString());
+            }
+        };
+        for (Method m : targets.shiftState.getDeclaredMethods()) {
+            Class<?>[] params = m.getParameterTypes();
+            if (params.length == 1 && params[0] == int.class && m.getReturnType() == void.class
+                    && !Modifier.isAbstract(m.getModifiers())) {
+                XposedBridge.hookMethod(m, log);
+            }
+        }
     }
 
     private static final String HANDLED_INPUT = "oldhangul_handled";
