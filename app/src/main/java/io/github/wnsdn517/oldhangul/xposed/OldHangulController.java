@@ -84,6 +84,16 @@ final class OldHangulController {
     private String composing = "";
     /** The editor reported no composing region while we were composing. */
     private boolean composingMaybeLost;
+    /**
+     * When the module last edited the text. Selection updates that arrive shortly
+     * after are the editor echoing that edit; apps that apply input asynchronously
+     * report positions from before it, which must not be taken for a cursor move.
+     */
+    private long lastEditAt;
+    private static final long EDIT_ECHO_MS = 500;
+    /** Samsung's accelerating delete took over a held backspace. */
+    private boolean samsungRepeating;
+    private boolean fastDelete = true;
     /** The last key split an archaic cluster; a second space is a real space, backspace undoes it. */
     private boolean justSplit;
     /** The user undid a split: the next space keeps the cluster and types a space. */
@@ -135,6 +145,7 @@ final class OldHangulController {
         recapture = prefs.getBoolean(Prefs.RECAPTURE, true);
         splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
         debugLog = prefs.getBoolean(Prefs.DEBUG_LOG, false);
+        fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
@@ -287,16 +298,23 @@ final class OldHangulController {
         }
         switch (key.touchAction) {
             case KeyEventInfo.TOUCH_UP: {
-                // Samsung's release cleanup only runs for presses it handled itself.
-                boolean owned = backspaceOwned;
+                // Samsung's release cleanup runs whenever Samsung deleted something itself.
+                boolean owned = backspaceOwned && !samsungRepeating;
                 backspaceOwned = false;
+                samsungRepeating = false;
                 return owned;
             }
             case KeyEventInfo.TOUCH_REPEAT:
-                // A held backspace is always handled here so it deletes at one steady pace.
+                if (fastDelete && composer.isEmpty()) {
+                    // Samsung's own held delete, which speeds up to whole words.
+                    samsungRepeating = true;
+                    return false;
+                }
+                // Otherwise a held backspace is handled here at one steady pace.
                 return backspace(true);
             case KeyEventInfo.TOUCH_DOWN:
             case 0:
+                samsungRepeating = false;
                 backspaceOwned = backspace(false);
                 return backspaceOwned;
             default:
@@ -480,6 +498,7 @@ final class OldHangulController {
     }
 
     private void apply(InputConnection ic, HangulComposer.Output out) {
+        lastEditAt = SystemClock.uptimeMillis();
         if (!out.commit.isEmpty()) {
             ic.commitText(out.commit, 1);
         }
@@ -500,6 +519,7 @@ final class OldHangulController {
         InputConnection ic = inputConnection();
         if (ic != null) {
             ic.finishComposingText();
+            lastEditAt = SystemClock.uptimeMillis();
         }
         composer.reset();
         composing = "";
@@ -531,6 +551,12 @@ final class OldHangulController {
         int newSelEnd = (Integer) args[3];
         int candidatesStart = (Integer) args[4];
         int candidatesEnd = (Integer) args[5];
+        if (SystemClock.uptimeMillis() - lastEditAt < EDIT_ECHO_MS) {
+            // An echo of our own edit, possibly with stale positions: nothing moved.
+            args[4] = -1;
+            args[5] = -1;
+            return;
+        }
         if (candidatesStart < 0 || candidatesEnd < 0) {
             // Region dropped by the editor; the next edit takes our text back first.
             composingMaybeLost = true;

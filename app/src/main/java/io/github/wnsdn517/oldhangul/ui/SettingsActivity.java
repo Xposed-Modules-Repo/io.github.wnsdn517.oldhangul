@@ -54,9 +54,12 @@ public final class SettingsActivity extends Activity {
         addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모 입력",
                 "ㄹ → ㅿ, ㅇ → ㆁ, ㅎ → ㆆ, ㅏ → ㆍ (옛한글 조합이 켜져 있을 때). "
                         + "ㄱ ㄷ ㅂ ㅅ ㅈ 은 삼성 기본대로 쌍자음이 나옵니다.");
+        addSwitch(Prefs.FAST_DELETE, "길게 눌러 빠르게 지우기",
+                "백스페이스를 누르고 있으면 삼성 기본처럼 점점 빨라져 단어 단위로 지웁니다. "
+                        + "끄면 끝까지 한 글자씩 같은 속도로 지웁니다.");
         addSwitch(Prefs.RECAPTURE, "지운 글자 다시 조합",
                 "치고 있는 단어는 백스페이스로 한 자모씩 지웁니다: 안 → 아. "
-                        + "띄어쓰기 뒤의 글자나 길게 누를 때는 한 글자씩 지웁니다.");
+                        + "띄어쓰기 뒤의 글자는 한 글자씩 지웁니다.");
 
         addSwitch(Prefs.DEBUG_LOG, "진단 로그",
                 "문제를 보고할 때만 켜세요. 키 입력과 삼성 쉬프트 상태 변화를 LSPosed 로그에 남깁니다 "
