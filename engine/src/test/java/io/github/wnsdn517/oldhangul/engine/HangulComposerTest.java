@@ -155,6 +155,20 @@ public class HangulComposerTest {
     }
 
     @Test
+    public void initialOnlyClustersMergeWithDoubleKeys() {
+        assertEquals("\u1134\u1160", archaic("ㅆㅅ"));     // ᄴ alone
+        assertEquals("\u1134\u1160", archaic("ㅅㅆ"));
+        assertEquals("\u1125\u1160", archaic("ㅂㅆ"));     // ᄥ alone
+        assertEquals("\u1134\u1161", archaic("ㅆㅅㅏ"));   // ᄴᅡ
+        assertEquals("\u1125\u1161", archaic("ㅂㅆㅏ"));   // ᄥᅡ
+        assertEquals("ㅆㅅ", split("ㅆㅅ"));
+        assertEquals("ㅆㅅ", modern("ㅆㅅ"));
+        assertEquals("ㅋㅋㅋ", archaic("ㅋㅋㅋ"));
+        assertEquals("있습", modern("ㅇㅣㅆㅅㅡㅂ"));
+        assertEquals("있습", archaic("ㅇㅣㅆㅅㅡㅂ"));
+    }
+
+    @Test
     public void typingAfterSplitKeepsItSplit() {
         HangulComposer c = new HangulComposer(true, true);
         c.type('ㄹ');

@@ -351,6 +351,8 @@ public final class HangulComposer {
     /**
      * Consonants without a vowel. In archaic mode they merge into a cluster letter
      * where Unicode has one (ㅅㄱ → ㅺ, ㅇㅇ → ㆀ, ㅅㅅ → ㅆ); ㅋㅋ has none and stays.
+     * Clusters with only an initial form (ㅆㅅ → ᄴ, ㅂㅆ → ᄥ) merge when a double
+     * consonant key or three keys are involved, shown as that initial alone.
      */
     private void addOrphans(List<Segment> out, int from, int to) {
         int i = from;
@@ -365,7 +367,26 @@ public final class HangulComposer {
     }
 
     private boolean validOrphanCluster(int from, int to) {
-        return archaic && Jamo.COMPAT.containsKey(spell(from, to));
+        if (!archaic) {
+            return false;
+        }
+        String spelling = spell(from, to);
+        if (Jamo.COMPAT.containsKey(spelling)) {
+            return true;
+        }
+        if (!Jamo.LEADING.containsKey(spelling)) {
+            return false;
+        }
+        if (to - from >= 3) {
+            return true;
+        }
+        for (int i = from; i < to; i++) {
+            String base = Jamo.baseOf(keys.charAt(i));
+            if (base != null && base.length() > 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** Start of the leading cluster for the first syllable (longest valid suffix). */
@@ -487,7 +508,14 @@ public final class HangulComposer {
             }
             if (!s.isSyllable()) {
                 if (s.leadEnd - s.start > 1) {
-                    sb.append(Jamo.COMPAT.get(spell(s.start, s.leadEnd)).charValue());
+                    String spelling = spell(s.start, s.leadEnd);
+                    Character compat = Jamo.COMPAT.get(spelling);
+                    if (compat != null) {
+                        sb.append(compat.charValue());
+                    } else {
+                        // Only an initial exists: show it alone (ᄴ + vowel filler).
+                        sb.append(Jamo.LEADING.get(spelling).charValue()).append(Jamo.FILLER_VOWEL);
+                    }
                 } else if (keys.charAt(s.start) != BREAK) {
                     sb.append(keys.charAt(s.start));
                 }

@@ -45,7 +45,7 @@ public final class SettingsActivity extends Activity {
         addSwitch(Prefs.AUTO_IEUNG, "초성 ㅇ 자동 채우기", "ㅏ + ㄴ → 안     (ㅏㅏㅏ 처럼 모음만 칠 땐 그대로)");
 
         addSection("옛한글");
-        addSwitch(Prefs.ARCHAIC, "옛한글 조합", "ㅂㅅㄱ+ㅏ → ᄢᅡ     ㄱ+ㆍ+ㄹ → ᄀᆞᆯ     ㅅㄱ → ㅺ     ㅇㅇ → ㆀ");
+        addSwitch(Prefs.ARCHAIC, "옛한글 조합", "ㅂㅅㄱ+ㅏ → ᄢᅡ     ㄱ+ㆍ+ㄹ → ᄀᆞᆯ     ㅅㄱ → ㅺ     ㅇㅇ → ㆀ     ㅆㅅ → ᄴ     ㅂㅆ → ᄥ");
         addSwitch(Prefs.SHIFT_ARCHAIC, "쉬프트 자판에 ㅿ ㆁ ㆆ ㆍ",
                 "ㄹ ㅇ ㅎ ㅏ 자리에 나옵니다 · 바꾸면 키보드 재시작");
         addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모", "ㄹ → ㅿ     ㅇ → ㆁ     ㅎ → ㆆ     ㅏ → ㆍ");
