@@ -67,15 +67,15 @@ final class HookTargets {
             }
         }
 
-        HookTargets t = search(cl, apkPath);
+        HookTargets t = search(cl, apkPath, dataDir);
         Properties out = t.toCache();
         out.setProperty("stamp", stamp);
         writeCache(cacheFile, out);
         return t;
     }
 
-    private static HookTargets search(ClassLoader cl, String apkPath) throws Exception {
-        System.loadLibrary("dexkit");
+    private static HookTargets search(ClassLoader cl, String apkPath, String dataDir) throws Exception {
+        NativeLoader.load("dexkit", dataDir);
         try (DexKitBridge bridge = DexKitBridge.create(apkPath)) {
             HookTargets t = new HookTargets();
 
