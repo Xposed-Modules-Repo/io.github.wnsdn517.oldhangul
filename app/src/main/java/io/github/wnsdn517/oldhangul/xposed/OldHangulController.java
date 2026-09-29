@@ -50,9 +50,6 @@ final class OldHangulController {
     private static final String DUBEOLSIK_ONLY = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠ";
     /** 천지인's ㆍ key sends U+119E (dubeolsik's Shift+ㅏ sends ㆍ, U+318D). */
     private static final int CHEONJIIN_ARAEA = 0x119E;
-    /** Shifted letters on the dubeolsik layout. */
-    private static final String UNSHIFTED = "ㄱㄷㅂㅅㅈㅐㅔ";
-    private static final String SHIFTED = "ㄲㄸㅃㅆㅉㅒㅖ";
 
     private static final long SUPPRESS_TIMEOUT_MS = 10_000;
     private static final long REPEAT_INTERVAL_MS = 60;
@@ -89,21 +86,6 @@ final class OldHangulController {
     private boolean justSplit;
     /** The user undid a split: the next space keeps the cluster and types a space. */
     private boolean splitDeclined;
-    /**
-     * Shift as the user operated it, tracked from the Shift key's own events.
-     * Samsung picks the shifted letter (ㅃ) from its shift state, which can be
-     * switched off before the letter key is released; this copy is what the
-     * module applies when a key still arrives unshifted. Samsung's automatic
-     * sentence-start Shift is deliberately not part of it.
-     */
-    private static final int SHIFT_OFF = 0;
-    private static final int SHIFT_ONCE = 1;
-    private static final int SHIFT_LOCKED = 2;
-    private static final long SHIFT_DOUBLE_TAP_MS = 400;
-    private int shiftMode = SHIFT_OFF;
-    private boolean shiftHeld;
-    private boolean typedWhileShiftHeld;
-    private long lastShiftTapAt;
     /** The current backspace press was handled here. */
     private boolean backspaceOwned;
     /** Key code whose release is ignored after its long press was handled. */
@@ -192,7 +174,7 @@ final class OldHangulController {
 
     /**
      * The archaic letter a key shows and types while Shift is on (ㅇ → ㆁ), or 0.
-     * Used for the Shift layer's labels and for letters that still arrive unshifted.
+     * Samsung sends the Shift layer's code itself, so this only feeds the labels.
      */
     char shiftVariant(int code) {
         if (!enabled || !archaic || !shiftArchaic || (languageKnown && !koreanQwerty)) {
@@ -226,11 +208,6 @@ final class OldHangulController {
             suppressedRelease = 0;
             stopRepeat();
         }
-        if ("ShiftKeyA".equals(action)) {
-            onShiftKey(key.touchAction);
-        } else if ("CapslockKeyA".equals(action) && key.touchAction != KeyEventInfo.TOUCH_DOWN) {
-            shiftMode = shiftMode == SHIFT_LOCKED ? SHIFT_OFF : SHIFT_LOCKED;
-        }
         for (String neutral : NEUTRAL_ACTIONS) {
             if (neutral.equals(action)) {
                 return false;
@@ -262,41 +239,6 @@ final class OldHangulController {
         return false;
     }
 
-    private void onShiftKey(int touch) {
-        switch (touch) {
-            case KeyEventInfo.TOUCH_DOWN:
-                shiftHeld = true;
-                typedWhileShiftHeld = false;
-                break;
-            case KeyEventInfo.TOUCH_UP: {
-                shiftHeld = false;
-                if (typedWhileShiftHeld) {
-                    // Shift was held down while typing: it only applied to those keys.
-                    shiftMode = SHIFT_OFF;
-                    break;
-                }
-                long now = SystemClock.uptimeMillis();
-                if (shiftMode == SHIFT_OFF) {
-                    shiftMode = SHIFT_ONCE;
-                } else if (shiftMode == SHIFT_ONCE && now - lastShiftTapAt < SHIFT_DOUBLE_TAP_MS) {
-                    shiftMode = SHIFT_LOCKED;
-                } else {
-                    shiftMode = SHIFT_OFF;
-                }
-                lastShiftTapAt = now;
-                break;
-            }
-            case KeyEventInfo.TOUCH_LONG:
-                shiftMode = SHIFT_LOCKED;
-                break;
-            case KeyEventInfo.TOUCH_CANCEL:
-                shiftHeld = false;
-                break;
-            default:
-                break;
-        }
-    }
-
     private boolean onCharacter(KeyEventInfo key) {
         int code = key.keyCode;
         if (suppressedRelease != 0 && code == suppressedRelease
@@ -316,19 +258,6 @@ final class OldHangulController {
             commitComposing();
             inWord = false;
             return false;
-        }
-        boolean shifted = shiftHeld || shiftMode != SHIFT_OFF;
-        if (shiftHeld) {
-            typedWhileShiftHeld = true;
-        }
-        if (shiftMode == SHIFT_ONCE) {
-            shiftMode = SHIFT_OFF;
-        }
-        int i = UNSHIFTED.indexOf(code);
-        if (shifted && i >= 0) {
-            code = SHIFTED.charAt(i);
-        } else if (shifted && shiftVariant(code) != 0) {
-            code = shiftVariant(code);
         }
         return type((char) code);
     }
@@ -569,8 +498,6 @@ final class OldHangulController {
         justSplit = false;
         splitDeclined = false;
         backspaceOwned = false;
-        shiftMode = SHIFT_OFF;
-        shiftHeld = false;
         stopRepeat();
     }
 

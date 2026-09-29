@@ -15,10 +15,6 @@ final class KeyEventInfo {
     static final int TOUCH_DOWN = 1;
     /** Key auto-repeat (held backspace). */
     static final int TOUCH_REPEAT = 3;
-    /** Key long press (Shift: caps lock). */
-    static final int TOUCH_LONG = 4;
-    /** Touch cancelled. */
-    static final int TOUCH_CANCEL = 5;
 
     private static final Pattern CODE = Pattern.compile("mKeyCode=(-?\\d+)");
     private static final Pattern LABEL = Pattern.compile("mKeyLabel='(.*?)', mPoint");
