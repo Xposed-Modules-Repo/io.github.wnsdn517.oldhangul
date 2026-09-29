@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Only this app may ask the hooked keyboard to restart itself. -->
+    <permission
+        android:name="io.github.wnsdn517.oldhangul.permission.RESTART_KEYBOARD"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="io.github.wnsdn517.oldhangul.permission.RESTART_KEYBOARD" />
+
     <application
         android:allowBackup="false"
         android:label="@string/app_name"

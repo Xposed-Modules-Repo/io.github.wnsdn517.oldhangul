@@ -1,6 +1,6 @@
 package io.github.wnsdn517.oldhangul;
 
-/** Preference keys shared by the settings screen and the hooks. Every switch defaults to on. */
+/** Preference keys shared by the settings screen and the hooks. Switches default to on. */
 public final class Prefs {
     private Prefs() {}
 
@@ -13,4 +13,12 @@ public final class Prefs {
     public static final String LONG_PRESS_ARCHAIC = "long_press_archaic";
     public static final String RECAPTURE = "recapture";
     public static final String SPLIT_ON_SPACE = "split_on_space";
+    /** How a held ㅋ mixes in stray letters: {@link #LAUGH_MIX_OFF}, "cheonjiin" or "qwerty". */
+    public static final String LAUGH_MIX = "laugh_mix";
+    public static final String LAUGH_MIX_OFF = "plain";
+
+    /** Broadcast the hooked keyboard answers by restarting itself (sender needs {@link #RESTART_PERMISSION}). */
+    public static final String ACTION_RESTART_KEYBOARD = "io.github.wnsdn517.oldhangul.RESTART_KEYBOARD";
+    public static final String RESTART_PERMISSION = "io.github.wnsdn517.oldhangul.permission.RESTART_KEYBOARD";
+    public static final String KEYBOARD_PACKAGE = "com.samsung.android.honeyboard";
 }

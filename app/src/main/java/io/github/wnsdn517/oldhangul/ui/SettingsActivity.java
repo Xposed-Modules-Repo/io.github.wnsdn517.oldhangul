@@ -5,10 +5,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 import io.github.wnsdn517.oldhangul.Prefs;
 
@@ -29,6 +37,7 @@ public final class SettingsActivity extends Activity {
         list.setPadding(pad, pad, pad, pad);
 
         addText("삼성 키보드 두벌식에서 동작합니다. 설정은 키보드를 다시 열 때 적용됩니다.", 14);
+        addRestartButton();
         addSwitch(Prefs.ENABLED, "모듈 사용", "끄면 삼성 키보드 기본 한글 입력으로 돌아갑니다.");
         addSwitch(Prefs.ARCHAIC, "옛한글 조합",
                 "ㅂㅅㄱ+ㅏ → ᄢᅡ, ㅂㅇ+ㅏ → ᄫᅡ, ㄱ+ㆍ+ㄹ → ᄀᆞᆯ 처럼 옛 자모를 조합합니다.");
@@ -38,6 +47,7 @@ public final class SettingsActivity extends Activity {
         addSwitch(Prefs.AUTO_IEUNG, "자동 ㅇ 채우기",
                 "ㅏ 다음에 받침이 오면 ㅇ을 채웁니다: ㅏ+ㄴ → 안. ㅏㅏㅏㅏ 는 그대로 둡니다.");
         addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ…", "누르고 있는 동안 ㅋ가 계속 입력됩니다.");
+        addLaughMix();
         addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모 입력",
                 "ㄹ → ㅿ, ㅇ → ㆁ, ㅎ → ㆆ, ㅏ → ㆍ (옛한글 조합이 켜져 있을 때). "
                         + "ㄱ ㄷ ㅂ ㅅ ㅈ 은 삼성 기본대로 쌍자음이 나옵니다.");
@@ -83,6 +93,71 @@ public final class SettingsActivity extends Activity {
             v.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
             v.setPadding(0, 0, 0, dp(12));
             list.addView(v);
+        }
+    }
+
+    private void addLaughMix() {
+        TextView title = new TextView(this);
+        title.setText("ㅋ 사이에 섞기");
+        title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+        title.setPadding(0, dp(4), 0, 0);
+        list.addView(title);
+
+        String[][] options = {
+                {Prefs.LAUGH_MIX_OFF, "끄기 (ㅋㅋㅋㅋ)"},
+                {"cheonjiin", "천지인식 (ㅋㅋㅋㄱㅋㄱㄱㄲㄱㅋㅋ)"},
+                {"qwerty", "쿼티식 (ㅋㅋㅋㅌㅋㅋㅋㅌㅌㅋㅋ)"},
+        };
+        String current = prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF);
+        RadioGroup group = new RadioGroup(this);
+        for (String[] option : options) {
+            RadioButton b = new RadioButton(this);
+            b.setId(View.generateViewId());
+            b.setText(option[1]);
+            b.setChecked(option[0].equals(current));
+            b.setOnCheckedChangeListener((v, checked) -> {
+                if (checked) {
+                    prefs.edit().putString(Prefs.LAUGH_MIX, option[0]).apply();
+                }
+            });
+            group.addView(b);
+        }
+        group.setPadding(0, 0, 0, dp(12));
+        list.addView(group);
+    }
+
+    private void addRestartButton() {
+        Button b = new Button(this);
+        b.setText("삼성 키보드 재시작");
+        b.setOnClickListener(v -> {
+            b.setEnabled(false);
+            new Thread(() -> {
+                boolean root = forceStopWithRoot();
+                if (!root) {
+                    // Without root, ask the hooked keyboard to restart itself.
+                    Intent intent = new Intent(Prefs.ACTION_RESTART_KEYBOARD).setPackage(Prefs.KEYBOARD_PACKAGE);
+                    sendBroadcast(intent, null);
+                }
+                runOnUiThread(() -> {
+                    b.setEnabled(true);
+                    Toast.makeText(this, root
+                            ? "삼성 키보드를 재시작했습니다."
+                            : "root 권한이 없어 재시작 신호를 보냈습니다. 모듈이 아직 적용되지 않았다면 "
+                                    + "설정 > 애플리케이션 > 삼성 키보드 > 강제 중지를 눌러 주세요.",
+                            Toast.LENGTH_LONG).show();
+                });
+            }).start();
+        });
+        list.addView(b);
+    }
+
+    private static boolean forceStopWithRoot() {
+        try {
+            java.lang.Process p = Runtime.getRuntime().exec(
+                    new String[] {"su", "-c", "am force-stop " + Prefs.KEYBOARD_PACKAGE});
+            return p.waitFor() == 0;
+        } catch (IOException | InterruptedException e) {
+            return false;
         }
     }
 

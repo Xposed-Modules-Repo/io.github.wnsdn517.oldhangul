@@ -1,6 +1,12 @@
 package io.github.wnsdn517.oldhangul.xposed;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.inputmethodservice.InputMethodService;
+import android.os.Build;
+import android.os.Process;
 import android.view.inputmethod.EditorInfo;
 
 import java.lang.reflect.Field;
@@ -57,7 +63,9 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         XposedHelpers.findAndHookMethod(service, "onCreate", new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) {
-                controller.attach((InputMethodService) param.thisObject);
+                InputMethodService ime = (InputMethodService) param.thisObject;
+                controller.attach(ime);
+                registerRestartReceiver(ime);
             }
         });
         XposedHelpers.findAndHookMethod(service, "onStartInputView", EditorInfo.class, boolean.class,
@@ -101,6 +109,28 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
      * redraw); when the controller handled the key, only the input command inside
      * it is switched off by renaming its request type to one nothing handles.
      */
+    /** Lets the settings app restart the keyboard without root. */
+    private static void registerRestartReceiver(Context context) {
+        BroadcastReceiver receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context c, Intent intent) {
+                XposedBridge.log("OldHangul: restarting Samsung Keyboard on request");
+                Process.killProcess(Process.myPid());
+            }
+        };
+        IntentFilter filter = new IntentFilter(Prefs.ACTION_RESTART_KEYBOARD);
+        try {
+            if (Build.VERSION.SDK_INT >= 33) {
+                context.registerReceiver(receiver, filter, Prefs.RESTART_PERMISSION, null,
+                        Context.RECEIVER_EXPORTED);
+            } else {
+                context.registerReceiver(receiver, filter, Prefs.RESTART_PERMISSION, null);
+            }
+        } catch (RuntimeException e) {
+            XposedBridge.log("OldHangul: restart receiver not registered: " + e);
+        }
+    }
+
     private static void hookKeyActions(HookTargets targets, OldHangulController controller) {
         boolean[] swallowInput = new boolean[1];
         XposedBridge.hookMethod(targets.executeAction, new XC_MethodHook() {

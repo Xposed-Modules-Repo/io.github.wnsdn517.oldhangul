@@ -10,6 +10,9 @@ import android.view.inputmethod.InputConnection;
 import io.github.wnsdn517.oldhangul.Prefs;
 import io.github.wnsdn517.oldhangul.engine.HangulComposer;
 import io.github.wnsdn517.oldhangul.engine.Jamo;
+import io.github.wnsdn517.oldhangul.engine.Laughter;
+
+import java.util.Random;
 
 import de.robv.android.xposed.XSharedPreferences;
 
@@ -84,13 +87,15 @@ final class OldHangulController {
     private int suppressedRelease;
     private long suppressedAt;
 
-    /** Character repeated while a key is held (0 when not repeating). */
-    private char repeating;
+    /** Letters of a held ㅋ, or null when not repeating. */
+    private Laughter repeating;
+    private Laughter.Style laughStyle = Laughter.Style.PLAIN;
+    private final Random random = new Random();
     private long repeatStartedAt;
     private final Runnable repeatTick = new Runnable() {
         @Override
         public void run() {
-            if (repeating == 0) {
+            if (repeating == null) {
                 return;
             }
             InputConnection ic = inputConnection();
@@ -98,7 +103,7 @@ final class OldHangulController {
                 stopRepeat();
                 return;
             }
-            ic.commitText(String.valueOf(repeating), 1);
+            ic.commitText(String.valueOf(repeating.next()), 1);
             handler.postDelayed(this, REPEAT_INTERVAL_MS);
         }
     };
@@ -122,6 +127,7 @@ final class OldHangulController {
         longPressArchaic = prefs.getBoolean(Prefs.LONG_PRESS_ARCHAIC, true);
         recapture = prefs.getBoolean(Prefs.RECAPTURE, true);
         splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
+        laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
     }
 
@@ -249,8 +255,8 @@ final class OldHangulController {
         if (code == 'ㅋ' && longPressRepeat) {
             commitComposing();
             inWord = false;
-            ic.commitText("ㅋ", 1);
-            repeating = 'ㅋ';
+            repeating = new Laughter(laughStyle, random);
+            ic.commitText(String.valueOf(repeating.next()), 1);
             repeatStartedAt = SystemClock.uptimeMillis();
             handler.postDelayed(repeatTick, REPEAT_INTERVAL_MS);
         } else if (archaic && longPressArchaic && archaicVariant(code) != 0) {
@@ -269,8 +275,8 @@ final class OldHangulController {
     }
 
     private void stopRepeat() {
-        if (repeating != 0) {
-            repeating = 0;
+        if (repeating != null) {
+            repeating = null;
             handler.removeCallbacks(repeatTick);
         }
     }
