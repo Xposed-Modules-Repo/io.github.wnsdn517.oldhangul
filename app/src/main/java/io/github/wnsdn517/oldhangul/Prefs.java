@@ -13,6 +13,7 @@ public final class Prefs {
     public static final String LONG_PRESS_ARCHAIC = "long_press_archaic";
     public static final String RECAPTURE = "recapture";
     public static final String SPLIT_ON_SPACE = "split_on_space";
+    public static final String SHIFT_ARCHAIC = "shift_archaic";
     /** How a held ㅋ mixes in stray letters: {@link #LAUGH_MIX_OFF}, "cheonjiin" or "qwerty". */
     public static final String LAUGH_MIX = "laugh_mix";
     public static final String LAUGH_MIX_OFF = "plain";

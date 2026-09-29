@@ -48,6 +48,9 @@ public final class SettingsActivity extends Activity {
                 "ㅏ 다음에 받침이 오면 ㅇ을 채웁니다: ㅏ+ㄴ → 안. ㅏㅏㅏㅏ 는 그대로 둡니다.");
         addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ…", "누르고 있는 동안 ㅋ가 계속 입력됩니다.");
         addLaughMix();
+        addSwitch(Prefs.SHIFT_ARCHAIC, "쉬프트로 옛 자모 입력",
+                "쉬프트를 누르면 ㄹ ㅇ ㅎ ㅏ 자리에 ㅿ ㆁ ㆆ ㆍ 가 표시되고 입력됩니다 "
+                        + "(옛한글 조합이 켜져 있을 때). 바꾼 뒤에는 키보드를 재시작하세요.");
         addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모 입력",
                 "ㄹ → ㅿ, ㅇ → ㆁ, ㅎ → ㆆ, ㅏ → ㆍ (옛한글 조합이 켜져 있을 때). "
                         + "ㄱ ㄷ ㅂ ㅅ ㅈ 은 삼성 기본대로 쌍자음이 나옵니다.");

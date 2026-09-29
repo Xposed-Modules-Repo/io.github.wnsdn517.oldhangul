@@ -52,6 +52,8 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
             hookKeyTouches(targets, controller);
             hookSamsungInputConnection(targets, controller);
             hookShiftStateForDebug(targets, controller);
+            hookLanguage(targets, controller);
+            hookShiftLabels(cl, controller);
             XposedBridge.log("OldHangul: hooks installed");
         } catch (Throwable t) {
             XposedBridge.log("OldHangul: failed to hook Samsung Keyboard");
@@ -215,6 +217,66 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         XposedHelpers.findAndHookMethod(ic, "finishComposingText", block);
         XposedHelpers.findAndHookMethod(ic, "setComposingText", CharSequence.class, int.class, block);
         XposedHelpers.findAndHookMethod(ic, "setComposingRegion", int.class, int.class, block);
+    }
+
+    private static final String KEY_LABEL = "com.samsung.android.honeyboard.forms.model.KeyCodeLabelVO";
+    private static final String LETTER_KEY_LABEL = "com.samsung.android.honeyboard.forms.model.LetterKeyCodeLabelVO";
+
+    /**
+     * Samsung announces language and layout changes to its shift holder through
+     * onBoardConfigChanged("currentLang" / "currInputType", old, new).
+     */
+    private static void hookLanguage(HookTargets targets, OldHangulController controller) {
+        Object[] language = new Object[1];
+        try {
+            XposedHelpers.findAndHookMethod(targets.shiftState, "onBoardConfigChanged",
+                    String.class, Object.class, Object.class, new XC_MethodHook() {
+                        @Override
+                        protected void beforeHookedMethod(MethodHookParam param) {
+                            String name = (String) param.args[0];
+                            Object value = param.args[2];
+                            if ("currentLang".equals(name) && value != null) {
+                                language[0] = value;
+                            } else if (!"currInputType".equals(name) || language[0] == null) {
+                                return;
+                            }
+                            try {
+                                controller.onLanguage(
+                                        (String) XposedHelpers.callMethod(language[0], "getLanguageCode"),
+                                        (String) XposedHelpers.callMethod(language[0], "getInputType"));
+                            } catch (RuntimeException e) {
+                                XposedBridge.log("OldHangul: could not read language: " + e);
+                            }
+                        }
+                    });
+        } catch (RuntimeException e) {
+            XposedBridge.log("OldHangul: language changes not tracked: " + e);
+        }
+    }
+
+    /** Shift layer of dubeolsik: ㄹ ㅇ ㅎ ㅏ show and type ㅿ ㆁ ㆆ ㆍ. */
+    private static void hookShiftLabels(ClassLoader cl, OldHangulController controller) {
+        Class<?> labelClass = XposedHelpers.findClass(KEY_LABEL, cl);
+        XposedHelpers.findAndHookMethod(LETTER_KEY_LABEL, cl, "getUpperKeyCodeLabel", new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) {
+                Object normal = XposedHelpers.callMethod(param.thisObject, "getKeyCodeLabel");
+                if (normal == null) {
+                    return;
+                }
+                java.util.List<?> codes = (java.util.List<?>) XposedHelpers.callMethod(normal, "getKeyCodes");
+                if (codes == null || codes.size() != 1) {
+                    return;
+                }
+                char variant = controller.shiftVariant((Integer) codes.get(0));
+                if (variant == 0) {
+                    return;
+                }
+                float size = (Float) XposedHelpers.callMethod(normal, "getKeyLabelSize");
+                param.setResult(XposedHelpers.newInstance(labelClass, String.valueOf(variant),
+                        java.util.Collections.singletonList((int) variant), size));
+            }
+        });
     }
 
     /** With the debug log on, records every change to Samsung's shift state and who made it. */

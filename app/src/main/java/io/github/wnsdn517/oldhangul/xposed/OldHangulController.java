@@ -48,7 +48,7 @@ final class OldHangulController {
 
     /** Vowel keys that exist on dubeolsik but not on 천지인 / 나랏글 layouts. */
     private static final String DUBEOLSIK_ONLY = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠ";
-    /** 천지인's ㆍ key sends U+119E; ㆍ from this module never comes from a Samsung key. */
+    /** 천지인's ㆍ key sends U+119E (dubeolsik's Shift+ㅏ sends ㆍ, U+318D). */
     private static final int CHEONJIIN_ARAEA = 0x119E;
     /** Shifted letters on the dubeolsik layout. */
     private static final String UNSHIFTED = "ㄱㄷㅂㅅㅈㅐㅔ";
@@ -74,7 +74,12 @@ final class OldHangulController {
 
     /** Whether the current Korean layout is dubeolsik (the only layout composed here). */
     private boolean dubeolsik = true;
-    /** Korean was typed more recently than a Latin letter. */
+    /** Samsung told us the current language (see {@link #onLanguage}). */
+    private boolean languageKnown;
+    /** The current language is Korean with a dubeolsik (qwerty) layout. */
+    private boolean koreanQwerty;
+    private boolean shiftArchaic = true;
+    /** Korean was typed more recently than a letter of another script. */
     private boolean koreanActive;
     /** Still inside the word being typed: backspace takes it apart jamo by jamo. */
     private boolean inWord;
@@ -146,12 +151,54 @@ final class OldHangulController {
         recapture = prefs.getBoolean(Prefs.RECAPTURE, true);
         splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
         debugLog = prefs.getBoolean(Prefs.DEBUG_LOG, false);
+        shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
     }
 
     boolean debugLog() {
         return debugLog;
+    }
+
+    /**
+     * Samsung switched language or layout. Only Korean dubeolsik is composed
+     * here; every other language (and 천지인, 나랏글, 단모음) is left to Samsung.
+     */
+    void onLanguage(String languageCode, String inputType) {
+        boolean korean = "ko".equalsIgnoreCase(languageCode);
+        String type = inputType == null ? "" : inputType.toLowerCase(java.util.Locale.ROOT);
+        boolean other = type.contains("phonepad") || type.contains("chunjiin") || type.contains("naratgul")
+                || type.contains("vega") || type.contains("single_vowel");
+        boolean qwerty = korean && !other;
+        if (languageKnown && qwerty == koreanQwerty) {
+            return;
+        }
+        commitComposing();
+        resetState();
+        languageKnown = true;
+        koreanQwerty = qwerty;
+        dubeolsik = qwerty || !korean;
+        koreanActive = qwerty;
+        if (debugLog) {
+            de.robv.android.xposed.XposedBridge.log("OldHangul: language " + languageCode + "/" + inputType
+                    + " -> " + (qwerty ? "composing here" : "left to Samsung"));
+        }
+    }
+
+    /** Korean dubeolsik is active, as far as we know. */
+    private boolean koreanLayoutActive() {
+        return languageKnown ? koreanQwerty : koreanActive && dubeolsik;
+    }
+
+    /**
+     * The archaic letter a key shows and types while Shift is on (ㅇ → ㆁ), or 0.
+     * Used for the Shift layer's labels and for letters that still arrive unshifted.
+     */
+    char shiftVariant(int code) {
+        if (!enabled || !archaic || !shiftArchaic || (languageKnown && !koreanQwerty)) {
+            return 0;
+        }
+        return archaicVariant(code);
     }
 
     /** A syllable is being composed here; Samsung must leave the composing text alone. */
@@ -261,7 +308,8 @@ final class OldHangulController {
         detectLayout(key);
         if (Jamo.isKey(code) || code == CHEONJIIN_ARAEA) {
             koreanActive = true;
-        } else if ((code >= 'a' && code <= 'z') || (code >= 'A' && code <= 'Z')) {
+        } else if (Character.isLetter(code) && Character.UnicodeScript.of(code) != Character.UnicodeScript.HANGUL) {
+            // A letter of another script (Latin, kana, ...): another language is active.
             koreanActive = false;
         }
         if (!dubeolsik || !Jamo.isKey(code)) {
@@ -279,13 +327,18 @@ final class OldHangulController {
         int i = UNSHIFTED.indexOf(code);
         if (shifted && i >= 0) {
             code = SHIFTED.charAt(i);
+        } else if (shifted && shiftVariant(code) != 0) {
+            code = shiftVariant(code);
         }
         return type((char) code);
     }
 
     private void detectLayout(KeyEventInfo key) {
         int code = key.keyCode;
-        if (code == CHEONJIIN_ARAEA || code == Jamo.ARAEA) {
+        if (languageKnown) {
+            return;
+        }
+        if (code == CHEONJIIN_ARAEA) {
             dubeolsik = false;
         } else if (DUBEOLSIK_ONLY.indexOf(code) >= 0) {
             dubeolsik = true;
@@ -297,6 +350,10 @@ final class OldHangulController {
     }
 
     private boolean onBackspace(KeyEventInfo key) {
+        if (composer.isEmpty() && !koreanLayoutActive()) {
+            backspaceOwned = false;
+            return false;
+        }
         switch (key.touchAction) {
             case KeyEventInfo.TOUCH_UP: {
                 // Samsung's release cleanup only runs for presses it handled itself.
@@ -456,7 +513,7 @@ final class OldHangulController {
             return false;
         }
         CharSequence before = ic.getTextBeforeCursor(8, 0);
-        HangulComposer.Recaptured r = koreanActive && dubeolsik ? HangulComposer.recapture(before) : null;
+        HangulComposer.Recaptured r = koreanLayoutActive() ? HangulComposer.recapture(before) : null;
         if (r == null) {
             if (!repeat || TextUtils.isEmpty(before)) {
                 return false;
