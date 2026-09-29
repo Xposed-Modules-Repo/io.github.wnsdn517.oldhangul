@@ -1,6 +1,8 @@
 package io.github.wnsdn517.oldhangul.xposed;
 
 import android.inputmethodservice.InputMethodService;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.inputmethod.InputConnection;
@@ -15,9 +17,16 @@ import de.robv.android.xposed.XSharedPreferences;
  * Takes over Korean dubeolsik composition inside Samsung Keyboard.
  *
  * <p>Samsung composes Korean in its native XT9 engine, which cannot produce
- * archaic jamo. While enabled, jamo key actions are consumed here and composed
- * with {@link HangulComposer}; every other key first commits the composing text
- * and then runs normally. All calls arrive on the keyboard's main thread.
+ * archaic jamo. While enabled, jamo keys are composed with {@link HangulComposer}
+ * and Samsung's own text input for those keys is switched off; the rest of
+ * Samsung's key action (vibration, sound, releasing Shift, redrawing the
+ * keyboard) still runs. Every other key first commits the composing text.
+ *
+ * <p>Samsung never composes Hangul while the module is on: backspace over Hangul
+ * is handled here too, because Samsung's own recapture puts the syllable into its
+ * composer and the next jamo typed here would overwrite it.
+ *
+ * <p>All calls arrive on the keyboard's main thread.
  */
 final class OldHangulController {
 
@@ -37,32 +46,53 @@ final class OldHangulController {
     private static final int CHEONJIIN_ARAEA = 0x119E;
 
     private static final long SUPPRESS_TIMEOUT_MS = 10_000;
+    private static final long REPEAT_INTERVAL_MS = 60;
+    private static final long REPEAT_MAX_MS = 30_000;
 
     private final XSharedPreferences prefs;
     private final HangulComposer composer = new HangulComposer(true, true);
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
     private InputMethodService service;
 
     private boolean enabled = true;
-    private boolean longPressKkk = true;
-    private int kkkCount = Prefs.DEFAULT_KKK_COUNT;
+    private boolean longPressRepeat = true;
     private boolean longPressArchaic = true;
     private boolean archaic = true;
     private boolean recapture = true;
 
     /** Whether the current Korean layout is dubeolsik (the only layout composed here). */
     private boolean dubeolsik = true;
-    /** Whether the last character key was a Korean jamo (Korean layout active). */
+    /** Korean was typed more recently than a Latin letter. */
     private boolean koreanActive;
     /** Composing text last sent to the editor. */
     private String composing = "";
     /** The editor reported no composing region while we had one (app committed it?). */
     private boolean composingMaybeLost;
-    /** A backspace press was handled here, so its release is swallowed too. */
+    /** A backspace press was handled here, so Samsung's handling of its release is skipped too. */
     private boolean backspaceOwned;
-    /** Key code whose release is swallowed after its long press was handled. */
+    /** Key code whose release is ignored after its long press was handled. */
     private int suppressedRelease;
     private long suppressedAt;
+
+    /** Character repeated while a key is held (0 when not repeating). */
+    private char repeating;
+    private long repeatStartedAt;
+    private final Runnable repeatTick = new Runnable() {
+        @Override
+        public void run() {
+            if (repeating == 0) {
+                return;
+            }
+            InputConnection ic = inputConnection();
+            if (ic == null || SystemClock.uptimeMillis() - repeatStartedAt > REPEAT_MAX_MS) {
+                stopRepeat();
+                return;
+            }
+            ic.commitText(String.valueOf(repeating), 1);
+            handler.postDelayed(this, REPEAT_INTERVAL_MS);
+        }
+    };
 
     OldHangulController(XSharedPreferences prefs) {
         this.prefs = prefs;
@@ -79,8 +109,7 @@ final class OldHangulController {
         }
         enabled = prefs.getBoolean(Prefs.ENABLED, true);
         archaic = prefs.getBoolean(Prefs.ARCHAIC, true);
-        longPressKkk = prefs.getBoolean(Prefs.LONG_PRESS_KKK, true);
-        kkkCount = Math.max(1, Math.min(20, prefs.getInt(Prefs.KKK_COUNT, Prefs.DEFAULT_KKK_COUNT)));
+        longPressRepeat = prefs.getBoolean(Prefs.LONG_PRESS_KKK, true);
         longPressArchaic = prefs.getBoolean(Prefs.LONG_PRESS_ARCHAIC, true);
         recapture = prefs.getBoolean(Prefs.RECAPTURE, true);
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
@@ -88,7 +117,10 @@ final class OldHangulController {
 
     // ------------------------------------------------------------ key actions
 
-    /** Called before Samsung runs a key action. Returns true to skip Samsung's action. */
+    /**
+     * Called before Samsung runs a key action. Returns true when the key was
+     * handled here and Samsung's text input for it must be switched off.
+     */
     boolean beforeKeyAction(String action, Object keyRequestInfo) {
         if (!enabled) {
             return false;
@@ -100,12 +132,14 @@ final class OldHangulController {
         if (key.keyCode == KEY_DOWN_FEEDBACK) {
             // A new key press: a pending long-press release can no longer arrive.
             suppressedRelease = 0;
+            stopRepeat();
         }
         for (String neutral : NEUTRAL_ACTIONS) {
             if (neutral.equals(action)) {
                 return false;
             }
         }
+        stopRepeat();
         if (CHARACTER_ACTION.equals(action)) {
             return onCharacter(key);
         }
@@ -125,7 +159,11 @@ final class OldHangulController {
         }
         suppressedRelease = 0;
         detectLayout(key);
-        koreanActive = Jamo.isKey(code) || code == CHEONJIIN_ARAEA;
+        if (Jamo.isKey(code) || code == CHEONJIIN_ARAEA) {
+            koreanActive = true;
+        } else if ((code >= 'a' && code <= 'z') || (code >= 'A' && code <= 'Z')) {
+            koreanActive = false;
+        }
         if (!dubeolsik || !Jamo.isKey(code)) {
             commitComposing();
             return false;
@@ -169,9 +207,12 @@ final class OldHangulController {
         if (ic == null) {
             return false;
         }
-        if (code == 'ㅋ' && longPressKkk) {
+        if (code == 'ㅋ' && longPressRepeat) {
             commitComposing();
-            ic.commitText(repeat('ㅋ', kkkCount), 1);
+            ic.commitText("ㅋ", 1);
+            repeating = 'ㅋ';
+            repeatStartedAt = SystemClock.uptimeMillis();
+            handler.postDelayed(repeatTick, REPEAT_INTERVAL_MS);
         } else if (archaic && longPressArchaic && archaicVariant(code) != 0) {
             type(archaicVariant(code));
         } else {
@@ -182,23 +223,30 @@ final class OldHangulController {
         return true;
     }
 
-    /** Letters with an archaic sibling reachable by long press. */
+    /** Any key touch (down or up) ends a long-press repeat. */
+    void onKeyTouch() {
+        stopRepeat();
+    }
+
+    private void stopRepeat() {
+        if (repeating != 0) {
+            repeating = 0;
+            handler.removeCallbacks(repeatTick);
+        }
+    }
+
+    /**
+     * Letters with an archaic sibling reachable by long press. ㄱ ㄷ ㅂ ㅅ ㅈ are
+     * left alone so Samsung's long press still gives ㄲ ㄸ ㅃ ㅆ ㅉ.
+     */
     static char archaicVariant(int code) {
         switch (code) {
-            case 'ㅅ': return Jamo.PANSIOS;     // ㅿ 반치음
+            case 'ㄹ': return Jamo.PANSIOS;     // ㅿ 반치음
             case 'ㅇ': return Jamo.YESIEUNG;    // ㆁ 옛이응
             case 'ㅎ': return Jamo.YEORINHIEUH; // ㆆ 여린히읗
             case 'ㅏ': return Jamo.ARAEA;       // ㆍ 아래아
             default: return 0;
         }
-    }
-
-    private static String repeat(char c, int n) {
-        StringBuilder sb = new StringBuilder(n);
-        for (int i = 0; i < n; i++) {
-            sb.append(c);
-        }
-        return sb.toString();
     }
 
     // ------------------------------------------------------------ composition
@@ -210,7 +258,11 @@ final class OldHangulController {
         }
         ic.beginBatchEdit();
         try {
-            if (composingMaybeLost) {
+            if (composer.isEmpty()) {
+                // Never overwrite a composing region someone else left behind.
+                ic.finishComposingText();
+                composingMaybeLost = false;
+            } else if (composingMaybeLost) {
                 reclaimComposing(ic);
             }
             apply(ic, composer.type(key));
@@ -240,17 +292,24 @@ final class OldHangulController {
                 ic.endBatchEdit();
             }
         }
-        if (!recapture || !koreanActive || !dubeolsik || !TextUtils.isEmpty(ic.getSelectedText(0))) {
+        if (!koreanActive || !dubeolsik || !TextUtils.isEmpty(ic.getSelectedText(0))) {
             return false;
         }
-        HangulComposer.Recaptured r = HangulComposer.recapture(ic.getTextBeforeCursor(8, 0));
+        CharSequence before = ic.getTextBeforeCursor(8, 0);
+        HangulComposer.Recaptured r = HangulComposer.recapture(before);
         if (r == null) {
             return false;
         }
         ic.beginBatchEdit();
         try {
-            ic.deleteSurroundingText(r.length, 0);
-            apply(ic, composer.backspaceInto(r));
+            ic.finishComposingText();
+            if (recapture) {
+                ic.deleteSurroundingText(r.length, 0);
+                apply(ic, composer.backspaceInto(r));
+            } else {
+                // Still handled here so Samsung never recaptures Hangul: delete one jamo or syllable.
+                ic.deleteSurroundingText(1, 0);
+            }
         } finally {
             ic.endBatchEdit();
         }
@@ -306,6 +365,7 @@ final class OldHangulController {
         composing = "";
         composingMaybeLost = false;
         backspaceOwned = false;
+        stopRepeat();
     }
 
     // ---------------------------------------------------------- editor events

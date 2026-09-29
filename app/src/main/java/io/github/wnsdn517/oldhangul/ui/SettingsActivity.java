@@ -5,10 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -36,12 +34,12 @@ public final class SettingsActivity extends Activity {
                 "ㅂㅅㄱ+ㅏ → ᄢᅡ, ㅂㅇ+ㅏ → ᄫᅡ, ㄱ+ㆍ+ㄹ → ᄀᆞᆯ 처럼 옛 자모를 조합합니다.");
         addSwitch(Prefs.AUTO_IEUNG, "자동 ㅇ 채우기",
                 "ㅏ 다음에 받침이 오면 ㅇ을 채웁니다: ㅏ+ㄴ → 안. ㅏㅏㅏㅏ 는 그대로 둡니다.");
-        addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ", null);
-        addKkkCount();
+        addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ…", "누르고 있는 동안 ㅋ가 계속 입력됩니다.");
         addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모 입력",
-                "ㅅ → ㅿ, ㅇ → ㆁ, ㅎ → ㆆ, ㅏ → ㆍ (옛한글 조합이 켜져 있을 때)");
+                "ㄹ → ㅿ, ㅇ → ㆁ, ㅎ → ㆆ, ㅏ → ㆍ (옛한글 조합이 켜져 있을 때). "
+                        + "ㄱ ㄷ ㅂ ㅅ ㅈ 은 삼성 기본대로 쌍자음이 나옵니다.");
         addSwitch(Prefs.RECAPTURE, "지운 글자 다시 조합",
-                "백스페이스로 완성된 글자를 한 자모씩 지웁니다: 안 → 아");
+                "백스페이스로 완성된 글자를 한 자모씩 지웁니다: 안 → 아. 끄면 한 글자씩 지웁니다.");
 
         ScrollView scroll = new ScrollView(this);
         scroll.addView(list);
@@ -82,42 +80,6 @@ public final class SettingsActivity extends Activity {
             v.setPadding(0, 0, 0, dp(12));
             list.addView(v);
         }
-    }
-
-    private void addKkkCount() {
-        TextView label = new TextView(this);
-        label.setGravity(Gravity.START);
-        int count = prefs.getInt(Prefs.KKK_COUNT, Prefs.DEFAULT_KKK_COUNT);
-        label.setText(kkkLabel(count));
-        list.addView(label);
-
-        SeekBar bar = new SeekBar(this);
-        bar.setMax(9);
-        bar.setProgress(count - 1);
-        bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                label.setText(kkkLabel(progress + 1));
-                if (fromUser) {
-                    prefs.edit().putInt(Prefs.KKK_COUNT, progress + 1).apply();
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
-        list.addView(bar);
-    }
-
-    private static String kkkLabel(int count) {
-        StringBuilder sb = new StringBuilder("ㅋ 개수: ");
-        for (int i = 0; i < count; i++) {
-            sb.append('ㅋ');
-        }
-        return sb.toString();
     }
 
     private int dp(int v) {

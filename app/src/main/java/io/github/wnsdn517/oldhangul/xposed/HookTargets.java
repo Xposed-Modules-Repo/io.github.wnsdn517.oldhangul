@@ -40,11 +40,17 @@ final class HookTargets {
     Method longPress;
     /** Key presenter field holding the pressed key's {@code KeyVO}. */
     Field presenterKey;
+    /** Key presenter's touch down / up entry points (what a TalkBack click calls). */
+    List<Method> keyTouch = new ArrayList<>();
+    /** Command that feeds a key into Samsung's input engine, switched on a request type string. */
+    Method inputCommand;
 
-    private static final int CACHE_VERSION = 1;
+    private static final int CACHE_VERSION = 2;
     private static final String KEY_REQUEST_INFO = "KeyRequestInfo{mKeyCode=";
     private static final String EXECUTE_ACTION = " execute end t : ";
     private static final String TALKBACK_LONG_CLICK = "onTalkBackLongClick: xy = (";
+    private static final String TALKBACK_CLICK = "onTalkBackClick: xy = (";
+    private static final String[] INPUT_COMMAND = {"input_key_chn_dot", "input_key_repeatable_up"};
     private static final String KEY_VO = "com.samsung.android.honeyboard.forms.model.KeyVO";
 
     static HookTargets load(ClassLoader cl, String apkPath, String dataDir) throws Exception {
@@ -80,7 +86,7 @@ final class HookTargets {
             MethodData exec = single(bridge.findMethod(FindMethod.create()
                     .matcher(MethodMatcher.create().usingStrings(EXECUTE_ACTION).paramCount(2))),
                     "executeAction");
-            t.executeAction = (Method) exec.getMethodInstance(cl);
+            t.executeAction = exec.getMethodInstance(cl);
             t.actionName = findActionName(t.executeAction.getParameterTypes()[0]);
 
             MethodData talkBack = single(bridge.findMethod(FindMethod.create()
@@ -91,8 +97,20 @@ final class HookTargets {
                     candidates.add(m);
                 }
             }
-            t.longPress = (Method) single(candidates, "longPress").getMethodInstance(cl);
+            t.longPress = single(candidates, "longPress").getMethodInstance(cl);
             t.presenterKey = findKeyField(t.longPress.getDeclaringClass());
+
+            MethodData talkBackClick = single(bridge.findMethod(FindMethod.create()
+                    .matcher(MethodMatcher.create().usingStrings(TALKBACK_CLICK))), "onTalkBackClick");
+            for (MethodData m : talkBackClick.getInvokes()) {
+                if (m.getClassName().equals(talkBackClick.getClassName()) && m.getParamCount() == 1 && m.isMethod()) {
+                    t.keyTouch.add(m.getMethodInstance(cl));
+                }
+            }
+
+            t.inputCommand = single(bridge.findMethod(FindMethod.create()
+                    .matcher(MethodMatcher.create().usingStrings(INPUT_COMMAND).paramCount(1))),
+                    "inputCommand").getMethodInstance(cl);
             return t;
         }
     }
@@ -134,6 +152,12 @@ final class HookTargets {
         p.setProperty("keyRequestInfo", keyRequestInfo.getName());
         p.setProperty("executeAction", describe(executeAction));
         p.setProperty("longPress", describe(longPress));
+        p.setProperty("inputCommand", describe(inputCommand));
+        StringBuilder touch = new StringBuilder();
+        for (Method m : keyTouch) {
+            touch.append(touch.length() == 0 ? "" : "|").append(describe(m));
+        }
+        p.setProperty("keyTouch", touch.toString());
         return p;
     }
 
@@ -144,6 +168,11 @@ final class HookTargets {
         t.actionName = findActionName(t.executeAction.getParameterTypes()[0]);
         t.longPress = resolve(cl, p.getProperty("longPress"));
         t.presenterKey = findKeyField(t.longPress.getDeclaringClass());
+        t.inputCommand = resolve(cl, p.getProperty("inputCommand"));
+        String touch = p.getProperty("keyTouch", "");
+        for (String d : touch.isEmpty() ? new String[0] : touch.split("\\|")) {
+            t.keyTouch.add(resolve(cl, d));
+        }
         return t;
     }
 

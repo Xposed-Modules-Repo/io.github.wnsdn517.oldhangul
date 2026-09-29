@@ -35,6 +35,7 @@ public final class ModuleMain implements IXposedHookLoadPackage {
             HookTargets targets = HookTargets.load(cl, lpparam.appInfo.sourceDir, lpparam.appInfo.dataDir);
             hookKeyActions(targets, controller);
             hookLongPress(targets, controller);
+            hookKeyTouches(targets, controller);
             XposedBridge.log("OldHangul: hooks installed");
         } catch (Throwable t) {
             XposedBridge.log("OldHangul: failed to hook Samsung Keyboard");
@@ -86,22 +87,72 @@ public final class ModuleMain implements IXposedHookLoadPackage {
                 });
     }
 
+    /**
+     * Samsung's key action runs as usual (sound, vibration, Shift release, keyboard
+     * redraw); when the controller handled the key, only the input command inside
+     * it is switched off by renaming its request type to one nothing handles.
+     */
     private static void hookKeyActions(HookTargets targets, OldHangulController controller) {
+        boolean[] swallowInput = new boolean[1];
         XposedBridge.hookMethod(targets.executeAction, new XC_MethodHook() {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 Object action = param.args[0];
                 Object info = param.args[1];
+                // Actions may run nested; restore the outer value afterwards.
+                param.setObjectExtra("outer", swallowInput[0]);
+                swallowInput[0] = false;
                 if (action == null || !targets.keyRequestInfo.isInstance(info)) {
                     return;
                 }
                 String name = (String) targets.actionName.invoke(action);
-                if (controller.beforeKeyAction(name, info)) {
-                    // The executor returns the action it ran; skip running it.
-                    param.setResult(action);
+                swallowInput[0] = controller.beforeKeyAction(name, info);
+            }
+
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) {
+                Object outer = param.getObjectExtra("outer");
+                swallowInput[0] = outer instanceof Boolean && (Boolean) outer;
+            }
+        });
+        XposedBridge.hookMethod(targets.inputCommand, new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                if (swallowInput[0] && param.args[0] != null) {
+                    disableInputRequest(param.args[0]);
                 }
             }
         });
+    }
+
+    private static final String HANDLED_INPUT = "oldhangul_handled";
+
+    /** Renames the request's "input_key_*" type so the input command ignores it. */
+    private static void disableInputRequest(Object request) throws IllegalAccessException {
+        for (Class<?> c = request.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
+            for (Field f : c.getDeclaredFields()) {
+                if (f.getType() != String.class || Modifier.isStatic(f.getModifiers())) {
+                    continue;
+                }
+                f.setAccessible(true);
+                Object v = f.get(request);
+                if (v instanceof String && ((String) v).startsWith("input_key_")) {
+                    f.set(request, HANDLED_INPUT);
+                }
+            }
+        }
+    }
+
+    private static void hookKeyTouches(HookTargets targets, OldHangulController controller) {
+        XC_MethodHook stopRepeat = new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) {
+                controller.onKeyTouch();
+            }
+        };
+        for (Method m : targets.keyTouch) {
+            XposedBridge.hookMethod(m, stopRepeat);
+        }
     }
 
     private static void hookLongPress(HookTargets targets, OldHangulController controller) throws Exception {

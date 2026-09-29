@@ -10,9 +10,6 @@ public final class Prefs {
     public static final String ARCHAIC = "archaic";
     public static final String AUTO_IEUNG = "auto_ieung";
     public static final String LONG_PRESS_KKK = "long_press_kkk";
-    public static final String KKK_COUNT = "kkk_count";
     public static final String LONG_PRESS_ARCHAIC = "long_press_archaic";
     public static final String RECAPTURE = "recapture";
-
-    public static final int DEFAULT_KKK_COUNT = 3;
 }
