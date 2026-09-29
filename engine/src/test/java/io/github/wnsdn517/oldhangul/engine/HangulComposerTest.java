@@ -99,6 +99,21 @@ public class HangulComposerTest {
     }
 
     @Test
+    public void keepWordComposesWholeWord() {
+        HangulComposer c = new HangulComposer(false, true);
+        c.setKeepWord(true);
+        HangulComposer.Output o = null;
+        for (char k : "ㅇㅏㄴㄴㅕㅇㅎㅏ".toCharArray()) {
+            o = c.type(k);
+            assertEquals("", o.commit);
+        }
+        assertEquals("안녕하", o.composing);
+        assertEquals("안녕ㅎ", c.backspace().composing);
+        assertEquals("안녕", c.backspace().composing);
+        assertEquals("안녀", c.backspace().composing);
+    }
+
+    @Test
     public void backspaceRemovesOneKeystroke() {
         assertEquals("ㅏ", modern("ㅏㄴ<"));
         assertEquals("ㄱ", modern("ㄱㅏㄴ<<"));

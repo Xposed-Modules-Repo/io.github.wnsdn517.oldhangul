@@ -9,7 +9,8 @@ import java.util.List;
  * <p>The composer keeps the raw keystrokes of the text that may still change and
  * re-parses them on every key, so a consonant is only assigned to a syllable once
  * the following key makes the choice unambiguous (도깨비불 rule). Syllables that
- * can no longer change are handed back as {@link Output#commit}.
+ * can no longer change are handed back as {@link Output#commit}, unless
+ * {@link #setKeepWord} keeps the whole word composing.
  *
  * <p>Rules:
  * <ul>
@@ -58,6 +59,10 @@ public final class HangulComposer {
 
     private boolean archaic;
     private boolean autoIeung;
+    /** Keep the whole word composing (as Samsung does) instead of committing finished syllables. */
+    private boolean keepWord;
+    /** Longest word kept composing; beyond it finished syllables are committed anyway. */
+    private static final int MAX_WORD_KEYS = 48;
     private final StringBuilder keys = new StringBuilder();
     /** Index of the break inserted by the last split, or -1. */
     private int lastBreak = -1;
@@ -70,6 +75,10 @@ public final class HangulComposer {
     public void configure(boolean archaic, boolean autoIeung) {
         this.archaic = archaic;
         this.autoIeung = autoIeung;
+    }
+
+    public void setKeepWord(boolean keepWord) {
+        this.keepWord = keepWord;
     }
 
     public boolean isEmpty() {
@@ -88,6 +97,9 @@ public final class HangulComposer {
         }
         keys.append(key);
         lastBreak = -1;
+        if (keepWord && keys.length() <= MAX_WORD_KEYS) {
+            return new Output("", current());
+        }
         List<Segment> segs = parse();
         int stable = 0;
         for (Segment s : segs) {

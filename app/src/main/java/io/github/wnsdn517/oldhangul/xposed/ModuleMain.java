@@ -75,7 +75,11 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        controller.resetState();
+                        if ((Boolean) param.args[1]) {
+                            controller.onRestartInput();
+                        } else {
+                            controller.resetState();
+                        }
                         controller.reloadPrefs();
                     }
                 });
@@ -83,7 +87,11 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        controller.resetState();
+                        if ((Boolean) param.args[1]) {
+                            controller.onRestartInput();
+                        } else {
+                            controller.resetState();
+                        }
                     }
                 });
         XposedHelpers.findAndHookMethod(service, "onFinishInputView", boolean.class, new XC_MethodHook() {

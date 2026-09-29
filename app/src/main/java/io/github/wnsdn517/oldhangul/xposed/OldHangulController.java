@@ -127,6 +127,7 @@ final class OldHangulController {
 
     OldHangulController(XSharedPreferences prefs) {
         this.prefs = prefs;
+        composer.setKeepWord(true);
         reloadPrefs();
     }
 
@@ -524,6 +525,19 @@ final class OldHangulController {
         composer.reset();
         composing = "";
         composingMaybeLost = false;
+    }
+
+    /**
+     * The same editor restarted input (search boxes do this on every change).
+     * The word being composed stays ours: resetting here let Samsung's stale,
+     * empty composing state overwrite the editor's text.
+     */
+    void onRestartInput() {
+        if (!composer.isEmpty()) {
+            composingMaybeLost = true;
+        }
+        backspaceOwned = false;
+        stopRepeat();
     }
 
     void resetState() {
