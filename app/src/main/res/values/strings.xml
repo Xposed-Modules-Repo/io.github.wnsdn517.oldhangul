@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">삼성 키보드 옛한글</string>
+    <string name="xposed_description">삼성 키보드 두벌식에 옛한글 조합, 자동 ㅇ 채우기, ㅋ 길게 눌러 ㅋㅋㅋ 입력을 추가합니다.</string>
+</resources>

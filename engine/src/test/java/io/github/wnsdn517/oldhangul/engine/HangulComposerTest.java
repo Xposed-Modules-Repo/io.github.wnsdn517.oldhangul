@@ -1,0 +1,126 @@
+package io.github.wnsdn517.oldhangul.engine;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import org.junit.Test;
+
+public class HangulComposerTest {
+
+    /** Types keys ('<' = backspace) and returns committed + composing text. */
+    private static String type(boolean archaic, boolean autoIeung, String input) {
+        HangulComposer c = new HangulComposer(archaic, autoIeung);
+        StringBuilder committed = new StringBuilder();
+        for (char k : input.toCharArray()) {
+            if (k == '<') {
+                c.backspace();
+            } else {
+                committed.append(c.type(k).commit);
+            }
+        }
+        return committed + c.flush();
+    }
+
+    private static String modern(String input) {
+        return type(false, true, input);
+    }
+
+    private static String archaic(String input) {
+        return type(true, true, input);
+    }
+
+    @Test
+    public void modernWords() {
+        assertEquals("안녕", modern("ㅇㅏㄴㄴㅕㅇ"));
+        assertEquals("한글", modern("ㅎㅏㄴㄱㅡㄹ"));
+        assertEquals("값", modern("ㄱㅏㅂㅅ"));
+        assertEquals("갑사", modern("ㄱㅏㅂㅅㅏ"));
+        assertEquals("밥이", modern("ㅂㅏㅂㅇㅣ"));
+        assertEquals("닭", modern("ㄷㅏㄹㄱ"));
+        assertEquals("달가", modern("ㄷㅏㄹㄱㅏ"));
+        assertEquals("관", modern("ㄱㅗㅏㄴ"));
+        assertEquals("쌈", modern("ㅆㅏㅁ"));
+    }
+
+    @Test
+    public void autoIeungFillsSilentInitial() {
+        assertEquals("안", modern("ㅏㄴ"));
+        assertEquals("앍", modern("ㅏㄹㄱ"));
+        assertEquals("ㅏ나", modern("ㅏㄴㅏ"));
+        assertEquals("가안", modern("ㄱㅏㅏㄴ"));
+    }
+
+    @Test
+    public void autoIeungOff() {
+        assertEquals("ㅏㄴ", type(false, false, "ㅏㄴ"));
+    }
+
+    @Test
+    public void repeatedLettersStayAsTyped() {
+        assertEquals("ㅏㅏㅏㅏ", modern("ㅏㅏㅏㅏ"));
+        assertEquals("ㅏㅏㅏㅏ", archaic("ㅏㅏㅏㅏ"));
+        assertEquals("ㅜㅜ", archaic("ㅜㅜ"));
+        assertEquals("ㅡㅡ", archaic("ㅡㅡ"));
+        assertEquals("ㅎㅎ", archaic("ㅎㅎ"));
+        assertEquals("ㅋㅋㅋ", archaic("ㅋㅋㅋ"));
+        assertEquals("ㅂㅅ", archaic("ㅂㅅ"));
+        assertEquals("ㄱ가", modern("ㄱㄱㅏ"));
+        assertEquals("각ㄱ", modern("ㄱㅏㄱㄱ"));
+    }
+
+    @Test
+    public void archaicClusters() {
+        assertEquals("ᄢᅡ", archaic("ㅂㅅㄱㅏ"));          // ᄢᅡ
+        assertEquals("ᄫᅡ", archaic("ㅂㅇㅏ"));            // ᄫᅡ
+        assertEquals("ᄀᆞᆯ", archaic("ㄱㆍㄹ"));     // ᄀᆞᆯ
+        assertEquals("ᄋᆞᆯ", archaic("ㆍㄹ"));      // ᄋᆞᆯ (auto-ㅇ)
+        assertEquals("ᅀᅡ", archaic("ㅿㅏ"));             // ᅀᅡ
+        assertEquals("ᄀᆍ", archaic("ㄱㅜㅜ"));           // ᄀᆍ
+        assertEquals("ᅟᆢ", archaic("ㆍㆍ"));             // ᅟᆢ
+    }
+
+    @Test
+    public void modernModeKeepsArchaicSequencesApart() {
+        assertEquals("ㅂㅅ가", modern("ㅂㅅㄱㅏ"));
+        assertEquals("ㅂ아", modern("ㅂㅇㅏ"));
+        assertEquals("구ㅜ", modern("ㄱㅜㅜ"));
+    }
+
+    @Test
+    public void commitsStableSyllables() {
+        HangulComposer c = new HangulComposer(false, true);
+        c.type('ㅇ');
+        c.type('ㅏ');
+        c.type('ㄴ');
+        c.type('ㄴ');
+        HangulComposer.Output o = c.type('ㅕ');
+        assertEquals("안", o.commit);
+        assertEquals("녀", o.composing);
+    }
+
+    @Test
+    public void backspaceRemovesOneKeystroke() {
+        assertEquals("ㅏ", modern("ㅏㄴ<"));
+        assertEquals("ㄱ", modern("ㄱㅏㄴ<<"));
+        assertEquals("", modern("ㄱ<"));
+        assertNull(new HangulComposer(false, true).backspace());
+    }
+
+    @Test
+    public void recapture() {
+        HangulComposer c = new HangulComposer(true, true);
+        HangulComposer.Recaptured r = HangulComposer.recapture("나안");
+        assertEquals(1, r.length);
+        assertEquals("아", c.backspaceInto(r).composing);
+
+        r = HangulComposer.recapture("xᄀᆞᆯ");
+        assertEquals(3, r.length);
+        assertEquals("ᄀᆞ", c.backspaceInto(r).composing);
+
+        r = HangulComposer.recapture("ㅘ");
+        assertEquals("ㅗ", c.backspaceInto(r).composing);
+
+        assertNull(HangulComposer.recapture("abc"));
+        assertNull(HangulComposer.recapture(""));
+    }
+}
