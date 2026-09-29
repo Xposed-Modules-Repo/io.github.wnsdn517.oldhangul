@@ -32,7 +32,9 @@ android {
 
     packaging {
         jniLibs {
-            useLegacyPackaging true
+            // LSPosed loads native libraries straight from base.apk!/lib/<abi>,
+            // which only works when they are stored uncompressed and aligned.
+            useLegacyPackaging false
         }
     }
 }
