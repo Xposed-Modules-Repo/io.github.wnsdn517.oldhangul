@@ -44,9 +44,11 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         }
         ClassLoader cl = lpparam.classLoader;
         OldHangulController controller = new OldHangulController(new XSharedPreferences(MODULE, Prefs.FILE));
+        JapanesePreloader[] preloader = new JapanesePreloader[1];
         try {
-            hookService(cl, controller);
+            hookService(cl, controller, preloader);
             HookTargets targets = HookTargets.load(cl, lpparam.appInfo.sourceDir, lpparam.appInfo.dataDir);
+            preloader[0] = new JapanesePreloader(targets.engineFactory, lpparam.appInfo.dataDir);
             hookKeyActions(targets, controller);
             hookLongPress(targets, controller);
             hookKeyTouches(targets, controller);
@@ -55,7 +57,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 // Only with the log on: these hooks sit on methods Samsung calls a lot.
                 hookShiftStateForDebug(targets, controller);
             }
-            hookLanguage(targets, controller);
+            hookLanguage(targets, controller, preloader[0]);
             hookShiftLabels(cl, controller);
             XposedBridge.log("OldHangul: hooks installed");
         } catch (Throwable t) {
@@ -64,7 +66,8 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
         }
     }
 
-    private static void hookService(ClassLoader cl, OldHangulController controller) {
+    private static void hookService(ClassLoader cl, OldHangulController controller,
+            JapanesePreloader[] preloader) {
         Class<?> service = XposedHelpers.findClass(SERVICE, cl);
         XposedHelpers.findAndHookMethod(service, "onCreate", new XC_MethodHook() {
             @Override
@@ -72,6 +75,9 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 InputMethodService ime = (InputMethodService) param.thisObject;
                 controller.attach(ime);
                 registerRestartReceiver(ime);
+                if (preloader[0] != null && controller.preloadJapanese()) {
+                    preloader[0].start(controller.debugLog());
+                }
             }
         });
         XposedHelpers.findAndHookMethod(service, "onStartInputView", EditorInfo.class, boolean.class,
@@ -241,7 +247,8 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
      * Samsung announces language and layout changes to its shift holder through
      * onBoardConfigChanged("currentLang" / "currInputType", old, new).
      */
-    private static void hookLanguage(HookTargets targets, OldHangulController controller) {
+    private static void hookLanguage(HookTargets targets, OldHangulController controller,
+            JapanesePreloader preloader) {
         Object[] language = new Object[1];
         try {
             XposedHelpers.findAndHookMethod(targets.shiftState, "onBoardConfigChanged",
@@ -256,8 +263,9 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                                 return;
                             }
                             try {
-                                controller.onLanguage(
-                                        (String) XposedHelpers.callMethod(language[0], "getLanguageCode"),
+                                String code = (String) XposedHelpers.callMethod(language[0], "getLanguageCode");
+                                preloader.onLanguage(code);
+                                controller.onLanguage(code,
                                         (String) XposedHelpers.callMethod(language[0], "getInputType"));
                             } catch (RuntimeException e) {
                                 XposedBridge.log("OldHangul: could not read language: " + e);

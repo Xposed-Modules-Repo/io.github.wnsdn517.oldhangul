@@ -69,6 +69,7 @@ final class OldHangulController {
     private boolean recapture = true;
     private boolean splitOnSpace = true;
     private boolean debugLog;
+    private boolean preloadJapanese;
 
     /** Whether the current Korean layout is dubeolsik (the only layout composed here). */
     private boolean dubeolsik = true;
@@ -153,12 +154,17 @@ final class OldHangulController {
         recapture = prefs.getBoolean(Prefs.RECAPTURE, true);
         splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
         debugLog = prefs.getBoolean(Prefs.DEBUG_LOG, false);
+        preloadJapanese = prefs.getBoolean(Prefs.PRELOAD_JAPANESE, true);
         fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
         directInput = prefs.getBoolean(Prefs.DIRECT_INPUT, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
         notifyShiftLayer();
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
+    }
+
+    boolean preloadJapanese() {
+        return preloadJapanese;
     }
 
     boolean debugLog() {

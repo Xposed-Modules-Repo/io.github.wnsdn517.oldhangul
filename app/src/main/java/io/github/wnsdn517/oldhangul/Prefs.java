@@ -19,6 +19,8 @@ public final class Prefs {
     /** How a held ㅋ mixes in stray letters: {@link #LAUGH_MIX_OFF}, "cheonjiin" or "qwerty". */
     public static final String LAUGH_MIX = "laugh_mix";
     public static final String LAUGH_MIX_OFF = "plain";
+    /** Loads Samsung's Japanese engine in the background when the keyboard starts. */
+    public static final String PRELOAD_JAPANESE = "preload_japanese";
     /** Writes every key action and Samsung shift change to the LSPosed log. Off by default. */
     public static final String DEBUG_LOG = "debug_log";
 

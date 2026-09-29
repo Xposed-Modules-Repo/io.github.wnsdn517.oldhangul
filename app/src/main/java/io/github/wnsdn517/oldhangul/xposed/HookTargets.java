@@ -49,8 +49,10 @@ final class HookTargets {
     /** Samsung's shift state holder and its "is the next letter shifted" query. */
     Class<?> shiftState;
     Method isShifted;
+    /** Static lookup of a prediction engine by name, e.g. "OMRON" (Japanese). Optional, may be null. */
+    Method engineFactory;
 
-    private static final int CACHE_VERSION = 3;
+    private static final int CACHE_VERSION = 4;
     private static final String KEY_REQUEST_INFO = "KeyRequestInfo{mKeyCode=";
     private static final String EXECUTE_ACTION = " execute end t : ";
     private static final String TALKBACK_LONG_CLICK = "onTalkBackLongClick: xy = (";
@@ -59,6 +61,7 @@ final class HookTargets {
     private static final String SAMSUNG_IC = "[NRIC] isNoResponseState true";
     private static final String SHIFT_STATE = "getCurrentShiftState()I";
     private static final String USES_IS_SHIFTED = "keycode change to lowercase for auto caps flick";
+    private static final String ENGINE_FACTORY = "engineName is null";
     private static final String KEY_VO = "com.samsung.android.honeyboard.forms.model.KeyVO";
 
     static HookTargets load(ClassLoader cl, String apkPath, String dataDir) throws Exception {
@@ -137,6 +140,15 @@ final class HookTargets {
                 }
             }
             t.isShifted = single(shifted, "isShifted").getMethodInstance(cl);
+
+            try {
+                t.engineFactory = single(bridge.findMethod(FindMethod.create()
+                        .matcher(MethodMatcher.create().usingStrings(ENGINE_FACTORY).paramCount(1))),
+                        "engine factory").getMethodInstance(cl);
+                t.engineFactory.setAccessible(true);
+            } catch (RuntimeException | ReflectiveOperationException e) {
+                XposedBridge.log("OldHangul: engine factory not found, no Japanese preload: " + e);
+            }
             return t;
         }
     }
@@ -186,6 +198,7 @@ final class HookTargets {
             touch.append(touch.length() == 0 ? "" : "|").append(describe(m));
         }
         p.setProperty("keyTouch", touch.toString());
+        p.setProperty("engineFactory", engineFactory == null ? "" : describe(engineFactory));
         return p;
     }
 
@@ -204,6 +217,8 @@ final class HookTargets {
         for (String d : touch.isEmpty() ? new String[0] : touch.split("\\|")) {
             t.keyTouch.add(resolve(cl, d));
         }
+        String factory = p.getProperty("engineFactory", "");
+        t.engineFactory = factory.isEmpty() ? null : resolve(cl, factory);
         return t;
     }
 

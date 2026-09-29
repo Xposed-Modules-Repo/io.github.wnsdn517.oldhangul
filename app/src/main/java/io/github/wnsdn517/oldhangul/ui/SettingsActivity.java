@@ -62,6 +62,9 @@ public final class SettingsActivity extends Activity {
 
         addSection("호환");
         addSwitch(Prefs.DIRECT_INPUT, "터미널 즉시 입력", "Termux 등에서 치는 즉시 글자가 보이게 합니다");
+        addSwitch(Prefs.PRELOAD_JAPANESE, "일본어 미리 불러오기",
+                "삼성 키보드는 일본어로 처음 바꿀 때 사전을 불러오느라 멈추고 입력이 씹힙니다.\n"
+                        + "일본어를 한 번 쓰고 나면, 키보드가 켜질 때 뒤에서 미리 불러옵니다");
 
         addSection("문제 해결");
         addSwitch(Prefs.DEBUG_LOG, "진단 로그",
