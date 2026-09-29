@@ -50,8 +50,13 @@ final class JapanesePreloader {
         }
     }
 
-    void start(boolean debugLog) {
-        if (started || engineFactory == null || !marker.exists()) {
+    void start() {
+        if (started) {
+            return;
+        }
+        if (engineFactory == null || !marker.exists()) {
+            XposedBridge.log("OldHangul: Japanese preload skipped ("
+                    + (engineFactory == null ? "engine lookup not found" : "Japanese not used yet") + ")");
             return;
         }
         started = true;
@@ -60,10 +65,8 @@ final class JapanesePreloader {
             long begin = SystemClock.uptimeMillis();
             try {
                 engineFactory.invoke(null, ENGINE);
-                if (debugLog) {
-                    XposedBridge.log("OldHangul: Japanese engine preloaded in "
-                            + (SystemClock.uptimeMillis() - begin) + " ms");
-                }
+                XposedBridge.log("OldHangul: Japanese engine preloaded in "
+                        + (SystemClock.uptimeMillis() - begin) + " ms");
             } catch (Throwable e) {
                 // Samsung creates it itself when Japanese is selected.
                 XposedBridge.log("OldHangul: Japanese preload failed: " + e);

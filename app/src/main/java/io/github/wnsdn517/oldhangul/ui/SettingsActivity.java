@@ -68,7 +68,8 @@ public final class SettingsActivity extends Activity {
 
         addSection("문제 해결");
         addSwitch(Prefs.DEBUG_LOG, "진단 로그",
-                "문제를 알려줄 때만 켜세요 · LSPosed 로그에 OldHangul: 로 기록 · 켜고 끈 뒤 키보드 재시작", false);
+                "문제를 알려줄 때만 켜세요 · LSPosed 로그에 OldHangul: 로 기록 · 켜고 끈 뒤 키보드 재시작\n"
+                        + "키보드가 멈춘 순간(0.12초 이상)과 그때 삼성 코드가 하던 일도 기록합니다", false);
 
         ScrollView scroll = new ScrollView(this);
         scroll.addView(list);

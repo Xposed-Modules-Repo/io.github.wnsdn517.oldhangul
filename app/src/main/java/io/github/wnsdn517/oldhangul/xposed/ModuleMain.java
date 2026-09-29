@@ -76,7 +76,10 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 controller.attach(ime);
                 registerRestartReceiver(ime);
                 if (preloader[0] != null && controller.preloadJapanese()) {
-                    preloader[0].start(controller.debugLog());
+                    preloader[0].start();
+                }
+                if (controller.debugLog()) {
+                    StallWatchdog.start();
                 }
             }
         });
