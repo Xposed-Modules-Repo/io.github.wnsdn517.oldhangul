@@ -82,6 +82,8 @@ final class OldHangulController {
     private boolean inWord;
     /** Composing text last sent to the editor. */
     private String composing = "";
+    /** The editor reported no composing region while we were composing. */
+    private boolean composingMaybeLost;
     /** The last key split an archaic cluster; a second space is a real space, backspace undoes it. */
     private boolean justSplit;
     /** The user undid a split: the next space keeps the cluster and types a space. */
@@ -388,23 +390,32 @@ final class OldHangulController {
     }
 
     /**
-     * Removes our composing text from the editor so the next {@link #apply}
-     * writes it fresh. Works whether or not the editor still has it marked as
-     * composing; if the text before the cursor is no longer ours, the composer
-     * starts over and the editor text is left alone.
+     * Prepares the editor for the next {@link #apply}. Normally nothing is needed:
+     * setComposingText/commitText replace the composing region. Only when the
+     * editor reported that the region is gone (see {@link #beforeUpdateSelection})
+     * is our text taken back by hand, so it is rewritten instead of duplicated.
+     *
+     * <p>The text before the cursor is never used to restart composition: apps
+     * that apply input asynchronously (Chrome, WebView, Flutter) still return the
+     * text from before our last edit, which reset composition after every key.
      */
     private void takeBackComposing(InputConnection ic) {
-        ic.finishComposingText();
         if (composing.isEmpty()) {
+            // Never overwrite a composing region someone else left behind.
+            ic.finishComposingText();
+            composingMaybeLost = false;
             return;
         }
+        if (!composingMaybeLost) {
+            return;
+        }
+        composingMaybeLost = false;
         CharSequence before = ic.getTextBeforeCursor(composing.length(), 0);
         if (before != null && composing.contentEquals(before)) {
+            ic.finishComposingText();
             ic.deleteSurroundingText(composing.length(), 0);
-        } else {
-            composer.reset();
+            composing = "";
         }
-        composing = "";
     }
 
     /**
@@ -474,6 +485,9 @@ final class OldHangulController {
         }
         if (!out.composing.isEmpty()) {
             ic.setComposingText(out.composing, 1);
+        } else if (out.commit.isEmpty() && !composing.isEmpty()) {
+            // Nothing left to compose: remove the old composing text.
+            ic.commitText("", 1);
         }
         composing = out.composing;
     }
@@ -489,11 +503,13 @@ final class OldHangulController {
         }
         composer.reset();
         composing = "";
+        composingMaybeLost = false;
     }
 
     void resetState() {
         composer.reset();
         composing = "";
+        composingMaybeLost = false;
         inWord = false;
         justSplit = false;
         splitDeclined = false;
@@ -516,13 +532,16 @@ final class OldHangulController {
         int candidatesStart = (Integer) args[4];
         int candidatesEnd = (Integer) args[5];
         if (candidatesStart < 0 || candidatesEnd < 0) {
-            // Region dropped by the editor; the next edit checks the text and rewrites it.
+            // Region dropped by the editor; the next edit takes our text back first.
+            composingMaybeLost = true;
             return;
         }
         if (newSelStart != newSelEnd || newSelEnd != candidatesEnd) {
             // The cursor left the syllable being composed (tap elsewhere, selection).
             commitComposing();
             inWord = false;
+        } else {
+            composingMaybeLost = false;
         }
         args[4] = -1;
         args[5] = -1;
