@@ -14,6 +14,7 @@ public final class Prefs {
     public static final String RECAPTURE = "recapture";
     public static final String SPLIT_ON_SPACE = "split_on_space";
     public static final String FAST_DELETE = "fast_delete";
+    public static final String DIRECT_INPUT = "direct_input";
     public static final String SHIFT_ARCHAIC = "shift_archaic";
     /** How a held ㅋ mixes in stray letters: {@link #LAUGH_MIX_OFF}, "cheonjiin" or "qwerty". */
     public static final String LAUGH_MIX = "laugh_mix";

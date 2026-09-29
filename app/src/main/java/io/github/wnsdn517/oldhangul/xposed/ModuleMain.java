@@ -92,6 +92,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                         } else {
                             controller.resetState();
                         }
+                        controller.onStartEditor((EditorInfo) param.args[0]);
                     }
                 });
         XposedHelpers.findAndHookMethod(service, "onFinishInputView", boolean.class, new XC_MethodHook() {

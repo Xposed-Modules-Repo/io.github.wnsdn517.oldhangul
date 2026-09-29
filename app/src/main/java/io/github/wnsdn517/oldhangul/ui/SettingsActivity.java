@@ -54,6 +54,9 @@ public final class SettingsActivity extends Activity {
         addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모 입력",
                 "ㄹ → ㅿ, ㅇ → ㆁ, ㅎ → ㆆ, ㅏ → ㆍ (옛한글 조합이 켜져 있을 때). "
                         + "ㄱ ㄷ ㅂ ㅅ ㅈ 은 삼성 기본대로 쌍자음이 나옵니다.");
+        addSwitch(Prefs.DIRECT_INPUT, "터미널 앱 즉시 입력",
+                "Termux 처럼 조합 중인 글자를 보여주지 않는 앱에서는 치는 즉시 글자를 확정하고, "
+                        + "바뀌면 지우고 다시 씁니다 (한 글자씩 늦게 보이는 문제 해결).");
         addSwitch(Prefs.FAST_DELETE, "길게 눌러 빠르게 지우기",
                 "백스페이스를 누르고 있으면 삼성 기본처럼 점점 빨라져 단어 단위로 지웁니다. "
                         + "끄면 끝까지 한 글자씩 같은 속도로 지웁니다.");

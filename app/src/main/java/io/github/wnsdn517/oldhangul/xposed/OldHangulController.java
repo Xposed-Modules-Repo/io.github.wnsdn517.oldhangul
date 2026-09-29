@@ -4,7 +4,9 @@ import android.inputmethodservice.InputMethodService;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
 import io.github.wnsdn517.oldhangul.Prefs;
@@ -82,6 +84,12 @@ final class OldHangulController {
     private boolean inWord;
     /** Composing text last sent to the editor. */
     private String composing = "";
+    /**
+     * The editor shows no composing text (Termux and other terminals): every
+     * change is committed right away, replacing what changed with backspaces.
+     */
+    private boolean directMode;
+    private boolean directInput = true;
     /** The editor reported no composing region while we were composing. */
     private boolean composingMaybeLost;
     /**
@@ -147,6 +155,7 @@ final class OldHangulController {
         splitOnSpace = prefs.getBoolean(Prefs.SPLIT_ON_SPACE, true);
         debugLog = prefs.getBoolean(Prefs.DEBUG_LOG, false);
         fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
+        directInput = prefs.getBoolean(Prefs.DIRECT_INPUT, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
@@ -419,6 +428,9 @@ final class OldHangulController {
      * text from before our last edit, which reset composition after every key.
      */
     private void takeBackComposing(InputConnection ic) {
+        if (directMode) {
+            return;
+        }
         if (composing.isEmpty()) {
             // Never overwrite a composing region someone else left behind.
             ic.finishComposingText();
@@ -472,7 +484,8 @@ final class OldHangulController {
             return false;
         }
         CharSequence before = ic.getTextBeforeCursor(8, 0);
-        HangulComposer.Recaptured r = koreanLayoutActive() ? HangulComposer.recapture(before) : null;
+        HangulComposer.Recaptured r = koreanLayoutActive() && !directMode
+                ? HangulComposer.recapture(before) : null;
         if (r == null) {
             if (!repeat || TextUtils.isEmpty(before)) {
                 return false;
@@ -500,6 +513,10 @@ final class OldHangulController {
 
     private void apply(InputConnection ic, HangulComposer.Output out) {
         lastEditAt = SystemClock.uptimeMillis();
+        if (directMode) {
+            applyDirect(ic, out);
+            return;
+        }
         if (!out.commit.isEmpty()) {
             ic.commitText(out.commit, 1);
         }
@@ -512,13 +529,34 @@ final class OldHangulController {
         composing = out.composing;
     }
 
+    /**
+     * Direct mode: the text shown so far ({@link #composing}) is already
+     * committed, so only the changed tail is deleted and the new tail committed.
+     */
+    private void applyDirect(InputConnection ic, HangulComposer.Output out) {
+        String shown = composing;
+        String now = out.commit + out.composing;
+        int same = 0;
+        int max = Math.min(shown.length(), now.length());
+        while (same < max && shown.charAt(same) == now.charAt(same)) {
+            same++;
+        }
+        if (shown.length() > same) {
+            ic.deleteSurroundingText(shown.length() - same, 0);
+        }
+        if (now.length() > same) {
+            ic.commitText(now.substring(same), 1);
+        }
+        composing = out.composing;
+    }
+
     /** Finishes the current syllable, leaving its text in the editor. */
     void commitComposing() {
         if (composer.isEmpty()) {
             return;
         }
         InputConnection ic = inputConnection();
-        if (ic != null) {
+        if (ic != null && !directMode) {
             ic.finishComposingText();
             lastEditAt = SystemClock.uptimeMillis();
         }
@@ -526,6 +564,18 @@ final class OldHangulController {
         composing = "";
         composingMaybeLost = false;
     }
+
+    /** A new editor gained focus. */
+    void onStartEditor(EditorInfo info) {
+        boolean terminal = info != null
+                && ((info.inputType & InputType.TYPE_MASK_CLASS) == InputType.TYPE_NULL
+                || TERMINAL_PACKAGES.contains(info.packageName));
+        directMode = directInput && terminal;
+    }
+
+    /** Apps whose editors show no composing text. */
+    private static final java.util.Set<String> TERMINAL_PACKAGES = new java.util.HashSet<>(
+            java.util.Arrays.asList("com.termux", "jackpal.androidterm", "yarolegovich.materialterminal"));
 
     /**
      * The same editor restarted input (search boxes do this on every change).
@@ -558,7 +608,7 @@ final class OldHangulController {
      * region is hidden from Samsung so it does not try to manage it.
      */
     void beforeUpdateSelection(Object[] args) {
-        if (composer.isEmpty()) {
+        if (composer.isEmpty() || directMode) {
             return;
         }
         int newSelStart = (Integer) args[2];
