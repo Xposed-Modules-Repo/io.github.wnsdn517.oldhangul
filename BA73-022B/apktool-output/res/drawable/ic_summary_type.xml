@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="24.0dp" android:width="24.0dp" android:viewportWidth="24.0" android:viewportHeight="24.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="@color/writing_toolkit_icon_color" android:pathData="M5.5,4C5.914,4 6.25,4.336 6.25,4.75L6.25,7.114C7.264,7.433 8,8.38 8,9.5C8,10.62 7.264,11.567 6.25,11.886L6.25,19.258C6.25,19.672 5.914,20.008 5.5,20.008C5.086,20.008 4.75,19.672 4.75,19.258L4.749,11.885C3.735,11.567 3,10.619 3,9.5C3,8.381 3.735,7.433 4.749,7.115L4.75,4.75C4.75,4.336 5.086,4 5.5,4ZM5.5,8.5C4.948,8.5 4.5,8.948 4.5,9.5C4.5,10.052 4.948,10.5 5.5,10.5C6.052,10.5 6.5,10.052 6.5,9.5C6.5,8.948 6.052,8.5 5.5,8.5Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+    <path android:fillColor="#00000000" android:pathData="M10.326,6.387L19.326,6.387M10.326,17.587L19.326,17.587M10.326,11.987L15.326,11.987" android:strokeColor="@color/writing_toolkit_icon_color" android:strokeWidth="1.5" android:strokeLineCap="round" android:strokeLineJoin="round" android:fillType="evenOdd" />
+</vector>

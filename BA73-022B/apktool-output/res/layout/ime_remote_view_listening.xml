@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center" android:id="@id/remote_view" android:clipChildren="false" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center" android:id="@id/default_remote_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" android:maxHeight="@dimen/multi_modal_remote_view_height" android:indeterminateDrawable="@drawable/ic_samsung_keyboard_multimodal_on_svi" android:importantForAccessibility="no" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/filp_cover_remote_view" android:layout_width="match_parent" android:layout_height="@dimen/multi_modal_remote_view_cover_height" android:scaleType="centerCrop" android:adjustViewBounds="true" android:indeterminateDrawable="@drawable/ic_samsung_keyboard_multimodal_on_svi" android:importantForAccessibility="no" />
+</FrameLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/settings_category_japanese_input_options"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.SwitchPreferenceCompat android:persistent="true" android:title="@string/ti_preference_multi_tap_for_more_characters" android:key="flick_toggle_input" android:summary="@string/ti_preference_works_with_japanese_flick_input" android:defaultValue="@bool/flick_toggle_input_default_value" />
+    <com.samsung.android.honeyboard.settings.common.SpinnerPreference android:title="@string/ti_preference_auto_cursor_movement_menu_txt" android:key="auto_cursor_movement" />
+    <PreferenceCategory android:title="@string/flick_preference_option" android:key="flick_options">
+        <Preference android:title="@string/ti_preference_8flick_custom_title_txt" android:key="multi_flick_custom" />
+        <Preference android:title="@string/ti_preference_flick_angle_title_txt" android:key="flick_angle_multi" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/settings_prediction_and_conversion" android:key="settings_prediction_and_conversion">
+        <androidx.preference.SwitchPreferenceCompat android:title="@string/ti_preference_input_learning_title_ja_txt" android:key="japanese_input_word_learning" android:defaultValue="@bool/japanese_input_word_learning_default_value" />
+        <androidx.preference.SwitchPreferenceCompat android:title="@string/ti_preference_funfun_title_ja_txt" android:key="japanese_wildcard_prediction" android:summary="@string/settings_japanese_wildcard_prediction_summary" android:defaultValue="@bool/japanese_wildcard_prediction_default_value" />
+        <androidx.preference.SwitchPreferenceCompat android:title="@string/settings_half_width_input" android:key="half_width_input" android:defaultValue="@bool/half_width_input_default_value" />
+        <com.samsung.android.honeyboard.settings.common.SpinnerPreference android:title="@string/settings_predictive_text_lines" android:key="predictive_text_lines" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/settings_other" android:key="settings_other_settings">
+        <com.samsung.android.honeyboard.settings.common.SpinnerPreference android:title="@string/settings_voice_input" android:key="voice_input_ja" />
+        <androidx.preference.SwitchPreferenceCompat android:title="@string/settings_mushroom" android:key="mushroom" android:defaultValue="@bool/mushroom_default_value" />
+    </PreferenceCategory>
+</PreferenceScreen>

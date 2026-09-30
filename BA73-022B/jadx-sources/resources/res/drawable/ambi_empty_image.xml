@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="center"
+        android:height="@dimen/ambi_empty_image_size"
+        android:width="@dimen/ambi_empty_image_size">
+        <shape android:shape="oval">
+            <solid android:color="?attr/common_content_bordered_button_bg_color_attr"/>
+            <stroke
+                android:width="@dimen/ambi_empty_image_border"
+                android:color="?attr/common_content_bordered_button_stroke_color_attr"
+                android:dashWidth="@dimen/ambi_empty_image_border_dash_width"
+                android:dashGap="@dimen/ambi_empty_image_border_dash_gap"/>
+        </shape>
+    </item>
+    <item
+        android:gravity="center"
+        android:height="@dimen/ambi_empty_image_plus_icon_thickness"
+        android:width="@dimen/ambi_empty_image_plus_icon_size">
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/common_content_bordered_button_icon_color_attr"/>
+        </shape>
+    </item>
+    <item
+        android:gravity="center"
+        android:height="@dimen/ambi_empty_image_plus_icon_size"
+        android:width="@dimen/ambi_empty_image_plus_icon_thickness">
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/common_content_bordered_button_icon_color_attr"/>
+        </shape>
+    </item>
+</layer-list>

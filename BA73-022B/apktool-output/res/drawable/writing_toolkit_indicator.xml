@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="oval"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:height="@dimen/writing_toolkit_result_indicator_size" android:width="@dimen/writing_toolkit_result_indicator_size" />
+    <solid android:color="@color/writing_toolkit_default_indicator_color" />
+</shape>

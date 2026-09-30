@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:ordering="together">
+    <objectAnimator
+        android:interpolator="@animator/_capture_bounce_out_animator__0_res_0x7f020005"
+        android:duration="200"
+        android:valueFrom="1.05"
+        android:valueTo="1"
+        android:valueType="floatType"
+        android:propertyName="scaleX"/>
+    <objectAnimator
+        android:interpolator="@animator/_capture_bounce_out_animator__1_res_0x7f020006"
+        android:duration="200"
+        android:valueFrom="1.05"
+        android:valueTo="1"
+        android:valueType="floatType"
+        android:propertyName="scaleY"/>
+    <objectAnimator
+        android:interpolator="@animator/_capture_bounce_out_animator__2_res_0x7f020007"
+        android:duration="200"
+        android:valueFrom="1f"
+        android:valueTo="0f"
+        android:propertyName="alpha"/>
+</set>

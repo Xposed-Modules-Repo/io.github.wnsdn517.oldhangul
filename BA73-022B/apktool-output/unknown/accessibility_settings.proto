@@ -1,0 +1,147 @@
+// Copyright 2024 Copyright 2024 The OS Migration Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+edition = "2023";
+
+package os_migration_data_types.v1;
+
+import "export_failure.proto";
+
+option java_multiple_files = true;
+
+// Accessibility settings for the device. This message is also expected as the
+// response for getting the /accessibility-settings endpoint.
+message AccessibilitySettings {
+  // Talkback/Voice over
+  bool screen_reader_enabled = 1;
+  // The scaling factor for on-screen text size.
+  float text_scale = 2;
+  // Text is rendered in bold.
+  bool bold_text = 3;
+  // A grayscale color filter is applied to the display.
+  bool grayscale_filter = 4;
+  // Color correction/Color filters for correcting deuteranomaly
+  bool deuteranomaly_filter = 5;
+  // Color correction/Color filters for correcting protanomaly
+  bool protanomaly_filter = 6;
+  // Color correction/Color filters for correcting tritanomaly
+  bool tritanomaly_filter = 7;
+  // A dark theme or dark mode is enabled for the UI.
+  bool dark_mode_enabled = 8;
+  // Magnification/Zoom
+  bool zoom = 9;
+  // The speak selected text feature is enabled.
+  bool speak_selection = 10;
+  // Voice access/Voice control
+  bool voice_control_enabled = 11;
+  // Power button ends call/Prevent Lock to End Call
+  bool power_button_ends_call_enabled = 12;
+  // Auto-rotate screen/Portrait Orientation Lock (Not an accessibility setting)
+  bool auto_rotate_screen_enabled = 13;
+  // The Live Caption feature is enabled.
+  bool live_caption_enabled = 14;
+  // The Live Transcribe feature is enabled.
+  bool live_transcribe_enabled = 15;
+  // Audio descriptions for video content are enabled.
+  bool audio_description_enabled = 16;
+  // Camera flash notification/LED Flash for Alerts
+  bool flash_for_alerts_enabled = 17;
+  // Audio output is mixed down to a single channel (mono audio).
+  bool mono_audio_enabled = 18;
+  // Audio balance/Left/Right Balance
+  float audio_balance = 19;
+  // A list of detailed caption style configurations.
+  repeated CaptionStyle caption_styles = 20;
+  // Index of the selected caption style in the `caption_styles` list above,
+  // starting from 0.
+  int32 selected_caption_style_index = 23;
+  // User preference for Subtitles for the Deaf and Hard of Hearing (SDH) when
+  // available.
+  bool prefer_captions_sdh = 21;
+  ExportFailure export_failure = 22;
+}
+
+// Represents a detailed configuration for the appearance of captions.
+message CaptionStyle {
+  // A user-friendly name for this caption style
+  // (e.g., 'Custom 1', 'Large Yellow Text').
+  string caption_style_name = 1;
+  // The name of the font family to be used for caption text
+  // (e.g., 'Roboto', 'SansSerif').
+  string font_name = 2;
+  // The size of the caption text.
+  CaptionStyleSize size = 3;
+  // The color of the caption text.
+  CaptionStyleColor text_color = 4;
+  // Color override for video content.
+  bool color_video_override = 5;
+  // The background color for the caption area.
+  CaptionStyleColor background_color = 6;
+  // Background color override for video content.
+  bool background_color_video_override = 7;
+  // The opacity of the caption background, ranging from 0.0 (fully
+  // transparent) to 1.0 (fully opaque).
+  float background_opacity = 8;
+  // Background opacity override for video content.
+  bool background_opacity_video_override = 9;
+  // The opacity of the caption text, ranging from 0.0 (fully transparent) to
+  // 1.0 (fully opaque).
+  float text_opacity = 10;
+  // Text opacity override for video content.
+  bool text_opacity_video_override = 11;
+  // The style of the edges around caption text (e.g., drop shadow, outline).
+  TextEdgeStyle text_edge_style = 12;
+  // Edge style override for video content.
+  bool text_edge_style_video_override = 13;
+  // The color used for highlighting caption text, if applicable.
+  CaptionStyleColor text_highlight_color = 14;
+  // The opacity of the text highlight, ranging from 0.0 (fully transparent)
+  // to 1.0 (fully opaque).
+  float text_highlight_opacity = 15;
+  // Text highlight video override.
+  bool text_highlight_video_override = 16;
+}
+
+// Enumerates standard predefined sizes for caption text.
+enum CaptionStyleSize {
+  CAPTION_STYLE_SIZE_UNSPECIFIED = 0;
+  CAPTION_STYLE_SIZE_SMALL = 1;
+  CAPTION_STYLE_SIZE_MEDIUM = 2;
+  CAPTION_STYLE_SIZE_LARGE = 3;
+  CAPTION_STYLE_SIZE_EXTRA_LARGE = 4;
+}
+
+// Enumerates standard predefined colors that can be used for caption text,
+// caption highlight, or background.
+enum CaptionStyleColor {
+  CAPTION_STYLE_COLOR_UNSPECIFIED = 0;
+  CAPTION_STYLE_COLOR_WHITE = 1;
+  CAPTION_STYLE_COLOR_CYAN = 2;
+  CAPTION_STYLE_COLOR_BLUE = 3;
+  CAPTION_STYLE_COLOR_GREEN = 4;
+  CAPTION_STYLE_COLOR_YELLOW = 5;
+  CAPTION_STYLE_COLOR_MAGENTA = 6;
+  CAPTION_STYLE_COLOR_RED = 7;
+  CAPTION_STYLE_COLOR_BLACK = 8;
+}
+
+// Enumerates styles for rendering the edges of caption text to improve
+// readability.
+enum TextEdgeStyle {
+  TEXT_EDGE_STYLE_UNSPECIFIED = 0;
+  TEXT_EDGE_STYLE_DROP_SHADOW = 1;
+  TEXT_EDGE_STYLE_RAISED = 2;
+  TEXT_EDGE_STYLE_DEPRESSED = 3;
+  TEXT_EDGE_STYLE_UNIFORM = 4;
+}

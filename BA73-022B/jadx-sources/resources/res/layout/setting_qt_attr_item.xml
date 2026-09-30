@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.sdk.pen.setting.quicktool.SpenQTPenAttrView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/qt_thickness_bg"
+    android:layout_width="36dp"
+    android:layout_height="36dp"
+    app:applyDynamicColorSize="true"
+    app:diffColorRadius="@dimen/qt_attr_dial_handler_color_size_diff_radius">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:id="@+id/color_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+    <ImageView
+        android:id="@+id/color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"/>
+</com.samsung.android.sdk.pen.setting.quicktool.SpenQTPenAttrView>

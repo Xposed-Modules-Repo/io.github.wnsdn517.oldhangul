@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:tag="layout/kaomoji_chn_content_0" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.core.widget.NestedScrollView android:id="@id/nested_scrollview" android:tag="binding_1" android:paddingTop="@dimen/kaomoji_scroll_list_top_padding" style="@style/friends_board_scrollable_view_style">
+        <com.samsung.android.honeyboard.textboard.friends.kaomoji.view.ChnKaomojiScrollLayout android:orientation="vertical" android:id="@id/kaomoji_scroll_list" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </androidx.core.widget.NestedScrollView>
+    <ProgressBar android:layout_gravity="center" android:tag="binding_2" android:layout_width="@dimen/network_progress_bar_size" android:layout_height="@dimen/network_progress_bar_size" style="?android:progressBarStyleLarge" />
+    <androidx.core.widget.NestedScrollView android:tag="binding_3" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textColor="?kaomoji_alert_msg_text_color" android:layout_gravity="center" android:tag="binding_4" style="@style/friends_board_error_message_view_style" />
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,15 @@
+package com.samsung.android.honeyboard.icecone.clipboard.data.store;
+
+import androidx.room.j;
+import kotlin.Metadata;
+import p053bq.r;
+
+/* JADX INFO: loaded from: classes3.dex */
+@Metadata(d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\b'\u0018\u00002\u00020\u0001B\u0007¢\u0006\u0004\b\u0002\u0010\u0003¨\u0006\u0004"}, d2 = {"Lcom/samsung/android/honeyboard/icecone/clipboard/data/store/ClipV1ItemDatabase;", "Landroidx/room/j;", "<init>", "()V", "HoneyBoard_icecone_globalRelease"}, k = 1, mv = {2, 0, 0}, xi = 48)
+public abstract class ClipV1ItemDatabase extends j {
+
+    /* JADX INFO: renamed from: a, reason: collision with root package name */
+    public static ClipV1ItemDatabase f20940a;
+
+    public abstract r a();
+}

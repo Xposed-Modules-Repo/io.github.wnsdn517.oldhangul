@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">کاتێک دەگەیتە %d وێنەی دروستکراو، دروستکردنی وێنەیەکی نوێ دەبێتە هۆی ئەوەی کە کۆنترین وێنەت بسڕدرێتەوە.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">کاتێک دەگەیتە %d وێنەی دروستکراو، دروستکردنی وێنەیەکی نوێ دەبێتە هۆی ئەوەی کە کۆنترین وێنەت بسڕدرێتەوە.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ستیکەر بسڕێتەوە؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ستیکەر بسڕێتەوە؟</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d جووتە ئیمۆجی بسڕێتەوە؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d جووتە ئیمۆجی بسڕێتەوە؟</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">پێویستە لانیکەم تەمەنت %d ساڵ بێت بۆ بەکارھێنانی تایبەتمەندییەکانی ژیریی پێشکەوتووی Galaxy AI.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">پێویستە لانیکەم تەمەنت %d ساڵ بێت بۆ بەکارھێنانی تایبەتمەندییەکانی ژیریی پێشکەوتووی Galaxy AI.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d بڕگە بسڕێتەوە؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d بڕگە بسڕێتەوە؟</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d بابەتی ھەڵواسراو بسڕێتەوە؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d بابەتی ھەڵواسراو بسڕێتەوە؟</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d بابەتی جێگیرکراو لەخۆ بگرێت</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">لەخۆگرتنی %d بابەتی ھەڵواسراو</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">پێداچوونەوەی %d پێشنیاری نووسراو بکە</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">پێداچوونەوەی %d پێشنیاری نووسراو بکە</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d دەسنیشانکرا</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d دەسنیشانکرا</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d قەدبڕی دەق بسڕێتەوە؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d قەدبڕی دەق بسڕێتەوە؟</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d زمان نوێ کراوە.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">پێویستە %d زمان نوێ بکرێتەوە.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d دەسنیشانکرا</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d دەسنیشانکرا</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">"You've selected %d characters."</item>
+        <item quantity="one">"You've selected %d character."</item>
+        <item quantity="two">"You've selected %d characters."</item>
+        <item quantity="few">"You've selected %d characters."</item>
+        <item quantity="many">"You've selected %d characters."</item>
+        <item quantity="other">"You've selected %d characters."</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">%d corrections</item>
+        <item quantity="one">%d ڕاستکردنەوە</item>
+        <item quantity="two">%d corrections</item>
+        <item quantity="few">%d corrections</item>
+        <item quantity="many">%d corrections</item>
+        <item quantity="other">%d ڕاستکردنەوە</item>
+    </plurals>
+</resources>

@@ -115,11 +115,12 @@ public final class HangulComposer {
                 stable = s.start;
             }
         }
-        // Keep a run of ㅠ/ㅜ/ㅡ together: whether it is 유 or ㅠㅠ depends on the neighbours.
+        // Keep trailing standalone vowels together: a later vowel can decide
+        // whether the earlier one should receive the optional ㅇ.
         int last = segs.size() - 1;
         char run = last >= 0 ? bareVowel(segs.get(last)) : 0;
-        if (vowelIeung && "ㅠㅜㅡ".indexOf(run) >= 0) {
-            for (int i = last; i >= 0 && bareVowel(segs.get(i)) == run; i--) {
+        if (vowelIeung && run != 0) {
+            for (int i = last; i >= 0 && bareVowel(segs.get(i)) != 0; i--) {
                 stable = Math.min(stable, segs.get(i).start);
             }
         }
@@ -152,8 +153,17 @@ public final class HangulComposer {
             Segment s = segs.get(i);
             if (!s.isSyllable()) {
                 if (s.leadEnd - s.start >= 2) {
-                    // A merged consonant cluster without a vowel (ㅺ).
-                    return insertBreak(s.leadEnd - 1);
+                    // Split the whole trailing consonant run. Splitting only
+                    // one boundary in ㅎㅎㅎ let the remaining two keys merge
+                    // again and produced ㅎㆅ.
+                    int end = keys.length();
+                    int start = end;
+                    while (start > 0 && Jamo.isConsonantKey(keys.charAt(start - 1))) {
+                        start--;
+                    }
+                    if (end - start >= 2) {
+                        return insertBreaks(start, end);
+                    }
                 }
                 continue;
             }
@@ -178,12 +188,24 @@ public final class HangulComposer {
         return new Output("", current());
     }
 
+    private Output insertBreaks(int from, int to) {
+        for (int i = to - 1; i > from; i--) {
+            keys.insert(i, BREAK);
+        }
+        lastBreak = from + 1;
+        return new Output("", current());
+    }
+
     /** Undoes {@link #splitLastArchaic}; null if the last change was not a split. */
     public Output undoSplit() {
         if (lastBreak < 0 || lastBreak >= keys.length() || keys.charAt(lastBreak) != BREAK) {
             return null;
         }
-        keys.deleteCharAt(lastBreak);
+        for (int i = keys.length() - 1; i >= lastBreak; i--) {
+            if (keys.charAt(i) == BREAK) {
+                keys.deleteCharAt(i);
+            }
+        }
         lastBreak = -1;
         return new Output("", current());
     }
@@ -543,6 +565,12 @@ public final class HangulComposer {
                 || (i + 1 < segs.size() && bareVowel(segs.get(i + 1)) == k);
     }
 
+    /** Adjacent standalone vowels stay as typed instead of gaining ㅇ. */
+    private boolean isConsecutiveVowel(List<Segment> segs, int i) {
+        return (i > 0 && bareVowel(segs.get(i - 1)) != 0)
+                || (i + 1 < segs.size() && bareVowel(segs.get(i + 1)) != 0);
+    }
+
     /** The key of a one-vowel syllable without consonants, or 0. */
     private char bareVowel(Segment s) {
         if (!s.isSyllable() || s.hasLeading() || s.end != s.vowelEnd || s.vowelEnd - s.leadEnd != 1) {
@@ -578,7 +606,9 @@ public final class HangulComposer {
             Character l;
             if (s.hasLeading()) {
                 l = Jamo.LEADING.get(spell(s.start, s.leadEnd));
-            } else if (t != null || (vowelIeung && autoIeung && !isEmoticonVowel(segs, si))) {
+            } else if (t != null || (vowelIeung && autoIeung
+                    && !isEmoticonVowel(segs, si)
+                    && !isConsecutiveVowel(segs, si))) {
                 l = Jamo.IEUNG_LEADING;
             } else {
                 Character compat = Jamo.COMPAT.get(spell(s.leadEnd, s.vowelEnd));

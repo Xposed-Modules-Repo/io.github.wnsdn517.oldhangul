@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:ordering="together">
+    <set android:ordering="sequentially">
+        <objectAnimator
+            android:interpolator="@drawable/_ic_samsung_keyboard_multimodal_on_svi_land__2_res_0x7f08006d"
+            android:duration="650"
+            android:valueFrom="0.1"
+            android:valueTo="1.08"
+            android:propertyName="scaleX"/>
+    </set>
+    <set android:ordering="sequentially">
+        <objectAnimator
+            android:interpolator="@drawable/_ic_samsung_keyboard_multimodal_on_svi_land__3_res_0x7f08006e"
+            android:duration="650"
+            android:valueFrom="0.1"
+            android:valueTo="1.08"
+            android:propertyName="scaleY"/>
+    </set>
+</set>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:tag="layout/expression_search_suggestion_item_0" android:layout_width="wrap_content" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/expression_search_suggestion_item_bg" android:layout_width="wrap_content" android:layout_height="@dimen/expression_search_suggestion_item_view_height" android:layout_marginStart="@dimen/expression_search_suggestion_item_view_margin_horizontal">
+        <TextView android:textSize="@dimen/expression_search_suggestion_item_view_text_size" android:textColor="?search_suggestion_list_text_color" android:id="@id/search_suggestion_text" android:background="@color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="@dimen/expression_search_suggestion_item_view_text_margin_start" android:layout_marginEnd="@dimen/expression_search_suggestion_item_view_text_margin_end" />
+        <ImageView android:id="@id/search_suggestion_remove" android:background="?android:actionBarItemBackground" android:padding="@dimen/expression_search_suggestion_item_view_padding" android:clickable="true" android:layout_width="@dimen/expression_search_suggestion_item_view_remove_size" android:layout_height="@dimen/expression_search_suggestion_item_view_remove_size" android:src="@drawable/suggestion_icon_button" android:tint="?search_suggestion_list_text_remove_button_color" android:contentDescription="@string/content_description_clear" android:tooltipText="@string/content_description_clear" />
+    </LinearLayout>
+</FrameLayout>

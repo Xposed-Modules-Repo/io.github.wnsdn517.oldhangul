@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/aiPanel" android:background="@color/transparent" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="locale"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <include android:id="@id/chat_assist_entry_layout" layout="@layout/chat_assist_entry_layout" />
+        <include android:id="@id/chat_assist_entry_layout_floating" layout="@layout/chat_assist_entry_layout" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:weightSum="1.0">
+        <include android:id="@id/ai_writer_no_network_layout" layout="@layout/ai_writer_no_network_layout" />
+        <include android:id="@id/ai_writer_main_card" layout="@layout/ai_writer_main_card" />
+        <androidx.cardview.widget.CardView android:id="@id/ai_writer_progress_card" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="@dimen/intelligent_progress_margin_top" android:layout_marginBottom="@dimen/intelligent_progress_margin_bottom" android:layout_marginHorizontal="@dimen/intelligent_progress_horizontal_margin" app:cardBackgroundColor="?generative_ai_writer_panel" app:cardCornerRadius="22.0dp" app:cardElevation="0.0dp" />
+    </LinearLayout>
+</LinearLayout>

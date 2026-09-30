@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ai_writer_label_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/intelligent_writing_horizontal_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:textSize="@dimen/intelligent_writing_category_text_size"
+        android:textColor="?attr/generative_ai_writer_label_sub_color"
+        android:id="@+id/ai_writer_notice"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ai_writer_proofread_guide_content"
+        android:textAlignment="center"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/ai_writer_label_group"
+        app:layout_constraintStart_toStartOf="@+id/ai_writer_label_group"
+        app:layout_constraintTop_toBottomOf="@+id/ai_writer_label_group"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

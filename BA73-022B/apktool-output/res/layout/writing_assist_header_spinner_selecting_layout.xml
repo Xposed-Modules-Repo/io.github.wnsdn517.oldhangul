@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/ai_writer_header_spinner_selecting_view" android:layout_width="wrap_content" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/writing_assist_intelligent_writing_function_selected_label_text_size" android:textColor="?writing_assist_selecting_view_text_color" android:layout_gravity="center_vertical" android:id="@id/ai_spinner_selected_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sec" android:layout_marginEnd="@dimen/writing_assist_spinner_selected_text_margin_end" android:textFontWeight="600" />
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/writing_assist_spinner_selected_dropdown_icon_size" android:layout_height="@dimen/writing_assist_spinner_selected_dropdown_icon_size" android:src="@drawable/writing_assist_spinner_conversion_dropdown" android:tint="?writing_assist_selecting_view_arrow_color" android:importantForAccessibility="no" />
+</LinearLayout>

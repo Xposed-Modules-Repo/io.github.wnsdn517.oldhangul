@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="10.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SPEED" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="High Speed Threshold - X : " />
+        <EditText android:gravity="center" android:id="@id/high_speed_threshold_x_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 12" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="High Speed Threshold - Y : " />
+        <EditText android:gravity="center" android:id="@id/high_speed_threshold_y_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 60" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mid Speed Threshold - X : " />
+        <EditText android:gravity="center" android:id="@id/mid_speed_threshold_x_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 4" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mid Speed Threshold - Y : " />
+        <EditText android:gravity="center" android:id="@id/mid_speed_threshold_y_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 8" android:inputType="number" />
+    </LinearLayout>
+    <TextView android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DISTANCE" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Medium Move Distance Threshold - X : " />
+        <EditText android:gravity="center" android:id="@id/medium_move_distance_threshold_x_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 8" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Medium Move Distance Threshold - Y : " />
+        <EditText android:gravity="center" android:id="@id/medium_move_distance_threshold_y_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 16" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Low Move Distance Threshold - X : " />
+        <EditText android:gravity="center" android:id="@id/low_move_distance_threshold_x_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 4" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Low Move Distance Threshold - Y : " />
+        <EditText android:gravity="center" android:id="@id/low_move_distance_threshold_y_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Default value : 16" android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/clear_button" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Clear" android:layout_weight="1.0" />
+        <Button android:id="@id/apply_button" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Apply" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

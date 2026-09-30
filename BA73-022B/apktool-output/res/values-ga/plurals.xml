@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">A luaithe a shroicheann tú %d íomhá ghinte, scriosfar an íomhá is sine nuair a ghineann tú íomhá nua.</item>
+        <item quantity="two">A luaithe a shroicheann tú %d íomhá ghinte, scriosfar an ceann is sine nuair a ghineann tú íomhá nua.</item>
+        <item quantity="few">A luaithe a shroicheann tú %d íomhá ghinte, scriosfar an ceann is sine nuair a ghineann tú íomhá nua.</item>
+        <item quantity="many">A luaithe a shroicheann tú %d n-íomhá ghinte, scriosfar an ceann is sine nuair a ghineann tú íomhá nua.</item>
+        <item quantity="other">A luaithe a shroicheann tú %d íomhá ghinte, scriosfar an ceann is sine nuair a ghineann tú íomhá nua.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Scrios %d ghreamán?</item>
+        <item quantity="two">Scrios %d ghreamán?</item>
+        <item quantity="few">Scrios %d ghreamán?</item>
+        <item quantity="many">Scrios %d ngreamán?</item>
+        <item quantity="other">Scrios %d greamán?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Scrios %d phéire emoji?</item>
+        <item quantity="two">Scrios %d phéire emoji?</item>
+        <item quantity="few">Scrios %d phéire emoji?</item>
+        <item quantity="many">Scrios %d bpéire emoji?</item>
+        <item quantity="other">Scrios %d péire emoji?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">"Ní foláir duit a bheith %d bhliain d'aois ar a laghad le gnéithe ardintleachta Galaxy AI a úsáid."</item>
+        <item quantity="two">"Ní foláir duit a bheith %d bhliain d'aois ar a laghad le gnéithe ardintleachta Galaxy AI a úsáid."</item>
+        <item quantity="few">"Ní foláir duit a bheith %d bliana d'aois ar a laghad le gnéithe ardintleachta Galaxy AI a úsáid."</item>
+        <item quantity="many">"Ní foláir duit a bheith %d mbliana d'aois ar a laghad le gnéithe ardintleachta Galaxy AI a úsáid."</item>
+        <item quantity="other">"Ní foláir duit a bheith %d bliain d'aois ar a laghad le gnéithe ardintleachta Galaxy AI a úsáid."</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Scrios %d mhír?</item>
+        <item quantity="two">Scrios %d mhír?</item>
+        <item quantity="few">Scrios %d mhír?</item>
+        <item quantity="many">Scrios %d mír?</item>
+        <item quantity="other">Scrios %d mír?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Scrios %d mhír phionnáilte?</item>
+        <item quantity="two">Scrios %d mhír phionnáilte?</item>
+        <item quantity="few">Scrios %d mhír phionnáilte?</item>
+        <item quantity="many">Scrios %d mír phionnáilte?</item>
+        <item quantity="other">Scrios %d mír phionnáilte?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Áirigh %d mhír phionnáilte leis</item>
+        <item quantity="two">Áirigh %d mhír phionnáilte leis</item>
+        <item quantity="few">Áirigh %d mhír phionnáilte leis</item>
+        <item quantity="many">Áirigh %d mír phionnáilte leis</item>
+        <item quantity="other">Áirigh %d mír phionnáilte leis</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Athbhreithn. %d mholadh scríbhn.</item>
+        <item quantity="two">Athbhreithn. %d mholadh scríbhn.</item>
+        <item quantity="few">Athbhreithn. %d mholadh scríbhn.</item>
+        <item quantity="many">Athbhreithn. %d moladh scríbhn.</item>
+        <item quantity="other">Athbhreithn. %d moladh scríbhn.</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Ní féidir níos mó ná %d ghreamán a chur leis. Gabh chuig an eagarthóir grianghraf i nGailearaí le greamáin a bhaint.</item>
+        <item quantity="two">Ní féidir níos mó ná %d ghreamán a chur leis. Gabh chuig an eagarthóir grianghraf i nGailearaí le greamáin a bhaint.</item>
+        <item quantity="few">Ní féidir níos mó ná %d ghreamán a chur leis. Gabh chuig an eagarthóir grianghraf i nGailearaí le greamáin a bhaint.</item>
+        <item quantity="many">Ní féidir níos mó ná %d ngreamán a chur leis. Gabh chuig an eagarthóir grianghraf i nGailearaí le greamáin a bhaint.</item>
+        <item quantity="other">Ní féidir níos mó ná %d greamán a chur leis. Gabh chuig an eagarthóir grianghraf i nGailearaí le greamáin a bhaint.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Ní féidir níos mó ná %d dath a thaispeáint.</item>
+        <item quantity="two">Ní féidir níos mó ná %d dhath a thaispeáint.</item>
+        <item quantity="few">Ní féidir níos mó ná %d dhath a thaispeáint.</item>
+        <item quantity="many">Ní féidir níos mó ná %d ndath a thaispeáint.</item>
+        <item quantity="other">Ní féidir níos mó ná %d dath a thaispeáint.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d roghnaithe</item>
+        <item quantity="two">%d roghnaithe</item>
+        <item quantity="few">%d roghnaithe</item>
+        <item quantity="many">%d roghnaithe</item>
+        <item quantity="other">%d roghnaithe</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Scrios %d aicearra téacs?</item>
+        <item quantity="two">Scrios %d aicearra téacs?</item>
+        <item quantity="few">Scrios %d aicearra téacs?</item>
+        <item quantity="many">Scrios %d n-aicearra téacs?</item>
+        <item quantity="other">Scrios %d aicearra téacs?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d teanga le nuashonrú.</item>
+        <item quantity="two">%d theanga le nuashonrú.</item>
+        <item quantity="few">%d theanga le nuashonrú.</item>
+        <item quantity="many">%d dteanga le nuashonrú.</item>
+        <item quantity="other">%d teanga le nuashonrú.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d roghnaithe</item>
+        <item quantity="two">%d roghnaithe</item>
+        <item quantity="few">%d roghnaithe</item>
+        <item quantity="many">%d roghnaithe</item>
+        <item quantity="other">%d roghnaithe</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Tá %d charachtar roghnaithe agat.</item>
+        <item quantity="two">Tá %d charachtar roghnaithe agat.</item>
+        <item quantity="few">Tá %d charachtar roghnaithe agat.</item>
+        <item quantity="many">Tá %d gcarachtar roghnaithe agat.</item>
+        <item quantity="other">Tá %d carachtar roghnaithe agat.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d cheartúchán</item>
+        <item quantity="two">%d cheartúchán</item>
+        <item quantity="few">%d cheartúchán</item>
+        <item quantity="many">%d gceartúchán</item>
+        <item quantity="other">%d ceartúchán</item>
+    </plurals>
+</resources>

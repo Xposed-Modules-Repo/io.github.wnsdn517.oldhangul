@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:tag="layout/kaomoji_content_0" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.core.widget.NestedScrollView android:id="@id/nested_scrollview" android:tag="binding_1" android:paddingTop="@dimen/kaomoji_scroll_list_top_padding" style="@style/friends_board_scrollable_view_style">
+        <com.samsung.android.honeyboard.textboard.friends.kaomoji.view.GlobalKaomojiScrollLayout android:orientation="vertical" android:id="@id/scroll_list" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </androidx.core.widget.NestedScrollView>
+    <androidx.core.widget.NestedScrollView android:tag="binding_2" android:paddingBottom="@dimen/friends_content_footer_padding" android:layout_margin="@dimen/friends_content_layout_margin" style="@style/friends_board_scrollable_view_style">
+        <TextView android:textColor="?kaomoji_alert_msg_text_color" android:layout_gravity="center" android:tag="binding_3" style="@style/friends_board_error_message_view_style" />
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

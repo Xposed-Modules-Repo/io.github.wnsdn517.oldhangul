@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tag="layout/writing_toolkit_result_scrollbar_layout_0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_gravity="end"
+        android:id="@+id/writing_toolkit_table_vertical_thumb"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/writing_toolkit_scrollbar"
+        android:scaleType="fitXY"
+        android:paddingVertical="@dimen/writing_toolkit_result_scrollbar_padding"/>
+    <ImageView
+        android:layout_gravity="bottom"
+        android:id="@+id/writing_toolkit_table_horizontal_thumb"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/writing_toolkit_scrollbar"
+        android:scaleType="fitXY"
+        android:paddingHorizontal="@dimen/writing_toolkit_result_scrollbar_padding"/>
+</FrameLayout>

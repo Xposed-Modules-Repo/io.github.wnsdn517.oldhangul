@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">هنگامی که به محدودیت %d تصویر ایجادشده رسیدید، ایجاد تصویر جدید باعث حذف قدیمی‌ترین تصویر شما می‌شود.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">هنگامی که به محدودیت %d تصویر ایجادشده رسیدید، ایجاد تصویر جدید باعث حذف قدیمی‌ترین تصویر شما می‌شود.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d برچسب حذف شود؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d برچسب حذف شود؟</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">این %d جفت ایموجی حذف شود؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">این %d جفت ایموجی حذف شود؟</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">برای استفاده از ویژگی‌های هوش‌مصنوعی پیشرفته Galaxy AI باید حداقل %d سال داشته باشید.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">برای استفاده از ویژگی‌های هوش‌مصنوعی پیشرفته Galaxy AI باید حداقل %d سال داشته باشید.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d مورد حذف شود؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d مورد حذف شود؟</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">این %d مورد پین‌شده حذف شود؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">این %d مورد پین‌شده حذف شود؟</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">لحاظ کردن %d مورد پین‌شده</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">لحاظ کردن %d مورد پین‌شده</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">مرور %d پیشنهاد نوشتن</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">مرور %d پیشنهاد نوشتن</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d اعلان جدید</item>
+        <item quantity="other">%d اعلان جدید</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">افزودن بیش از %d برچسب ممکن نیست. برای حذف برچسب‌ها، به ویرایشگر عکس در ”گالری“ بروید.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">افزودن بیش از %d برچسب ممکن نیست. برای حذف برچسب‌ها، به ویرایشگر عکس در ”گالری“ بروید.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">نمایش بیشتر از %d رنگ ممکن نیست.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">نمایش بیشتر از %d رنگ ممکن نیست.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d مورد انتخاب شد</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d مورد انتخاب شد</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d میانبر متنی حذف شود؟</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d میانبر متنی حذف شود؟</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d زبان به‌روز می‌شود.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d زبان به‌روز می‌شوند.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d مورد انتخاب شد</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d مورد انتخاب شد</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">شما %d نویسه را انتخاب کرده‌اید.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">شما %d نویسه را انتخاب کرده‌اید.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d تصحیح</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d تصحیح</item>
+    </plurals>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:id="@id/settings_suggest_sticker_method" android:title="@string/setting_suggest_sticker_method"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:key="sticker_suggestion_method_image_category">
+        <com.samsung.android.honeyboard.settings.smarttyping.sticker.SettingImagePreference android:key="sticker_suggestion_method_image" />
+    </PreferenceCategory>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:key="sticker_suggestion_method_category" app:entryValues="@array/array_sticker_suggestion_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="true" android:title="@string/setting_suggest_sticker_method_prediction" android:key="SETTINGS_SUGGEST_STICKER_METHOD_PREDICTION" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="true" android:title="@string/setting_suggest_sticker_method_popup" android:key="SETTINGS_SUGGEST_STICKER_METHOD_POPUP" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

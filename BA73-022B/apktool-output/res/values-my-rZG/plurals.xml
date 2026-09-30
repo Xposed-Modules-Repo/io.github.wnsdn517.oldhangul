@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ပုံ %d ပုံသို႔ ထုတ္ၿပီးသည္ႏွင့္တစ္ၿပိဳင္နက္၊ ပုံအသစ္တစ္ခု ထုတ္လုပ္ပါက သင့္အေဟာင္းဆုံးပုံကို ဖ်က္မည္ျဖစ္သည္။</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">စတစ္ကာ %d ခုကို ဖ်က္ပစ္မလား?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">႐ုပ္ေျပာင္ပံုအတြဲ %d ခုကို ဖ်က္မလား?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Galaxy AI ၏ အဆင့္ျမင့္ဉာဏ္ရည္လုပ္ေဆာင္ခ်က္မ်ားကို သုံးရန္အတြက္ သင္သည္ အနည္းဆုံး အသက္ %d ႏွစ္ ျပည့္ရန္ လိုသည္။</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ခုကို ဖ်က္မလား?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ပင္တြဲထားသည့္ %d ခုကို ဖ်က္မလား?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ပင္တြဲထားသည့္ %d ခုကို ထည့္ပါ</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">စာေရးရန္ အၾကံျပဳခ်က္ %d ခုကို ျပန္စစ္ရန္</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">စတစ္ကာ %d ခုထက္ ပိုထည့္၍မရပါ။ စတစ္ကာမ်ားကို ဖယ္ရွားရန္ ျပခန္းရွိ ဓာတ္ပုံ တည္းျဖတ္သို႔ သြားပါ။</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">အေရာင္ %d ခုထက္ ပုိျပ၍မရပါ။</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ကို ေ႐ြးထားသည္</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">စာသားေရွာ့ကတ္ %d ခုကို ဖ်က္ပစ္မလား?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ဘာသာစကား %d ခု အပ္ဒိတ္လုပ္ပါမည္။</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ကို ေ႐ြးထားသည္</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">အကၡရာ %d လုံး ေ႐ြးခ်ယ္ထားသည္။</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">N/A</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">အမွားျပင္ဆင္ခ်က္ %d ခု</item>
+    </plurals>
+</resources>

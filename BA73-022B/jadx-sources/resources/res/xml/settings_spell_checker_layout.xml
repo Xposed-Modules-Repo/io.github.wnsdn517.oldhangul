@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settings_spell_checker"
+    android:title="@string/use_spell_checker"
+    android:key="settings_spell_checker">
+    <PreferenceCategory android:key="supported_languages"/>
+    <PreferenceCategory
+        android:title="@string/grammarly_pp_title"
+        android:key="english_writing_assistant"/>
+    <PreferenceCategory
+        android:title="@string/use_auto_correction_unsupported_languages"
+        android:key="unsupported_languages"/>
+</PreferenceScreen>

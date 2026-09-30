@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="@dimen/ai_sticker_badge_inset_size"
+    android:insetRight="@dimen/ai_sticker_badge_inset_size"
+    android:insetTop="@dimen/ai_sticker_badge_inset_size"
+    android:insetBottom="@dimen/ai_sticker_badge_inset_size">
+    <shape android:shape="oval">
+        <size
+            android:height="@dimen/ai_sticker_badge_size"
+            android:width="@dimen/ai_sticker_badge_size"/>
+        <solid android:color="@color/toolbar_badge_color_default"/>
+    </shape>
+</inset>

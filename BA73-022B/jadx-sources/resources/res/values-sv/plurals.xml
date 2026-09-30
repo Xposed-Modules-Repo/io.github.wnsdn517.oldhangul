@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">När du når %d genererad bild, raderas din äldsta bild om du genererar en ny.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">När du når %d genererade bilder, raderas din äldsta bild om du genererar en ny.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Vill du radera %d klistermärke?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Vill du radera %d klistermärken?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Vill du radera %d emojipar?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Vill du radera %d emojipar?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Du måste vara minst %d år för att få använda funktioner med avancerad intelligens från Galaxy AI.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Du måste vara minst %d år för att få använda funktioner med avancerad intelligens från Galaxy AI.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Radera %d objekt?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Radera %d objekt?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Radera %d fäst objekt?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Radera %d fästa objekt?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Inkludera %d fäst objekt</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Inkludera %d fästa objekt</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Granska %d skrivförslag</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Granska %d skrivförslag</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d ny avisering</item>
+        <item quantity="other">%d nya aviseringar</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Det går inte att lägga till fler än %d klistermärke. Gå till fotoredigeraren i Galleri om du vill ta bort klistermärken.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Det går inte att lägga till fler än %d klistermärken. Gå till fotoredigeraren i Galleri om du vill ta bort klistermärken.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Det går inte att visa fler än %d färg.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Det går inte att visa fler än %d färger.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d vald</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d valda</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Ta bort %d textgenväg?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Ta bort %d textgenvägar?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d språk behöver uppdateras.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d språk behöver uppdateras.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d vald</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d valda</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Du har valt %d tecken.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Du har valt %d tecken.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d korrigering</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d korrigeringar</item>
+    </plurals>
+</resources>

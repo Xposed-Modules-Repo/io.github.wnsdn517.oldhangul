@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/setting_layout" android:background="@color/app_theme_background_color" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/action_bar" />
+    <androidx.core.widget.NestedScrollView android:id="@id/nested_scroll_view" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/preference_widget_frame_padding_start">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:textStyle="bold" android:id="@id/touch_script_file_name" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <Space android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:textStyle="bold" android:id="@id/finish_count" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/layout_name" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/name" android:layout_marginEnd="7.0dp" />
+                <EditText android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:id="@id/touch_event_name" android:layout_width="match_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:id="@id/layout_gender" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gender" android:layout_marginEnd="7.0dp" />
+                <RadioGroup android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatRadioButton android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:id="@id/male" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/male" android:layout_marginEnd="5.0dp" />
+                    <androidx.appcompat.widget.AppCompatRadioButton android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:id="@id/female" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/female" />
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:id="@id/layout_age" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/age" />
+                <Spinner android:id="@id/age" android:layout_width="wrap_content" android:layout_height="30.0dp" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/layout_type" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/type" />
+                <Spinner android:id="@id/touch_event_type_spinner" android:layout_width="wrap_content" android:layout_height="30.0dp" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/layout_typingwith" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/setting_touch_event_demographic_edit_text_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/typing" />
+                <Spinner android:id="@id/touch_event_typing_spinner" android:layout_width="wrap_content" android:layout_height="30.0dp" />
+            </LinearLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setting_touch_event_target_margin_top">
+                <ImageButton android:layout_gravity="center" android:id="@id/upload_kpm_button" android:background="@drawable/ic_download" android:visibility="gone" android:layout_width="60.0dp" android:layout_height="60.0dp" android:layout_marginTop="20.0dp" android:contentDescription="@string/load_sentences" />
+                <ImageButton android:layout_gravity="center" android:id="@id/upload_button" android:background="@drawable/ic_upload" android:visibility="gone" android:layout_width="60.0dp" android:layout_height="60.0dp" android:layout_marginTop="20.0dp" android:contentDescription="@string/load_sentences" />
+                <ImageButton android:layout_gravity="center" android:id="@id/next_button" android:background="@drawable/ic_next" android:visibility="gone" android:layout_width="60.0dp" android:layout_height="60.0dp" android:layout_marginTop="20.0dp" android:contentDescription="@string/load_sentences" />
+            </FrameLayout>
+            <TextView android:textStyle="bold" android:textColor="@color/touch_event_record_contents_color" android:layout_gravity="center" android:id="@id/upload_kpm_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dp" android:text="@string/save_user_data" />
+            <TextView android:textStyle="bold" android:textColor="@color/touch_event_record_contents_color" android:layout_gravity="center" android:id="@id/upload_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dp" android:text="@string/load_sentences" />
+            <LinearLayout android:orientation="vertical" android:id="@id/input_area" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/button_area" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatButton android:enabled="false" android:textSize="@dimen/setting_touch_event_edit_text_size" android:id="@id/touch_event_clear_button" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clear" />
+                    <Space android:layout_width="10.0dp" android:layout_height="wrap_content" />
+                    <TextView android:textSize="@dimen/setting_touch_event_target_text_size" android:textStyle="bold" android:textColor="@color/touch_event_record_contents_color" android:id="@id/progress_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <Space android:layout_width="10.0dp" android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatButton android:textSize="@dimen/setting_touch_event_edit_text_size" android:id="@id/touch_event_button" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/start" />
+                </LinearLayout>
+                <TextView android:textSize="@dimen/setting_touch_event_target_text_size" android:typeface="monospace" android:textStyle="normal" android:textColor="@color/touch_event_record_contents_color" android:id="@id/touch_event_target" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/setting_touch_event_edit_text_padding_horizontal" />
+                <EditText android:enabled="false" android:textSize="@dimen/setting_touch_event_edit_text_size" android:typeface="monospace" android:textStyle="normal" android:id="@id/touch_event_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/record_edittext_hint" android:inputType="textCapSentences|textMultiLine" android:privateImeOptions="disableAutoReplacement=true;disableAllToolbarItems=true;disableRangeChangeKey=true;enableAlwaysToolbar=true;disableLongPressBackspace=true" style="@style/setting_edit_text_round_corner_bg" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

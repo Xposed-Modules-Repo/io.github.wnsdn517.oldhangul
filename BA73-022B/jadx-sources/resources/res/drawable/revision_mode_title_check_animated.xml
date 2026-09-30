@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/_revision_mode_title_check_animated__0_res_0x7f0802e7">
+    <target
+        android:name="s1pg1p10"
+        android:animation="@drawable/_revision_mode_title_check_animated__1_res_0x7f0802e8"/>
+</animated-vector>

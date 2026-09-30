@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:key="settings_category_8flick_diagonal_range_animation_preview">
+        <com.samsung.android.honeyboard.settings.common.LottieViewPreference
+            android:persistent="true"
+            android:key="settings_8flick_diagonal_range_animation_preview"/>
+    </PreferenceCategory>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup
+        android:persistent="true"
+        android:key="flick_angle_multi"
+        app:entryValues="@array/array_eight_flick_angle_type_entry_value">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/ti_preference_flick_angle_value_narrow_txt"
+            android:key="settings_8flick_diagonal_range_narrow"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/ti_preference_flick_angle_value_normal_txt"
+            android:key="settings_8flick_diagonal_range_normal"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/ti_preference_flick_angle_value_wide_txt"
+            android:key="settings_8flick_diagonal_range_wide"/>
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

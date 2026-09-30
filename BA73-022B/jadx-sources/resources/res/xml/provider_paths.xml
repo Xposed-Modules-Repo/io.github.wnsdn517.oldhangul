@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <file-path
+        name="skbd"
+        path="../Download/"/>
+    <file-path
+        name="keyscafe_statistics"
+        path="../databases/"/>
+    <file-path
+        name="dailyRecords"
+        path="../files/"/>
+    <file-path
+        name="touchdata"
+        path="../app_touchdata/"/>
+    <root-path
+        name="root"
+        path="/"/>
+</paths>

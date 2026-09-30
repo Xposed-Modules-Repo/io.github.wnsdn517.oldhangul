@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Після того як ви згенеруєте %d зображення, генерування нового зображення призводитиме до видалення найстарішого зображення.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Після того як ви згенеруєте %d зображення, генерування нового зображення призводитиме до видалення найстарішого зображення.</item>
+        <item quantity="many">Після того як ви згенеруєте %d зображень, генерування нового зображення призводитиме до видалення найстарішого зображення.</item>
+        <item quantity="other">Після того як ви згенеруєте %d зображення, генерування нового зображення призводитиме до видалення найстарішого зображення.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Видалити %d стикер?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Видалити %d стикери?</item>
+        <item quantity="many">Видалити %d стикерів?</item>
+        <item quantity="other">Видалити %d стикера?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Видалити %d пару емодзі?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Видалити %d пари емодзі?</item>
+        <item quantity="many">Видалити %d пар емодзі?</item>
+        <item quantity="other">Видалити %d пари емодзі?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Використовувати інтелектуальні інструменти Galaxy AI можуть лише користувачі, яким виповнився %d рік.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Використовувати інтелектуальні інструменти Galaxy AI можуть лише користувачі, яким виповнилося %d роки.</item>
+        <item quantity="many">Використовувати інтелектуальні інструменти Galaxy AI можуть лише користувачі, яким виповнилося %d років.</item>
+        <item quantity="other">Використовувати інтелектуальні інструменти Galaxy AI можуть лише користувачі, яким виповнилося %d року.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Видалити %d об’єкт?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Видалити %d об’єкти?</item>
+        <item quantity="many">Видалити %d об’єктів?</item>
+        <item quantity="other">Видалити %d об’єкта?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Видалити %d закріплений об’єкт?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Видалити %d закріплені об’єкти?</item>
+        <item quantity="many">Видалити %d закріплених об’єктів?</item>
+        <item quantity="other">Видалити %d закріпленого об’єкта?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Включити %d закріплений об’єкт</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Включити %d закріплені об’єкти</item>
+        <item quantity="many">Включити %d закріплених об’єктів</item>
+        <item quantity="other">Включити %d закріпленого об’єкта</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Переглянути %d пропозицію</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Переглянути %d пропозиції</item>
+        <item quantity="many">Переглянути %d пропозицій</item>
+        <item quantity="other">Переглянути %d пропозиції</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d нове сповіщення</item>
+        <item quantity="few">%d нові сповіщення</item>
+        <item quantity="many">%d нових сповіщень</item>
+        <item quantity="other">%d нового сповіщення</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Неможливо додати більше ніж %d стікер. Щоб видалити стікери, відкрийте фоторедактор у «Галереї».</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Неможливо додати більше ніж %d стікери. Щоб видалити стікери, відкрийте фоторедактор у «Галереї».</item>
+        <item quantity="many">Неможливо додати більше ніж %d стікерів. Щоб видалити стікери, відкрийте фоторедактор у «Галереї».</item>
+        <item quantity="other">Неможливо додати більше ніж %d стікера. Щоб видалити стікери, відкрийте фоторедактор у «Галереї».</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Неможливо відобразити більше %d кольору.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Неможливо відобразити більше %d кольорів.</item>
+        <item quantity="many">Неможливо відобразити більше %d кольорів.</item>
+        <item quantity="other">Неможливо відобразити більше %d кольору.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Вибрано: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Вибрано: %d</item>
+        <item quantity="many">Вибрано: %d</item>
+        <item quantity="other">Вибрано: %d</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Видалити %d текстовий ярлик?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Видалити %d текстових ярлики?</item>
+        <item quantity="many">Видалити %d текстових ярликів?</item>
+        <item quantity="other">Видалити %d текстових ярлика?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Буде оновлена %d мова.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Буде оновлено %d мови.</item>
+        <item quantity="many">Буде оновлено %d мов.</item>
+        <item quantity="other">Буде оновлено %d мови.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Вибрано: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Вибрано: %d</item>
+        <item quantity="many">Вибрано: %d</item>
+        <item quantity="other">Вибрано: %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Вибрано %d символ.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Вибрано %d символи.</item>
+        <item quantity="many">Вибрано %d символів.</item>
+        <item quantity="other">Вибрано %d символу.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d виправлення</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">%d виправлення</item>
+        <item quantity="many">%d виправлень</item>
+        <item quantity="other">%d виправлення</item>
+    </plurals>
+</resources>

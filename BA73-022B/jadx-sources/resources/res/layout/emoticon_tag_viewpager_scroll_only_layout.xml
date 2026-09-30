@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:background="?attr/emoticon_content_bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/emoticon_app_bar"
+        android:paddingBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:expanded="true"
+        app:seslHeightProportion="0"
+        app:seslUseCustomHeight="true"
+        app:seslUseCustomPadding="true"
+        app:seslUseFloatingToolbar="false">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/emoticon_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="enterAlways|scroll">
+            <com.samsung.android.honeyboard.support.category.CategoryLayout
+                android:theme="?attr/emoticon_category_theme_4x"
+                android:layout_gravity="bottom"
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:category_item_layout="@layout/emoticon_category_scroll_area"
+                style="@style/CategoryView.ScrollOnly"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.samsung.android.honeyboard.textboard.friends.emoticon.view.EmoticonViewPager
+        android:id="@+id/viewpager"
+        android:paddingTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

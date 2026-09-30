@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/_picker_app_checkbox_anim_check_to_uncheck__21_res_0x7f0802c9">
+    <target
+        android:name="s4"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__0_res_0x7f0802bb"/>
+    <target
+        android:name="s4pg1p11"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__5_res_0x7f0802cc"/>
+    <target
+        android:name="s4s3"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__6_res_0x7f0802cd"/>
+    <target
+        android:name="s3p300"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__11_res_0x7f0802be"/>
+    <target
+        android:name="s3p300"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__12_res_0x7f0802bf"/>
+    <target
+        android:name="s4s2"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__13_res_0x7f0802c0"/>
+    <target
+        android:name="s2p300"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__18_res_0x7f0802c5"/>
+    <target
+        android:name="s2p300"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__19_res_0x7f0802c6"/>
+    <target
+        android:name="time_group"
+        android:animation="@drawable/_picker_app_checkbox_anim_check_to_uncheck__20_res_0x7f0802c8"/>
+</animated-vector>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true"
+    android:ordering="together">
+    <objectAnimator
+        android:duration="@integer/setting_pen_morphing_duration"
+        android:valueFrom="@string/brush_marker_unselected"
+        android:valueTo="@string/brush_marker_selected"
+        android:valueType="pathType"
+        android:propertyName="pathData"/>
+</set>

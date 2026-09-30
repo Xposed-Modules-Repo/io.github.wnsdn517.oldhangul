@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <corners android:radius="@dimen/revision_mode_item_background_radius"/>
+    <stroke
+        android:width="@dimen/revision_mode_item_background_stoke_width"
+        android:color="@color/revision_mode_item_label_stroke_color_open_theme"/>
+</shape>

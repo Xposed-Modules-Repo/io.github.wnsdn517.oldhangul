@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settings_privacy_policy"
+    android:title="@string/settings_pp_third_party_content"
+    android:key="SETTINGS_PRIVACY_POLICY">&gt; \10  
+    <androidx.preference.SeslSwitchPreferenceScreen
+        android:persistent="true"
+        android:enabled="true"
+        android:title="@string/setting_suggest_sticker_bitmoji_title"
+        android:key="sticker_pp_bitmoji_agreement_accepted"
+        android:summary="@string/settings_sticker_search_and_suggestion"
+        android:defaultValue="false"/>
+    <androidx.preference.SeslSwitchPreferenceScreen
+        android:persistent="true"
+        android:enabled="true"
+        android:title="@string/settings_pp_giphy_and_tenor"
+        android:key="gif_pp_agreement_accepted"
+        android:summary="@string/settings_gif"
+        android:defaultValue="false"/>
+    <androidx.preference.SeslSwitchPreferenceScreen
+        android:persistent="true"
+        android:enabled="true"
+        android:title="@string/settings_pp_google"
+        android:key="google_pp_agreement_accepted"
+        android:summary="@string/settings_translation"
+        android:defaultValue="false"/>
+    <androidx.preference.SeslSwitchPreferenceScreen
+        android:persistent="true"
+        android:enabled="true"
+        android:title="@string/settings_pp_sogou"
+        android:key="sogou_pp_agreement_accepted"
+        android:summary="@string/pp_sogou_functions"
+        android:defaultValue="false"/>
+    <androidx.preference.SeslSwitchPreferenceScreen
+        android:persistent="true"
+        android:enabled="true"
+        android:title="@string/grammarly_pp_title"
+        android:key="sdk_accepted_privacy_policy"
+        android:summary="@string/writing_assistant_english"
+        android:defaultValue="false"/>
+</PreferenceScreen>

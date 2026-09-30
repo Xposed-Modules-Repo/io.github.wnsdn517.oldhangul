@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:orientation="vertical" android:id="@id/bixby_routine_keyboard_mode_layout" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:title="@string/mode_portrait" android:key="portrait_view_type" app:entryValues="@array/array_portrait_view_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_standard" android:key="standard_keyboard" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_one_handed" android:key="one_handed_keyboard" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_split" android:key="split_keyboard" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_floating" android:key="floating_keyboard" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:title="@string/mode_landscape" android:key="landscape_view_type" app:entryValues="@array/array_landscape_view_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_standard" android:key="standard_keyboard_land" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_split" android:key="split_keyboard_land" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_floating" android:key="floating_keyboard_land" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:title="@string/mode_front_portrait" android:key="portrait_front_view_type" app:entryValues="@array/array_portrait_front_view_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_standard" android:key="standard_keyboard_front" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_floating" android:key="floating_keyboard_front" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:title="@string/mode_front_landscape" android:key="landscape_front_view_type" app:entryValues="@array/array_landscape_front_view_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_standard" android:key="standard_keyboard_front_land" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_split" android:key="split_keyboard_front_land" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/input_method_type_floating" android:key="floating_keyboard_front_land" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RoutinePaddingPreferenceList android:key="routine_padding_mode_type" />
+</PreferenceScreen>

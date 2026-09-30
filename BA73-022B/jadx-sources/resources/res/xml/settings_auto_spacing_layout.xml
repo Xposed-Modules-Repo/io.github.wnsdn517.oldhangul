@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settings_auto_spacing"
+    android:title="@string/use_auto_spacing"
+    android:key="settings_auto_spacing">
+    <PreferenceCategory android:key="supported_languages"/>
+    <PreferenceCategory android:key="unsupported_languages"/>
+</PreferenceScreen>

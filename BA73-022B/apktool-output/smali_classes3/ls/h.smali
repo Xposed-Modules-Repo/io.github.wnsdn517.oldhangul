@@ -1,0 +1,96 @@
+.class public final Lls/h;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lls/j;
+
+
+# instance fields
+.field public e:Landroid/os/IBinder;
+
+
+# virtual methods
+.method public final asBinder()Landroid/os/IBinder;
+    .locals 0
+
+    iget-object p0, p0, Lls/h;->e:Landroid/os/IBinder;
+
+    return-object p0
+.end method
+
+.method public final e(Ljava/util/HashMap;Ljava/lang/String;LOr/b;Ljava/util/HashMap;)V
+    .locals 4
+
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v1
+
+    :try_start_0
+    const-string v2, "com.samsung.android.sivs.ai.sdkcommon.language.IEmojiAugmentationService"
+
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    invoke-virtual {p1}, Ljava/util/HashMap;->size()I
+
+    move-result v2
+
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    new-instance v2, Lls/a;
+
+    const/4 v3, 0x6
+
+    invoke-direct {v2, v0, v3}, Lls/a;-><init>(Landroid/os/Parcel;I)V
+
+    invoke-virtual {p1, v2}, Ljava/util/HashMap;->forEach(Ljava/util/function/BiConsumer;)V
+
+    invoke-virtual {v0, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p3}, Landroid/os/Parcel;->writeStrongInterface(Landroid/os/IInterface;)V
+
+    invoke-virtual {p4}, Ljava/util/HashMap;->size()I
+
+    move-result p1
+
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeInt(I)V
+
+    new-instance p1, Lls/a;
+
+    const/4 p2, 0x7
+
+    invoke-direct {p1, v0, p2}, Lls/a;-><init>(Landroid/os/Parcel;I)V
+
+    invoke-virtual {p4, p1}, Ljava/util/HashMap;->forEach(Ljava/util/function/BiConsumer;)V
+
+    iget-object p0, p0, Lls/h;->e:Landroid/os/IBinder;
+
+    const/4 p1, 0x4
+
+    const/4 p2, 0x0
+
+    invoke-interface {p0, p1, v0, v1, p2}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+
+    invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    return-void
+
+    :catchall_0
+    move-exception p0
+
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw p0
+.end method

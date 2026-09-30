@@ -1,0 +1,92 @@
+.class public final synthetic LN/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:I
+
+.field public final synthetic b:LN/b;
+
+
+# direct methods
+.method public synthetic constructor <init>(LN/b;I)V
+    .locals 0
+
+    iput p2, p0, LN/a;->a:I
+
+    iput-object p1, p0, LN/a;->b:LN/b;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 2
+
+    iget v0, p0, LN/a;->a:I
+
+    packed-switch v0, :pswitch_data_0
+
+    check-cast p1, Ljava/lang/Throwable;
+
+    const-string v0, "it"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iget-object p0, p0, LN/a;->b:LN/b;
+
+    iget-object p0, p0, LN/b;->b:Lfu/a;
+
+    const-string v0, "saveRecentInfo has been failed "
+
+    invoke-static {v0, p1}, LH1/e;->l(Ljava/lang/String;Ljava/lang/Throwable;)Ljava/lang/String;
+
+    move-result-object p1
+
+    const/4 v0, 0x0
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    invoke-virtual {p0, p1, v0}, Lfu/a;->d(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object p0
+
+    :pswitch_0
+    check-cast p1, Lkotlin/Unit;
+
+    const-string v0, "it"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iget-object p0, p0, LN/a;->b:LN/b;
+
+    iget-object p0, p0, LN/b;->a:Landroid/content/Context;
+
+    const-string p1, "recent"
+
+    const/4 v0, 0x1
+
+    const-string v1, "gif"
+
+    invoke-static {p0, v1, p1, v0}, Lvw/k;->b(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Z)V
+
+    sget-object p0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object p0
+
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method

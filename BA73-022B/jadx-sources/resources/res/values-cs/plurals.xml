@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Jakmile vygenerujete %d obrázek, při generování nového obrázku dojde k odstranění nejstaršího obrázku.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Jakmile vygenerujete %d obrázky, při generování nového obrázku dojde k odstranění nejstaršího obrázku.</item>
+        <item quantity="many">Jakmile vygenerujete %d obrázků, při generování nového obrázku dojde k odstranění nejstaršího obrázku.</item>
+        <item quantity="other">Jakmile vygenerujete %d obrázků, při generování nového obrázku dojde k odstranění nejstaršího obrázku.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Odstranit %d nálepku?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Odstranit %d nálepky?</item>
+        <item quantity="many">Odstranit %d nálepek?</item>
+        <item quantity="other">Odstranit %d nálepek?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Odstranit %d pár emoji?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Odstranit %d páry emoji?</item>
+        <item quantity="many">Odstranit %d párů emoji?</item>
+        <item quantity="other">Odstranit %d párů emoji?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Abyste mohli používat funkce pokročilé inteligence Galaxy AI, musí vám být alespoň %d rok.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Abyste mohli používat funkce pokročilé inteligence Galaxy AI, musí vám být alespoň %d roky.</item>
+        <item quantity="many">Abyste mohli používat funkce pokročilé inteligence Galaxy AI, musí vám být alespoň %d let.</item>
+        <item quantity="other">Abyste mohli používat funkce pokročilé inteligence Galaxy AI, musí vám být alespoň %d let.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Odstranit %d položku?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Odstranit %d položky?</item>
+        <item quantity="many">Odstranit %d položek?</item>
+        <item quantity="other">Odstranit %d položek?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Odstranit %d připnutou položku?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Odstranit %d připnuté položky?</item>
+        <item quantity="many">Odstranit %d připnutých položek?</item>
+        <item quantity="other">Odstranit %d připnutých položek?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Zahrnout %d připnutou položku</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Zahrnout %d připnuté položky</item>
+        <item quantity="many">Zahrnout %d připnutých položek</item>
+        <item quantity="other">Zahrnout %d připnutých položek</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Zkontrolovat %d návrh na psaní</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Zkontr. %d návrhy na psaní</item>
+        <item quantity="many">Zkontr. %d návrhů na psaní</item>
+        <item quantity="other">Zkontr. %d návrhů na psaní</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nové oznámení</item>
+        <item quantity="few">%d nová oznámení</item>
+        <item quantity="many">%d nového oznámení</item>
+        <item quantity="other">%d nových oznámení</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Nelze přidat více než %d nálepku. Přejděte do Editoru fotografií v Galerii a odeberte nálepky.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Nelze přidat více než %d nálepky. Přejděte do Editoru fotografií v Galerii a odeberte nálepky.</item>
+        <item quantity="many">Nelze přidat více než %d nálepek. Přejděte do Editoru fotografií v Galerii a odeberte nálepky.</item>
+        <item quantity="other">Nelze přidat více než %d nálepek. Přejděte do Editoru fotografií v Galerii a odeberte nálepky.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Nelze zobrazit více než %d barvu.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Nelze zobrazit více než %d barvy.</item>
+        <item quantity="many">Nelze zobrazit více než %d barev.</item>
+        <item quantity="other">Nelze zobrazit více než %d barev.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Vybráno: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Vybráno: %d</item>
+        <item quantity="many">Vybráno: %d</item>
+        <item quantity="other">Vybráno: %d</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Odstranit %d textového zástupce?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Odstranit %d textové zástupce?</item>
+        <item quantity="many">Odstranit %d textových zástupců?</item>
+        <item quantity="other">Odstranit %d textových zástupců?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Je nutné aktualizovat %d jazyk.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Je nutné aktualizovat %d jazyky.</item>
+        <item quantity="many">Je nutné aktualizovat %d jazyků.</item>
+        <item quantity="other">Je nutné aktualizovat %d jazyků.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Vybráno: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Vybráno: %d</item>
+        <item quantity="many">Vybráno: %d</item>
+        <item quantity="other">Vybráno: %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Vybrali jste %d znak.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Vybrali jste %d znaky.</item>
+        <item quantity="many">Vybrali jste %d znaku.</item>
+        <item quantity="other">Vybrali jste %d znaků.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d oprava</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">%d opravy</item>
+        <item quantity="many">%d oprav</item>
+        <item quantity="other">%d oprav</item>
+    </plurals>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ai_expression_result_page_editor_max_lines">1</integer>
+    <integer name="ai_expression_style_view_text_max_line">1</integer>
+    <integer name="ai_sticker_styles_layout_item_count">6</integer>
+    <integer name="clipboard_item_column">6</integer>
+    <integer name="clipboard_item_column_fold_device">7</integer>
+    <integer name="emoticon_recycler_view_column_num">12</integer>
+    <integer name="emoticon_recycler_view_column_num_fold_main">12</integer>
+    <integer name="emoticon_recycler_view_column_num_tablet">13</integer>
+    <integer name="emoticon_recycler_view_row_num">3</integer>
+    <integer name="gif_tray_grid_col">4</integer>
+    <integer name="mtrl_calendar_header_orientation">0</integer>
+    <integer name="mtrl_calendar_selection_text_lines">6</integer>
+    <integer name="sticker_tray_grid_col">7</integer>
+    <integer name="sticker_tray_grid_col_winner">7</integer>
+    <integer name="sticker_tray_grid_row_line">1</integer>
+    <integer name="symbol_column_count">13</integer>
+</resources>

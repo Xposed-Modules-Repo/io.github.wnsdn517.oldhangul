@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/writing_toolkit_bg_color" />
+    <stroke android:width="1.0dp" android:color="#4cffffff" />
+    <corners android:radius="@dimen/writing_toolkit_floating_bg_corner_radius" />
+</shape>

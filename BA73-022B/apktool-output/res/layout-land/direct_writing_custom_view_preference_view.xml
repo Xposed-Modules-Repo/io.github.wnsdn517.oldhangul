@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/app_theme_background_color" android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:id="@id/dw_custom_view_left" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="@dimen/setting_direct_writing_custom_view_weight_left">
+        <com.airbnb.lottie.LottieAnimationView android:id="@id/animation_view" android:focusable="true" android:layout_width="wrap_content" android:layout_height="@dimen/setting_direct_writing_animation_view_height" android:scaleType="centerCrop" android:contentDescription="@string/settings_direct_writing_animation_description" app:lottie_autoPlay="true" app:lottie_loop="true" app:lottie_rawRes="@raw/settings_direct_writing" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/dw_custom_view_right" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="@dimen/setting_direct_writing_custom_view_weight_right">
+        <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/settings_direct_writing_description" android:paddingStart="@dimen/setting_direct_writing_text_start_margin" android:paddingEnd="@dimen/setting_direct_writing_text_end_margin" style="@style/common_ui_description_text_style_to_white_text" />
+        <LinearLayout android:gravity="end|top" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setting_direct_writing_gesture_button_container_margin_top" android:layout_marginBottom="@dimen/setting_direct_writing_gesture_button_container_margin_bottom" android:minHeight="@dimen/setting_direct_writing_gesture_button_container_height">
+            <androidx.appcompat.widget.AppCompatButton android:id="@id/gesture_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/setting_direct_writing_gesture_button_height" android:text="@string/settings_direct_writing_gesture_button" android:layout_marginEnd="@dimen/setting_direct_writing_button_right_margin" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

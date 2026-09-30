@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="@dimen/kaomoji_text_size" android:textColor="?kaomoji_item_text_color" android:gravity="center" android:id="@id/kaomoji_text" android:clickable="true" android:layout_width="match_parent" android:layout_height="@dimen/kaomoji_text_view_height" android:maxLines="1" android:scrollHorizontally="false" android:soundEffectsEnabled="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/frame" android:background="?android:selectableItemBackground" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?android:listPreferredItemHeight" android:paddingStart="?android:listPreferredItemPaddingStart" android:paddingEnd="?android:listPreferredItemPaddingEnd"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/title_group" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" android:layout_marginBottom="6.0dp" android:layout_weight="1.0" android:layout_marginEnd="6.0dp">
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?android:textColorPrimary" android:ellipsize="end" android:id="@id/cell_dbName" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@id/cell_dbName" android:layout_alignStart="@id/cell_dbName">
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="?android:textColorSecondary" android:ellipsize="end" android:id="@id/cell_dbKeyWords" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="1" />
+            <ProgressBar android:id="@id/progress_precent" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" style="?android:progressBarStyleHorizontal" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageButton android:gravity="center" android:id="@id/download" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cell_db_list_button_left_margin" android:src="@drawable/textinput_btn_ic_download_xml" />
+    <ImageButton android:gravity="center" android:id="@id/cancel" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cell_db_list_button_left_margin" android:src="@drawable/textinput_btn_ic_cancel_xml" android:contentDescription="@string/cancel_to_download" />
+</LinearLayout>

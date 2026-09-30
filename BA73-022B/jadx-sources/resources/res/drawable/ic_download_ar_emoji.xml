@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="20dp"
+    android:width="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+    <path
+        android:fillColor="?attr/sticker_avatar_download_icon_color_attr"
+        android:pathData="M8.9,14.5c0.3,0.3 0.7,0.5 1.1,0.5h0c0.4,0 0.8,-0.2 1.1,-0.5l4,-4.2c0.3,-0.3 0.2,-0.7 0,-1c-0.3,-0.3 -0.7,-0.2 -1,0L10.7,13V2.6c0,-0.4 -0.3,-0.7 -0.7,-0.7c-0.4,0 -0.7,0.3 -0.7,0.7V13L5.9,9.4c-0.3,-0.3 -0.7,-0.3 -1,0c-0.3,0.3 -0.3,0.7 0,1L8.9,14.5z"/>
+    <path
+        android:fillColor="?attr/sticker_avatar_download_icon_color_attr"
+        android:pathData="M15.6,16.7H4.4c-0.4,0 -0.7,0.3 -0.7,0.7c0,0.4 0.3,0.7 0.7,0.7h11.2c0.4,0 0.7,-0.3 0.7,-0.7C16.3,17 16,16.7 15.6,16.7z"/>
+</vector>

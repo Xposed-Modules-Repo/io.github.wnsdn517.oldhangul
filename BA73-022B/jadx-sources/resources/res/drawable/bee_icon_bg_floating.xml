@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <size
+        android:height="@dimen/toolbar_item_icon_background_size_floating"
+        android:width="@dimen/toolbar_item_icon_background_size_floating"/>
+    <solid android:color="?attr/bee_icon_background"/>
+</shape>

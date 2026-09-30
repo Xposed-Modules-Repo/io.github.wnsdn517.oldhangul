@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/settings_touch_feedback"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.SwitchPreferenceCompat android:persistent="true" android:title="@string/settings_touch_feedback_sound" android:key="SETTINGS_DEFAULT_SUPPORT_KEY_SOUND" />
+    <androidx.preference.SwitchPreferenceCompat android:persistent="true" android:title="@string/settings_touch_feedback_vibration" android:key="SETTINGS_DEFAULT_SUPPORT_KEY_VIBRATE" />
+    <androidx.preference.SwitchPreferenceCompat android:persistent="true" android:title="@string/use_char_preview" android:key="SETTINGS_DEFAULT_USE_PREVIEW" />
+    <PreferenceCategory android:key="SETTINGS_SOUND_AND_VIBRATION_RELATIVE_LINK_CATEGORY">
+        <com.samsung.android.honeyboard.settings.common.TipsPreference android:key="SETTINGS_SOUND_AND_VIBRATION_RELATIVE_LINK" />
+    </PreferenceCategory>
+</PreferenceScreen>

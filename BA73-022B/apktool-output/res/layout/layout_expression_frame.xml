@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.keyboard.view.ExpressionFrameLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/layout_expression_root" android:tag="layout/layout_expression_frame_0" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:importantForAccessibility="no" android:defaultFocusHighlightEnabled="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/layout_expression_holder_navigation_wrapper" android:tag="binding_1" android:layout_width="match_parent" android:layout_height="match_parent">
+        <FrameLayout android:id="@id/expression_transition_effect_view" android:layout_width="match_parent" android:layout_height="match_parent">
+            <View android:id="@id/expression_bg_effect_view" android:layout_width="match_parent" android:layout_height="match_parent" />
+        </FrameLayout>
+        <View android:id="@id/expression_effect_view" android:background="@drawable/writing_toolkit_effect_transparent_bg" android:layout_width="match_parent" android:layout_height="match_parent" />
+        <FrameLayout android:id="@id/layout_expression_holder" android:tag="binding_2" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_expression_search" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_expression_bar" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <FrameLayout android:orientation="vertical" android:id="@id/layout_expression_body" android:tag="binding_3" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <FrameLayout android:id="@id/layout_expression_board" android:layout_width="match_parent" android:layout_height="match_parent" />
+                    <LinearLayout android:orientation="vertical" android:id="@id/layout_expression_overlay" android:layout_width="match_parent" android:layout_height="match_parent" />
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+</com.samsung.android.honeyboard.keyboard.view.ExpressionFrameLayout>

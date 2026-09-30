@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/padding_root"
+    android:tag="layout/language_padding_item_0"
+    android:clickable="false"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:contentDescription="@null"
+    android:importantForAccessibility="no"
+    style="?android:attr/listSeparatorTextViewStyle"/>

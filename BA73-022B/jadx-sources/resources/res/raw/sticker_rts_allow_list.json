@@ -1,0 +1,97 @@
+{
+  "policy_version": 1.0,
+  "allowlist": [
+    {
+      "item": "com.samsung.android.messaging",
+      "default_on": true
+    },
+    {
+      "item": "com.verizon.messaging.vzmsgs",
+      "default_on": true
+    },
+    {
+      "item": "com.kakao.talk",
+      "default_on": true
+    },
+    {
+      "item": "com.sds.teams",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.apps.dynamite",
+      "default_on": true
+    },
+    {
+      "item": "jp.naver.line.android",
+      "default_on": false
+    },
+    {
+      "item": "com.sds.mysinglesquare",
+      "default_on": true
+    },
+    {
+      "item": "com.whatsapp",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.talk",
+      "default_on": true
+    },
+    {
+      "item": "com.sgiggle.production",
+      "default_on": true
+    },
+    {
+      "item": "com.nimbuzz",
+      "default_on": true
+    },
+    {
+      "item": "kik.android",
+      "default_on": true
+    },
+    {
+      "item": "com.bsb.hike",
+      "default_on": true
+    },
+    {
+      "item": "com.viber.voip",
+      "default_on": true
+    },
+    {
+      "item": "com.tencent.mm",
+      "default_on": true
+    },
+    {
+      "item": "org.telegram.messenger",
+      "default_on": false
+    },
+    {
+      "item": "com.skype.raider",
+      "default_on": true
+    },
+    {
+      "item": "com.facebook.orca",
+      "default_on": true
+    },
+    {
+      "item": "com.facebook.mlite",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.apps.messaging",
+      "default_on": true
+    },
+    {
+      "item": "com.tencent.mobileqq",
+      "default_on": false
+    },
+    {
+      "item": "com.whatsapp.w4b",
+      "default_on": true
+    },
+    {
+      "item": "com.imo.android.imoim",
+      "default_on": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/sticker_aremoji_create_round_bg"/>
+    <item
+        android:top="5dp"
+        android:bottom="5dp"
+        android:start="5dp"
+        android:end="5dp">
+        <com.samsung.android.spr.drawable.SprDrawable
+            android:src="@drawable/revanced_spr_tw_ic_ab_add_mtrl"
+            android:tint="#636368"/>
+    </item>
+</layer-list>

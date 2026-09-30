@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/settings_input_test_title">
+    <PreferenceCategory>
+        <EditTextPreference
+            android:persistent="true"
+            android:title="@string/settings_input_test_export_name_title"
+            android:key="SETTINGS_INPUT_TEST_EXPORT_USER_NAME"
+            android:summary="@string/settings_input_test_export_name_hint"
+            android:dialogTitle="@string/settings_input_test_export_name_dialog_title"/>
+        <com.samsung.android.honeyboard.settings.smarttyping.inputtest.InputTestDlmReviewPreference
+            android:persistent="false"
+            android:title="@string/settings_input_test_dlm_title"
+            android:key="SETTINGS_INPUT_TEST_DLM_REVIEW"/>
+        <com.samsung.android.honeyboard.settings.smarttyping.inputtest.InputTestEditorPreference
+            android:persistent="true"
+            android:title="@string/settings_input_test_editor_title"
+            android:key="SETTINGS_INPUT_TEST_EDITOR"
+            android:summary="@string/settings_input_test_editor_hint"/>
+    </PreferenceCategory>
+</PreferenceScreen>

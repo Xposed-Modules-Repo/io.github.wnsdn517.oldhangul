@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingTop="@dimen/clipboard_delete_popup_padding_top"
+        android:paddingBottom="@dimen/clipboard_delete_popup_padding_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="67dp">
+        <TextView
+            android:textAppearance="?android:attr/textAppearance"
+            android:textSize="@dimen/clipboard_delete_popup_text_size"
+            android:id="@+id/clipboard_delete_popup_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sec"
+            android:layout_marginStart="@dimen/clipboard_delete_popup_margin"
+            android:layout_marginEnd="@dimen/clipboard_delete_popup_margin"
+            android:textFontWeight="400"/>
+        <CheckBox
+            android:textAppearance="?android:attr/textAppearance"
+            android:textSize="@dimen/clipboard_delete_popup_text_size"
+            android:textColor="?android:attr/textColorPrimary"
+            android:id="@+id/clipboard_delete_check_box"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/clipboard_delete_popup_checkbox_margin_top"
+            android:fontFamily="sec"
+            android:paddingStart="@dimen/clipboard_delete_popup_checkbox_padding"
+            android:layout_marginStart="@dimen/clipboard_delete_popup_checkbox_margin"
+            android:layout_marginEnd="@dimen/clipboard_delete_popup_margin"
+            android:textFontWeight="400"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bg_layout"
+    android:layout_width="66dp"
+    android:layout_height="68dp"
+    android:foreground="@drawable/setting_favorite_item_ripple">
+    <com.samsung.android.sdk.pen.setting.pencommon.SpenPenPreviewV2
+        android:id="@+id/favorite_preview"
+        android:padding="1dp"
+        android:layout_width="34dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="@dimen/setting_favorite_pen_preview_top_margin"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        app:enlargedValue="2.5"/>
+    <com.samsung.android.sdk.pen.setting.pencommon.SpenPenBaseView
+        android:id="@+id/favorite_pen"
+        android:layout_width="31dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="-18dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="6dp"/>
+</RelativeLayout>

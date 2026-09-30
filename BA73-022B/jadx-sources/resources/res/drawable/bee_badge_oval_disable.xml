@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="@dimen/toolbar_badge_margin"
+    android:insetRight="@dimen/toolbar_badge_margin"
+    android:insetTop="@dimen/toolbar_badge_margin"
+    android:insetBottom="@dimen/toolbar_badge_margin">
+    <shape android:shape="oval">
+        <size
+            android:height="@dimen/toolbar_badge_height"
+            android:width="@dimen/toolbar_badge_width"/>
+        <solid android:color="@color/toolbar_badge_disable_color"/>
+    </shape>
+</inset>

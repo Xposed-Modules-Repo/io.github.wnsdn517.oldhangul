@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:title="@string/backspace_speed_title">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup
+        android:persistent="true"
+        android:key="settings_backspace_delete_speed"
+        app:entryValues="@array/array_backspace_delete_type_entry_value"
+        app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/backspace_speed_slow"
+            android:key="pref_settings_backspace_delete_slow"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/backspace_speed_normal"
+            android:key="pref_settings_backspace_delete_default"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/backspace_speed_fast"
+            android:key="pref_settings_backspace_delete_fast"/>
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

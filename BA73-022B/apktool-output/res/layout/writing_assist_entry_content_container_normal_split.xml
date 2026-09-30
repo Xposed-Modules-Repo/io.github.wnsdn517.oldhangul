@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:tag="layout/writing_assist_entry_content_container_normal_split_0" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:paddingHorizontal="@dimen/writing_assist_entry_container_padding_horizontal_normal_split"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/writing_assist_container_normal_split_left" android:tag="binding_1" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_marginEnd="@dimen/writing_assist_entry_column_margin_end">
+        <include layout="@layout/writing_assist_entry_row_spelling_and_grammar_etc" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/writing_assist_container_normal_split_right" android:tag="binding_2" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0">
+        <include layout="@layout/writing_assist_entry_row_chat_translate" />
+        <include layout="@layout/writing_assist_entry_row_bullet_point_etc" />
+        <include layout="@layout/writing_assist_entry_row_writing_composer" />
+    </LinearLayout>
+</LinearLayout>

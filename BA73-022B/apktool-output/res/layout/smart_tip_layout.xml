@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:tag="layout/smart_tip_layout_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:layoutDirection="locale"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/smart_tip_container" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/smart_tip_balloon_container" android:tag="binding_1" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginStart="@dimen/tool_tip_margin_start">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:id="@id/smart_tip_left_balloon" android:tag="binding_2" android:tint="@color/tool_tip_balloon_bubble_color" style="@style/live_message_tip_balloon_bg_style" />
+                <ImageView android:id="@id/smart_right_balloon" android:tag="binding_3" android:tint="@color/tool_tip_balloon_bubble_color" style="@style/live_message_tip_balloon_bg_style" />
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="start" android:orientation="vertical" android:id="@id/smart_tip_text_container" android:tag="binding_4" android:paddingTop="@dimen/tool_tip_text_view_padding_bottom_tail_top" android:paddingBottom="@dimen/tool_tip_text_view_padding_bottom_tail_bottom" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/tool_tip_text_view_padding_left" android:paddingEnd="@dimen/tool_tip_text_view_padding_right" android:layout_marginStart="@dimen/tool_tip_margin_start">
+            <TextView android:textSize="@dimen/live_message_tip_context_text_size" android:textColor="@color/live_message_tip_context_text_color" android:id="@id/smart_tip_text" android:tag="binding_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAlignment="viewStart" android:layoutDirection="locale" />
+            <TextView android:textSize="@dimen/live_message_tip_context_text_size" android:textColor="@color/live_message_tip_context_text_color" android:gravity="center" android:layout_gravity="end" android:tag="binding_6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dp" android:fontFamily="sec-medium" android:layoutDirection="locale" />
+        </LinearLayout>
+        <LinearLayout android:gravity="start|bottom" android:orientation="horizontal" android:id="@id/smart_tip_question_bubble_container" android:tag="binding_7" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="match_parent">
+            <ImageView android:id="@id/smart_tip_question_bubble" android:tag="binding_8" android:layout_width="@dimen/tool_bar_hint_btn_size" android:layout_height="@dimen/tool_bar_hint_btn_size" android:contentDescription="@string/tool_bar_smart_tip_hint_description" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

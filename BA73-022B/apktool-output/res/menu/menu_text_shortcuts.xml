@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/tw_ic_ab_add_mtrl_xml" android:id="@id/text_shortcuts_add_menu" android:title="@string/text_shortcuts_add" app:showAsAction="ifRoom" />
+    <item android:icon="@drawable/tw_ic_bb_delete_mtrl_xml" android:id="@id/text_shortcuts_delete_menu" android:title="@string/text_shortcuts_title_bar_delete_button" app:showAsAction="ifRoom" />
+    <item android:icon="@drawable/tw_ic_bb_delete_mtrl_xml" android:id="@id/text_shortcuts_select_menu" android:title="@string/text_shortcuts_title_bar_delete_button" app:showAsAction="ifRoom" />
+</menu>

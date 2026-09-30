@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dialog_title" android:text="@string/ai_expression_delete_generated_image_title" style="@style/DialogTextTitleStyle" />
+    <TextView android:id="@id/dialog_message" style="@style/DialogTextStyleDesc" />
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/app_theme_background_color"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/settings_writing_assist_padding_horizontal">
+    <TextView
+        android:id="@+id/settings_translation_main_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/settings_writing_assist_padding_vertical"
+        android:text="@string/settings_writing_assist_translation_description"
+        style="@style/settings_main_description"/>
+</LinearLayout>

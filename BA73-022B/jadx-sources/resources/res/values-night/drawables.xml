@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="candidate_selected_background_color_default">#33ffffff</drawable>
+</resources>

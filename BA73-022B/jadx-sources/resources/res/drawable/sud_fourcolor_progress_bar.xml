@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/_sud_fourcolor_progress_bar__0_res_0x7f0802fd">
+    <target
+        android:name="blue1_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__1_res_0x7f0802fe"/>
+    <target
+        android:name="blue1_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__3_res_0x7f08030f"/>
+    <target
+        android:name="blue1"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__5_res_0x7f080311"/>
+    <target
+        android:name="blue2_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__7_res_0x7f080313"/>
+    <target
+        android:name="blue2_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__9_res_0x7f080315"/>
+    <target
+        android:name="blue2"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__11_res_0x7f080300"/>
+    <target
+        android:name="blue3_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__13_res_0x7f080302"/>
+    <target
+        android:name="blue3_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__15_res_0x7f080304"/>
+    <target
+        android:name="blue3"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__17_res_0x7f080306"/>
+    <target
+        android:name="blue4_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__19_res_0x7f080308"/>
+    <target
+        android:name="blue4_path"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__21_res_0x7f08030b"/>
+    <target
+        android:name="blue4"
+        android:animation="@drawable/_sud_fourcolor_progress_bar__23_res_0x7f08030d"/>
+</animated-vector>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource-map>
+    <color>
+        <match overlay="rp_expression_bar_bg_color_open_theme">
+            <original>rp_content_bordered_button_bg_color_default</original>
+        </match>
+    </color>
+</resource-map>

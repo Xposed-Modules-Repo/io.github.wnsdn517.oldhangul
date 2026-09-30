@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Po osiągnięciu limitu %d wygenerowanego obrazu wygenerowanie nowego obrazu spowoduje usunięcie tego najstarszego.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Po osiągnięciu limitu %d wygenerowanych obrazów wygenerowanie nowego obrazu spowoduje usunięcie tego najstarszego.</item>
+        <item quantity="many">Po osiągnięciu limitu %d wygenerowanych obrazów wygenerowanie nowego obrazu spowoduje usunięcie tego najstarszego.</item>
+        <item quantity="other">Po osiągnięciu limitu %d wygenerowanego obrazu wygenerowanie nowego obrazu spowoduje usunięcie tego najstarszego.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Usunąć %d naklejkę?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Usunąć %d naklejki?</item>
+        <item quantity="many">Usunąć %d naklejek?</item>
+        <item quantity="other">Usunąć %d naklejek?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Usunąć %d parę emotikon?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Usunąć %d pary emotikon?</item>
+        <item quantity="many">Usunąć %d par emotikon?</item>
+        <item quantity="other">Usunąć %d par emotikon?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Aby korzystać z funkcji zaawansowanej inteligencji Galaxy AI, musisz mieć co najmniej %d rok.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Aby korzystać z funkcji zaawansowanej inteligencji Galaxy AI, musisz mieć co najmniej %d lata.</item>
+        <item quantity="many">Aby korzystać z funkcji zaawansowanej inteligencji Galaxy AI, musisz mieć co najmniej %d lat.</item>
+        <item quantity="other">Aby korzystać z funkcji zaawansowanej inteligencji Galaxy AI, musisz mieć co najmniej %d roku.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Usunąć %d element?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Usunąć %d elementy?</item>
+        <item quantity="many">Usunąć %d elementów?</item>
+        <item quantity="other">Usunąć %d elementów?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Usunąć %d przypięty element?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Usunąć %d przypięte elementy?</item>
+        <item quantity="many">Usunąć %d przypiętych elementów?</item>
+        <item quantity="other">Usunąć %d przypiętego elementu?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Uwzględnij %d przypięty element</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Uwzględnij %d przypięte elementy</item>
+        <item quantity="many">Uwzględnij %d przypiętych elementów</item>
+        <item quantity="other">Uwzględnij %d przypiętego elementu</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Przejrzyj %d sugestię pisania</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Przejrzyj %d sugestie pisania</item>
+        <item quantity="many">Przejrzyj %d sugestii pisania</item>
+        <item quantity="other">Przejrzyj %d sugestii pisania</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nowe powiadomienie</item>
+        <item quantity="few">%d nowe powiadomienia</item>
+        <item quantity="many">%d nowych powiadomień</item>
+        <item quantity="other">%d nowego powiadomienia</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Można dodać maksymalnie %d naklejkę. Przejdź do edytora zdjęć w Galerii, aby usunąć naklejki.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Można dodać maksymalnie %d naklejki. Przejdź do edytora zdjęć w Galerii, aby usunąć naklejki.</item>
+        <item quantity="many">Można dodać maksymalnie %d naklejek. Przejdź do edytora zdjęć w Galerii, aby usunąć naklejki.</item>
+        <item quantity="other">Można dodać maksymalnie %d naklejki. Przejdź do edytora zdjęć w Galerii, aby usunąć naklejki.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Nie można pokazać więcej niż %d koloru.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Nie można pokazać więcej niż %d kolorów.</item>
+        <item quantity="many">Nie można pokazać więcej niż %d kolorów.</item>
+        <item quantity="other">Nie można pokazać więcej niż %d kolorów.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Wybranych: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Wybranych: %d</item>
+        <item quantity="many">Wybranych: %d</item>
+        <item quantity="other">Wybranych: %d</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Usunąć %d skrót tekstowy?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Usunąć %d skróty tekstowe?</item>
+        <item quantity="many">Usunąć %d skrótów tekstowych?</item>
+        <item quantity="other">Usunąć %d skrótów tekstowych?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d język do zaktualizowania.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">%d języki do zaktualizowania.</item>
+        <item quantity="many">%d języków do zaktualizowania.</item>
+        <item quantity="other">%d języków do zaktualizowania.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Wybranych: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Wybranych: %d</item>
+        <item quantity="many">Wybranych: %d</item>
+        <item quantity="other">Wybranych: %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Wybrano %d znak.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Wybrano %d znaki.</item>
+        <item quantity="many">Wybrano %d znaków.</item>
+        <item quantity="other">Wybrano %d znaku.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d poprawka</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">%d poprawki</item>
+        <item quantity="many">%d poprawek</item>
+        <item quantity="other">%d poprawki</item>
+    </plurals>
+</resources>

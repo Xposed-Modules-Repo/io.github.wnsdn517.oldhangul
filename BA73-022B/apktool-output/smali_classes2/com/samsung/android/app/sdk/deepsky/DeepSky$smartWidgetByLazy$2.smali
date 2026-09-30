@@ -1,0 +1,121 @@
+.class final Lcom/samsung/android/app/sdk/deepsky/DeepSky$smartWidgetByLazy$2;
+.super Lkotlin/jvm/internal/Lambda;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/samsung/android/app/sdk/deepsky/DeepSky;-><init>(Landroid/content/Context;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/jvm/internal/Lambda;",
+        "Lkotlin/jvm/functions/Function0<",
+        "Lcom/samsung/android/app/sdk/deepsky/smartwidget/SmartWidgetImpl;",
+        ">;"
+    }
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\u0008\n\u0000\n\u0002\u0018\u0002\n\u0000\u0010\u0000\u001a\u0004\u0018\u00010\u0001H\n\u00a2\u0006\u0002\u0008\u0002"
+    }
+    d2 = {
+        "<anonymous>",
+        "Lcom/samsung/android/app/sdk/deepsky/smartwidget/SmartWidgetImpl;",
+        "invoke"
+    }
+    k = 0x3
+    mv = {
+        0x1,
+        0x8,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+.annotation build Lkotlin/jvm/internal/SourceDebugExtension;
+    value = {
+        "SMAP\nDeepSky.kt\nKotlin\n*S Kotlin\n*F\n+ 1 DeepSky.kt\ncom/samsung/android/app/sdk/deepsky/DeepSky$smartWidgetByLazy$2\n+ 2 fake.kt\nkotlin/jvm/internal/FakeKt\n*L\n1#1,183:1\n1#2:184\n*E\n"
+    }
+.end annotation
+
+
+# instance fields
+.field final synthetic $appContext:Landroid/content/Context;
+
+
+# direct methods
+.method public constructor <init>(Landroid/content/Context;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/samsung/android/app/sdk/deepsky/DeepSky$smartWidgetByLazy$2;->$appContext:Landroid/content/Context;
+
+    const/4 p1, 0x0
+
+    invoke-direct {p0, p1}, Lkotlin/jvm/internal/Lambda;-><init>(I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke()Lcom/samsung/android/app/sdk/deepsky/smartwidget/SmartWidgetImpl;
+    .locals 3
+
+    .line 2
+    new-instance v0, Lcom/samsung/android/app/sdk/deepsky/smartwidget/SmartWidgetImpl;
+
+    .line 3
+    sget-object v1, Lcom/samsung/android/app/sdk/deepsky/common/Injector;->INSTANCE:Lcom/samsung/android/app/sdk/deepsky/common/Injector;
+
+    iget-object v2, p0, Lcom/samsung/android/app/sdk/deepsky/DeepSky$smartWidgetByLazy$2;->$appContext:Landroid/content/Context;
+
+    invoke-virtual {v1, v2}, Lcom/samsung/android/app/sdk/deepsky/common/Injector;->provideServiceCaller$deepsky_sdk_smartsuggestion_1_0_8_release(Landroid/content/Context;)Lcom/samsung/android/app/sdk/deepsky/common/ContentProviderCaller;
+
+    move-result-object v2
+
+    .line 4
+    iget-object p0, p0, Lcom/samsung/android/app/sdk/deepsky/DeepSky$smartWidgetByLazy$2;->$appContext:Landroid/content/Context;
+
+    invoke-virtual {v1, p0}, Lcom/samsung/android/app/sdk/deepsky/common/Injector;->shareSystemDatasource$deepsky_sdk_smartsuggestion_1_0_8_release(Landroid/content/Context;)Lcom/samsung/android/app/sdk/deepsky/common/SystemDataSource;
+
+    move-result-object p0
+
+    .line 5
+    invoke-direct {v0, v2, p0}, Lcom/samsung/android/app/sdk/deepsky/smartwidget/SmartWidgetImpl;-><init>(Lcom/samsung/android/app/sdk/deepsky/common/ContentProviderCaller;Lcom/samsung/android/app/sdk/deepsky/common/SystemDataSource;)V
+
+    .line 6
+    invoke-virtual {v0}, Lcom/samsung/android/app/sdk/deepsky/smartwidget/SmartWidgetImpl;->checkIfAccessAllowed()Z
+
+    move-result p0
+
+    if-eqz p0, :cond_0
+
+    return-object v0
+
+    :cond_0
+    const/4 p0, 0x0
+
+    return-object p0
+.end method
+
+.method public bridge synthetic invoke()Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Lcom/samsung/android/app/sdk/deepsky/DeepSky$smartWidgetByLazy$2;->invoke()Lcom/samsung/android/app/sdk/deepsky/smartwidget/SmartWidgetImpl;
+
+    move-result-object p0
+
+    return-object p0
+.end method

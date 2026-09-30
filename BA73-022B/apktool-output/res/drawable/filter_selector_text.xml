@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false" android:color="@color/fontchooser_filter_selector_uncheck" />
+    <item android:color="@color/fontchooser_filter_selector_check" />
+</selector>

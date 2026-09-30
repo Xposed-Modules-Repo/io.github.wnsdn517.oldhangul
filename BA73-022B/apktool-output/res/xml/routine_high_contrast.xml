@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/high_contrast_keyboard"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:key="ROUTINES_HIGH_CONTRAST" app:entryValues="@array/array_bixby_routine_high_contrast_switch" app:hideCategoryTitle="true" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/text_on" android:key="BIXBY_ROUTINE_HIGH_CONTRAST_ON" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/text_off" android:key="BIXBY_ROUTINE_HIGH_CONTRAST_OFF" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <PreferenceCategory>
+        <com.samsung.android.honeyboard.settings.routine.RoutineHighContrastPreference android:persistent="false" android:key="BIXBY_ROUTINE_HIGH_CONTRAST_THEME_LISTVIEW" />
+    </PreferenceCategory>
+    <com.samsung.android.honeyboard.settings.common.RoutinePaddingPreferenceList android:key="HIGH_CONTRAST_PADDING_BOTTOM_PREFERENCE" />
+</PreferenceScreen>

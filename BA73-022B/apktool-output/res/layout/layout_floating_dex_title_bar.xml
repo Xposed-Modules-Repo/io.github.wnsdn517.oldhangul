@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/dex_title_bar_layout" android:background="@drawable/desktop_decor_caption_title" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/dex_title_bar" android:layout_width="match_parent" android:layout_height="match_parent" />
+    <ImageButton android:layout_gravity="end" android:id="@id/dex_close_btn" android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_tw_ic_mw_close_mtrl" android:contentDescription="@string/accessibility_description_close_button_dex" android:layout_marginEnd="@dimen/dex_floating_keypad_exit_button_right_padding" android:tooltipText="@string/accessibility_description_close_button_dex" />
+</FrameLayout>

@@ -1,0 +1,14 @@
+aa	a
+ain>	ai>
+cc	c
+chch	ch
+ee	i
+ein>	e>
+hh	h
+ii	i
+oo	u
+ph	f
+sh	s
+uu	u
+w	v
+z	j

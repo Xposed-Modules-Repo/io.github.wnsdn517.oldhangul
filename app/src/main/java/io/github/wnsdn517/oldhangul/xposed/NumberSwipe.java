@@ -59,12 +59,43 @@ final class NumberSwipe {
 
     // Variants popup.
     private PopupWindow popup;
+    private PopupWindow preview;
     private LinearLayout cells;
     private int selected;
     private float popupLeft;
     private float cellPx;
 
     private final Runnable openVariants = this::showVariants;
+
+    /** View id of the preview bubble Samsung showed for the key under the finger (0 = none). */
+    private int samsungPreviewId;
+
+    /** Called with the id Samsung's preview factory returned when the key went down. */
+    void onSamsungPreview(int viewId) {
+        if (tracking && !swiping) {
+            samsungPreviewId = viewId;
+        }
+    }
+
+    /**
+     * Removes Samsung's own preview bubble (it still shows the letter, not the
+     * digit) so only the digit preview from {@link #showPreview} is visible.
+     */
+    private void hideSamsungPreview(Dialog dialog) {
+        int id = samsungPreviewId;
+        samsungPreviewId = 0;
+        if (id == 0 || dialog.getWindow() == null) {
+            controller.debug("swipe: no Samsung preview id recorded");
+            return;
+        }
+        View bubble = dialog.getWindow().getDecorView().findViewById(id);
+        if (bubble != null && bubble.getParent() instanceof android.view.ViewGroup) {
+            ((android.view.ViewGroup) bubble.getParent()).removeView(bubble);
+            controller.debug("swipe: removed Samsung letter preview id=" + id);
+        } else {
+            controller.debug("swipe: Samsung preview id=" + id + " already gone");
+        }
+    }
 
     private NumberSwipe(OldHangulController controller) {
         this.controller = controller;
@@ -106,7 +137,11 @@ final class NumberSwipe {
                 return;
             case MotionEvent.ACTION_POINTER_DOWN:
                 if (swiping) {
-                    param.setResult(true);
+                    // The next letter is typed while the swipe finger is still down.
+                    // Swallowing this touch dropped that letter: finish the digit now
+                    // and let Samsung handle the new finger.
+                    controller.debug("swipe: second finger during swipe, committing digit first");
+                    finish();
                 } else {
                     tracking = false;
                 }
@@ -121,6 +156,10 @@ final class NumberSwipe {
                     swiping = true;
                     // Samsung forgets the key press; the letter is not typed.
                     e.setAction(MotionEvent.ACTION_CANCEL);
+                    // Do not consume this particular event: Samsung must see
+                    // ACTION_CANCEL or its long-press timer remains armed.
+                    hideSamsungPreview(dialog);
+                    showPreview(dialog.getContext());
                     handler.postDelayed(openVariants, HOLD_MS);
                 }
                 return;
@@ -182,25 +221,65 @@ final class NumberSwipe {
         reset();
     }
 
+    boolean isSwiping() {
+        return swiping;
+    }
+
     private void reset() {
         handler.removeCallbacks(openVariants);
         if (popup != null) {
             popup.dismiss();
             popup = null;
         }
+        if (preview != null) {
+            preview.dismiss();
+            preview = null;
+        }
         tracking = false;
         swiping = false;
         digit = -1;
         downKey = 0;
+        samsungPreviewId = 0;
     }
 
     // ------------------------------------------------------------ variants
+
+    private void showPreview(Context context) {
+        if (preview != null || digit < 0 || window == null || window.getWindow() == null) return;
+        TextView text = new TextView(context);
+        text.setText(String.valueOf(DIGITS.charAt(digit)));
+        text.setTextColor(Color.WHITE);
+        text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+        text.setGravity(Gravity.CENTER);
+        GradientDrawable bg = new GradientDrawable();
+        bg.setColor(0xF0303030);
+        bg.setCornerRadius(dp(context, 12));
+        text.setBackground(bg);
+        int size = (int) dp(context, 56);
+        preview = new PopupWindow(text, size, size, false);
+        preview.setClippingEnabled(false);
+        preview.setTouchable(false);
+        View decor = window.getWindow().getDecorView();
+        int[] origin = new int[2];
+        decor.getLocationOnScreen(origin);
+        try {
+            preview.showAtLocation(decor, Gravity.NO_GRAVITY,
+                    origin[0] + (int) (downX - size / 2),
+                    origin[1] + (int) Math.max(0, downY - size * 1.35f));
+        } catch (RuntimeException e) {
+            preview = null;
+        }
+    }
 
     private void showVariants() {
         if (!swiping || digit < 0 || window == null || window.getWindow() == null) {
             return;
         }
         Window w = window.getWindow();
+        if (preview != null) {
+            preview.dismiss();
+            preview = null;
+        }
         View decor = w.getDecorView();
         Context context = decor.getContext();
         String options = VARIANTS[digit];

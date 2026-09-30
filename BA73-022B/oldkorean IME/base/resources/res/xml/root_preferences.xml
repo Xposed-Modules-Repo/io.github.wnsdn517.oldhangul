@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/setting_directions">
+        <Preference
+            android:title="@string/open_settings"
+            android:key="open_settings_pref"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/theme">
+        <org.chocassye.noule.preference.ColorPickerPreference
+            android:title="@string/setting_theme_color"
+            android:key="theme_color_pref"/>
+        <org.chocassye.noule.preference.ColorPickerPreference
+            android:title="@string/setting_background_color"
+            android:key="background_color_pref"/>
+        <org.chocassye.noule.preference.ColorPickerPreference
+            android:title="@string/setting_button_color"
+            android:key="button_color_pref"/>
+        <ListPreference
+            android:entries="@array/button_style_entries"
+            android:title="@string/setting_button_style"
+            android:key="button_style_pref"
+            android:defaultValue="outlined"
+            android:entryValues="@array/button_style_values"/>
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Kai bus pasiektas %d sugeneruoto vaizdo skaičius, sugeneravus naują vaizdą seniausias iš jų bus ištrintas.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Kai bus pasiektas %d sugeneruotų vaizdų skaičius, sugeneravus naują vaizdą seniausias iš jų bus ištrintas.</item>
+        <item quantity="many">Kai bus pasiektas %d sugeneruotų vaizdų skaičius, sugeneravus naują vaizdą seniausias iš jų bus ištrintas.</item>
+        <item quantity="other">Kai bus pasiektas %d sugeneruotų vaizdų skaičius, sugeneravus naują vaizdą seniausias iš jų bus ištrintas.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Trinti %d lipduką?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Trinti %d lipdukus?</item>
+        <item quantity="many">Trinti %d lipdukų?</item>
+        <item quantity="other">Trinti %d lipdukų?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Trinti %d jaustukų porą?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Trinti %d jaustukų poras?</item>
+        <item quantity="many">Trinti %d jaustukų porų?</item>
+        <item quantity="other">Trinti %d jaustukų porų?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Kad galėtumėte naudotis „Galaxy AI“ pažangiojo intelekto funkcijomis, jums turi būti bent %d m.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Kad galėtumėte naudotis „Galaxy AI“ pažangiojo intelekto funkcijomis, jums turi būti bent %d m.</item>
+        <item quantity="many">Kad galėtumėte naudotis „Galaxy AI“ pažangiojo intelekto funkcijomis, jums turi būti bent %d m.</item>
+        <item quantity="other">Kad galėtumėte naudotis „Galaxy AI“ pažangiojo intelekto funkcijomis, jums turi būti bent %d m.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Trinti %d elementą?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Trinti %d element.?</item>
+        <item quantity="many">Trinti %d element.?</item>
+        <item quantity="other">Trinti %d element.?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Ištrinti %d prisegtą elementą?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Ištrinti %d prisegtus elementus?</item>
+        <item quantity="many">Ištrinti %d prisegtų elementų?</item>
+        <item quantity="other">Ištrinti %d prisegtų elementų?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Įtraukti %d prisegtą elementą</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Įtraukti %d prisegtus elementus</item>
+        <item quantity="many">Įtraukti %d prisegtų elementų</item>
+        <item quantity="other">Įtraukti %d prisegtų elementų</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Peržiūrėti %d rašymo pasiūlymą</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Peržiūrėt %d rašymo pasiūlymus</item>
+        <item quantity="many">Peržiūrėti %d rašymo pasiūlymų</item>
+        <item quantity="other">Peržiūrėti %d rašymo pasiūlymų</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d naujas pranešimas</item>
+        <item quantity="few">%d nauji pranešimai</item>
+        <item quantity="many">%d naujo pranešimo</item>
+        <item quantity="other">%d naujų pranešimų</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Negalima pridėti daugiau nei %d lipduko. Eikite į nuotraukų redagavimo priemonę galerijoje ir lipdukus pašalinkite.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Negalima pridėti daugiau nei %d lipdukų. Eikite į nuotraukų redagavimo priemonę galerijoje ir lipdukus pašalinkite.</item>
+        <item quantity="many">Negalima pridėti daugiau nei %d lipdukų. Eikite į nuotraukų redagavimo priemonę galerijoje ir lipdukus pašalinkite.</item>
+        <item quantity="other">Negalima pridėti daugiau nei %d lipdukų. Eikite į nuotraukų redagavimo priemonę galerijoje ir lipdukus pašalinkite.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Negalima rodyti daugiau nei %d spalvos.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Negalima rodyti daugiau nei %d spalvų.</item>
+        <item quantity="many">Negalima rodyti daugiau nei %d spalvos.</item>
+        <item quantity="other">Negalima rodyti daugiau nei %d spalvų.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Parinkta: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Parinkta: %d</item>
+        <item quantity="many">Parinkta: %d</item>
+        <item quantity="other">Parinkta: %d</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Trinti %d teksto trumpinį?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Trinti %d teksto trumpinius?</item>
+        <item quantity="many">Trinti %d teksto trumpinių?</item>
+        <item quantity="other">Trinti %d teksto trumpinių?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Reikia atnaujinti %d kalbą.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Reikia atnaujinti %d kalbas.</item>
+        <item quantity="many">Reikia atnaujinti %d kalbų.</item>
+        <item quantity="other">Reikia atnaujinti %d kalbų.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Parinkta: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Parinkta: %d</item>
+        <item quantity="many">Parinkta: %d</item>
+        <item quantity="other">Parinkta: %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Pasirinkote %d simbolį.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Pasirinkote %d simbolius.</item>
+        <item quantity="many">Pasirinkote %d simbolių.</item>
+        <item quantity="other">Pasirinkote %d simbolių.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d taisymas</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">%d taisymai</item>
+        <item quantity="many">%d taisymų</item>
+        <item quantity="other">%d taisymų</item>
+    </plurals>
+</resources>

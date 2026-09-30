@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:ordering="together">
+    <set android:ordering="sequentially">
+        <objectAnimator
+            android:duration="1"
+            android:valueFrom="-405.875"
+            android:valueTo="-405.875"
+            android:propertyName="translateX"/>
+        <objectAnimator
+            android:interpolator="@drawable/_anim_from_more_no_badge__14_res_0x7f080008"
+            android:duration="233"
+            android:valueFrom="-405.875"
+            android:valueTo="-421.875"
+            android:propertyName="translateX"/>
+    </set>
+</set>

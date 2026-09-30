@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:id="@id/settings_predictive_text" android:title="@string/settings_swipe_touch_and_feedback"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto">
+    <Preference android:persistent="true" android:title="@string/use_keypad_sweeping" android:key="settings_keyboard_swipe" android:summary="@string/settings_keyboard_swipe_radio_none" settings:keywords="@string/search_synonym_keyboard_swipe" />
+    <Preference android:persistent="true" android:title="@string/touch_and_hold_delay_title" android:key="settings_touch_and_hold_delay" settings:keywords="@string/search_synonym_touch_and_hold_delay" />
+    <Preference android:persistent="true" android:title="@string/backspace_speed_title" android:key="settings_backspace_delete_speed" />
+    <Preference android:persistent="true" android:title="@string/touch_and_hold_space_title" android:key="settings_touch_and_hold_space_bar" />
+    <Preference android:title="@string/settings_touch_feedback" android:key="settings_key_tap_feedback" />
+    <androidx.preference.SeslSwitchPreferenceScreen android:title="@string/settings_speak_keyboard_input_aloud" android:key="settings_speak_keyboard_input_aloud_on" settings:keywords="@string/search_synonym_speak_keyboard_aloud" />
+    <androidx.preference.SwitchPreferenceCompat android:title="@string/period_key_popup_multi_tap_title" android:key="settings_period_key_popup_multi_tap" />
+</PreferenceScreen>

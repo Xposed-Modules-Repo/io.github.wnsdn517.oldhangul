@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.textboard.keyboardbar.view.EmojiModeLayout android:gravity="top" android:orientation="vertical" android:id="@id/keyboard_bar_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="locale"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/keyboard_bar_emoticon_tray_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/keyboard_bar_header_layout" android:visibility="visible" android:layout_width="match_parent" android:layout_height="@dimen/header_layout_area_height">
+            <TextView android:textSize="@dimen/keyboardBar_title_text_size" android:textColor="?emoticon_message_text_color" android:gravity="center_vertical" android:id="@id/emojis_title" android:layout_width="0.0dp" android:layout_height="match_parent" android:text="@string/emoticon" android:layout_weight="1.0" android:layout_marginStart="@dimen/keyboardBar_title_start_margin" />
+            <ImageView android:layout_gravity="end|center" android:id="@id/emojis_title_close_btn" android:clickable="true" android:layout_width="@dimen/keyboardBar_close_btn_icon_size" android:layout_height="@dimen/keyboardBar_close_btn_icon_size" android:src="@drawable/ic_textinput_result_ic_delete" android:layout_marginEnd="@dimen/keyboardBar_close_btn_end_margin" android:tooltipText="@string/content_description_clear" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/keyboard_bar_view_pager" android:padding="@dimen/keyboardBar_emoji_mode_padding" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </LinearLayout>
+</com.samsung.android.honeyboard.textboard.keyboardbar.view.EmojiModeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/writing_composer_result_container"
+    android:tag="layout/writing_composer_result_item_0"
+    android:focusable="true"
+    android:layout_marginBottom="@dimen/writing_composer_result_container_margin_bottom"
+    android:clipToOutline="true"
+    style="@style/WritingComposerResultBodyStyle">
+    <com.samsung.android.writingtoolkit.composer.view.WritingComposerResultEditText
+        android:id="@+id/writing_composer_result_text"
+        android:tag="binding_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="flagNoExtractUi"
+        style="@style/WritingComposerEditTextStyle"/>
+    <ImageButton
+        android:layout_gravity="end"
+        android:id="@+id/writing_composer_result_info_button"
+        android:background="@color/transparent"
+        android:layout_width="@dimen/writing_toolkit_icon_size"
+        android:layout_height="@dimen/writing_toolkit_icon_size"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_info"
+        android:tint="@color/writing_toolkit_icon_color"
+        android:contentDescription="@string/writing_toolkit_disclaimer"
+        android:layout_marginEnd="14dp"
+        android:stateListAnimator="?attr/seslSmallTouchAnimator"/>
+</LinearLayout>

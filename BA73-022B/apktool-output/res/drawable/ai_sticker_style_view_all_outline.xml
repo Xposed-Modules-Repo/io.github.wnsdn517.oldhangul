@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/ai_expression_style_view_selected_item_inner_radius" />
+    <solid android:color="@color/ai_sticker_style_view_all_background_color" />
+    <stroke android:width="@dimen/ai_expression_style_view_unselected_item_stroke_size" android:color="@color/ai_sticker_style_view_all_outline_color" />
+</shape>

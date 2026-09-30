@@ -1,0 +1,19 @@
+{
+  "com.samsung.android.honeyboard.settings.provider.HoneyIndexableSearchProvider": [
+    {
+      "com.samsung.android.settings.intelligence.TAG_INITIAL": [
+        "top_level_keyboard_settings_main"
+      ]
+    },
+    {
+      "com.samsung.android.settings.intelligence.TAG_RECOMMENDED": [
+        "top_level_keyboard_settings_main"
+      ]
+    },
+    {
+      "com.samsung.android.settings.intelligence.TAG_ADVANCED_INTELLIGENCE": [
+        "SETTINGS_WRITING_ASSIST"
+      ]
+    }
+  ]
+}

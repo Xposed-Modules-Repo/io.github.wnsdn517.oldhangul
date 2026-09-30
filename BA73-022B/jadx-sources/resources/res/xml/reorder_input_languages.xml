@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/reorder_input_languages">
+    <androidx.preference.SwitchPreferenceCompat
+        android:title="@string/reorder_input_languages"
+        android:key="lang_reorder"/>
+</PreferenceScreen>

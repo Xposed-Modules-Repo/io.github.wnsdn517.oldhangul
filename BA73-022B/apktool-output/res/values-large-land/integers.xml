@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ai_sticker_styles_layout_item_count">8</integer>
+    <integer name="clipboard_item_column">9</integer>
+    <integer name="gif_preview_contents_num">6</integer>
+    <integer name="gif_tray_grid_col">6</integer>
+    <integer name="sticker_tray_grid_col">8</integer>
+    <integer name="sticker_tray_grid_col_winner">7</integer>
+    <integer name="sticker_tray_grid_row_line">1</integer>
+</resources>

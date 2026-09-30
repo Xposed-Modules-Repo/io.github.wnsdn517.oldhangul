@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:id="@id/edit_app_bar_group">
+        <item android:id="@id/routine_menu_edit_app_bar_cancel" android:title="@string/text_shortcuts_delete_confirmation_cancel" android:contentDescription="@string/text_shortcuts_delete_confirmation_cancel" app:showAsAction="ifRoom" />
+        <item android:id="@id/routine_menu_edit_app_bar_save" android:title="@string/button_done" android:contentDescription="@string/button_done" app:showAsAction="ifRoom" />
+    </group>
+</menu>

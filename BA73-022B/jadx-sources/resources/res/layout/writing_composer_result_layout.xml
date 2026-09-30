@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.writingtoolkit.composer.view.WritingComposerResultView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:tag="layout/writing_composer_result_layout_0"
+    android:minHeight="@dimen/writing_composer_result_edit_text_min_height"
+    style="@style/WritingComposerBodyStyle"/>

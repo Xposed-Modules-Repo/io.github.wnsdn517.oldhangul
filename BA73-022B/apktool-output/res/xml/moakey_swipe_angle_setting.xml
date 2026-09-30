@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/moakey_swipe_angle"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory>
+        <com.samsung.android.honeyboard.settings.moakeyoptions.MoakeyAngleSettingPreview android:persistent="true" android:key="moakey_angle_setting_preview" />
+    </PreferenceCategory>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:key="settings_moakey_drag_angle" app:entryValues="@array/array_moakey_swipe_angle_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/moakey_swipe_angle_right" android:key="moakey_angle_swipe_right_handed" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/moakey_swipe_angle_left" android:key="moakey_angle_swipe_left_handed" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/moakey_swipe_angle_two_hand" android:key="moakey_angle_swipe_two_handed" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/touch_and_hold_delay_custom_title" android:key="moakey_angle_setting_swipe_list_custom" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

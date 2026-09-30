@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/select_keypad_type_set_floating" style="@style/toolbar_keyboard_view_type_popup_item_layout"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/btn_select_keypad_type_set_floating" android:src="@drawable/textinput_setting_keyboard_mode_floating" style="@style/toolbar_keyboard_view_type_popup_item_image" />
+    <TextView android:id="@id/tv_select_keypad_type_set_floating" android:text="@string/input_method_type_floating" style="@style/toolbar_keyboard_view_type_popup_item_text" />
+</LinearLayout>

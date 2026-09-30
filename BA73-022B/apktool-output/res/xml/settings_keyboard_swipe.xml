@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/use_keypad_sweeping"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:key="settings_keyboard_swipe" app:entryValues="@array/array_swipe_type_entry_value" app:hideCategoryTitle="true">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_keyboard_swipe_radio_none" android:key="settings_keyboard_swipe_none" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/use_trace" android:key="settings_keyboard_swipe_continuous_input" android:summary="@string/trace_summary" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/cursor_Control" android:key="settings_keyboard_swipe_cursor_control" android:summary="@string/cursor_Control_summary" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

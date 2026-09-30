@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.hwrwidget.view.layout.HandwritingWidget xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/handwriting_widget"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="@dimen/handwriting_widget_elevation">
+    <com.samsung.android.honeyboard.hwrwidget.view.layout.WritingLayout
+        android:id="@+id/writing_layout"
+        android:background="@color/hwr_bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr">
+        <FrameLayout
+            android:id="@+id/recognition_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.samsung.android.honeyboard.hwrwidget.view.layout.WritingLayout>
+</com.samsung.android.honeyboard.hwrwidget.view.layout.HandwritingWidget>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:tag="layout/tsl_network_setting_view_0" android:background="?tsl_network_setting_view_bg_color" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/rp_msg_text_size" android:textColor="?tsl_network_alert_text_color" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/rp_msg_margin_bottom" android:text="@string/no_networks_available" android:layout_marginHorizontal="@dimen/rp_msg_margin_horizontal" />
+    <Button android:textSize="@dimen/network_setting_btn_text_size" android:textColor="?tsl_network_btn_text_color" android:layout_gravity="center" android:tag="binding_1" android:background="?tsl_raised_btn_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/raised_btn_vertical_gap" android:minWidth="@dimen/raised_btn_min_width" android:text="@string/try_again" android:maxLines="1" android:includeFontPadding="false" android:paddingHorizontal="@dimen/raised_btn_width_padding" />
+</LinearLayout>

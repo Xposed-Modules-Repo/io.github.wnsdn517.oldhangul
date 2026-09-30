@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tint="?attr/keyboard_voice_input_mic_bg_vi_color"
+    android:shape="oval">
+    <solid android:color="@color/svi_popup_mic_background_color"/>
+    <size
+        android:height="62dp"
+        android:width="62dp"/>
+</shape>

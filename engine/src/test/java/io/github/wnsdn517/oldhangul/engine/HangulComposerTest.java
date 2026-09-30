@@ -78,6 +78,11 @@ public class HangulComposerTest {
         assertEquals("ᅀᅡ", archaic("ㅿㅏ"));             // ᅀᅡ
         assertEquals("ᄀᆍ", archaic("ㄱㅜㅜ"));           // ᄀᆍ
         assertEquals("ᅟᆢ", archaic("ㆍㆍ"));             // ᅟᆢ
+        assertEquals("맜ㅅ", archaic("ㅁㅏㅆㅅ"));
+        HangulComposer kept = new HangulComposer(true, true);
+        kept.setKeepWord(true);
+        for (char key : "ㅁㅏㅆㅅ".toCharArray()) kept.type(key);
+        assertEquals("맜ㅅ", kept.current());
     }
 
     @Test
@@ -141,6 +146,11 @@ public class HangulComposerTest {
         assertEquals("ㅄ가", split("ㅂㅅㄱㅏ"));   // ᄢᅡ; the rest stays a cluster letter
         assertNull(split("ㅎㅏㄴ"));              // nothing archaic
         assertNull(split("ㄱㅏㅂㅅ"));             // 값 is modern
+    }
+
+    @Test
+    public void splitDoesNotReformTheTrailingCluster() {
+        assertEquals("ㅎㅎㅎ", split("ㅎㅎㅎ"));
     }
 
     @Test
@@ -231,13 +241,13 @@ public class HangulComposerTest {
     @Test
     public void loneVowelsGetIeung() {
         assertEquals("안녕하세요", vowelIeung("ㅇㅏㄴㄴㅕㅇㅎㅏㅅㅔㅛ"));
-        assertEquals("아아아아", vowelIeung("ㅏㅏㅏㅏ"));
+        assertEquals("ㅏㅏㅏㅏ", vowelIeung("ㅏㅏㅏㅏ"));
         assertEquals("오", vowelIeung("ㅗ"));
         assertEquals("와", vowelIeung("ㅗㅏ"));
         assertEquals("아뇨", vowelIeung("ㅇㅏㄴㅛ"));
         assertEquals("가유", vowelIeung("ㄱㅏㅠ"));
         assertEquals("ㅠㅠ", vowelIeung("ㅠㅠ"));   // crying face stays
-        assertEquals("아ㅜㅜ", vowelIeung("ㅏㅜㅜ"));
+        assertEquals("ㅏㅜㅜ", vowelIeung("ㅏㅜㅜ"));
         assertEquals("ㅡㅡ", vowelIeung("ㅡㅡ"));
     }
 }

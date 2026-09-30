@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/settings_writing_assist">
+    <com.samsung.android.honeyboard.settings.aiwriter.WritingAssistCustomViewPreference
+        android:persistent="true"
+        android:key="settings_writing_assist_custom_view"/>
+    <PreferenceCategory>
+        <com.samsung.android.honeyboard.settings.aiwriter.NoEllipsizeSwitchPreference
+            android:persistent="true"
+            android:title="@string/settings_writing_assist_process_data_only_on_device_mode_title"
+            android:key="SETTINGS_WRITING_ASSIST_FEATURES_PDOOD"
+            android:defaultValue="false"/>
+        <com.samsung.android.honeyboard.settings.aiwriter.WritingAssistPdoodSummaryPreference android:key="PREF_SETTINGS_WRITING_ASSIST_FEATURES_PDOOD_IN_GALAXY_AI_SETTINGS"/>
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <Preference
+            android:title="@string/settings_writing_assist_chat_translation"
+            android:key="SETTINGS_WRITING_ASSIST_CHAT_TRANSLATION"/>
+        <Preference
+            android:title="@string/settings_writing_assist_suggest_replies"
+            android:key="SETTINGS_WRITING_ASSIST_SUGGEST_RESPONSES"/>
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <Preference
+            android:title="@string/settings_chat_assist_more_galaxy_ai_feature"
+            android:key="SETTINGS_CHAT_ASSIST_MORE_GALAXY_AI_FEATURES"/>
+    </PreferenceCategory>
+</PreferenceScreen>

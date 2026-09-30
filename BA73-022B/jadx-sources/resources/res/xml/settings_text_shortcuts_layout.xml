@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settings_main"
+    android:title="@string/text_shortcuts_label"
+    android:key="settings_text_shortcuts"/>

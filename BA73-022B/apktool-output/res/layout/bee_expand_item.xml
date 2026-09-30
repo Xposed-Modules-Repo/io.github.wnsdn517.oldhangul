@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:tag="layout/bee_expand_item_0" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:tag="binding_1" android:focusable="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:soundEffectsEnabled="false">
+        <FrameLayout android:layout_gravity="center" android:tag="binding_2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/toolbar_expand" android:tag="binding_3" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" android:contentDescription="@string/toolbar_expand" android:stateListAnimator="?seslSmallTouchAnimator" />
+            <ImageView android:layout_gravity="end|top" android:id="@id/toolbar_expand_badge" android:tag="binding_4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:layout_gravity="start|top" android:id="@id/bee_item_delete_button" android:tag="binding_5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

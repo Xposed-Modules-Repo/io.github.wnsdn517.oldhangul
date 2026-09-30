@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<input-method android:showInInputMethodPicker="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <subtype android:label="FakeHoneyBoard" android:imeSubtypeMode="keyboard" />
+</input-method>

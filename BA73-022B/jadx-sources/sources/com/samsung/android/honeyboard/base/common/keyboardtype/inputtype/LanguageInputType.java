@@ -1,0 +1,278 @@
+package com.samsung.android.honeyboard.base.common.keyboardtype.inputtype;
+
+import android.content.Context;
+import androidx.annotation.Keep;
+import com.samsung.android.honeyboard.R;
+import com.samsung.android.honeyboard.base.languagepack.language.Language;
+import p294k7.d;
+import p675y8.k;
+
+/* JADX INFO: loaded from: classes3.dex */
+@Keep
+public class LanguageInputType {
+    public static final LanguageInputType LANGUAGE_BULGARIAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_CHINESE_PHONEPAD;
+    public static final LanguageInputType LANGUAGE_CHINESE_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_8FLICK;
+    public static final LanguageInputType LANGUAGE_INPUT_ALBANIAN;
+    public static final LanguageInputType LANGUAGE_INPUT_AMHARIC_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_AMHARIC_SMART_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_APOSTROPHE_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_ARABIC2_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_ARABIC2_WESTERN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_ARABIC_URDU_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_AZERBAIJANI;
+    public static final LanguageInputType LANGUAGE_INPUT_AZERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_AZERTY_ACCENT;
+    public static final LanguageInputType LANGUAGE_INPUT_AZERTY_APOSTROPHE;
+    public static final LanguageInputType LANGUAGE_INPUT_CANGJIE;
+    public static final LanguageInputType LANGUAGE_INPUT_CANTONESE_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_CATALAN;
+    public static final LanguageInputType LANGUAGE_INPUT_CHCHEN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_CHUNJIIN_PLUS;
+    public static final LanguageInputType LANGUAGE_INPUT_COPTIC_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_DANISH;
+    public static final LanguageInputType LANGUAGE_INPUT_DHIVEHI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_DUNGAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_ESTONIAN;
+    public static final LanguageInputType LANGUAGE_INPUT_FAROESE;
+    public static final LanguageInputType LANGUAGE_INPUT_FARSI_EXPANDED;
+    public static final LanguageInputType LANGUAGE_INPUT_FINNISH;
+    public static final LanguageInputType LANGUAGE_INPUT_FLICK;
+    public static final LanguageInputType LANGUAGE_INPUT_FRENCH_QWERTY_APOSTROPHE;
+    public static final LanguageInputType LANGUAGE_INPUT_FULL_HANDWRITING;
+    public static final LanguageInputType LANGUAGE_INPUT_FULL_KEYBOARD;
+    public static final LanguageInputType LANGUAGE_INPUT_GEORGIAN_WIN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_GERMAN_QWERTZ;
+    public static final LanguageInputType LANGUAGE_INPUT_GILAKI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_HALF_HANDWRITING;
+    public static final LanguageInputType LANGUAGE_INPUT_HAWAIIAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_HOKKIEN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_ICELANDIC;
+    public static final LanguageInputType LANGUAGE_INPUT_INDIAN_HORIZONTAL;
+    public static final LanguageInputType LANGUAGE_INPUT_INDIAN_VERTICAL;
+    public static final LanguageInputType LANGUAGE_INPUT_JAWI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_KABARDIAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_KHOISAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_LATVIAN;
+    public static final LanguageInputType LANGUAGE_INPUT_LISU_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_LITUANIAN;
+    public static final LanguageInputType LANGUAGE_INPUT_LONTARA_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_MOAKEY;
+    public static final LanguageInputType LANGUAGE_INPUT_MOAKEY_TWOHAND;
+    public static final LanguageInputType LANGUAGE_INPUT_MONGOLIAN_TRADITIONAL_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_NARATGUL;
+    public static final LanguageInputType LANGUAGE_INPUT_NARATGUL_CENTER;
+    public static final LanguageInputType LANGUAGE_INPUT_NKO_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_NORWEGIAN;
+    public static final LanguageInputType LANGUAGE_INPUT_NUBIAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_OSSETIAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_PASHTO_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_PHONEPAD;
+    public static final LanguageInputType LANGUAGE_INPUT_PHONEPAD_ZHUYIN;
+    public static final LanguageInputType LANGUAGE_INPUT_PHONETIC;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_ACCENT;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_ARABIC_NEW_TYPE_A;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_ARABIC_NEW_TYPE_B;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_NORTHERN_SAMI_TYPE_A;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_NORTHERN_SAMI_TYPE_B;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_THAI_NEW_TYPE_A;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_THAI_NEW_TYPE_B;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTY_ZHUYIN;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTZ;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTZ_ACCENT;
+    public static final LanguageInputType LANGUAGE_INPUT_QWERTZ_APOSTROPHE;
+    public static final LanguageInputType LANGUAGE_INPUT_RAPA_NUI;
+    public static final LanguageInputType LANGUAGE_INPUT_RUSSIAN_COMPACT_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_RUSYN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_SERBIAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_SGAW_KAREN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_SHAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_SHUANGPIN;
+    public static final LanguageInputType LANGUAGE_INPUT_SHUGHNANI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_SINDHI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_SINGLE_VOWEL;
+    public static final LanguageInputType LANGUAGE_INPUT_SLOVENIAN_QWERTZ;
+    public static final LanguageInputType LANGUAGE_INPUT_SORANI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_SPANISH_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_STROKE;
+    public static final LanguageInputType LANGUAGE_INPUT_SWEDISH;
+    public static final LanguageInputType LANGUAGE_INPUT_SYRIAC_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_TAI_NUA_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_TATAR_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_TIBETAN_SMART_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_TIFINAGH_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_TURKISH_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_TURKISH_QWERTY_F;
+    public static final LanguageInputType LANGUAGE_INPUT_TURKMEN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_TWI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_VEGA;
+    public static final LanguageInputType LANGUAGE_INPUT_VEGA_CENTER;
+    public static final LanguageInputType LANGUAGE_INPUT_VENETIAN_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_VIETNAMESE_EASE;
+    public static final LanguageInputType LANGUAGE_INPUT_VIETNAMESE_TELEX;
+    public static final LanguageInputType LANGUAGE_INPUT_VIETNAMESE_VNI;
+    public static final LanguageInputType LANGUAGE_INPUT_VORO_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_WAKHI_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_WUBI;
+    public static final LanguageInputType LANGUAGE_INPUT_YAKUT_QWERTY;
+    public static final LanguageInputType LANGUAGE_INPUT_YIDDISH_QWERTY;
+    public static final LanguageInputType LANGUAGE_KOREAN_PHONEPAD;
+    public static final LanguageInputType LANGUAGE_NO_FLICK_PHONEPAD;
+    public static final LanguageInputType NUMBER_AND_SYMBOL_DEPENDANT;
+    public static final LanguageInputType NUMBER_AND_SYMBOL_FLICK_PHONEPAD;
+    public static final LanguageInputType NUMBER_AND_SYMBOL_PHONEPAD;
+    public static final LanguageInputType NUMBER_AND_SYMBOL_PHONEPAD_NO_FLICK;
+    public static final LanguageInputType NUMBER_AND_SYMBOL_QWERTY;
+    private int mInputTypeText;
+    private d mKeyboardInputType;
+    private String mLanguageInputTypeName;
+
+    static {
+        d dVar = d.f29298c;
+        LANGUAGE_INPUT_QWERTY = new LanguageInputType(dVar, "qwerty", R.string.input_type_qwerty);
+        LANGUAGE_INPUT_QWERTZ = new LanguageInputType(d.f29313j, "qwertz", R.string.input_type_qwertz);
+        LANGUAGE_INPUT_AZERTY = new LanguageInputType(d.f29315k, "azerty", R.string.input_type_azerty);
+        LANGUAGE_INPUT_AZERTY_ACCENT = new LanguageInputType(d.f29317l, "azerty_accent", R.string.input_type_azerty_accent);
+        LANGUAGE_INPUT_AZERTY_APOSTROPHE = new LanguageInputType(d.f29319m, "azerty_apostrophe", R.string.input_type_azerty_apostrophe);
+        LANGUAGE_INPUT_FULL_KEYBOARD = new LanguageInputType(dVar, "qwerty", R.string.input_type_full_keyboard);
+        LANGUAGE_INPUT_HALF_HANDWRITING = new LanguageInputType(d.f29278S, "handwriting", R.string.input_type_half_screen_handwriting);
+        LANGUAGE_INPUT_FULL_HANDWRITING = new LanguageInputType(d.f29280T, "handwriting_full", R.string.input_type_full_screen_handwriting);
+        LANGUAGE_INPUT_SINGLE_VOWEL = new LanguageInputType(d.f29306f, "single_vowel_qwerty", R.string.input_type_single_vowel);
+        LANGUAGE_INPUT_MOAKEY = new LanguageInputType(d.f29308g, "moakey_qwerty", R.string.input_type_moakey);
+        LANGUAGE_INPUT_MOAKEY_TWOHAND = new LanguageInputType(d.f29309h, "moakey_twohand_qwerty", R.string.input_type_moakey_twohand);
+        LANGUAGE_INPUT_SHUANGPIN = new LanguageInputType(d.f29300d, "shuangpin_qwerty", R.string.input_type_shuangpin);
+        LANGUAGE_INPUT_WUBI = new LanguageInputType(d.f29303e, "wubi_qwerty", R.string.input_type_wubi);
+        LANGUAGE_INPUT_GERMAN_QWERTZ = new LanguageInputType(d.f29311i, "german_qwertz", R.string.input_type_german_qwertz);
+        LANGUAGE_INPUT_PHONETIC = new LanguageInputType(d.f29323o, "bulgarian_phonetic", R.string.input_type_bulgarian_phonetic);
+        LANGUAGE_INPUT_FARSI_EXPANDED = new LanguageInputType(d.f29325p, "farsi_expanded_qwerty", R.string.input_type_farsi_expanded);
+        LANGUAGE_INPUT_QWERTY_ZHUYIN = new LanguageInputType(d.f29249C, "zhuyin_qwerty", R.string.input_type_zhuyin_qwerty);
+        LANGUAGE_INPUT_CANGJIE = new LanguageInputType(d.f29251D, "cangjie", R.string.input_type_cangjie);
+        d dVar2 = d.f29260I;
+        LANGUAGE_INPUT_PHONEPAD = new LanguageInputType(dVar2, "phonepad", R.string.input_type_phonepad);
+        LANGUAGE_INPUT_STROKE = new LanguageInputType(d.f29262J, "stroke_phonepad", R.string.input_type_stroke);
+        LANGUAGE_INPUT_CHUNJIIN_PLUS = new LanguageInputType(d.f29264K, "phonepad_korean_chunjiin_plus", R.string.input_type_chunjiin_plus);
+        LANGUAGE_INPUT_VEGA = new LanguageInputType(d.f29266L, "korean_vega_phonepad", R.string.input_type_vega);
+        LANGUAGE_INPUT_NARATGUL = new LanguageInputType(d.f29267M, "korean_naratgul_phonepad", R.string.input_type_naratgul);
+        LANGUAGE_INPUT_VEGA_CENTER = new LanguageInputType(d.f29269N, "korean_vega_center_phonepad", R.string.input_type_vega_center);
+        LANGUAGE_INPUT_NARATGUL_CENTER = new LanguageInputType(d.f29271O, "korean_naratgul_center_phonepad", R.string.input_type_naratgul_center);
+        LANGUAGE_INPUT_8FLICK = new LanguageInputType(d.f29276R, "kana_8flick_phonepad", R.string.input_type_8flick);
+        LANGUAGE_INPUT_FLICK = new LanguageInputType(d.f29273P, "flick_phonepad", R.string.input_type_flick);
+        LANGUAGE_INPUT_PHONEPAD_ZHUYIN = new LanguageInputType(d.f29275Q, "zhuyin_phonepad", R.string.input_type_zhuyin_phonepad);
+        LANGUAGE_INPUT_SLOVENIAN_QWERTZ = new LanguageInputType(d.E, "slovenian_qwertz", R.string.input_type_slovenian_qwertz);
+        LANGUAGE_INPUT_TURKMEN_QWERTY = new LanguageInputType(d.f29254F, "turkmen_qwerty", R.string.input_type_qwerty);
+        LANGUAGE_INPUT_TURKISH_QWERTY = new LanguageInputType(d.f29256G, "turkish_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_TURKISH_QWERTY_F = new LanguageInputType(d.f29258H, "turkish_qwerty_f", R.string.input_type_turkish_f);
+        LANGUAGE_INPUT_SPANISH_QWERTY = new LanguageInputType(d.f29327q, "spanish_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_CATALAN = new LanguageInputType(d.f29329r, "catalan_qwerty", R.string.input_type_catalan_qwerty);
+        LANGUAGE_INPUT_NORWEGIAN = new LanguageInputType(d.f29331s, "norwegian_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_DANISH = new LanguageInputType(d.t, "danish_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SWEDISH = new LanguageInputType(d.f29334u, "swedish_qwerty", R.string.input_type_swedish_qwerty);
+        LANGUAGE_INPUT_FINNISH = new LanguageInputType(d.f29336v, "finnish_qwerty", R.string.input_type_finnish_qwerty);
+        LANGUAGE_INPUT_ICELANDIC = new LanguageInputType(d.f29337w, "icelandic_qwerty", R.string.input_type_icelandic_qwerty);
+        LANGUAGE_INPUT_ESTONIAN = new LanguageInputType(d.f29339x, "estonian_qwerty", R.string.input_type_estonian_qwerty);
+        LANGUAGE_INPUT_LATVIAN = new LanguageInputType(d.f29341y, "latvian_qwerty", R.string.input_type_latvian_qwerty);
+        LANGUAGE_INPUT_LITUANIAN = new LanguageInputType(d.f29343z, "lithuanian_qwerty", R.string.input_type_lithuanian_qwerty);
+        LANGUAGE_INPUT_AZERBAIJANI = new LanguageInputType(d.f29245A, "azerbaijani_qwerty", R.string.input_type_azerbaijani_qwerty);
+        LANGUAGE_INPUT_ALBANIAN = new LanguageInputType(d.f29247B, "albanian_qwerty", R.string.input_type_albanian_qwerty);
+        LANGUAGE_INPUT_VIETNAMESE_TELEX = new LanguageInputType(dVar, "vietnamese_telex", R.string.input_type_telex);
+        LANGUAGE_INPUT_VIETNAMESE_VNI = new LanguageInputType(d.f29290Y, "vietnamese_vni", R.string.input_type_qwerty_vni);
+        LANGUAGE_INPUT_VIETNAMESE_EASE = new LanguageInputType(d.f29292Z, "vietnamese_ease", R.string.input_type_qwerty_ease);
+        LANGUAGE_INPUT_TWI_QWERTY = new LanguageInputType(d.f29294a0, "twi", R.string.input_type_referece);
+        LANGUAGE_INPUT_HAWAIIAN_QWERTY = new LanguageInputType(d.f29296b0, "hawaiian", R.string.input_type_referece);
+        LANGUAGE_INPUT_VENETIAN_QWERTY = new LanguageInputType(d.f29299c0, "venetian", R.string.input_type_referece);
+        LANGUAGE_INPUT_WAKHI_QWERTY = new LanguageInputType(d.f29301d0, "wakhi", R.string.input_type_referece);
+        d dVar3 = d.f29304e0;
+        LANGUAGE_INPUT_APOSTROPHE_QWERTY = new LanguageInputType(dVar3, "apostrophe_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_RAPA_NUI = new LanguageInputType(d.f29307f0, "rapa_nui", R.string.input_type_referece);
+        LANGUAGE_INPUT_FAROESE = new LanguageInputType(d.g0, "faroese_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_VORO_QWERTY = new LanguageInputType(d.f29310h0, "voro", R.string.input_type_referece);
+        LANGUAGE_INPUT_KHOISAN_QWERTY = new LanguageInputType(d.f29312i0, "khoisan_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_CHCHEN_QWERTY = new LanguageInputType(d.f29314j0, "chechen_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_COPTIC_QWERTY = new LanguageInputType(d.f29316k0, "coptic_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_DUNGAN_QWERTY = new LanguageInputType(d.f29318l0, "dungan_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_KABARDIAN_QWERTY = new LanguageInputType(d.f29320m0, "kabardian_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_OSSETIAN_QWERTY = new LanguageInputType(d.f29322n0, "ossetian_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_RUSSIAN_COMPACT_QWERTY = new LanguageInputType(d.f29324o0, "russian_compact_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_RUSYN_QWERTY = new LanguageInputType(d.f29326p0, "rusyn_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SERBIAN_QWERTY = new LanguageInputType(d.f29328q0, "serbian_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_TATAR_QWERTY = new LanguageInputType(d.f29330r0, "tatar_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_YAKUT_QWERTY = new LanguageInputType(d.f29332s0, "yakut_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_NUBIAN_QWERTY = new LanguageInputType(d.f29333t0, "nubian_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_ARABIC2_QWERTY = new LanguageInputType(d.f29335u0, "arabic2_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_ARABIC2_WESTERN_QWERTY = new LanguageInputType(d.v0, "arabic2_western_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_ARABIC_URDU_QWERTY = new LanguageInputType(d.f29338w0, "arabic_urdu_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_JAWI_QWERTY = new LanguageInputType(d.f29340x0, "jawi_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_GILAKI_QWERTY = new LanguageInputType(d.f29342y0, "gilaki_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_DHIVEHI_QWERTY = new LanguageInputType(d.f29344z0, "dhivehi_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SHUGHNANI_QWERTY = new LanguageInputType(d.f29246A0, "shughnani_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SINDHI_QWERTY = new LanguageInputType(d.f29248B0, "sindhi_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SORANI_QWERTY = new LanguageInputType(d.f29250C0, "sorani_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_AMHARIC_QWERTY = new LanguageInputType(d.f29252D0, "amharic_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_AMHARIC_SMART_QWERTY = new LanguageInputType(d.f29253E0, "amharic_smart_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_GEORGIAN_WIN_QWERTY = new LanguageInputType(d.f29255F0, "georgian_win_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_YIDDISH_QWERTY = new LanguageInputType(d.f29257G0, "yiddish_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_LISU_QWERTY = new LanguageInputType(d.f29259H0, "lisu_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_LONTARA_QWERTY = new LanguageInputType(d.f29261I0, "lontara_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_MONGOLIAN_TRADITIONAL_QWERTY = new LanguageInputType(d.f29263J0, "mongolian_traditional_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_NKO_QWERTY = new LanguageInputType(d.f29265K0, "nko_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SGAW_KAREN_QWERTY = new LanguageInputType(d.L0, "sgaw_karen_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SHAN_QWERTY = new LanguageInputType(d.f29268M0, "shan_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_TIBETAN_SMART_QWERTY = new LanguageInputType(d.f29270N0, "tibetan_smart_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_TIFINAGH_QWERTY = new LanguageInputType(d.f29272O0, "tifinagh_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_TAI_NUA_QWERTY = new LanguageInputType(d.f29274P0, "tai_nua_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_CANTONESE_QWERTY = new LanguageInputType(d.Q0, "cantonese_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_HOKKIEN_QWERTY = new LanguageInputType(d.f29277R0, "hokkien_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_SYRIAC_QWERTY = new LanguageInputType(d.f29279S0, "syriac_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_INDIAN_HORIZONTAL = new LanguageInputType(d.f29281T0, "qwerty_indian_horizontal", R.string.input_type_indian_horizontal);
+        LANGUAGE_INPUT_INDIAN_VERTICAL = new LanguageInputType(d.f29283U0, "qwerty_indian_vertical", R.string.input_type_indian_vertical);
+        LANGUAGE_INPUT_PASHTO_QWERTY = new LanguageInputType(d.f29285V0, "pashto_qwerty", R.string.input_type_referece);
+        LANGUAGE_INPUT_QWERTZ_APOSTROPHE = new LanguageInputType(d.f29287W0, "qwertz_apostrophe", R.string.input_type_qwertz_apostrophe);
+        LANGUAGE_INPUT_QWERTY_ARABIC_NEW_TYPE_A = new LanguageInputType(d.f29289X0, "qwerty_arabic_new_type_a", R.string.input_type_qwerty_arabic_new_type_a);
+        LANGUAGE_INPUT_QWERTY_ARABIC_NEW_TYPE_B = new LanguageInputType(d.f29291Y0, "qwerty_arabic_new_type_b", R.string.input_type_qwerty_arabic_new_type_b);
+        LANGUAGE_INPUT_QWERTY_THAI_NEW_TYPE_A = new LanguageInputType(d.f29293Z0, "qwerty_thai_new_type_a", R.string.input_type_qwerty_thai_new_type_a);
+        LANGUAGE_INPUT_QWERTY_THAI_NEW_TYPE_B = new LanguageInputType(d.f29295a1, "qwerty_thai_new_type_b", R.string.input_type_qwerty_thai_new_type_b);
+        LANGUAGE_INPUT_QWERTY_ACCENT = new LanguageInputType(d.f29297b1, "qwerty_accent", R.string.input_type_qwerty_accent);
+        LANGUAGE_INPUT_QWERTZ_ACCENT = new LanguageInputType(d.c1, "qwertz_accent", R.string.input_type_qwertz_accent);
+        LANGUAGE_INPUT_QWERTY_NORTHERN_SAMI_TYPE_A = new LanguageInputType(d.f29302d1, "qwerty_northern_sami_type_a", R.string.input_type_qwerty_northern_sami_type_a);
+        LANGUAGE_INPUT_QWERTY_NORTHERN_SAMI_TYPE_B = new LanguageInputType(d.f29305e1, "qwerty_northern_sami_type_b", R.string.input_type_qwerty_northern_sami_type_b);
+        LANGUAGE_CHINESE_QWERTY = new LanguageInputType(dVar, "qwerty", R.string.input_type_qwerty_pinyin);
+        LANGUAGE_BULGARIAN_QWERTY = new LanguageInputType(d.f29321n, "bulgarian_qwerty", R.string.input_type_bulgarian);
+        LANGUAGE_KOREAN_PHONEPAD = new LanguageInputType(dVar2, "phonepad", R.string.input_type_chunjiin);
+        LANGUAGE_NO_FLICK_PHONEPAD = new LanguageInputType(dVar2, "phonepad", R.string.input_type_no_flick);
+        LANGUAGE_CHINESE_PHONEPAD = new LanguageInputType(dVar2, "phonepad", R.string.input_type_phonepad_pinyin);
+        LANGUAGE_INPUT_FRENCH_QWERTY_APOSTROPHE = new LanguageInputType(dVar3, "apostrophe_qwerty", R.string.input_type_qwerty_apostrophe);
+        NUMBER_AND_SYMBOL_DEPENDANT = new LanguageInputType(d.f29282U, "language_dependent", R.string.input_type_dependent);
+        NUMBER_AND_SYMBOL_QWERTY = new LanguageInputType(d.f29284V, "qwerty", R.string.input_type_qwerty);
+        d dVar4 = d.f29286W;
+        NUMBER_AND_SYMBOL_PHONEPAD = new LanguageInputType(dVar4, "phonepad", R.string.input_type_phonepad);
+        NUMBER_AND_SYMBOL_PHONEPAD_NO_FLICK = new LanguageInputType(dVar4, "phonepad", R.string.input_type_no_flick);
+        NUMBER_AND_SYMBOL_FLICK_PHONEPAD = new LanguageInputType(d.f29288X, "flick_phonepad", R.string.input_type_flick);
+    }
+
+    private LanguageInputType(d dVar, String str, int i3) {
+        this.mKeyboardInputType = dVar;
+        this.mLanguageInputTypeName = str;
+        this.mInputTypeText = i3;
+    }
+
+    public String getInputTypeText(Context context, Language language) {
+        if ("qwerty_arabic_new_type_a".equals(this.mLanguageInputTypeName) || "qwerty_thai_new_type_a".equals(this.mLanguageInputTypeName)) {
+            return String.format(context.getString(this.mInputTypeText), 1);
+        }
+        return ("qwerty_arabic_new_type_b".equals(this.mLanguageInputTypeName) || "qwerty_thai_new_type_b".equals(this.mLanguageInputTypeName)) ? String.format(context.getString(this.mInputTypeText), 2) : String.format(context.getString(this.mInputTypeText), k.a(context, language));
+    }
+
+    public int getInputTypeTextId() {
+        return this.mInputTypeText;
+    }
+
+    public d getKeyboardInputType() {
+        return this.mKeyboardInputType;
+    }
+
+    public String getLanguageInputTypeName() {
+        return this.mLanguageInputTypeName;
+    }
+}

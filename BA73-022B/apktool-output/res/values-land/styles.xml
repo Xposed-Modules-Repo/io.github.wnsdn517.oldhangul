@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SudCardTitle" parent="@style/SudBaseCardTitle">
+        <item name="android:maxLines">6</item>
+    </style>
+    <style name="Widget.MaterialComponents.MaterialCalendar.HeaderSelection" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textAppearance">?textAppearanceHeadline6</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_gravity">start|top</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">@integer/mtrl_calendar_selection_text_lines</item>
+    </style>
+    <style name="Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton" parent="@style/Base.Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton">
+        <item name="android:layout_gravity">start|bottom</item>
+    </style>
+    <style name="toolbar_keyboard_view_type_popup_item_image">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">@dimen/view_type_panel_keyboard_button_size</item>
+        <item name="android:layout_height">@dimen/view_type_panel_keyboard_button_size</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:layout_weight">@dimen/view_type_panel_mode_button_width_land</item>
+        <item name="android:contentDescription">@null</item>
+    </style>
+    <style name="toolbar_keyboard_view_type_popup_item_layout">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/ripple_toolbar_select_keypad_type_button_xml</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">@dimen/view_type_panel_mode_layout_width_land</item>
+    </style>
+    <style name="toolbar_keyboard_view_type_popup_item_text">
+        <item name="android:layout_gravity">start|center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">@dimen/view_type_panel_mode_text_width_land</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+</resources>

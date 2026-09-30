@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">بمجرد وصولك إلى %d صورة تم إنشاؤها، سيؤدي إنشاء صورة جديدة إلى حذف الصورة الأقدم لديك.</item>
+        <item quantity="one">بمجرد وصولك إلى صورة واحدة تم إنشاؤها، سيؤدي إنشاء صورة جديدة إلى حذف الصورة الأقدم لديك.</item>
+        <item quantity="two">بمجرد وصولك إلى صورتين تم إنشاؤهما، سيؤدي إنشاء صورة جديدة إلى حذف الصورة الأقدم لديك.</item>
+        <item quantity="few">بمجرد وصولك إلى %d صور تم إنشاؤها، سيؤدي إنشاء صورة جديدة إلى حذف الصورة الأقدم لديك.</item>
+        <item quantity="many">بمجرد وصولك إلى %d صورةً تم إنشاؤها، سيؤدي إنشاء صورة جديدة إلى حذف الصورة الأقدم لديك.</item>
+        <item quantity="other">بمجرد وصولك إلى %d صورة تم إنشاؤها، سيؤدي إنشاء صورة جديدة إلى حذف الصورة الأقدم لديك.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">هل تريد حذف %d ملصق؟</item>
+        <item quantity="one">هل تريد حذف ملصق واحد؟</item>
+        <item quantity="two">هل تريد حذف ملصقَين؟</item>
+        <item quantity="few">هل تريد حذف %d ملصقات؟</item>
+        <item quantity="many">هل تريد حذف %d ملصقاً؟</item>
+        <item quantity="other">هل تريد حذف %d ملصق؟</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">هل تريد حذف %d زوج رموز إيموجي؟</item>
+        <item quantity="one">هل تريد حذف زوج رموز إيموجي واحد؟</item>
+        <item quantity="two">هل تريد حذف زوجين رموز إيموجي؟</item>
+        <item quantity="few">هل تريد حذف %d أزواج رموز إيموجي؟</item>
+        <item quantity="many">هل تريد حذف %d زوجاً رموز إيموجي؟</item>
+        <item quantity="other">هل تريد حذف %d زوج رموز إيموجي؟</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">يجب أن يكون عمرك %d سنة على الأقل لاستخدام ميزات الذكاء المتقدم‬ في Galaxy AI.</item>
+        <item quantity="one">يجب أن يكون عمرك سنة واحدة على الأقل لاستخدام ميزات الذكاء المتقدم‬ في Galaxy AI.</item>
+        <item quantity="two">يجب أن يكون عمرك سنتين على الأقل لاستخدام ميزات الذكاء المتقدم‬ في Galaxy AI.</item>
+        <item quantity="few">يجب أن يكون عمرك %d سنوات على الأقل لاستخدام ميزات الذكاء المتقدم‬ في Galaxy AI.</item>
+        <item quantity="many">يجب أن يكون عمرك %d سنةً على الأقل لاستخدام ميزات الذكاء المتقدم‬ في Galaxy AI.</item>
+        <item quantity="other">يجب أن يكون عمرك %d سنة على الأقل لاستخدام ميزات الذكاء المتقدم‬ في Galaxy AI.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">هل تريد حذف %d عنصر؟</item>
+        <item quantity="one">هل تريد حذف عنصر واحد؟</item>
+        <item quantity="two">هل تريد حذف عنصرين؟</item>
+        <item quantity="few">هل تريد حذف %d عناصر؟</item>
+        <item quantity="many">هل تريد حذف %d عنصراً؟</item>
+        <item quantity="other">هل تريد حذف %d عنصر؟</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">هل تريد حذف %d عنصر مثبت؟</item>
+        <item quantity="one">هل تريد حذف عنصر مثبت واحد؟</item>
+        <item quantity="two">هل تريد حذف عنصرين مثبتين؟</item>
+        <item quantity="few">هل تريد حذف %d عناصر مثبتة؟</item>
+        <item quantity="many">هل تريد حذف %d عنصراً مثبتاً؟</item>
+        <item quantity="other">هل تريد حذف %d عنصر مثبت؟</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">تضمين %d عنصر مثبت</item>
+        <item quantity="one">تضمين عنصر مثبت واحد</item>
+        <item quantity="two">تضمين عنصرين مثبتين</item>
+        <item quantity="few">تضمين %d عناصر مثبتة</item>
+        <item quantity="many">تضمين %d عنصراً مثبتاً</item>
+        <item quantity="other">تضمين %d عنصر مثبت</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">مراجعة %d اقتراح كتابة</item>
+        <item quantity="one">مراجعة اقتراح كتابة واحد</item>
+        <item quantity="two">مراجعة اقتراحي كتابة</item>
+        <item quantity="few">مراجعة %d اقتراحات كتابة</item>
+        <item quantity="many">مراجعة %d اقتراح كتابة</item>
+        <item quantity="other">مراجعة %d اقتراح كتابة</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="zero">%d إشعار جديد</item>
+        <item quantity="one">إشعار جديد واحد (%d)</item>
+        <item quantity="two">إشعاران جديدان (%d)</item>
+        <item quantity="few">%d إشعارات جديدة</item>
+        <item quantity="many">%d إشعارًا جديدًا</item>
+        <item quantity="other">%d إشعار جديد</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">‏‫تتعذر إضافة أكثر من %d ملصق.‬ انتقل إلى محرر الصور في الاستوديو لإزالة الملصقات.</item>
+        <item quantity="one">‏‫تتعذر إضافة أكثر من ملصق واحد.‬ انتقل إلى محرر الصور في الاستوديو لإزالة الملصقات.</item>
+        <item quantity="two">‏‫تتعذر إضافة أكثر من ملصقين.‬ انتقل إلى محرر الصور في الاستوديو لإزالة الملصقات.</item>
+        <item quantity="few">‏‫تتعذر إضافة أكثر من %d ملصقات.‬ انتقل إلى محرر الصور في الاستوديو لإزالة الملصقات.</item>
+        <item quantity="many">‏‫تتعذر إضافة أكثر من %d ملصقاً.‬ انتقل إلى محرر الصور في الاستوديو لإزالة الملصقات.</item>
+        <item quantity="other">‏‫تتعذر إضافة أكثر من %d ملصق.‬ انتقل إلى محرر الصور في الاستوديو لإزالة الملصقات.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">يتعذر إظهار أكثر من %d لون.</item>
+        <item quantity="one">يتعذر إظهار أكثر من لون واحد.</item>
+        <item quantity="two">يتعذر إظهار أكثر من لونَين.</item>
+        <item quantity="few">يتعذر إظهار أكثر من %d ألوان.</item>
+        <item quantity="many">يتعذر إظهار أكثر من %d لوناً.</item>
+        <item quantity="other">يتعذر إظهار أكثر من %d لون.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">تم تحديد %d</item>
+        <item quantity="one">تم تحديد %d</item>
+        <item quantity="two">تم تحديد %d</item>
+        <item quantity="few">تم تحديد %d</item>
+        <item quantity="many">تم تحديد %d</item>
+        <item quantity="other">تم تحديد %d</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">هل تريد حذف %d اختصار نصي؟</item>
+        <item quantity="one">هل تريد حذف اختصار نصي واحد؟</item>
+        <item quantity="two">هل تريد حذف اختصارَين نصيَين؟</item>
+        <item quantity="few">هل تريد حذف %d اختصارات نصية؟</item>
+        <item quantity="many">هل تريد حذف %d اختصاراً نصياً؟</item>
+        <item quantity="other">هل تريد حذف %d اختصار نصي؟</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">يجب تحديث %d لغة.</item>
+        <item quantity="one">يجب تحديث لغة واحدة.</item>
+        <item quantity="two">يجب تحديث لغتَين.</item>
+        <item quantity="few">يجب تحديث %d لغات.</item>
+        <item quantity="many">يجب تحديث %d لغة.</item>
+        <item quantity="other">يجب تحديث %d لغة.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">تم تحديد %d</item>
+        <item quantity="one">تم تحديد %d</item>
+        <item quantity="two">تم تحديد %d</item>
+        <item quantity="few">تم تحديد %d</item>
+        <item quantity="many">تم تحديد %d</item>
+        <item quantity="other">تم تحديد %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">لقد قمت بتحديد %d حرف.</item>
+        <item quantity="one">لقد قمت بتحديد حرف واحد.</item>
+        <item quantity="two">لقد قمت بتحديد حرفين.</item>
+        <item quantity="few">لقد قمت بتحديد %d أحرف.</item>
+        <item quantity="many">لقد قمت بتحديد %d حرفاً.</item>
+        <item quantity="other">لقد قمت بتحديد %d حرف.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">%d تصحيح</item>
+        <item quantity="one">تصحيح واحد</item>
+        <item quantity="two">تصحيحان</item>
+        <item quantity="few">%d تصحيحات</item>
+        <item quantity="many">%d تصحيحاً</item>
+        <item quantity="other">%d تصحيح</item>
+    </plurals>
+</resources>

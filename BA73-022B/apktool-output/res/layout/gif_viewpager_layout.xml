@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:gravity="top" android:orientation="vertical" android:background="?common_content_background_color_attr" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="locale"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/common_loading_layout_merged" />
+    <com.samsung.android.honeyboard.icecone.common.view.content.NetworkMsgPage android:id="@id/gif_no_network_layout" android:layout_width="match_parent" android:layout_height="match_parent" />
+    <com.google.android.material.appbar.AppBarLayout android:id="@id/gif_app_bar" android:paddingBottom="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:expanded="true" app:seslHeightProportion="0.0" app:seslUseCustomHeight="true" app:seslUseCustomPadding="true" app:seslUseFloatingToolbar="false">
+        <com.google.android.material.appbar.CollapsingToolbarLayout android:layout_width="match_parent" android:layout_height="match_parent" android:minHeight="38.0dp" app:layout_scrollFlags="scroll|enterAlways">
+            <com.samsung.android.honeyboard.support.category.CategoryLayout android:theme="?common_category_theme" android:layout_gravity="bottom" android:id="@id/gif_category_layout" android:layout_width="match_parent" android:layout_height="wrap_content" app:category_auto_scroll="false" app:category_item_layout="@layout/gif_category_scroll_area" style="@style/CategoryView.Search" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.samsung.android.honeyboard.icecone.common.view.content.FtuPage android:id="@id/gif_ftu_layout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/gif_tray_layout" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.viewpager2.widget.ViewPager2 android:id="@id/gif_view_pager" android:visibility="gone" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
+        <com.samsung.android.honeyboard.icecone.gif.view.content.GifContentLayout android:orientation="vertical" android:id="@id/gif_content_layout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

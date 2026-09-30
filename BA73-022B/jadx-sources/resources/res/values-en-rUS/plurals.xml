@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">Once you reach %d generated images, generating a new image will cause your oldest one to be deleted.</item>
+        <item quantity="one">Once you reach %d generated image, generating a new image will cause your oldest one to be deleted.</item>
+        <item quantity="two">Once you reach %d generated images, generating a new image will cause your oldest one to be deleted.</item>
+        <item quantity="few">Once you reach %d generated images, generating a new image will cause your oldest one to be deleted.</item>
+        <item quantity="many">Once you reach %d generated images, generating a new image will cause your oldest one to be deleted.</item>
+        <item quantity="other">Once you reach %d generated images, generating a new image will cause your oldest one to be deleted.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">Delete %d stickers?</item>
+        <item quantity="one">Delete %d sticker?</item>
+        <item quantity="two">Delete %d stickers?</item>
+        <item quantity="few">Delete %d stickers?</item>
+        <item quantity="many">Delete %d stickers?</item>
+        <item quantity="other">Delete %d stickers?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">Delete %d emoji pairs?</item>
+        <item quantity="one">Delete %d emoji pair?</item>
+        <item quantity="two">Delete %d emoji pairs?</item>
+        <item quantity="few">Delete %d emoji pairs?</item>
+        <item quantity="many">Delete %d emoji pairs?</item>
+        <item quantity="other">Delete %d emoji pairs?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">You need to be at least %d years old to use Galaxy AI&apos;s advanced intelligence features.</item>
+        <item quantity="one">You need to be at least %d year old to use Galaxy AI&apos;s advanced intelligence features.</item>
+        <item quantity="two">You need to be at least %d years old to use Galaxy AI&apos;s advanced intelligence features.</item>
+        <item quantity="few">You need to be at least %d years old to use Galaxy AI&apos;s advanced intelligence features.</item>
+        <item quantity="many">You need to be at least %d years old to use Galaxy AI&apos;s advanced intelligence features.</item>
+        <item quantity="other">You need to be at least %d years old to use Galaxy AI&apos;s advanced intelligence features.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">Delete %d items?</item>
+        <item quantity="one">Delete %d item?</item>
+        <item quantity="two">Delete %d items?</item>
+        <item quantity="few">Delete %d items?</item>
+        <item quantity="many">Delete %d items?</item>
+        <item quantity="other">Delete %d items?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">Delete %d pinned items?</item>
+        <item quantity="one">Delete %d pinned item?</item>
+        <item quantity="two">Delete %d pinned items?</item>
+        <item quantity="few">Delete %d pinned items?</item>
+        <item quantity="many">Delete %d pinned items?</item>
+        <item quantity="other">Delete %d pinned items?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">Include %d pinned items</item>
+        <item quantity="one">Include %d pinned item</item>
+        <item quantity="two">Include %d pinned items</item>
+        <item quantity="few">Include %d pinned items</item>
+        <item quantity="many">Include %d pinned items</item>
+        <item quantity="other">Include %d pinned items</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">Review %d writing suggestions</item>
+        <item quantity="one">Review %d writing suggestion</item>
+        <item quantity="two">Review %d writing suggestions</item>
+        <item quantity="few">Review %d writing suggestions</item>
+        <item quantity="many">Review %d writing suggestions</item>
+        <item quantity="other">Review %d writing suggestions</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">Can&apos;t add more than %d stickers. Go to the photo editor in Gallery to remove stickers.</item>
+        <item quantity="one">Can&apos;t add more than %d sticker. Go to the photo editor in Gallery to remove stickers.</item>
+        <item quantity="two">Can&apos;t add more than %d stickers. Go to the photo editor in Gallery to remove stickers.</item>
+        <item quantity="few">Can&apos;t add more than %d stickers. Go to the photo editor in Gallery to remove stickers.</item>
+        <item quantity="many">Can&apos;t add more than %d stickers. Go to the photo editor in Gallery to remove stickers.</item>
+        <item quantity="other">Can&apos;t add more than %d stickers. Go to the photo editor in Gallery to remove stickers.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">Can&apos;t show more than %d colors.</item>
+        <item quantity="one">Can&apos;t show more than %d color.</item>
+        <item quantity="two">Can&apos;t show more than %d colors.</item>
+        <item quantity="few">Can&apos;t show more than %d colors.</item>
+        <item quantity="many">Can&apos;t show more than %d colors.</item>
+        <item quantity="other">Can&apos;t show more than %d colors.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">%d selected</item>
+        <item quantity="one">%d selected</item>
+        <item quantity="two">%d selected</item>
+        <item quantity="few">%d selected</item>
+        <item quantity="many">%d selected</item>
+        <item quantity="other">%d selected</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">Delete %d text shortcuts?</item>
+        <item quantity="one">Delete %d text shortcut?</item>
+        <item quantity="two">Delete %d text shortcuts?</item>
+        <item quantity="few">Delete %d text shortcuts?</item>
+        <item quantity="many">Delete %d text shortcuts?</item>
+        <item quantity="other">Delete %d text shortcuts?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">%d languages to be updated.</item>
+        <item quantity="one">%d language to be updated.</item>
+        <item quantity="two">%d languages to be updated.</item>
+        <item quantity="few">%d languages to be updated.</item>
+        <item quantity="many">%d languages to be updated.</item>
+        <item quantity="other">%d languages to be updated.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">%d selected</item>
+        <item quantity="one">%d selected</item>
+        <item quantity="two">%d selected</item>
+        <item quantity="few">%d selected</item>
+        <item quantity="many">%d selected</item>
+        <item quantity="other">%d selected</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">You&apos;ve selected %d characters.</item>
+        <item quantity="one">You&apos;ve selected %d character.</item>
+        <item quantity="two">You&apos;ve selected %d characters.</item>
+        <item quantity="few">You&apos;ve selected %d characters.</item>
+        <item quantity="many">You&apos;ve selected %d characters.</item>
+        <item quantity="other">You&apos;ve selected %d characters.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">%d corrections</item>
+        <item quantity="one">%d correction</item>
+        <item quantity="two">%d corrections</item>
+        <item quantity="few">%d corrections</item>
+        <item quantity="many">%d corrections</item>
+        <item quantity="other">%d corrections</item>
+    </plurals>
+</resources>

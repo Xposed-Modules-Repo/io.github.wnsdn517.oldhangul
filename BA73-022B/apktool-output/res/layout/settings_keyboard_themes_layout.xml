@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/col" android:tag="layout/settings_keyboard_themes_layout_0" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:id="@id/app_bar" android:tag="binding_1" android:layout_width="match_parent" android:layout_height="match_parent">
+        <include layout="@layout/settings_preference_collapsing_layout" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView android:id="@id/keyboard_themes_nested_scroll_view" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout android:orientation="vertical" android:background="@color/app_theme_background_color" android:paddingTop="@dimen/high_contrast_list_margin_top" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="horizontal" android:id="@id/ll_theme_description" android:tag="binding_2" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginBottom="20.0dp">
+                <TextView android:id="@id/tv_theme_description" android:tag="binding_3" style="@style/keyboard_themes_fold_device_description" />
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:layout_gravity="center_horizontal" android:id="@id/android_list" android:background="@drawable/tw_fullscreen_background" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="@integer/preference_setting_layout_weight_middle" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout android:id="@id/sesl_floating_toolbar_layout" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:clipToOutline="false" app:layout_anchor="@id/app_bar">
+        <androidx.appcompat.widget.Toolbar android:layout_gravity="bottom" android:id="@id/toolbar" android:background="@android:color/transparent" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="?actionBarSize" android:clipToOutline="false" app:background="@android:color/transparent" app:title="@string/keyboard_themes" />
+    </com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout>
+    <Button android:id="@id/bt_show_ime" style="@style/setting_show_keyboard_button" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/symbol_content_bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/symbol_app_bar"
+        android:paddingBottom="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:expanded="true"
+        app:seslHeightProportion="0"
+        app:seslUseCustomHeight="true"
+        app:seslUseCustomPadding="true"
+        app:seslUseFloatingToolbar="false">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/symbol_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="38dp"
+            app:layout_scrollFlags="enterAlways|scroll">
+            <com.samsung.android.honeyboard.support.category.CategoryLayout
+                android:theme="?attr/symbol_category_theme"
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:category_item_layout="@layout/symbol_category_item_layout"
+                style="@style/CategoryView.ScrollOnly"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.samsung.android.honeyboard.textboard.friends.symbol.view.SymbolViewPager
+        android:id="@+id/viewpager"
+        android:paddingTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

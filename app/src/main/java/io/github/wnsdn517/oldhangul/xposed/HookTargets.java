@@ -55,8 +55,15 @@ final class HookTargets {
     Method sizeWidthRatio;
     /** Static lookup of a prediction engine by name, e.g. "OMRON" (Japanese). Optional, may be null. */
     Method engineFactory;
+    /** Samsung's key-preview bubble factory: (PreviewBubbleData) -> view id. Optional. */
+    Method previewShow;
+    /** Toolbar ("Bee world") members, all optional: the undo button is skipped if any is missing. */
+    BeeTargets bee;
 
-    private static final int CACHE_VERSION = 5;
+    private static final int CACHE_VERSION = 7;
+    private static final String BEE_UPDATE_ALL = "call updateAllBees";
+    private static final String BEE_ADD = "addBee : already exist";
+    private static final String BEE_SAVE = "saveCurrentBeeSet: ";
     private static final String KEY_REQUEST_INFO = "KeyRequestInfo{mKeyCode=";
     private static final String EXECUTE_ACTION = " execute end t : ";
     private static final String TALKBACK_LONG_CLICK = "onTalkBackLongClick: xy = (";
@@ -67,6 +74,8 @@ final class HookTargets {
     private static final String USES_IS_SHIFTED = "keycode change to lowercase for auto caps flick";
     private static final String ENGINE_FACTORY = "engineName is null";
     private static final String SIZE_CONFIG = "sizeConfig";
+    private static final String PREVIEW_DATA = "PreviewBubbleData(previewBubbleType=";
+    private static final String PREVIEW_SHOWN = "BubbleLayerManager Preview is not displayed, preview already has parent.";
     private static final String KEY_VO = "com.samsung.android.honeyboard.forms.model.KeyVO";
 
     static HookTargets load(ClassLoader cl, String apkPath, String dataDir) throws Exception {
@@ -155,6 +164,27 @@ final class HookTargets {
                 XposedBridge.log("OldHangul: engine factory not found, no Japanese preload: " + e);
             }
             try {
+                ClassData data = single(bridge.findClass(FindClass.create()
+                        .matcher(ClassMatcher.create().usingStrings(PREVIEW_DATA))), "PreviewBubbleData");
+                List<MethodData> shows = new ArrayList<>();
+                for (MethodData m : bridge.findMethod(FindMethod.create().matcher(MethodMatcher.create()
+                        .usingStrings(PREVIEW_SHOWN).paramCount(1)))) {
+                    if (m.isMethod() && m.getReturnTypeName().equals("int")
+                            && m.getParamTypeNames().get(0).equals(data.getName())) {
+                        shows.add(m);
+                    }
+                }
+                t.previewShow = single(shows, "preview show").getMethodInstance(cl);
+                t.previewShow.setAccessible(true);
+            } catch (RuntimeException | ReflectiveOperationException e) {
+                XposedBridge.log("OldHangul: key preview not found, swipe preview may show the letter: " + e);
+            }
+            try {
+                t.bee = BeeTargets.search(bridge, cl, BEE_UPDATE_ALL, BEE_ADD, BEE_SAVE);
+            } catch (RuntimeException | ReflectiveOperationException e) {
+                XposedBridge.log("OldHangul: toolbar (Bee) targets not found, no undo button: " + e);
+            }
+            try {
                 findSizeRatios(bridge, cl, t);
             } catch (RuntimeException | ReflectiveOperationException e) {
                 XposedBridge.log("OldHangul: keyboard size lookups not found: " + e);
@@ -213,12 +243,12 @@ final class HookTargets {
         }
     }
 
-    private static String packageOf(String className) {
+    static String packageOf(String className) {
         int dot = className.lastIndexOf('.');
         return dot < 0 ? "" : className.substring(0, dot);
     }
 
-    private static <T> T single(List<T> list, String what) {
+    static <T> T single(List<T> list, String what) {
         if (list.size() != 1) {
             throw new IllegalStateException("OldHangul: expected one " + what + ", found " + list.size());
         }
@@ -263,9 +293,13 @@ final class HookTargets {
             touch.append(touch.length() == 0 ? "" : "|").append(describe(m));
         }
         p.setProperty("keyTouch", touch.toString());
+        p.setProperty("previewShow", previewShow == null ? "" : describe(previewShow));
         p.setProperty("engineFactory", engineFactory == null ? "" : describe(engineFactory));
         p.setProperty("sizeHeightRatio", sizeHeightRatio == null ? "" : describe(sizeHeightRatio));
         p.setProperty("sizeWidthRatio", sizeWidthRatio == null ? "" : describe(sizeWidthRatio));
+        if (bee != null) {
+            bee.toCache(p);
+        }
         return p;
     }
 
@@ -284,17 +318,22 @@ final class HookTargets {
         for (String d : touch.isEmpty() ? new String[0] : touch.split("\\|")) {
             t.keyTouch.add(resolve(cl, d));
         }
+        String preview = p.getProperty("previewShow", "");
+        t.previewShow = preview.isEmpty() ? null : resolve(cl, preview);
         String factory = p.getProperty("engineFactory", "");
         t.engineFactory = factory.isEmpty() ? null : resolve(cl, factory);
         String height = p.getProperty("sizeHeightRatio", "");
         String width = p.getProperty("sizeWidthRatio", "");
         t.sizeHeightRatio = height.isEmpty() ? null : resolve(cl, height);
         t.sizeWidthRatio = width.isEmpty() ? null : resolve(cl, width);
+        if (p.getProperty("bee.updateAll") != null) {
+            t.bee = BeeTargets.fromCache(cl, p);
+        }
         return t;
     }
 
     /** "declaringClass#name#paramType,paramType". */
-    private static String describe(Method m) {
+    static String describe(Method m) {
         StringBuilder sb = new StringBuilder(m.getDeclaringClass().getName()).append('#').append(m.getName()).append('#');
         Class<?>[] params = m.getParameterTypes();
         for (int i = 0; i < params.length; i++) {
@@ -303,7 +342,7 @@ final class HookTargets {
         return sb.toString();
     }
 
-    private static Method resolve(ClassLoader cl, String description) throws ReflectiveOperationException {
+    static Method resolve(ClassLoader cl, String description) throws ReflectiveOperationException {
         if (description == null) {
             throw new ClassNotFoundException("missing cache entry");
         }

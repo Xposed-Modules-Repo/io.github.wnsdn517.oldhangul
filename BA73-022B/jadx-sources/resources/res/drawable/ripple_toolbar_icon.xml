@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/candidate_btn_color_pressed_ripple_light"
+    android:radius="@dimen/toolbar_ripple_oval_radius"/>

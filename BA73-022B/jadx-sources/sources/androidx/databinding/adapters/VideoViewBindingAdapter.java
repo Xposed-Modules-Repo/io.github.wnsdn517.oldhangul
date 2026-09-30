@@ -1,0 +1,10 @@
+package androidx.databinding.adapters;
+
+import android.widget.VideoView;
+import androidx.databinding.BindingMethod;
+import androidx.databinding.BindingMethods;
+
+/* JADX INFO: loaded from: classes2.dex */
+@BindingMethods({@BindingMethod(attribute = "android:onCompletion", method = "setOnCompletionListener", type = VideoView.class), @BindingMethod(attribute = "android:onError", method = "setOnErrorListener", type = VideoView.class), @BindingMethod(attribute = "android:onInfo", method = "setOnInfoListener", type = VideoView.class), @BindingMethod(attribute = "android:onPrepared", method = "setOnPreparedListener", type = VideoView.class)})
+public class VideoViewBindingAdapter {
+}

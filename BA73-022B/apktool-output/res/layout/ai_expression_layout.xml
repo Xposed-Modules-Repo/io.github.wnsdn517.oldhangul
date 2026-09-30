@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/ai_expression_layout_root" android:tag="layout/ai_expression_layout_0" android:background="@color/transparent" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:clipToOutline="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/ai_expression_bottom_sheet" android:background="@drawable/ai_expression_bg" android:clipChildren="true" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:clipToOutline="false" app:behavior_hideable="false" app:behavior_peekHeight="@dimen/ai_expression_header_height" app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        <com.samsung.android.writingtoolkit.writingassist.view.AiWriterProcessingEffectView android:orientation="vertical" android:id="@id/ai_expression_bottom_sheet_target" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/ai_expression_container" android:tag="binding_1" android:background="@color/transparent" android:layout_width="match_parent" android:layout_height="match_parent">
+                <include android:id="@id/ai_expression_header" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" layout="@layout/ai_expression_header" />
+                <androidx.core.widget.NestedScrollView android:scrollbarStyle="outsideOverlay" android:id="@id/ai_expression_body_container" android:tag="binding_2" android:scrollbars="vertical" android:layout_width="0.0dp" android:layout_height="0.0dp" android:fillViewport="true" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/ai_expression_header">
+                    <include android:id="@id/ai_expression_body" android:clipChildren="false" android:clipToPadding="false" layout="@layout/ai_expression_body" />
+                </androidx.core.widget.NestedScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.samsung.android.writingtoolkit.writingassist.view.AiWriterProcessingEffectView>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

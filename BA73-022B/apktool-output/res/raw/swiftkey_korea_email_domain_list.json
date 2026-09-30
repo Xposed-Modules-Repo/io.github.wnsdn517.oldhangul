@@ -1,0 +1,24 @@
+{
+  "default": {
+    "emails": [
+      {
+        "value": "nate.com"
+      },
+      {
+        "value": "naver.com"
+      },
+      {
+        "value": "daum.net"
+      },
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "yahoo.com"
+      },
+      {
+        "value": "hotmail.com"
+      }
+    ]
+  }
+}

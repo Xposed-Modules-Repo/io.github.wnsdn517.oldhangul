@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/writing_assist_turn_off_process_data_only_on_device_title"
+            style="@style/DialogTextTitleStyle"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/on_device_off_body"
+        android:text="@string/writing_assist_keyboard_setting_turn_off_on_device_body"
+        style="@style/DialogTextStyleDesc"/>
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.icecone.suggestedreplies.view.SuggestedRepliesAnimationContainerView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/suggested_replies_result_item_container"
+    android:tag="layout/ai_writer_suggested_replies_result_item_0"
+    android:background="@drawable/suggested_replies_container"
+    android:focusable="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/suggested_replies_view_margin_horizontal">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/suggested_replies_text_item_watermark"
+            android:paddingTop="1dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_intelligence_watermark"
+            android:contentDescription="@null"
+            android:paddingEnd="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/suggested_replies_content"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:textSize="@dimen/suggested_replies_content_text_size"
+            android:textColor="?attr/ai_gen_category_item_focused_color"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/suggested_replies_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:fontFamily="sec"
+            android:textAlignment="center"
+            android:layout_marginHorizontal="@dimen/suggested_replies_content_padding_horizontal"
+            android:paddingVertical="@dimen/suggested_replies_content_padding_vertical"
+            android:textFontWeight="400"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.samsung.android.honeyboard.icecone.suggestedreplies.view.SuggestedRepliesAnimationContainerView>

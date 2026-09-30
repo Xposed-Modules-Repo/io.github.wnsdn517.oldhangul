@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:tag="layout/search_preview_item_0" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dottedlineview="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="@dimen/search_preview_content_title_height" android:paddingHorizontal="@dimen/search_preview_scrollview_horizontal_padding">
+        <TextView android:textSize="@dimen/search_preview_content_title_text_size" android:textColor="?search_preview_board_message_text_color" android:gravity="center_vertical" android:id="@id/search_preview_item_label" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginEnd="@dimen/search_preview_content_title_end_margin" />
+        <com.samsung.android.honeyboard.resourcepack.view.DottedLineView android:layout_gravity="center_vertical" android:id="@id/search_preview_divider" android:layout_width="match_parent" android:layout_height="@dimen/rp_dotted_lined_size" dottedlineview:dotted_lined_color="?search_preview_board_message_text_color" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/search_preview_holder" android:paddingBottom="@dimen/search_preview_content_bottom_margin" android:layout_width="match_parent" android:layout_height="wrap_content" />
+</LinearLayout>

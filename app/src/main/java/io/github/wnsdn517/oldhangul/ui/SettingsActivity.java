@@ -37,57 +37,37 @@ public final class SettingsActivity extends Activity {
         list.setPadding(pad, pad, pad, pad);
 
         addTitle();
-        addText("한국어 쿼티(두벌식)에서만 동작합니다. 바꾼 설정은 키보드를 다시 열면 적용됩니다.", 13);
+        addText("한국어 쿼티 입력을 보완합니다. 변경 사항은 키보드 재시작 후 적용됩니다.", 13);
         addRestartButton();
 
-        addSection("기본");
-        addSwitch(Prefs.ENABLED, "모듈 켜기", "끄면 삼성 키보드 기본 입력으로 돌아갑니다");
-        addSwitch(Prefs.AUTO_IEUNG, "초성 ㅇ 자동 채우기", "ㅏ + ㄴ → 안");
-        addSwitch(Prefs.VOWEL_IEUNG, "모음만 쳐도 ㅇ 붙이기",
-                "세 + ㅛ → 세요     ㅏㅏ → 아아     ㅗ → 오\nㅠㅠ ㅜㅜ ㅡㅡ 는 그대로");
+        addSection("입력");
+        addSwitch(Prefs.ENABLED, "옛한글 입력 보조", "끄면 삼성 키보드 기본 입력을 사용합니다");
+        addSwitch(Prefs.AUTO_IEUNG, "종성 입력 시 ㅇ 보완", "ㅏ + ㄴ → 안");
+        addSwitch(Prefs.VOWEL_IEUNG, "단독 모음의 ㅇ 보완", "단독 모음 입력을 음절 형태로 표시합니다");
 
         addSection("옛한글");
-        addSwitch(Prefs.ARCHAIC, "옛한글 조합", "ㅂㅅㄱ+ㅏ → ᄢᅡ     ㄱ+ㆍ+ㄹ → ᄀᆞᆯ     ㅅㄱ → ㅺ     ㅇㅇ → ㆀ     ㅆㅅ · ㅅㅅㅅ → ᄴ     ㅂㅆ → ᄥ");
-        addSwitch(Prefs.SHIFT_ARCHAIC, "쉬프트 자판에 ㅿ ㆁ ㆆ ㆍ",
-                "ㄹ ㅇ ㅎ ㅏ 자리에 나옵니다 · 바꾸면 키보드 재시작");
-        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모", "ㄹ → ㅿ     ㅇ → ㆁ     ㅎ → ㆆ     ㅏ → ㆍ");
-        addSwitch(Prefs.SPLIT_ON_SPACE, "스페이스로 풀기",
-                "ᄛᅦ → ㄹ에     ㅺ → ㅅㄱ\n한 번 더 누르면 띄어쓰기, 바로 ⌫ 누르면 되돌리기");
+        addSwitch(Prefs.ARCHAIC, "옛한글 조합", "옛 자모와 겹자모를 조합합니다");
+        addSwitch(Prefs.SHIFT_ARCHAIC, "확장 자판 표시", "쉬프트 자리에 옛 자모를 표시합니다");
+        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모", "ㄹ·ㅇ·ㅎ·ㅏ를 길게 눌러 확장 자모를 입력합니다");
+        addSwitch(Prefs.SPLIT_ON_SPACE, "공백으로 조합 분리", "공백을 눌러 옛한글 조합을 풀어 입력합니다");
 
-        addSection("ㅋ 연타");
-        addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ", "누르자마자 ㅋㅋㅋ, 누르고 있으면 점점 빨라집니다");
-        addLaughMix();
+        addSection("반복 입력");
+        addSwitch(Prefs.LONG_PRESS_KKK, "자음 반복 입력", "ㅋ를 길게 눌러 반복 입력합니다");
 
-        addSection("지우기");
-        addSwitch(Prefs.RECAPTURE, "자모 단위로 지우기", "치고 있는 단어는 안 → 아 → ㅇ 처럼 한 자모씩");
-        addSwitch(Prefs.FAST_DELETE, "길게 누르면 빠르게 지우기", "누르고 있으면 삼성 기본처럼 점점 빨라져 단어째 지웁니다");
+        addSection("삭제");
+        addSwitch(Prefs.RECAPTURE, "자모 단위 삭제", "입력 중인 음절을 자모 단위로 삭제합니다");
+        addSwitch(Prefs.FAST_DELETE, "빠른 삭제", "백스페이스를 길게 눌러 빠르게 삭제합니다");
 
-        addSection("호환");
-        addSwitch(Prefs.DIRECT_INPUT, "터미널 즉시 입력", "Termux 등에서 치는 즉시 글자가 보이게 합니다");
-        addSwitch(Prefs.UNLIMITED_SIZE, "키보드 크기 제한 풀기",
-                "삼성 설정 > 크기 및 투명도에서 더 작게(최소의 절반), 더 높게(최대의 1.6배) 조절 · 바꾸면 키보드 재시작");
-        addSwitch(Prefs.PRELOAD_JAPANESE, "일본어 미리 불러오기",
-                "삼성 키보드는 일본어로 처음 바꿀 때 사전을 불러오느라 멈추고 입력이 씹힙니다.\n"
-                        + "일본어를 한 번 쓰고 나면, 키보드가 켜질 때 뒤에서 미리 불러옵니다");
+        addSection("호환성");
+        addSwitch(Prefs.DIRECT_INPUT, "터미널 직접 입력", "Termux 등에서 입력 즉시 표시합니다");
+        addSwitch(Prefs.UNLIMITED_SIZE, "키보드 크기 확장", "삼성 키보드 크기 조절 범위를 넓힙니다");
 
-        addSection("숫자");
-        addSwitch(Prefs.NUMBER_SWIPE, "윗줄 아래로 밀어 숫자",
-                "ㅂ ㅈ ㄷ ㄱ ㅅ ㅛ ㅕ ㅑ ㅐ ㅔ (q … p) 를 아래로 밀면 1 … 0\n"
-                        + "밀고 잠깐 멈추면 ¹ ₁ ① ½ 같은 변형이 뜨고, 옆으로 옮겨 고릅니다\n"
-                        + "숫자 줄을 없애려면 삼성 설정 > 레이아웃 > 숫자 키 끄기, 대체 문자 켜기");
+        addSection("숫자 입력");
+        addSwitch(Prefs.NUMBER_SWIPE, "아래로 밀어 숫자", "윗줄 자판을 아래로 밀어 숫자를 입력합니다");
 
         addSection("클립보드");
-        addChoice(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT, "한 줄에 보이는 칸 수  (칸이 적을수록 크게 보임)",
+        addChoice(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT, "표시 열 수",
                 new String[][] {{"0", "삼성 기본"}, {"2", "2칸"}, {"3", "3칸"}, {"4", "4칸"}});
-
-        addSection("기타");
-        addSwitch(Prefs.SHAKE_UNDO, "흔들어서 실행 취소",
-                "기기를 흔들면 편집기에 Ctrl+Z(실행 취소)를 보냅니다");
-
-        addSection("문제 해결");
-        addSwitch(Prefs.DEBUG_LOG, "진단 로그",
-                "문제를 알려줄 때만 켜세요 · LSPosed 로그에 OldHangul: 로 기록 · 켜고 끈 뒤 키보드 재시작\n"
-                        + "키보드가 멈춘 순간(0.12초 이상)과 그때 삼성 코드가 하던 일도 기록합니다", false);
 
         ScrollView scroll = new ScrollView(this);
         scroll.addView(list);
@@ -113,7 +93,7 @@ public final class SettingsActivity extends Activity {
         } catch (android.content.pm.PackageManager.NameNotFoundException ignored) {
             // Our own package is always installed.
         }
-        v.setText("삼성 키보드 옛한글" + version);
+        v.setText("삼성 키보드 옛한글 입력 보조" + version);
         v.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
         v.setPadding(0, dp(8), 0, 0);
         list.addView(v);

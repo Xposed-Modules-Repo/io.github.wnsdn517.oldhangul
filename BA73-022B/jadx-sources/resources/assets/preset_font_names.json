@@ -1,0 +1,312 @@
+{
+  "font_list" : [
+    {
+      "font_name": "Source Sans Pro",
+      "country": "en"
+    },
+    {
+      "font_name": "Fira Sans",
+      "country": "en"
+    },
+    {
+      "font_name": "Montserrat",
+      "country": "en"
+    },
+    {
+      "font_name": "Oswald",
+      "country": "en"
+    },
+    {
+      "font_name": "Anton",
+      "country": "en"
+    },
+    {
+      "font_name": "Quicksand",
+      "country": "en"
+    },
+    {
+      "font_name": "Raleway",
+      "country": "en"
+    },
+    {
+      "font_name": "Josefin Sans",
+      "country": "en"
+    },
+    {
+      "font_name": "Barlow",
+      "country": "en"
+    },
+    {
+      "font_name": "Comfortaa",
+      "country": "en"
+    },
+    {
+      "font_name": "Maven Pro",
+      "country": "en"
+    },
+    {
+      "font_name": "Signika Negative",
+      "country": "en"
+    },
+    {
+      "font_name": "Space Mono",
+      "country": "en"
+    },
+    {
+      "font_name": "Inter",
+      "country": "en"
+    },
+    {
+      "font_name": "Almarai",
+      "country": "en"
+    },
+    {
+      "font_name": "Arimo",
+      "country": "en"
+    },
+    {
+      "font_name": "Fira Sans Condensed",
+      "country": "en"
+    },
+    {
+      "font_name": "Figtree",
+      "country": "en"
+    },
+    {
+      "font_name": "Playfair Display",
+      "country": "en"
+    },
+    {
+      "font_name": "Merriweather",
+      "country": "en"
+    },
+    {
+      "font_name": "Bitter",
+      "country": "en"
+    },
+    {
+      "font_name": "EB Garamond",
+      "country": "en"
+    },
+    {
+      "font_name": "Crimson Text",
+      "country": "en"
+    },
+    {
+      "font_name": "Cormorant Garamond",
+      "country": "en"
+    },
+    {
+      "font_name": "Yeseva One",
+      "country": "en"
+    },
+    {
+      "font_name": "Calistoga",
+      "country": "en"
+    },
+    {
+      "font_name": "Cormorant Infant",
+      "country": "en"
+    },
+    {
+      "font_name": "Chonburi",
+      "country": "en"
+    },
+    {
+      "font_name": "Alegreya",
+      "country": "en"
+    },
+    {
+      "font_name": "Lobster",
+      "country": "en"
+    },
+    {
+      "font_name": "Pacifico",
+      "country": "en"
+    },
+    {
+      "font_name": "Playball",
+      "country": "en"
+    },
+    {
+      "font_name": "Pinyon Script",
+      "country": "en"
+    },
+    {
+      "font_name": "Pattaya",
+      "country": "en"
+    },
+    {
+      "font_name": "Paytone One",
+      "country": "en"
+    },
+    {
+      "font_name": "Sigmar One",
+      "country": "en"
+    },
+    {
+      "font_name": "Black Ops One",
+      "country": "en"
+    },
+    {
+      "font_name": "Sriracha",
+      "country": "en"
+    },
+    {
+      "font_name": "Mali",
+      "country": "en"
+    },
+    {
+      "font_name": "Livvic",
+      "country": "en"
+    },
+    {
+      "font_name": "Marmelad",
+      "country": "en"
+    },
+    {
+      "font_name": "Podkova",
+      "country": "en"
+    },
+    {
+      "font_name": "Grandstander",
+      "country": "en"
+    },
+    {
+      "font_name": "Kalam",
+      "country": "hi"
+    },
+    {
+      "font_name": "Poppins",
+      "country": "hi"
+    },
+    {
+      "font_name": "Rajdhani",
+      "country": "hi"
+    },
+    {
+      "font_name": "Teko",
+      "country": "hi"
+    },
+    {
+      "font_name": "Open Sans",
+      "country": "he"
+    },
+    {
+      "font_name": "Tinos",
+      "country": "he"
+    },
+    {
+      "font_name": "David Libre",
+      "country": "he"
+    },
+    {
+      "font_name": "Miriam Libre",
+      "country": "he"
+    },
+    {
+      "font_name": "Secular One",
+      "country": "he"
+    },
+    {
+      "font_name": "Lalezar",
+      "country": "ar"
+    },
+    {
+      "font_name": "Amiri",
+      "country": "ar"
+    },
+    {
+      "font_name": "Cairo",
+      "country": "ar"
+    },
+    {
+      "font_name": "Tajawal",
+      "country": "ar"
+    },
+    {
+      "font_name": "ReadexPro",
+      "country": "ar"
+    },
+    {
+      "font_name": "Itim",
+      "country": "ta"
+    },
+    {
+      "font_name": "Kanit",
+      "country": "ta"
+    },
+    {
+      "font_name": "Battambang",
+      "country": "km"
+    },
+    {
+      "font_name": "Koulen",
+      "country": "km"
+    },
+    {
+      "font_name": "Jua",
+      "country": "ko"
+    },
+    {
+      "font_name": "Nanum Brush Script",
+      "country": "ko"
+    },
+    {
+      "font_name": "Nanum Pen Script",
+      "country": "ko"
+    },
+    {
+      "font_name": "Dongle",
+      "country": "ko"
+    },
+    {
+      "font_name": "Gowun Dodum",
+      "country": "ko"
+    },
+    {
+      "font_name": "Gowun Batang",
+      "country": "ko"
+    },
+    {
+      "font_name": "Ma Shan Zheng",
+      "country": "ch"
+    },
+    {
+      "font_name": "ZCOOL KuaiLe",
+      "country": "ch"
+    },
+    {
+      "font_name": "ZCOOL XiaoWei",
+      "country": "ch"
+    },
+    {
+      "font_name": "Zhi Mang Xing",
+      "country": "ch"
+    },
+    {
+      "font_name": "Long Cang",
+      "country": "ch"
+    },
+    {
+      "font_name": "Kosugi Maru",
+      "country": "ja"
+    },
+    {
+      "font_name": "Dela Gothic One",
+      "country": "ja"
+    },
+    {
+      "font_name": "Zen Kurenaido",
+      "country": "ja"
+    },
+    {
+      "font_name": "Yuji Syuku",
+      "country": "ja"
+    },
+    {
+      "font_name": "Klee One",
+      "country": "ja"
+    }
+  ]
+}

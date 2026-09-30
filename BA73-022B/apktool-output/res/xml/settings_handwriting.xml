@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/input_method_type_box_hwr"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto">
+    <androidx.preference.SwitchPreferenceCompat android:persistent="true" android:title="@string/s_pen_detection" android:key="SETTINGS_DEFAULT_PEN_DETECTION" android:defaultValue="true" />
+    <com.samsung.android.honeyboard.settings.common.SpinnerPreference android:title="@string/setting_handwriting_candidates_type" android:key="SETTINGS_HANDWRITING_CANDIDATE_TYPE" />
+    <com.samsung.android.honeyboard.settings.common.SpinnerPreference android:title="@string/recognition_time" android:key="SETTINGS_DEFAULT_HWR_RECOGNIZE_DELAY" />
+    <PreferenceCategory android:title="@string/setting_chinese_handwriting_title" android:key="SETTINGS_CHINESE_HANDWRITING">
+        <com.samsung.android.honeyboard.settings.common.SpinnerPreference android:title="@string/setting_handwriting_mode_title" android:key="SETTINGS_DEFAULT_XT9_HWR_MODE" />
+        <Preference android:title="@string/setting_handwriting_recognition_type_title" android:key="SETTINGS_DEFAULT_XT9_HWR_RECOG_TYPE" settings:keywords="@string/search_synonym_recognition_type" />
+        <com.samsung.android.honeyboard.settings.common.SpinnerPreference android:title="@string/setting_handwriting_sch_tch_switch" android:key="SETTINGS_DEFAULT_HWR_SCH_TO_TCH_SWITCH" />
+    </PreferenceCategory>
+</PreferenceScreen>

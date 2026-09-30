@@ -1,0 +1,25 @@
+package com.google.android.gms.tasks;
+
+/* JADX INFO: loaded from: classes2.dex */
+final class zzn implements Runnable {
+    private final /* synthetic */ Task zzg;
+    private final /* synthetic */ zzm zzq;
+
+    public zzn(zzm zzmVar, Task task) {
+        this.zzq = zzmVar;
+        this.zzg = task;
+    }
+
+    @Override // java.lang.Runnable
+    public final void run() {
+        synchronized (this.zzq.mLock) {
+            try {
+                if (this.zzq.zzp != null) {
+                    this.zzq.zzp.onSuccess(this.zzg.getResult());
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+    }
+}

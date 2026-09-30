@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:id="@id/settings_moakey" android:title="@string/moakey_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:persistent="true" android:title="@string/moakey_swipe_angle" android:key="settings_moakey_drag_angle" />
+    <com.samsung.android.honeyboard.settings.moakeyoptions.swipelength.MoaKeySettingsSwipeLengthPreference android:persistent="true" android:title="@string/moakey_swipe_length" android:key="settings_moakey_drag_length" />
+</PreferenceScreen>

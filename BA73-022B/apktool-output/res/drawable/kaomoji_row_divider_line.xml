@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:left="@dimen/kaomoji_scroll_list_border_line_margin" android:top="@dimen/kaomoji_scroll_list_border_line_margin" android:right="@dimen/kaomoji_scroll_list_border_line_margin">
+        <shape android:shape="rectangle">
+            <stroke android:width="@dimen/kaomoji_scroll_list_divider_size" android:color="?kaomoji_line_color" />
+            <solid android:color="@color/transparent" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/setting_handwriting_recognition_type_title"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:key="SETTINGS_DEFAULT_XT9_HWR_RECOG_TYPE" app:entryValues="@array/array_handwriting_recognition_type_entry_value" app:hideCategoryTitle="true">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/setting_handwriting_character_recognition_title" android:key="settings_keyboard_china_hwr_handwriting_type_character" android:summary="@string/setting_handwriting_character_recognition_summary" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/setting_handwriting_stroke_recognition_title" android:key="settings_keyboard_china_hwr_handwriting_type_stroke" android:summary="@string/setting_handwriting_stroke_recognition_summary" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

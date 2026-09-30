@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/sesl_preference" />
+    <androidx.appcompat.widget.AppCompatSpinner android:id="@id/spinner" android:background="@null" android:layout_width="wrap_content" android:layout_height="0.0dp" />
+</FrameLayout>

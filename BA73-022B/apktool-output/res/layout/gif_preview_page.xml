@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:theme="@style/RecyclerViewTheme" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/gif_preview_recycler_view" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    <include layout="@layout/common_loading_layout_with_button" />
+</FrameLayout>

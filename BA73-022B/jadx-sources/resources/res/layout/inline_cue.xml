@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/inline_cue_bg"
+    android:paddingBottom="@dimen/inline_cue_container_padding_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/text_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/inline_cue_gap_size"
+        android:paddingStart="@dimen/inline_cue_text_container_padding_start"
+        android:paddingEnd="@dimen/inline_cue_text_container_padding_end">
+        <TextView
+            android:textSize="@dimen/inline_cue_text_size"
+            android:textColor="@color/inline_cue_text_color"
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/inline_cue_cancel_title_margin_top"
+            android:layout_weight="1"
+            android:lineSpacingExtra="@dimen/inline_cue_text_line_spacing_extra"/>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:id="@+id/button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_below="@+id/text_container"
+        android:paddingStart="@dimen/inline_cue_button_container_padding_start"
+        android:paddingEnd="@dimen/inline_cue_button_container_padding_end"/>
+</RelativeLayout>

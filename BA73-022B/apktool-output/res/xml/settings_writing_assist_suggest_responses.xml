@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/settings_writing_assist_suggest_replies"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.samsung.android.honeyboard.settings.aiwriter.suggestresponses.WritingAssistSuggestResponsesCustomViewPreference android:persistent="true" android:key="settings_writing_assist_suggest_responses_custom_view" />
+</PreferenceScreen>

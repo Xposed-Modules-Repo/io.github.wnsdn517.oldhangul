@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="@dimen/phonetic_spell_text_size"
+    android:gravity="center"
+    android:id="@+id/main_label"
+    android:tag="layout/phonetic_spell_text_view_0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:singleLine="true"/>

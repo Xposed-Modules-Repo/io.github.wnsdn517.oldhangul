@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="locale"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/content_preload_stub_layout" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/content_preload_stub_image" android:layout_width="0.0dp" android:layout_height="@dimen/common_content_stub_image_height" android:contentDescription="@string/unlabeled" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/guideline_image_right" app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toStartOf="@id/guideline_image_left" app:layout_constraintTop_toTopOf="parent" app:layout_constraintWidth_percent="0.3" />
+        <LinearLayout android:orientation="vertical" android:id="@id/content_preload_stub_right_layout" android:layout_width="0.0dp" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/guideline_text_right" app:layout_constraintStart_toStartOf="@id/guideline_text_left" app:layout_constraintTop_toTopOf="parent">
+            <Space android:layout_width="match_parent" android:layout_height="@dimen/common_content_stub_msg_button_gap_land" android:layout_weight="1.0" />
+            <TextView android:gravity="center" android:id="@id/content_preload_stub_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/sticker_preloadstub_title" style="@style/ContentStubText" />
+            <Space android:layout_width="match_parent" android:layout_height="@dimen/common_content_stub_msg_button_gap_land" android:layout_weight="1.0" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/common_content_stub_msg_horizontal_margin">
+                <Button android:id="@id/content_preload_stub_button_positive" android:layout_height="wrap_content" android:text="@string/sticker_myemoji_dialog_button_download" android:layout_centerHorizontal="true" android:layout_centerVertical="true" style="@style/RaisedButtonSmall" />
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/content_preload_stub_progressbar_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <ProgressBar android:layout_gravity="start" android:id="@id/content_preload_stub_progressbar" android:visibility="invisible" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="257.0" style="?android:progressBarStyleHorizontal" />
+                    <View android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_weight="16.0" />
+                    <ImageButton android:id="@id/content_preload_stub_cancel" android:background="@android:color/transparent" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="match_parent" android:src="@drawable/ic_keyboard_galaxy_store_copy_2" android:tint="?common_content_msg_text_color_attr" android:layout_weight="20.0" android:contentDescription="@string/cancel" android:tooltipText="@string/cancel" />
+                </LinearLayout>
+                <TextView android:textSize="@dimen/common_content_stub_msg_font_size" android:textColor="?common_content_msg_subtitle_color_attr" android:id="@id/content_preload_stub_progress_text" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/content_preload_stub_progressbar_layout" />
+            </RelativeLayout>
+            <Space android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
+        </LinearLayout>
+        <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/guideline_image_left" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.059413" />
+        <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/guideline_image_right" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.4702935" />
+        <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/guideline_text_left" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.5297065" />
+        <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/guideline_text_right" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.940587" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

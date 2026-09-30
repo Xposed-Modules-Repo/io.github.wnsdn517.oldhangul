@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/writing_assist_entry_horizontal_item" android:tag="layout/writing_assist_entry_horizontal_item_0" android:layout_width="match_parent" android:layout_height="wrap_content" android:stateListAnimator="?seslSmallTouchAnimator"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:tag="binding_1" android:layout_width="@dimen/writing_toolkit_icon_size" android:layout_height="@dimen/writing_toolkit_icon_size" android:tint="@color/writing_assist_entry_menu_item_color" android:importantForAccessibility="no" android:layout_marginEnd="8.0dp" />
+    <TextView android:textColor="@color/writing_assist_entry_menu_item_color" android:tag="binding_2" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/WritingToolkitItemTextVariableHeightStyle" />
+</LinearLayout>

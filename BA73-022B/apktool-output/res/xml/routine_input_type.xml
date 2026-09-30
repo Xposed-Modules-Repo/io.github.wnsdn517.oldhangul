@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:orientation="vertical" android:id="@id/bixby_routine_input_type_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:title="@string/select_languages"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:key="FIRST_LANGUAGE" app:entryValues="@array/array_bixby_routine_input_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FISRT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SECOND_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="THIRD_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FOURTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FIFTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SIXTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SEVENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="EIGHT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="NINTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="TENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:enabled="false" android:key="SECOND_LANGUAGE" app:entryValues="@array/array_bixby_routine_input_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FISRT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SECOND_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="THIRD_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FOURTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FIFTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SIXTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SEVENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="EIGHT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="NINTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="TENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:enabled="false" android:key="THIRD_LANGUAGE" app:entryValues="@array/array_bixby_routine_input_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FISRT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SECOND_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="THIRD_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FOURTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FIFTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SIXTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SEVENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="EIGHT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="NINTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="TENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:enabled="false" android:key="FOURTH_LANGUAGE" app:entryValues="@array/array_bixby_routine_input_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FISRT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SECOND_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="THIRD_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FOURTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="FIFTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SIXTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SEVENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="EIGHT_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="NINTH_INPUTTYPE" app:isPreferenceVisible="false" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="TENTH_INPUTTYPE" app:isPreferenceVisible="false" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RoutinePaddingPreferenceList android:key="ROUTINE_PADDING" />
+</PreferenceScreen>

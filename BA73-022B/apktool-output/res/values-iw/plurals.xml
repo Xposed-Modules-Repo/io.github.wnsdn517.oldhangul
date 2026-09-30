@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">לאחר שתגיע לתמונה %d שנוצרה, יצירת תמונה חדשה תגרום למחיקת התמונה הישנה ביותר.</item>
+        <item quantity="two">לאחר שתגיע ל-%d תמונות שנוצרו, יצירת תמונה חדשה תגרום למחיקת התמונה הישנה ביותר.</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">לאחר שתגיע ל-%d תמונות שנוצרו, יצירת תמונה חדשה תגרום למחיקת התמונה הישנה ביותר.</item>
+        <item quantity="other">לאחר שתגיע ל-%d תמונות שנוצרו, יצירת תמונה חדשה תגרום למחיקת התמונה הישנה ביותר.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">האם למחוק %d מדבקה?</item>
+        <item quantity="two">האם למחוק %d מדבקות?</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">האם למחוק %d מדבקות?</item>
+        <item quantity="other">האם למחוק %d מדבקות?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">"למחוק זוג אימוג'י %d?"</item>
+        <item quantity="two">"למחוק %d זוגות אימוג'י?"</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">"למחוק %d זוגות אימוג'י?"</item>
+        <item quantity="other">"למחוק %d זוגות אימוג'י?"</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">עליך להיות לפחות בן %d שנה כדי להשתמש בתכונות החכמות המתקדמות של Galaxy AI.</item>
+        <item quantity="two">עליך להיות לפחות בן או בת %d שנים כדי להשתמש בתכונות החכמות המתקדמות של Galaxy AI.</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">עליך להיות לפחות בן או בת %d שנים כדי להשתמש בתכונות החכמות המתקדמות של Galaxy AI.</item>
+        <item quantity="other">עליך להיות לפחות בן או בת %d שנים כדי להשתמש בתכונות החכמות המתקדמות של Galaxy AI.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">האם למחוק %d פריט?</item>
+        <item quantity="two">האם למחוק %d פריטים?</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">האם למחוק %d פריטים?</item>
+        <item quantity="other">האם למחוק %d פריטים?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">למחוק %d פריט מוצמד?</item>
+        <item quantity="two">למחוק %d פריטים מוצמדים?</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">למחוק %d פריטים מוצמדים?</item>
+        <item quantity="other">למחוק %d פריטים מוצמדים?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">כלול %d פריט מוצמד</item>
+        <item quantity="two">כלול %d פריטים מוצמדים</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">כלול %d פריטים מוצמדים</item>
+        <item quantity="other">כלול %d פריטים מוצמדים</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">בדוק הצעה %d לכתיבה</item>
+        <item quantity="two">בדוק %d הצעות לכתיבה</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">בדוק %d הצעות לכתיבה</item>
+        <item quantity="other">בדוק %d הצעות לכתיבה</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d התראות חדשות</item>
+        <item quantity="two">%d התראות חדשות</item>
+        <item quantity="other">%d התראות חדשות</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">לא ניתן להוסיף יותר ממדבקה %d. עבור לעורך התמונות בגלריה כדי להסיר מדבקות.</item>
+        <item quantity="two">לא ניתן להוסיף יותר מ-%d מדבקות. עבור לעורך התמונות בגלריה כדי להסיר מדבקות.</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">לא ניתן להוסיף יותר מ-%d מדבקות. עבור לעורך התמונות בגלריה כדי להסיר מדבקות.</item>
+        <item quantity="other">לא ניתן להוסיף יותר מ-%d מדבקות. עבור לעורך התמונות בגלריה כדי להסיר מדבקות.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ניתן להציג לכל היותר %d צבע.</item>
+        <item quantity="two">ניתן להציג לכל היותר %d צבעים.</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">ניתן להציג לכל היותר %d צבעים.</item>
+        <item quantity="other">ניתן להציג לכל היותר %d צבעים.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d נבחר/ו</item>
+        <item quantity="two">%d נבחר/ו</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">%d נבחר/ו</item>
+        <item quantity="other">%d נבחר/ו</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">האם למחוק %d קיצור טקסט?</item>
+        <item quantity="two">האם למחוק %d קיצורי טקסט?</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">האם למחוק %d קיצורי טקסט?</item>
+        <item quantity="other">האם למחוק %d קיצורי טקסט?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d שפה לעדכון.</item>
+        <item quantity="two">%d שפות לעדכון.</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">%d שפות לעדכון.</item>
+        <item quantity="other">%d שפות לעדכון.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d נבחר/ו</item>
+        <item quantity="two">%d נבחר/ו</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">%d נבחר/ו</item>
+        <item quantity="other">%d נבחר/ו</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">בחרת תו אחד (%d).</item>
+        <item quantity="two">בחרת %d תווים.</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">בחרת %d תווים.</item>
+        <item quantity="other">בחרת %d תווים.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">תיקון %d</item>
+        <item quantity="two">%d תיקונים</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">%d תיקונים</item>
+        <item quantity="other">%d תיקונים</item>
+    </plurals>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="20.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:id="@id/contactName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="common Dynamic" />
+            <TextView android:textSize="20.0dp" android:id="@id/wordListTextView" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TableLayout android:id="@id/wordLIstTable" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

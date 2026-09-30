@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">സൃഷ്‌ടിച്ച %d ചിത്രത്തിൽ നിങ്ങൾ എത്തിക്കഴിഞ്ഞാൽ, ഒരു പുതിയ ചിത്രം സൃഷ്‌ടിക്കുന്നത് നിങ്ങളുടെ ഏറ്റവും പഴയത് ഇല്ലാതാക്കുന്നതിന് ഇടയാക്കും.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">സൃഷ്‌ടിച്ച %d ചിത്രങ്ങളിൽ നിങ്ങൾ എത്തിക്കഴിഞ്ഞാൽ, ഒരു പുതിയ ചിത്രം സൃഷ്‌ടിക്കുന്നത് നിങ്ങളുടെ ഏറ്റവും പഴയത് ഇല്ലാതാക്കുന്നതിന് ഇടയാക്കും.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d സ്റ്റിക്കർ ഇല്ലാതാക്കണോ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d സ്റ്റിക്കറുകൾ ഇല്ലാതാക്കണോ?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ഇമോജി ജോടിയെ ഇല്ലാതാക്കണോ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ഇമോജി ജോടികളെ ഇല്ലാതാക്കണോ?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Galaxy AI-യുടെ നൂതനമായ ഇന്റലിജൻസ് സവിശേഷതകൾ ഉപയോഗിക്കുന്നതിന് നിങ്ങൾക്ക് കുറഞ്ഞത് %d വയസ്സ് പ്രായമുണ്ടായിരിക്കണം.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Galaxy AI-യുടെ നൂതനമായ ഇന്റലിജൻസ് സവിശേഷതകൾ ഉപയോഗിക്കുന്നതിന് നിങ്ങൾക്ക് കുറഞ്ഞത് %d വയസ്സ് പ്രായമുണ്ടായിരിക്കണം.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ഇനം ഇല്ലാതാക്കണോ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ഇനങ്ങൾ ഇല്ലാതാക്കണോ?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">പിൻ ചെയ്ത %d ഇനം ഇല്ലാതാക്കണോ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">പിൻ ചെയ്ത %d ഇനങ്ങൾ ഇല്ലാതാക്കണോ?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">പിൻ ചെയ്ത %d ഇനം ഉൾപ്പെടുത്തുക</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">പിൻ ചെയ്ത %d ഇനങ്ങൾ ഉൾപ്പെടുത്തുക</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d എഴുത്ത് നിർദ്ദേശം അവലോകനം ചെയ്യുക</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d എഴുത്ത് നിർദ്ദേശങ്ങൾ അവലോകനം ചെയ്യുക</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d സ്‌റ്റിക്കറിൽ കൂടുതൽ ചേർക്കാനാകില്ല. സ്റ്റിക്കറുകൾ നീക്കം ചെയ്യാൻ ഗാലറിയിലെ ഫോട്ടോ എഡിറ്ററിലേക്ക് പോകുക.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d സ്‌റ്റിക്കറുകളിൽ കൂടുതൽ ചേർക്കാനാകില്ല. സ്റ്റിക്കറുകൾ നീക്കം ചെയ്യാൻ ഗാലറിയിലെ ഫോട്ടോ എഡിറ്ററിലേക്ക് പോകുക.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">നിറം %d-ൽ കൂടുതൽ കാണിക്കാനാവില്ല.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">നിറങ്ങൾ %d-ൽ കൂടുതൽ കാണിക്കാനാവില്ല.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d തിരഞ്ഞെടുത്തു</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d തിരഞ്ഞെടുത്തു</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ടെക്സ്റ്റ് എളുപ്പവഴി ഇല്ലാതാക്കണോ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ടെക്സ്റ്റ് എളുപ്പവഴികൾ ഇല്ലാതാക്കണോ?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ഭാഷ അപ്ഡേറ്റ് ചെയ്യാനുണ്ട്.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ഭാഷകൾ അപ്ഡേറ്റ് ചെയ്യാനുണ്ട്.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d തിരഞ്ഞെടുത്തു</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d തിരഞ്ഞെടുത്തു</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">നിങ്ങൾ അക്ഷരം %d തിരഞ്ഞെടുത്തു.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">നിങ്ങൾ %d അക്ഷരങ്ങൾ തിരഞ്ഞെടുത്തു.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d തിരുത്തൽ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d തിരുത്തലുകൾ</item>
+    </plurals>
+</resources>

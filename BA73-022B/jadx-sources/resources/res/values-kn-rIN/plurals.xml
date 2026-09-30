@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ಒಮ್ಮೆ ನೀವು %d ಜನರೇಟ್ ಮಾಡಲಾಗಿರುವ ಚಿತ್ರವನ್ನು ತಲುಪಿದಾಗ, ಹೊಸ ಚಿತ್ರವನ್ನು ಜನರೇಟ್ ಮಾಡುವುದರಿಂದ ನಿಮ್ಮ ತೀರಾ ಹಳೆಯದಾಗಿರುವುದು ಅಳಿಸುವುದಕ್ಕೆ ಕಾರಣವಾಗಬಹುದು.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ಒಮ್ಮೆ ನೀವು %d ಜನರೇಟ್ ಮಾಡಲಾಗಿರುವ ಚಿತ್ರಗಳನ್ನು ತಲುಪಿದಾಗ, ಹೊಸ ಚಿತ್ರವನ್ನು ಜನರೇಟ್ ಮಾಡುವುದರಿಂದ ನಿಮ್ಮ ತೀರಾ ಹಳೆಯದಾಗಿರುವುದು ಅಳಿಸುವುದಕ್ಕೆ ಕಾರಣವಾಗಬಹುದು.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಸ್ಟಿಕ್ಕರ್‌ ಅಳಿಸುವುದೇ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಸ್ಟಿಕ್ಕರ್‌ಗಳನ್ನು ಅಳಿಸುವುದೇ?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಎಮೋಜಿ ಜೋಡಿಯನ್ನು ಅಳಿಸುವುದೇ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಎಮೋಜಿ ಜೋಡಿಗಳನ್ನು ಅಳಿಸುವುದೇ?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Galaxy AIನ ಸುಧಾರಿತ ಬುದ್ಧಿಶಕ್ತಿ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಬಳಸುವುದಕ್ಕಾಗಿ ನಿಮಗೆ ಕನಿಷ್ಠ %d ವರ್ಷ ವಯಸ್ಸಾಗಿರಬೇಕು.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Galaxy AIನ ಸುಧಾರಿತ ಬುದ್ಧಿಶಕ್ತಿ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಬಳಸುವುದಕ್ಕಾಗಿ ನಿಮಗೆ ಕನಿಷ್ಠ %d ವರ್ಷಗಳ ವಯಸ್ಸಾಗಿರಬೇಕು.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಅಂಶವನ್ನು ಅಳಿಸುವುದೇ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಅಂಶಗಳನ್ನು ಅಳಿಸುವುದೇ?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಪಿನ್ ಮಾಡಲಾದ ಐಟಂ ಅಳಿಸುವುದೇ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಪಿನ್ ಮಾಡಲಾದ ಐಟಂಗಳನ್ನು ಅಳಿಸುವುದೇ?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಪಿನ್ ಮಾಡಲಾದ ಐಟಂ ಸೇರಿಸಿಕೊಳ್ಳಿ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಪಿನ್ ಮಾಡಲಾದ ಐಟಂಗಳನ್ನು ಸೇರಿಸಿಕೊಳ್ಳಿ</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಬರವಣಿಗೆ ಸಲಹೆಯನ್ನು ಪರಿಶೀಲಿಸಿ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಬರವಣಿಗೆ ಸಲಹೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dಗಿಂತ ಹೆಚ್ಚು ಸ್ಟಿಕ್ಕರ್ ಸೇರಿಸಲಾಗುವುದಿಲ್ಲ. ಸ್ಟಿಕ್ಕರ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲು ಗ್ಯಾಲರಿಯಲ್ಲಿ ಫೋಟೋ ಎಡಿಟರ್‌ಗೆ ಹೋಗಿ.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dಗಿಂತ ಹೆಚ್ಚು ಸ್ಟಿಕ್ಕರ್‌ಗಳನ್ನು ಸೇರಿಸಲಾಗುವುದಿಲ್ಲ. ಸ್ಟಿಕ್ಕರ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲು ಗ್ಯಾಲರಿಯಲ್ಲಿ ಫೋಟೋ ಎಡಿಟರ್‌ಗೆ ಹೋಗಿ.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dಕ್ಕೂ ಹೆಚ್ಚಿನ ಬಣ್ಣ ತೋರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dಕ್ಕೂ ಹೆಚ್ಚಿನ ಬಣ್ಣಗಳನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಆಯ್ಕೆ ಆಗಿದೆ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಆಯ್ಕೆಯಾಗಿದೆ</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಪಠ್ಯ ಶಾರ್ಟ್‍ಕಟ್ ಅಳಿಸುವುದೇ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಪಠ್ಯ ಶಾರ್ಟ್‍ಕಟ್‍ಗಳನ್ನು ಅಳಿಸುವುದೇ?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಭಾಷೆ ನವೀಕರಣಗೊಳ್ಳಬೇಕಿದೆ.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಭಾಷೆಗಳನ್ನು ನವೀಕರಿಸಬೇಕಿದೆ.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ಆಯ್ಕೆ ಆಗಿದೆ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ಆಯ್ಕೆಯಾಗಿದೆ</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ನೀವು %d ಅಕ್ಷರವನ್ನು ಆಯ್ಕೆಮಾಡಿದ್ದೀರಿ.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ನೀವು %d ಅಕ್ಷರಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿದ್ದೀರಿ.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ತಿದ್ದುಪಡಿ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ತಿದ್ದುಪಡಿಗಳು</item>
+    </plurals>
+</resources>

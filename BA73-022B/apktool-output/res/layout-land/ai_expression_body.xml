@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:tag="layout-land/ai_expression_body_0" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/ai_expression_create_layout" layout="@layout/ai_expression_create_layout" />
+    <include android:id="@id/ai_expression_loading_layout" layout="@layout/ai_expression_loading_layout" />
+    <include android:id="@id/ai_expression_result_layout" layout="@layout/ai_expression_result_layout" />
+    <include android:id="@id/ai_expression_styles_layout" layout="@layout/ai_sticker_styles_layout" />
+</FrameLayout>

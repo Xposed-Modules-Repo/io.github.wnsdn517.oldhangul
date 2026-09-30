@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <fraction name="category_center_area_side_padding">2.9494047%</fraction>
+    <fraction name="category_center_area_side_padding_tablet">2.109301%</fraction>
+    <fraction name="common_category_button_icon_width">3.9325%</fraction>
+    <fraction name="common_category_button_icon_width_tablet">2.3437977%</fraction>
+    <fraction name="common_category_button_margin">2.8089046%</fraction>
+    <fraction name="common_category_button_margin_tablet">4.2186975%</fraction>
+    <fraction name="common_category_button_text_width_tablet">7.1879983%</fraction>
+    <fraction name="dialog_width_for_large_screen">35.000004%</fraction>
+    <fraction name="expression_content_layout_width">89.60001%p</fraction>
+    <fraction name="toolbar_expand_indicator_bottom_margin">11.000002%p</fraction>
+    <fraction name="toolbar_expand_item_background_size">23.415005%p</fraction>
+    <fraction name="toolbar_expand_item_background_size_tablet">16.999996%p</fraction>
+    <fraction name="toolbar_expand_item_column_gap">1.0203958%p</fraction>
+    <fraction name="toolbar_expand_item_icon_size">12.264097%p</fraction>
+    <fraction name="toolbar_expand_item_icon_size_tablet">10.000002%p</fraction>
+    <fraction name="toolbar_expand_page_top_margin">24.0%p</fraction>
+    <fraction name="tsl_source_language_text_max_width_percent">16.151703%p</fraction>
+    <fraction name="tsl_source_language_text_max_width_percent_tablet">17.536306%p</fraction>
+    <fraction name="tsl_target_language_text_max_width_percent">16.783798%p</fraction>
+    <fraction name="tsl_target_language_text_max_width_percent_tablet">17.536306%p</fraction>
+    <fraction name="view_type_panel_item_width">21.4692%</fraction>
+    <fraction name="writing_toolkit_default_height_ratio">70.00001%</fraction>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="domain_popup_string_values">
+        <item>.net</item>
+        <item>.org</item>
+        <item>.edu</item>
+        <item>.gov</item>
+        <item>.co.uk</item>
+        <item>.org.uk</item>
+        <item>.ac.uk</item>
+        <item>.gov.uk</item>
+    </array>
+</resources>

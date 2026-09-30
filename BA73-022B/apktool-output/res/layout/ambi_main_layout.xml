@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:id="@id/ambi_nested_scroll" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="locale">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/ambi_main_layout" android:padding="@dimen/ambi_main_layout_padding" android:layout_width="match_parent" android:layout_height="match_parent" android:overScrollMode="never" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

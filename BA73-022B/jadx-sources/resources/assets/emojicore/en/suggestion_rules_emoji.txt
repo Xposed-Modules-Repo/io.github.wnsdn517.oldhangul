@@ -1,0 +1,579 @@
+Thank you	😊 🙏
+Good morning	🙏
+Good evening	🙏
+Good night	😴 🥱
+Sure thing	👍
+No problem	😊
+No problems	😊
+Happy new year	🎉
+happy married life	🎉 💐
+happy rose day	🌹 🎉
+happy valentine's day	🎉 🌹
+All these are	NP
+Merry christmas	🎅
+it's not working	😢
+feeling hungry	😋
+love you	😍 💋
+happy birthday	🎂 🥳 🎉 🎈 🎁 🎊
+happy marriage anniversary	🎉
+thank you guys	😊
+thanks for your time	🙏
+have a good day	😊
+Hi there	😊
+that looks wow	😍
+it looks nice	👌
+lovely pics	😍
+bon voyage	🛫
+romantic dinner	😍
+worth it	👌
+good job	👏
+not working	😕
+nice click	👍
+take care	🙂
+happy anniversary	🎉
+Good luck	👍
+you're welcome	😊
+you are welcome	😊
+love it	😀
+yes please	🙏
+love this	😀
+i agree	👍 💯 🙆‍♂️
+Oh no	🤦‍♂️ 😢
+well said	👏
+miss you	😔
+well done	👏
+have fun	👍
+can't sleep	😕
+thanks love	😘
+hell yeah	😎
+the best	👌
+welcome back	🙏
+my pleasure	🙏 ☺️ 😊 🤗
+oh yeah	😎
+so sad	😞
+no worries	👍
+wait what	😳
+i'm ready	💪
+my man	💪
+good one	👍
+oh dear	😳
+my love	💓
+good afternoon	😊
+nice one	👍
+stay strong	💪 🤘
+well deserved	👏
+love you too	😘
+oh my god	😳 😲 😱
+proud of you	👏 🥰 💛 🥲 ✌️ ❤️
+thanks so much	🙏
+get well soon	😊
+miss you too	😔
+thank you baby	😘
+thank you babe	😘
+got this	👍
+got it	👍
+i got you	😉
+you know it	😜
+love you more	😘
+thanks for sharing	👍
+see you there	👍
+i like it	👌
+see you soon	😊
+you deserve it	👏
+hate you	😑
+you go girl	👏
+good for you	👍
+all the best	👍
+i don't know	😕
+i see you	👀
+thanks a lot	🙏
+i feel attacked	😐
+i'll be there	👍
+thank you gorgeous	😘
+teddy bear	🧸
+ha ha	😂
+he he	😂
+don't make noise	🤫
+i am here	✋️
+use your brain	🤔
+fingers crossed	🤞
+black heart	🖤
+green apple	🍏
+Thumbs down	👎
+thumbs up	👍
+crossed fingers	🤞
+traffic light	🚥
+turn left	⬅️
+ohh please	😏
+safety pin	🧷
+photo frame	🖼
+gold medal	🏅
+silver medal	🥈
+bronze medal	🥉
+martial art	🥋
+martial arts	🥋
+united kingdom	🇬🇧
+united states	🇺🇸
+united states of america	🇺🇸
+evil smile	😈
+christmas tree	🎄
+left turn	↩️ ⬅️
+sparkling heart	💖
+happy brother day	💙
+happy brother's day	💙
+hot dog	🌭
+he is bald	👨‍🦲
+she is bald	👩‍🦲
+i don't like	😞
+no smoking	🚭
+stop lying	🤥
+feeding her baby	🤱
+mind blowing	🤯
+get lost	😏 😠
+shopping cart	🛒
+no littering	🚯
+no pedestrians	🚷
+have a nice day	😊
+don't think so	🤔
+me too	✋️
+thank you very much	😊
+like each other	😍
+Happy birthday to you	🎂
+HBD	🎂 🥳 🎉 🎈 🎁 🎊
+How you doing	😊
+I trust you	😊
+I beg you	🙏
+national park	🏞
+leave me out of this	😐
+not allowed	🚫
+not invited	NP
+not good	😐
+fortune cookie	🥠
+chicken leg	🍗
+tokyo tower	🗼
+ferris wheel	🎡
+roller coaster	🎢
+barber pole	💈
+circus tent	🎪
+Bar Chart	NP
+credit card	💳
+shaved ice	🍧
+ice cream	🍦
+film frames	🎞
+musical keyboard	🎹
+muted speaker	🔇
+silent speaker	🔇
+muted bell	🔕
+shopping bags	🛍
+gem stone	💎
+heeled shoe	👠
+paw prints	🐾
+heat stroke	🥵
+fire engine	🚒
+police car	🚓
+racing car	🏎
+motor scooter	🛵
+auto rickshaw	🛺
+bus stop	🚏
+hill station	⛰️
+potted plant	🪴 🌱
+evergreen tree	🌲
+palm tree	🌴
+maple leaf	🍁
+full score	💯
+rock on	🤘
+folded hands	🙏
+cupped hands	🤲
+cheese wedge	🧀
+poultry leg	🍗
+shallow pan	🥘
+rice ball	🍙
+paper roll	🧻
+fire extinguisher	🧯
+no entry	🚫
+milky way	🌌
+party popper	🎉
+soccer ball	⚽️
+ping pong	🏓
+table tennis	🏓
+direct hit	🎯
+performing arts	🎭
+bat and ball	🏏
+running shoe	👟
+baby chick	🐤
+angry devil	👿
+punch you	👊
+aced it	👍
+curse you	🤬
+happy bday	🎂 🥳 🎉 🎈 🎁 🎊
+baby angel	👼
+hopes on you	🤞
+broke up	💔
+light headed	😵
+love letter	💌
+right turn	↪️ ➡️
+popping cork	🍾
+tumbler glass	🥃
+check mark	✅️
+cross mark	❌️
+question mark	❓️
+exclamation mark	❕️
+men's room	🚹
+women's room	🚺
+car ride	🚗
+male sign	♂️
+man sign	♂️
+female sign	♀️
+woman sign	♀️
+canned food	🥫
+pot of food	🍲
+musical score	🎼
+palms up	🤲
+pointing left	👈 ⬅️ ↔️ ↩️ ↙️ ↖️
+middle finger	🖕
+pointing down	👇 ⬇️ ↕️ ⤵️ ↘️ ↙️
+dashing away	💨
+dashing run	💨
+come soon	🥺
+we need to talk	😒
+bad luck	☹️
+sweaty anxious	😰
+what's up	😊
+not well	😷
+not a problem	👌 😊
+so mad at you	😠
+can't agree on this	😑
+don't do it	😑
+do not do it	😑
+not today	😁
+not now	🙅‍♂️ 🙅‍♀️
+do not text me	🙅‍♂️ 🙅‍♀️
+don't text me	🙅‍♂️ 🙅‍♀️
+don't trust you	🤨
+do not trust you	🤨
+break up	💔
+so meh	🤷‍♂️ 🤷‍♀️
+don't feel anything	😑
+having bad thoughts	😔
+stomach feels weird	🤢
+just kidding	😂
+cu	😘
+hru	☺️
+math	🧮
+xmas	🎄
+bff	💓
+np	😊
+xoxo	😘
+ily	😍
+ilu	😍
+wassup	😊
+qt	💓
+have you lost it	😠
+you mad at me	😨
+goofing around	🤪
+hurts bro	😔
+i'm not too happy	😒
+how to tell you	😕
+e mail	📧
+Transgender Flag	🏳️‍⚧️
+Disguised Face	🥸
+Pinched Fingers	🤌
+Anatomical Heart	🫀
+Anatomical Lungs	🫁
+lung transplant	🫁
+feeding baby	👩‍🍼
+People Hugging	🫂
+Magic Wand	🪄
+Nesting dolls	🪆
+Sewing needles	🪡
+Thong Sandal	🩴
+Military Helmet	🪖
+Long Drum	🪘
+Carpentry Saw	🪚
+Bell pepper	🫑
+Bubble Tea	🧋
+Pickup Truck	🛻
+Roller Skate	🛼
+Black Cat	🐈‍⬛️
+Polar Bear	🐻‍❄️
+Mouse Trap	🪤
+I understand	👍 😐
+I value your effort	👌 👏 💯 🙂
+I am honored	🎖 🙏 🙂 🥇
+I am honoured	🎖 🙏 🙂 🥇
+I adore you	💛 🥺 🥰 💓 😍 😻 💗
+I like you	😍 🥰 💛 ☺️ 😙 💓 😻 👍 💗
+You are recognized	👏 ✌️ 🥇
+I just realized	😳 😕 🤩
+I feel neglected	😔 😞 😒
+Pleasure working with you	🙏 ☺️ 😊 🤗
+Feeling down	😔 ☹️ 🙁 😢 😥 😿
+It's dark	😨 🌑 🕶
+Deepest Condolence	🙏 ☹️ 😔 😢 😥 😿
+Deepest Condolences	🙏 ☹️ 😔 😢 😥 😿
+Deepest sympathy	🙏 ☹️ 😔 😢
+Rest in peace	🙏 🪦 😌 ☹️ 😔
+It's total damage	💔 😢 ☹️ 😢
+It's my self esteem	🙃 🙂 😪 🙏
+Good work	👏 🙌 👍 👌
+Home sick	😔 😞 😢 🥶 🤢
+wedding ceremony	💑 🤵‍♂️ 👰‍♀️
+baby time	👩‍🍼
+music is in my soul	🎶 🎵 🎤 🎼
+call me	🤙 📱 📞
+capture images	📷 📸
+exams are coming	📖 📓
+exams got over	😌
+shut your mouth	🤐 🤫
+blood test	💉 🩸
+prohibited area	⛔️ 🚫
+stop it	🛑 ✋️ 🙅‍♂️
+bst wishes	🤞 😊
+c u	😊 👋
+c you	😊 👋
+see ya	😊 👋
+gud morning	🙏 😊
+gud mrng	🙏 😊
+gud morng	🙏 😊
+gd morning	🙏 😊
+gd mrng	🙏 😊
+gd morng	🙏 😊
+gud evening	🙏 😊
+gud evng	🙏 😊
+gd evening	🙏 😊
+gd evng	🙏 😊
+nice f u	😊
+thanks a million	😊 🙏
+thanks a ton	😊 🙏
+x mas	🎅 🎄
+thanks 2 u	😊 🙏
+high five	👋 ✋️
+thanks to you	😊 🙏
+play cards	🃏
+flight landed	🛬
+flight take off	🛫
+flight departure	🛫
+kill you	😡
+meet soon	😊 🔜
+identification card	🪪
+id card	🪪
+mirror ball	🪩
+low battery	🪫
+hand fan	🪭
+folding fan	🪭
+hair pick	🪮
+ring buoy	🛟
+black bird	🐦‍⬛
+playground slide	🛝
+Your love is toxic like you	❤️ 😍 💖 ❣️ 💕 💘
+only love can help me out	❤️ 😍 💖 ❣️ 💕 💘 
+Love me like you do	❤️ 😍 💖 ❣️ 💕 💘
+positive sign	👍 👌 🙆‍♂️
+tears welled up in her eyes	😢 😭 😔 😔
+cry loudly	😢 😭 😔 😔
+respect towards me	🙏 🫡
+Kiss keeps sadness away	💋 😘 😗 😚 😙
+Flying kiss on the way	💋 😘 😗 😚 😙
+Kiss under moonlight	💋 😘 😗 😚 😙
+love in your eyes	😍 🥰 ❤️ 😻
+joyful twinkle	😊 😃 😄 ☺️
+get this party started	🥳 🎉 🎊 🍾
+celebrate	🥳 🎉 🎊 🍾
+Party popper alert	🥳 🎉 🎊
+confetti showers	🥳 🎉 🎊
+forever intertwined	💕 ❤️ 😍 💖 ❣️ 💘
+love's embrace	💕 ❤️ 😍 💖 ❣️ 💘
+turn me down	🥺 😢 😭 😔 😢 ☹️
+Running late again	😅
+soggy me	😅
+fuel your dreams	🔥
+burning sensation	🔥
+Who knows	🤷‍♂️
+Can't say for sure	🤷‍♂️
+It's a mystery	🤷‍♂️
+loving every moment	💕 ❤️ 😍 😆 💖 ❣️ 💘
+Hey there	👋 😉
+you're my favorite	🤗 ❤️ 😉 😍 💖
+thinking of you	🤗 ❤️ 😉 😍 💖
+secret to share with you	😉
+happy returns of the day	🎂 🥳 🎉 🎈 🎁 🎊
+I need to figure it out	🤔
+Standing ovation	👏
+positive vibes	🙂 😁 😀 😃 😊 😄
+That caught me off guard	😳
+so dull nowadays	😳 😔 😔 😟 😓
+party started	🥳 🍾
+confetti and good vibes	🥳 🎊 🎉
+best night ever	🥳 🎉
+you are a player	😎
+shining bright	💜 ☀️ ✨️ 🌟 🤩
+Stay strong and keep pushing yourself	💪
+sparkle wherever you go	✨ 💖
+illuminate the darkness	✨️ 🔥
+sparkles today and always	💖 ✨️
+make your day extra special	❤️ 💙 💜 💖 💗 💘 😍
+looking for you	👀
+eyes light up	👀
+moving eyes very fast	👀
+flavor explosion	😋
+I'm savoring every single mouthful	😋
+Spill the details	😏
+Nice try	😏
+deep sense of loss	😭 😔 😢
+Follow me	👉 👈 👇
+that way	👉 👈 👇
+over here	👉 👈 👇
+this direction	👉 👈 👇
+heart expands	💗 ❤️ 💙 💜 💖
+heart blossoms	💗 ❤️ 💙 💜 💖
+heart continues to expand	💗 ❤️ 💙 💜 💖
+can't believe it's only Wednesday	😩 😞 😔 😔
+worked incredibly hard for it	💯 👏 👍
+You've got this	💯 👍
+A ton of a runs	💯
+true champion	💯 👏
+A rose for you	🌹
+I care about you	🌹 😊 🙂
+always in my thoughts	💞 🥰
+Have a fantastic day	😊 🙂
+birthday party	🎈 🎊 🥳 🎉
+decoration was good	🎈 🎊
+presentation went good	😃 😊
+It's not fair	😡 😠
+not talking to you anymore	😡 😠
+bouquet just for you	💐
+Keep that sense of humor going	😜
+didn't mean to see that	🙈
+Sending good luck your way	🤞 😊
+positive outcome	🤞 😊
+Everything is going well	😄 😊
+Life is good	😄 😊
+I'm craving it already	🤤
+Mouthwatering	🤤
+Feeling proud	🙌 👏
+We did it	🙌 👏 ✌️
+Hooray for teamwork	🙌 👏
+round of applause	🙌 👏
+great day	😀 😊 😄
+haunted house gave me chills	💀 ☠️
+scream in the night	💀 ☠️
+Night drive is dangerous	💀 ☠️
+love to her	🧡 ❤️ 💙 💜 💖 💗 💘 💛
+Orange is my new love	🧡 🟠
+flirting with you	😝
+disgusting sight	🤮 🤢
+going to throw up	🤮 🤢
+Can't stand the smell in here	🤢 🤮
+respond immediately	❗
+Time sensitive matter	❗
+Action required ASAP	❗
+attention needed	❗
+it hurts	😥 😔 😟 🙁
+exploded into a million pieces	🤯
+Prepare for impact	👊 🤛 🤜
+Brace yourself	👊 🤛 🤜
+Get ready to dodge	👊 🤛 🤜
+Shut up	🤬 🤫 🤐
+Stop talking to me	🤬 🤫 🤐
+Stop talking shit	🤬 🤫 🤐
+fast	🏃‍♂️
+speedy guy	🏃‍♂️
+lucky charm	🍀
+electrical hazard	⚡️
+please clarify	😕 🤔
+Sweating it out at the gym	💦
+I'm not giving up	💦
+the effort is worth it	💦
+breaking a sweat	💦
+is it	🤨
+I don't believe you	🤨
+that's unexpected	🤨
+can't stop laughing	😆 😹 🤣 😂 😃 😀 😄
+Happy mother's day	🌺 😊
+Metal forever	🤘
+Keep it loud	🤘
+Horns up	🤘
+thankful of you	💝 😊
+Thank you for the gift	💝 😊
+Nature's beauy at it's peak	🌷 🌼
+peaceful slumber	💤 😴
+restful night	💤 😴
+Nice to meet you	🤝 😊
+Pleasure to meet you	🤝 😊
+Bottoms up	🍻 🥂
+Raise a glass	🍻 🥂
+Happy easter	🐰
+done with you	😣 😠 😡
+never want to see your face	😣 😠 😡
+crossed a line	😣 😠 😡
+no going back	😣 😠 😡
+it may go other way	🧐
+observe things clearly	🧐
+you betrayed me like this	😠 😡 👿 😤
+thoughtless person	😠 😡 👿 😤
+selfish person	😠 😡 👿 😤
+how careless you are	😠 😡 👿 😤
+Meowgical eyes that steal my heart	😻 😸
+eyes make me purr with joy	😻 😸
+cat's meow	😻 😸
+feline eyes	😻 😸
+Are you playing with me	😛 😜 😝
+can't catch me	😛 😜 😝
+Speak no evil	🙊
+need to talk to you urgently	🤙 📞
+stinky situation	💩
+Task accomplished	✅️ ✔️ 👍
+crappy day	💩
+frustrated with this work culture	😑
+Uselesss people are in my life	😑
+Stop irritating me like this	😑
+not in mood today	🙁 ☹️ 😦
+loud noise	💥
+Can I answer this question	🙋‍♀️
+I want to say something	🙋‍♀️
+Special delivery for you	🎁
+loved and appreciated	😘 😗 😚 😙
+grace and dignity	👑
+financial freedom	💰
+virtual hug	🫂 🤗 💚
+draining my energy	🥵
+hot today	🥵 ☀️ 🔥
+feeling triumphant today	✌️
+good deeds	😇 🙌 😊
+spring season	🌸 🌼
+feeling mischievous today	😈
+playful mood	😈
+wicked sense of humor	😈
+beautiful day	🌞 😊
+not funny at all	😒 🙁 😔 😞
+I expected more	😒 🙁 😔 😞
+Couldn't care less	😒 🙁 😔 😞
+going to bed now	😴 💤
+Time to catch some z's	😴 💤
+off to dreamland	😴 💤
+my bad	🤭
+can't believe I just said that	🤭
+shouldn't have laughed	🤭
+timing was really bad	🤭
+hide my laughter	🤭
+not sure about this	😐 🫤
+mixed feelings	😐 🫤
+Neither happy nor sad	😐 🫤
+Can't decide right now	😐 🫤
+can't bear to watch	😬 🫣
+It's hard to look at	😬 🫣
+You leave me speechless	🤩 😍
+I'm star struck by your talent	🤩 😍
+Nothing seems right	😔 😟 🙁 🙃
+not going well	😔 😟 🙁 🙃
+Everything is a mess	😔 😟 😠 🙃
+I am mean	😔 🙃
+I'm in awe of you	🤩 😍
+that was close	😌 😢 😥
+heart is shattered	💔 😢 ☹️ 😢
+worst nightmare	😱 😨 😟 🙀
+shining star	🤩 🌟
+looking dope	😎
+foggy mind	😶‍🌫️
+blue heart	🩵
+it was you	🫵

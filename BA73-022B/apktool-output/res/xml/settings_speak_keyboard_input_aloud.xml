@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/settings_speak_keyboard_input_aloud"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory>
+        <androidx.preference.SeslSwitchPreferenceScreen android:persistent="true" android:key="settings_speak_keyboard_input_aloud_shortcut" android:defaultValue="false" />
+    </PreferenceCategory>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:title="@string/settings_speak_keyboard_input_aloud_category_what_to_read" android:key="settings_speak_keyboard_input_aloud_mode" app:entryValues="@array/array_speak_aloud_type_entry_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_speak_keyboard_input_aloud_characters" android:key="settings_speak_keyboard_input_aloud_characters" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_speak_keyboard_input_aloud_words" android:key="settings_speak_keyboard_input_aloud_words" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_speak_keyboard_input_aloud_characters_and_words" android:key="settings_speak_keyboard_input_aloud_characters_and_words" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:title="@string/settings_speak_keyboard_input_aloud_category_capital_letter" android:key="settings_speak_keyboard_input_aloud_capital_mode" app:entryValues="@array/array_speak_aloud_type_capital_letter_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_speak_keyboard_input_aloud_category_capital_do_nothing" android:key="settings_speak_keyboard_input_aloud_capital_do_nothing" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_speak_keyboard_input_aloud_category_capital_say_capital" android:key="settings_speak_keyboard_input_aloud_capital_say_capital" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_speak_keyboard_input_aloud_category_capital_change_pitch" android:key="settings_speak_keyboard_input_aloud_capital_change_pitch" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_speak_keyboard_input_aloud_category_capital_play_sound" android:key="settings_speak_keyboard_input_aloud_capital_play_sound" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <PreferenceCategory>
+        <androidx.preference.SwitchPreferenceCompat android:persistent="true" android:title="@string/settings_speak_keyboard_input_aloud_read_deleted_characters_aloud" android:key="settings_speak_keyboard_input_aloud_read_deleted_character" android:defaultValue="true" />
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <androidx.preference.SwitchPreferenceCompat android:persistent="true" android:title="@string/settings_speak_keyboard_input_aloud_phonetic_alphabet" android:key="settings_speak_keyboard_input_aloud_phonetic_alphabet" android:defaultValue="false" />
+        <androidx.preference.SeslPreferenceCaption android:title="@string/settings_speak_keyboard_input_aloud_phonetic_alphabet_summary" />
+    </PreferenceCategory>
+</PreferenceScreen>

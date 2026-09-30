@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/transparent" />
+    <corners android:radius="@dimen/ambi_effect_thumbnail_frame_radius" />
+    <stroke android:width="@dimen/ambi_effect_thumbnail_frame_border" android:color="?common_content_ambi_effect_thumbnail_frame_color_attr" />
+</shape>

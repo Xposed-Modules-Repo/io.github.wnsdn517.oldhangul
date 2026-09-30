@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/writing_assist_handler_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/writing_assist_handler_area_height"
+    android:contentDescription="@string/writing_assist_handle_for_expanding"
+    android:importantForAccessibility="no">
+    <View
+        android:background="@drawable/writing_assist_handler"
+        android:layout_width="@dimen/writing_assist_handler_width"
+        android:layout_height="@dimen/writing_assist_handler_height"/>
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:gravity="top"
+        android:id="@+id/et_test_input"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:imeOptions="flagNoFullscreen">
+        <requestFocus/>
+    </EditText>
+    <EditText
+        android:gravity="top"
+        android:id="@+id/et_test_input_contact"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:layout_below="@+id/et_test_input"
+        android:inputType="textMultiLine"
+        android:imeOptions="flagNoFullscreen"/>
+</RelativeLayout>

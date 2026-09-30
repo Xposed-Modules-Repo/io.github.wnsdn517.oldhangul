@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/app_theme_content_background_color" />
+    <corners android:radius="@dimen/touch_and_hold_delay_custom_view_bg_corner_radius" />
+</shape>

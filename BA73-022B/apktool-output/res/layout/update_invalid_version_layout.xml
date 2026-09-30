@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="?bee_msg_layout_bg_color" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center" android:id="@id/loading_layout_progress_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:progressBarStyleLarge" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/invalid_version_layout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textSize="@dimen/rp_msg_text_size" android:textColor="?bee_msg_layout_text_color" android:gravity="center_horizontal" android:id="@id/invalid_version_msg" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/rp_msg_margin_bottom" android:layout_marginHorizontal="@dimen/rp_msg_margin_horizontal" />
+        <Button android:textColor="?bee_msg_layout_btn_text_color" android:id="@id/invalid_version_btn" android:background="?bee_msg_layout_btn_bg" style="@style/RaisedButton" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">PLURAL_ZERO_DRAW_BODY_ONCE_YOU_REACH_PD_GENERATED_IMAGES_GENERATING_A_NEW_IMAGE_WILL_CAUSE_YOUR_OLDEST_ONE_TO_BE_DELETED %d</item>
+        <item quantity="one">PLURAL_ONE_DRAW_BODY_ONCE_YOU_REACH_PD_GENERATED_IMAGES_GENERATING_A_NEW_IMAGE_WILL_CAUSE_YOUR_OLDEST_ONE_TO_BE_DELETED %d</item>
+        <item quantity="two">PLURAL_TWO_DRAW_BODY_ONCE_YOU_REACH_PD_GENERATED_IMAGES_GENERATING_A_NEW_IMAGE_WILL_CAUSE_YOUR_OLDEST_ONE_TO_BE_DELETED %d</item>
+        <item quantity="few">PLURAL_FEW_DRAW_BODY_ONCE_YOU_REACH_PD_GENERATED_IMAGES_GENERATING_A_NEW_IMAGE_WILL_CAUSE_YOUR_OLDEST_ONE_TO_BE_DELETED %d</item>
+        <item quantity="many">PLURAL_MANY_DRAW_BODY_ONCE_YOU_REACH_PD_GENERATED_IMAGES_GENERATING_A_NEW_IMAGE_WILL_CAUSE_YOUR_OLDEST_ONE_TO_BE_DELETED %d</item>
+        <item quantity="other">PLURAL_OTHER_DRAW_BODY_ONCE_YOU_REACH_PD_GENERATED_IMAGES_GENERATING_A_NEW_IMAGE_WILL_CAUSE_YOUR_OLDEST_ONE_TO_BE_DELETED %d</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">PLURAL_ZERO_IME_BODY_DELETE_PD_STICKERS_Q %d</item>
+        <item quantity="one">PLURAL_ONE_IME_BODY_DELETE_PD_STICKERS_Q %d</item>
+        <item quantity="two">PLURAL_TWO_IME_BODY_DELETE_PD_STICKERS_Q %d</item>
+        <item quantity="few">PLURAL_FEW_IME_BODY_DELETE_PD_STICKERS_Q %d</item>
+        <item quantity="many">PLURAL_MANY_IME_BODY_DELETE_PD_STICKERS_Q %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_BODY_DELETE_PD_STICKERS_Q %d</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">PLURAL_ZERO_IME_BODY_DELETE_PD_EMOJI_PAIRS_Q %d</item>
+        <item quantity="one">PLURAL_ONE_IME_BODY_DELETE_PD_EMOJI_PAIRS_Q %d</item>
+        <item quantity="two">PLURAL_TWO_IME_BODY_DELETE_PD_EMOJI_PAIRS_Q %d</item>
+        <item quantity="few">PLURAL_FEW_IME_BODY_DELETE_PD_EMOJI_PAIRS_Q %d</item>
+        <item quantity="many">PLURAL_MANY_IME_BODY_DELETE_PD_EMOJI_PAIRS_Q %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_BODY_DELETE_PD_EMOJI_PAIRS_Q %d</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">PLURAL_ZERO_IDLE_BODY_YOU_NEED_TO_BE_AT_LEAST_PD_YEARS_OLD_TO_USE_GALAXY_AIS_ADVANCED_INTELLIGENCE_FEATURES %d</item>
+        <item quantity="one">PLURAL_ONE_IDLE_BODY_YOU_NEED_TO_BE_AT_LEAST_PD_YEARS_OLD_TO_USE_GALAXY_AIS_ADVANCED_INTELLIGENCE_FEATURES %d</item>
+        <item quantity="two">PLURAL_TWO_IDLE_BODY_YOU_NEED_TO_BE_AT_LEAST_PD_YEARS_OLD_TO_USE_GALAXY_AIS_ADVANCED_INTELLIGENCE_FEATURES %d</item>
+        <item quantity="few">PLURAL_FEW_IDLE_BODY_YOU_NEED_TO_BE_AT_LEAST_PD_YEARS_OLD_TO_USE_GALAXY_AIS_ADVANCED_INTELLIGENCE_FEATURES %d</item>
+        <item quantity="many">PLURAL_MANY_IDLE_BODY_YOU_NEED_TO_BE_AT_LEAST_PD_YEARS_OLD_TO_USE_GALAXY_AIS_ADVANCED_INTELLIGENCE_FEATURES %d</item>
+        <item quantity="other">PLURAL_OTHER_IDLE_BODY_YOU_NEED_TO_BE_AT_LEAST_PD_YEARS_OLD_TO_USE_GALAXY_AIS_ADVANCED_INTELLIGENCE_FEATURES %d</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">PLURAL_ZERO_IME_BODY_DELETE_PD_ITEMS_Q %d</item>
+        <item quantity="one">PLURAL_ONE_IME_BODY_DELETE_PD_ITEMS_Q %d</item>
+        <item quantity="two">PLURAL_TWO_IME_BODY_DELETE_PD_ITEMS_Q %d</item>
+        <item quantity="few">PLURAL_FEW_IME_BODY_DELETE_PD_ITEMS_Q %d</item>
+        <item quantity="many">PLURAL_MANY_IME_BODY_DELETE_PD_ITEMS_Q %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_BODY_DELETE_PD_ITEMS_Q %d</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">PLURAL_ZERO_IME_BODY_DELETE_PD_PINNED_ITEMS_Q %d</item>
+        <item quantity="one">PLURAL_ONE_IME_BODY_DELETE_PD_PINNED_ITEMS_Q %d</item>
+        <item quantity="two">PLURAL_TWO_IME_BODY_DELETE_PD_PINNED_ITEMS_Q %d</item>
+        <item quantity="few">PLURAL_FEW_IME_BODY_DELETE_PD_PINNED_ITEMS_Q %d</item>
+        <item quantity="many">PLURAL_MANY_IME_BODY_DELETE_PD_PINNED_ITEMS_Q %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_BODY_DELETE_PD_PINNED_ITEMS_Q %d</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">PLURAL_ZERO_IME_OPT_INCLUDE_PD_PINNED_ITEMS %d</item>
+        <item quantity="one">PLURAL_ONE_IME_OPT_INCLUDE_PD_PINNED_ITEMS %d</item>
+        <item quantity="two">PLURAL_TWO_IME_OPT_INCLUDE_PD_PINNED_ITEMS %d</item>
+        <item quantity="few">PLURAL_FEW_IME_OPT_INCLUDE_PD_PINNED_ITEMS %d</item>
+        <item quantity="many">PLURAL_MANY_IME_OPT_INCLUDE_PD_PINNED_ITEMS %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_OPT_INCLUDE_PD_PINNED_ITEMS %d</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">PLURAL_ZERO_IME_BUTTON_REVIEW_PD_WRITING_SUGGESTIONS_30 %d</item>
+        <item quantity="one">PLURAL_ONE_IME_BUTTON_REVIEW_PD_WRITING_SUGGESTIONS_30 %d</item>
+        <item quantity="two">PLURAL_TWO_IME_BUTTON_REVIEW_PD_WRITING_SUGGESTIONS_30 %d</item>
+        <item quantity="few">PLURAL_FEW_IME_BUTTON_REVIEW_PD_WRITING_SUGGESTIONS_30 %d</item>
+        <item quantity="many">PLURAL_MANY_IME_BUTTON_REVIEW_PD_WRITING_SUGGESTIONS_30 %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_BUTTON_REVIEW_PD_WRITING_SUGGESTIONS_30 %d</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">PLURAL_ZERO_GALLERY_BODY_CANT_ADD_MORE_THAN_PD_STICKERS_GO_TO_THE_PHOTO_EDITOR_IN_GALLERY_TO_REMOVE_STICKERS %d</item>
+        <item quantity="one">PLURAL_ONE_GALLERY_BODY_CANT_ADD_MORE_THAN_PD_STICKERS_GO_TO_THE_PHOTO_EDITOR_IN_GALLERY_TO_REMOVE_STICKERS %d</item>
+        <item quantity="two">PLURAL_TWO_GALLERY_BODY_CANT_ADD_MORE_THAN_PD_STICKERS_GO_TO_THE_PHOTO_EDITOR_IN_GALLERY_TO_REMOVE_STICKERS %d</item>
+        <item quantity="few">PLURAL_FEW_GALLERY_BODY_CANT_ADD_MORE_THAN_PD_STICKERS_GO_TO_THE_PHOTO_EDITOR_IN_GALLERY_TO_REMOVE_STICKERS %d</item>
+        <item quantity="many">PLURAL_MANY_GALLERY_BODY_CANT_ADD_MORE_THAN_PD_STICKERS_GO_TO_THE_PHOTO_EDITOR_IN_GALLERY_TO_REMOVE_STICKERS %d</item>
+        <item quantity="other">PLURAL_OTHER_GALLERY_BODY_CANT_ADD_MORE_THAN_PD_STICKERS_GO_TO_THE_PHOTO_EDITOR_IN_GALLERY_TO_REMOVE_STICKERS %d</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">PLURAL_ZERO_NOTES_TPOP_CANT_SHOW_MORE_THAN_PD_COLORS %d</item>
+        <item quantity="one">PLURAL_ONE_NOTES_TPOP_CANT_SHOW_MORE_THAN_PD_COLORS %d</item>
+        <item quantity="two">PLURAL_TWO_NOTES_TPOP_CANT_SHOW_MORE_THAN_PD_COLORS %d</item>
+        <item quantity="few">PLURAL_FEW_NOTES_TPOP_CANT_SHOW_MORE_THAN_PD_COLORS %d</item>
+        <item quantity="many">PLURAL_MANY_NOTES_TPOP_CANT_SHOW_MORE_THAN_PD_COLORS %d</item>
+        <item quantity="other">PLURAL_OTHER_NOTES_TPOP_CANT_SHOW_MORE_THAN_PD_COLORS %d</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">PLURAL_ZERO_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="one">PLURAL_ONE_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="two">PLURAL_TWO_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="few">PLURAL_FEW_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="many">PLURAL_MANY_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="other">PLURAL_OTHER_ST_HEADER_PD_SELECTED %d</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">PLURAL_ZERO_IME_BODY_DELETE_PD_TEXT_SHORTCUTS_Q %d</item>
+        <item quantity="one">PLURAL_ONE_IME_BODY_DELETE_PD_TEXT_SHORTCUTS_Q %d</item>
+        <item quantity="two">PLURAL_TWO_IME_BODY_DELETE_PD_TEXT_SHORTCUTS_Q %d</item>
+        <item quantity="few">PLURAL_FEW_IME_BODY_DELETE_PD_TEXT_SHORTCUTS_Q %d</item>
+        <item quantity="many">PLURAL_MANY_IME_BODY_DELETE_PD_TEXT_SHORTCUTS_Q %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_BODY_DELETE_PD_TEXT_SHORTCUTS_Q %d</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">PLURAL_ZERO_IME_TPOP_PD_LANGUAGES_TO_BE_UPDATED %d</item>
+        <item quantity="one">PLURAL_ONE_IME_TPOP_PD_LANGUAGES_TO_BE_UPDATED %d</item>
+        <item quantity="two">PLURAL_TWO_IME_TPOP_PD_LANGUAGES_TO_BE_UPDATED %d</item>
+        <item quantity="few">PLURAL_FEW_IME_TPOP_PD_LANGUAGES_TO_BE_UPDATED %d</item>
+        <item quantity="many">PLURAL_MANY_IME_TPOP_PD_LANGUAGES_TO_BE_UPDATED %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_TPOP_PD_LANGUAGES_TO_BE_UPDATED %d</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">PLURAL_ZERO_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="one">PLURAL_ONE_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="two">PLURAL_TWO_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="few">PLURAL_FEW_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="many">PLURAL_MANY_ST_HEADER_PD_SELECTED %d</item>
+        <item quantity="other">PLURAL_OTHER_ST_HEADER_PD_SELECTED %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">PLURAL_ZERO_NOTES_BODY_YOUVE_SELECTED_PD_CHARACTERS %d</item>
+        <item quantity="one">PLURAL_ONE_NOTES_BODY_YOUVE_SELECTED_PD_CHARACTERS %d</item>
+        <item quantity="two">PLURAL_TWO_NOTES_BODY_YOUVE_SELECTED_PD_CHARACTERS %d</item>
+        <item quantity="few">PLURAL_FEW_NOTES_BODY_YOUVE_SELECTED_PD_CHARACTERS %d</item>
+        <item quantity="many">PLURAL_MANY_NOTES_BODY_YOUVE_SELECTED_PD_CHARACTERS %d</item>
+        <item quantity="other">PLURAL_OTHER_NOTES_BODY_YOUVE_SELECTED_PD_CHARACTERS %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">PLURAL_ZERO_IME_OPT_PD_CORRECTIONS %d</item>
+        <item quantity="one">PLURAL_ONE_IME_OPT_PD_CORRECTIONS %d</item>
+        <item quantity="two">PLURAL_TWO_IME_OPT_PD_CORRECTIONS %d</item>
+        <item quantity="few">PLURAL_FEW_IME_OPT_PD_CORRECTIONS %d</item>
+        <item quantity="many">PLURAL_MANY_IME_OPT_PD_CORRECTIONS %d</item>
+        <item quantity="other">PLURAL_OTHER_IME_OPT_PD_CORRECTIONS %d</item>
+    </plurals>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:tag="layout/custom_symbol_bottom_row_layout_0" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:tag="binding_1" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:buttonBarStyle">
+        <Button android:id="@id/custom_symbols_range_key" android:tag="binding_2" style="@style/setting_custom_symbol_button_option" />
+        <Button android:id="@id/custom_symbols_cm_key" android:tag="binding_3" style="@style/setting_custom_symbol_button_option" />
+        <Button android:id="@id/custom_symbols_space_key" android:tag="binding_4" style="@style/setting_custom_symbol_button" />
+        <Button android:id="@id/custom_symbols_period_key" android:tag="binding_5" android:background="@drawable/custom_symbols_focus" android:text="@string/custom_symbols_period_key_label" style="@style/setting_custom_symbol_button" />
+        <Button android:id="@id/custom_symbols_enter_key" android:tag="binding_6" style="@style/setting_custom_symbol_button_option" />
+    </LinearLayout>
+</FrameLayout>

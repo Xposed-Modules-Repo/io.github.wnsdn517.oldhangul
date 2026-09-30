@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_selected="true"
+        android:color="?attr/common_category_button_selected_color_attr"/>
+    <item android:color="?attr/common_category_button_normal_color_attr"/>
+</selector>

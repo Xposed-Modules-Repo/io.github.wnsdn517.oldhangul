@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/highlighter_unselected">
+    <target
+        android:name="morphing"
+        android:animation="@drawable/_highlighter_av_unselected__0_res_0x7f08002c"/>
+</animated-vector>

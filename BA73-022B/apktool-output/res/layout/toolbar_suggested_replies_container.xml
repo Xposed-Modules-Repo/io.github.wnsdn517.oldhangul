@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:id="@id/suggested_replies_constraint_layout" android:tag="layout/toolbar_suggested_replies_container_0" android:background="?suggested_replies_background" android:layout_width="match_parent" android:layout_height="@dimen/header_layout_area_height"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

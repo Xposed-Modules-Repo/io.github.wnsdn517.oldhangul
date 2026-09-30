@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/sesl_dialog_body_text_color_light"/>
+    <size
+        android:height="@dimen/rp_dotted_lined_size"
+        android:width="@dimen/rp_dotted_lined_size"/>
+    <stroke
+        android:width="@dimen/rp_dotted_lined_stroke"
+        android:color="@color/transparent"/>
+</shape>

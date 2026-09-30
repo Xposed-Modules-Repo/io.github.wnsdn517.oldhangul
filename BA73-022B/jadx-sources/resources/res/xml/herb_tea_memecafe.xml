@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<herb xmlns:apps="http://schemas.android.com/apk/res-auto">
+    <herb-category
+        apps:herbKey="ct_rts_view_size"
+        apps:herbTitle="@string/category_title_rts">
+        <herb-menu
+            apps:herbDefaultValue="false"
+            apps:herbDescription="@string/menu_summary_rts_view_size"
+            apps:herbKey="MENU_RTS_LARGER_VIEW"
+            apps:herbSummary="@string/menu_summary_rts_view_size"
+            apps:herbTitle="@string/menu_title_rts_view_size"/>
+    </herb-category>
+</herb>

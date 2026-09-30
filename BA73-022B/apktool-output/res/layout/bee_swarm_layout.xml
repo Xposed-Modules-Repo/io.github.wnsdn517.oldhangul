@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:tag="layout/bee_swarm_layout_0" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="locale"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.samsung.android.honeyboard.beehive.view.BeeSwarmLayout android:orientation="horizontal" android:id="@id/beehive_extra_container" android:tag="binding_1" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:rowCount="@integer/bee_swarm_layout_grid_row" android:columnCount="@integer/bee_swarm_layout_grid_column" android:useDefaultMargins="false" />
+    <LinearLayout android:layout_gravity="start" android:orientation="horizontal" android:id="@id/beehive_extra_container_start_space" android:layout_width="@dimen/toolbar_expand_page_change_area_width" android:layout_height="match_parent" />
+    <LinearLayout android:layout_gravity="end" android:orientation="horizontal" android:id="@id/beehive_extra_container_end_space" android:layout_width="@dimen/toolbar_expand_page_change_area_width" android:layout_height="match_parent" />
+</FrameLayout>

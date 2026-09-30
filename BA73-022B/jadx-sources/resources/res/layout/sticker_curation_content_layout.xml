@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.icecone.sticker.view.content.curation.CurationContentLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/curation_layout"
+    android:paddingTop="@dimen/sticker_curation_layout_padding_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="locale">
+    <include layout="@layout/sticker_curation_content_msg_layout"/>
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/curation_loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ProgressBar
+            android:layout_gravity="center"
+            android:id="@+id/loading_layout_progress_bar"
+            android:layout_width="@dimen/sticker_more_content_base_progress_size"
+            android:layout_height="@dimen/sticker_more_content_base_progress_size"
+            android:layout_centerInParent="true"
+            style="?android:attr/progressBarStyleLarge"/>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/curationRecyclerView"
+        android:visibility="gone"
+        android:scrollbars="vertical"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="bottom|center_horizontal"
+        android:id="@+id/curation_store_button_layout_bottom_navigation"
+        android:background="?attr/common_content_background_color_attr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingVertical="@dimen/sticker_curation_layout_padding_vertical"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
+        <include layout="@layout/sticker_curation_bottom_store_button"/>
+    </LinearLayout>
+</com.samsung.android.honeyboard.icecone.sticker.view.content.curation.CurationContentLayout>

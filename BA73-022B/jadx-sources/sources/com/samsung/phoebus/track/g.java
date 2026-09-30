@@ -1,0 +1,7 @@
+package com.samsung.phoebus.track;
+
+import android.os.IInterface;
+
+/* JADX INFO: loaded from: classes3.dex */
+public interface g extends IInterface {
+}

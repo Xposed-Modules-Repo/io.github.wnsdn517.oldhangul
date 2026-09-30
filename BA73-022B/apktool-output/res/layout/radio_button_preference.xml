@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/divider" android:focusable="false" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:importantForAccessibility="no" android:layout_marginStart="@dimen/setting_radio_button_preference_left_pending" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?android:selectableItemBackground" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="@dimen/basic_interaction_list_height_one_line" android:paddingEnd="@dimen/preference_widget_frame_padding_end">
+        <RadioButton android:id="@android:id/checkbox" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/basic_interaction_radio_button_width" android:minHeight="@dimen/basic_interaction_radio_button_height" android:layout_marginStart="@dimen/basic_interaction_radio_button_margin_start" android:layout_marginEnd="@dimen/basic_interaction_radio_button_margin_end" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingTop="@dimen/basic_interaction_list_padding_top" android:paddingBottom="@dimen/basic_interaction_list_padding_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/basic_interaction_radio_button_style" android:textSize="@dimen/edittext_textsize" android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:id="@android:id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

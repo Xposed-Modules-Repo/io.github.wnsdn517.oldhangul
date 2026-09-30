@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SudCardTitle" parent="@style/SudBaseCardTitle">
+        <item name="android:maxLines">6</item>
+    </style>
+    <style name="Widget.MaterialComponents.MaterialCalendar.HeaderSelection" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:ellipsize">3</item>
+        <item name="android:layout_gravity">0x800033</item>
+        <item name="android:layout_width">-1</item>
+        <item name="android:layout_height">-2</item>
+        <item name="android:maxLines">@integer/mtrl_calendar_selection_text_lines</item>
+    </style>
+    <style name="Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton" parent="@style/Base.Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton">
+        <item name="android:layout_gravity">0x800053</item>
+    </style>
+    <style name="toolbar_keyboard_view_type_popup_item_image" parent="">
+        <item name="android:gravity">0x11</item>
+        <item name="android:layout_width">@dimen/view_type_panel_keyboard_button_size</item>
+        <item name="android:layout_height">@dimen/view_type_panel_keyboard_button_size</item>
+        <item name="android:scaleType">7</item>
+        <item name="android:layout_weight">@dimen/view_type_panel_mode_button_width_land</item>
+        <item name="android:contentDescription">@null</item>
+    </style>
+    <style name="toolbar_keyboard_view_type_popup_item_layout" parent="">
+        <item name="android:layout_gravity">0x11</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/ripple_toolbar_select_keypad_type_button_xml</item>
+        <item name="android:layout_width">-2</item>
+        <item name="android:layout_height">-2</item>
+        <item name="android:layout_weight">@dimen/view_type_panel_mode_layout_width_land</item>
+    </style>
+    <style name="toolbar_keyboard_view_type_popup_item_text" parent="">
+        <item name="android:layout_gravity">0x800013</item>
+        <item name="android:layout_width">-2</item>
+        <item name="android:layout_height">-2</item>
+        <item name="android:layout_weight">@dimen/view_type_panel_mode_text_width_land</item>
+        <item name="android:textDirection">5</item>
+    </style>
+</resources>

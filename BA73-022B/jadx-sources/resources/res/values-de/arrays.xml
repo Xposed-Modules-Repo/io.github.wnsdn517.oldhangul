@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="domain_popup_string_values">
+        <item>.eu</item>
+        <item>.co.de</item>
+        <item>.edu</item>
+        <item>.de</item>
+        <item>.info</item>
+        <item>.org</item>
+        <item>.net</item>
+        <item>.gov</item>
+    </array>
+</resources>

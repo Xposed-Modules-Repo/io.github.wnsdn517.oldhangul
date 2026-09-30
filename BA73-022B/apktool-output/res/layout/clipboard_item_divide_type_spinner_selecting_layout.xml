@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/clipboard_item_divide_type_spinner_selecting_view" android:layout_width="wrap_content" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/clipboard_item_divide_type_selected_text_size" android:textColor="?clipboard_item_divide_type_selected_text_color" android:layout_gravity="center_vertical" android:id="@id/clipboard_item_divide_type_selected_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sec" android:layout_marginEnd="@dimen/clipboard_item_divide_type_selected_text_margin_end" android:textFontWeight="400" />
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/clipboard_item_divide_type_dropdown_icon_size" android:layout_height="@dimen/clipboard_item_divide_type_dropdown_icon_size" android:src="@drawable/spinner_conversion_dropdown" android:tint="?common_category_button_normal_color_attr" android:importantForAccessibility="no" />
+</LinearLayout>

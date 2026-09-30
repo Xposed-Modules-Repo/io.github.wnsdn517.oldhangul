@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="high_contrast_theme_icon_height">58.5dp</dimen>
+    <dimen name="high_contrast_theme_icon_margin">8.899994dp</dimen>
+    <dimen name="high_contrast_theme_icon_width">121.0dp</dimen>
+    <dimen name="keyboard_themes_icon_container_width">68.0dp</dimen>
+    <dimen name="textAppearanceMedium_lineSpacingExtra">3.0dp</dimen>
+    <dimen name="textAppearanceMedium_textSize">15.0sp</dimen>
+</resources>

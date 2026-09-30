@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textColor="?writing_assist_description_color" android:id="@id/item_language" android:tag="layout/writing_assist_translate_language_spinner_selected_item_0" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="@dimen/writing_toolkit_summary_translate_drop_down_arrow_margin_start" android:drawableEnd="@drawable/writing_assist_summary_translate_expand" style="@style/WritingToolkitTranslateDropdownSelectedStyle"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

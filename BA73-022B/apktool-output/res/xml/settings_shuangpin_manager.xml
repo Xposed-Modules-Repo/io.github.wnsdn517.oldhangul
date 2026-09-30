@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.chineseinputoptions.ShuangpinPreviewPreference android:key="settings_shuangpin_preview" />
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:key="settings_shuangpin_type" app:entries="@array/sogou_shuangpin_names" app:entryValues="@array/sogou_shuangpin_values" />
+</PreferenceScreen>

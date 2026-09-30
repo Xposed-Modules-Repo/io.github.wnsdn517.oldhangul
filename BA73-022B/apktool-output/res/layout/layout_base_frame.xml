@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="bottom" android:id="@id/layout_base_frame_root" android:tag="layout/layout_base_frame_0" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/layout_background" android:tag="binding_1" android:visibility="visible" android:layout_width="0.0dp" android:layout_height="0.0dp" app:layout_constraintBottom_toBottomOf="@id/layout_base_frame_wrapper" app:layout_constraintEnd_toEndOf="@id/layout_base_frame_wrapper" app:layout_constraintStart_toStartOf="@id/layout_base_frame_wrapper" app:layout_constraintTop_toTopOf="@id/layout_base_frame_wrapper" />
+        <LinearLayout android:orientation="vertical" android:id="@id/layout_base_frame_wrapper" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <FrameLayout android:id="@id/layout_header" android:tag="binding_2" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_header_empty_area" android:layout_width="match_parent" android:layout_height="match_parent" />
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_toolbar" android:layout_width="match_parent" android:layout_height="match_parent" />
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_candidate" android:layout_width="match_parent" android:layout_height="match_parent" />
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_suggested_replies" android:layout_width="match_parent" android:layout_height="match_parent" />
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_search_recent" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_smart_candidate" android:layout_width="match_parent" android:layout_height="match_parent" />
+                <LinearLayout android:orientation="vertical" android:id="@id/layout_base_expression" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" />
+            </FrameLayout>
+            <FrameLayout android:layout_gravity="bottom" android:id="@id/layout_body_wrapper" android:tag="binding_3" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <FrameLayout android:layout_gravity="bottom" android:id="@id/layout_body" android:tag="binding_4" android:layout_width="match_parent" android:layout_height="match_parent">
+                    <FrameLayout android:id="@id/layout_board_frame" android:layout_width="match_parent" android:layout_height="match_parent">
+                        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="ltr">
+                            <LinearLayout android:id="@id/layout_board_left" android:clipChildren="false" android:layout_width="0.0dp" android:layout_height="match_parent" />
+                            <LinearLayout android:orientation="horizontal" android:id="@id/layout_board" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                            <LinearLayout android:id="@id/layout_board_right" android:clipChildren="false" android:layout_width="0.0dp" android:layout_height="match_parent" />
+                        </LinearLayout>
+                    </FrameLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@id/layout_body_overlay" android:layout_width="match_parent" android:layout_height="match_parent" />
+                </FrameLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

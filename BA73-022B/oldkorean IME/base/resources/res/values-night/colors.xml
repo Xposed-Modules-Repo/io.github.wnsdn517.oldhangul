@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="chipBackground">#4d4d4d</color>
+    <color name="chipHintColor">#ccccff</color>
+    <color name="keyboardBackground">#fe1e1e1e</color>
+    <color name="popupBackground">#1e1e1e</color>
+    <color name="slightTextColor">#ffaaaaaa</color>
+</resources>

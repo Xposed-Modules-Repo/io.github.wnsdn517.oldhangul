@@ -1,0 +1,3020 @@
+{
+    "version": "1.1.1",
+    "schema": {
+        "alpha-3": {
+            "mandatory": true,
+            "type": "string"
+        },
+        "name": {
+            "mandatory": true,
+            "type": "string"
+        }
+    },
+    "countries": {
+        "AD": {
+            "alpha-3": "AND",
+            "name": "Andorra",
+            "mcc": [
+                "213"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "AE": {
+            "alpha-3": "ARE",
+            "name": "UnitedArabEmirates",
+            "mcc": [
+                "424",
+                "430",
+                "431"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AF": {
+            "alpha-3": "AFG",
+            "name": "Afghanistan",
+            "mcc": [
+                "412"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AG": {
+            "alpha-3": "ATG",
+            "name": "AntiguaAndBarbuda",
+            "mcc": [
+                "344"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AI": {
+            "alpha-3": "AIA",
+            "name": "Anguilla",
+            "mcc": [
+                "365"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "AL": {
+            "alpha-3": "ALB",
+            "name": "Albania",
+            "mcc": [
+                "276"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 18,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 18
+        },
+        "AM": {
+            "alpha-3": "ARM",
+            "name": "Armenia",
+            "mcc": [
+                "283"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "AN": {
+            "alpha-3": "ANT",
+            "name": "NetherlandsAntilles",
+            "mcc": [
+                "362"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "AO": {
+            "alpha-3": "AGO",
+            "name": "Angola",
+            "mcc": [
+                "631"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AQ": {
+            "alpha-3": "ATA",
+            "name": "Antarctica",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AR": {
+            "alpha-3": "ARG",
+            "name": "Argentina",
+            "mcc": [
+                "722"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AS": {
+            "alpha-3": "ASM",
+            "name": "AmericanSamoa",
+            "mcc": [
+                "544"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AT": {
+            "alpha-3": "AUT",
+            "name": "Austria",
+            "mcc": [
+                "232"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "AU": {
+            "alpha-3": "AUS",
+            "name": "Australia",
+            "mcc": [
+                "505"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "AW": {
+            "alpha-3": "ABW",
+            "name": "Aruba",
+            "mcc": [
+                "363"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "AX": {
+            "alpha-3": "ALA",
+            "name": "AlandIslands",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "AZ": {
+            "alpha-3": "AZE",
+            "name": "Azerbaijan",
+            "mcc": [
+                "400"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "BA": {
+            "alpha-3": "BIH",
+            "name": "BosniaAndHerzegovina",
+            "mcc": [
+                "218"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 13,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 13
+        },
+        "BB": {
+            "alpha-3": "BRB",
+            "name": "Barbados",
+            "mcc": [
+                "342"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BD": {
+            "alpha-3": "BGD",
+            "name": "Bangladesh",
+            "mcc": [
+                "470"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BE": {
+            "alpha-3": "BEL",
+            "name": "Belgium",
+            "mcc": [
+                "206"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 13,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 13
+        },
+        "BF": {
+            "alpha-3": "BFA",
+            "name": "BurkinaFaso",
+            "mcc": [
+                "613"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BG": {
+            "alpha-3": "BGR",
+            "name": "Bulgaria",
+            "mcc": [
+                "284"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 14
+        },
+        "BH": {
+            "alpha-3": "BHR",
+            "name": "Bahrain",
+            "mcc": [
+                "426"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BI": {
+            "alpha-3": "BDI",
+            "name": "Burundi",
+            "mcc": [
+                "642"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BJ": {
+            "alpha-3": "BEN",
+            "name": "Benin",
+            "mcc": [
+                "616"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BL": {
+            "alpha-3": "BLM",
+            "name": "SaintBarthelemy",
+            "mcc": [
+                "903"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "BM": {
+            "alpha-3": "BMU",
+            "name": "Bermuda",
+            "mcc": [
+                "350"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "BN": {
+            "alpha-3": "BRN",
+            "name": "BruneiDarussalam",
+            "mcc": [
+                "528"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BO": {
+            "alpha-3": "BOL",
+            "name": "Bolivia",
+            "mcc": [
+                "736"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BQ": {
+            "alpha-3": "BES",
+            "name": "Bonaire,SintEustatiusandSabac",
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "BR": {
+            "alpha-3": "BRA",
+            "name": "Brazil",
+            "mcc": [
+                "724"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "BS": {
+            "alpha-3": "BHS",
+            "name": "Bahamas",
+            "mcc": [
+                "364"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "BT": {
+            "alpha-3": "BTN",
+            "name": "Bhutan",
+            "mcc": [
+                "402"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BV": {
+            "alpha-3": "BVT",
+            "name": "BouvetIsland",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BW": {
+            "alpha-3": "BWA",
+            "name": "Botswana",
+            "mcc": [
+                "652"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BY": {
+            "alpha-3": "BLR",
+            "name": "Belarus",
+            "mcc": [
+                "257"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "BZ": {
+            "alpha-3": "BLZ",
+            "name": "Belize",
+            "mcc": [
+                "702"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CA": {
+            "alpha-3": "CAN",
+            "name": "Canada",
+            "mcc": [
+                "302"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CC": {
+            "alpha-3": "CCK",
+            "name": "Cocos(Keeling)Islands",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CD": {
+            "alpha-3": "COD",
+            "name": "Congo,TheDemocraticRepublicOfThe",
+            "mcc": [
+                "630"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CF": {
+            "alpha-3": "CAF",
+            "name": "CentralAfricanRepublic",
+            "mcc": [
+                "623"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CG": {
+            "alpha-3": "COG",
+            "name": "Congo",
+            "mcc": [
+                "629"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CH": {
+            "alpha-3": "CHE",
+            "name": "Switzerland",
+            "mcc": [
+                "228"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "CI": {
+            "alpha-3": "CIV",
+            "name": "CoteD\u0027Ivoire",
+            "mcc": [
+                "612"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CK": {
+            "alpha-3": "COK",
+            "name": "CookIslands",
+            "mcc": [
+                "548"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CL": {
+            "alpha-3": "CHL",
+            "name": "Chile",
+            "mcc": [
+                "730"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "CM": {
+            "alpha-3": "CMR",
+            "name": "Cameroon",
+            "mcc": [
+                "624"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CN": {
+            "alpha-3": "CHN",
+            "name": "China",
+            "mcc": [
+                "460",
+                "461"
+            ],
+            "childAccount": {
+                "childAccountSupported": false,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 150110
+                }
+            },
+            "child": 14
+        },
+        "CO": {
+            "alpha-3": "COL",
+            "name": "Colombia",
+            "mcc": [
+                "732"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "CR": {
+            "alpha-3": "CRI",
+            "name": "CostaRica",
+            "mcc": [
+                "712"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "CU": {
+            "alpha-3": "CUB",
+            "name": "Cuba",
+            "mcc": [
+                "368"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CV": {
+            "alpha-3": "CPV",
+            "name": "CapeVerde",
+            "mcc": [
+                "625"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CW": {
+            "alpha-3": "CUW",
+            "name": "Curacao",
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "CX": {
+            "alpha-3": "CXR",
+            "name": "ChristmasIsland",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "CY": {
+            "alpha-3": "CYP",
+            "name": "Cyprus",
+            "mcc": [
+                "280"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 14
+        },
+        "CZ": {
+            "alpha-3": "CZE",
+            "name": "CzechRepublic",
+            "mcc": [
+                "230"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 15,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 15
+        },
+        "DE": {
+            "alpha-3": "DEU",
+            "name": "Germany",
+            "mcc": [
+                "262"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "DJ": {
+            "alpha-3": "DJI",
+            "name": "Djibouti",
+            "mcc": [
+                "638"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "DK": {
+            "alpha-3": "DNK",
+            "name": "Denmark",
+            "mcc": [
+                "238"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 15,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 15
+        },
+        "DM": {
+            "alpha-3": "DMA",
+            "name": "Dominica",
+            "mcc": [
+                "366"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "DO": {
+            "alpha-3": "DOM",
+            "name": "DominicanRepublic",
+            "mcc": [
+                "370"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "DZ": {
+            "alpha-3": "DZA",
+            "name": "Algeria",
+            "mcc": [
+                "603"
+            ],
+            "childAccount": {
+                "minorAge": 19
+            },
+            "child": 19
+        },
+        "EC": {
+            "alpha-3": "ECU",
+            "name": "Ecuador",
+            "mcc": [
+                "740"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "EE": {
+            "alpha-3": "EST",
+            "name": "Estonia",
+            "mcc": [
+                "248"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "EG": {
+            "alpha-3": "EGY",
+            "name": "Egypt",
+            "mcc": [
+                "602"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "EH": {
+            "alpha-3": "ESH",
+            "name": "WesternSahara",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "ER": {
+            "alpha-3": "ERI",
+            "name": "Eritrea",
+            "mcc": [
+                "657"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "ES": {
+            "alpha-3": "ESP",
+            "name": "Spain",
+            "mcc": [
+                "214"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 14
+        },
+        "ET": {
+            "alpha-3": "ETH",
+            "name": "Ethiopia",
+            "mcc": [
+                "636"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "FI": {
+            "alpha-3": "FIN",
+            "name": "Finland",
+            "mcc": [
+                "244"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 13,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 13
+        },
+        "FJ": {
+            "alpha-3": "FJI",
+            "name": "Fiji",
+            "mcc": [
+                "542"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "FK": {
+            "alpha-3": "FLK",
+            "name": "FalklandIslands(Malvinas)",
+            "mcc": [
+                "750"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "FM": {
+            "alpha-3": "FSM",
+            "name": "Micronesia,FederatedStatesOf",
+            "mcc": [
+                "550"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "FO": {
+            "alpha-3": "FRO",
+            "name": "FaroeIslands",
+            "mcc": [
+                "288"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "FR": {
+            "alpha-3": "FRA",
+            "name": "France",
+            "mcc": [
+                "208"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 15,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 15
+        },
+        "GA": {
+            "alpha-3": "GAB",
+            "name": "Gabon",
+            "mcc": [
+                "628"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GB": {
+            "alpha-3": "GBR",
+            "name": "UnitedKingdom",
+            "mcc": [
+                "234",
+                "235"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 14
+        },
+        "GD": {
+            "alpha-3": "GRD",
+            "name": "Grenada",
+            "mcc": [
+                "352"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GE": {
+            "alpha-3": "GEO",
+            "name": "Georgia",
+            "mcc": [
+                "282"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "GF": {
+            "alpha-3": "GUF",
+            "name": "FrenchGuiana",
+            "mcc": [
+                "742"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GG": {
+            "alpha-3": "GGY",
+            "name": "Guernsey",
+            "mcc": [
+                "901"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GH": {
+            "alpha-3": "GHA",
+            "name": "Ghana",
+            "mcc": [
+                "620"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "GI": {
+            "alpha-3": "GIB",
+            "name": "Gibraltar",
+            "mcc": [
+                "266"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "GL": {
+            "alpha-3": "GRL",
+            "name": "Greenland",
+            "mcc": [
+                "290"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "GM": {
+            "alpha-3": "GMB",
+            "name": "Gambia",
+            "mcc": [
+                "607"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GN": {
+            "alpha-3": "GIN",
+            "name": "Guinea",
+            "mcc": [
+                "611"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GP": {
+            "alpha-3": "GLP",
+            "name": "Guadeloupe",
+            "mcc": [
+                "340"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "GQ": {
+            "alpha-3": "GNQ",
+            "name": "EquatorialGuinea",
+            "mcc": [
+                "627"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GR": {
+            "alpha-3": "GRC",
+            "name": "Greece",
+            "mcc": [
+                "202"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 15,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 15
+        },
+        "GS": {
+            "alpha-3": "SGS",
+            "name": "SouthGeorgiaAndTheSouthSandwichIslands",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GT": {
+            "alpha-3": "GTM",
+            "name": "Guatemala",
+            "mcc": [
+                "704"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GU": {
+            "alpha-3": "GUM",
+            "name": "Guam",
+            "mcc": [
+                "535"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GW": {
+            "alpha-3": "GNB",
+            "name": "Guinea-Bissau",
+            "mcc": [
+                "632"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "GY": {
+            "alpha-3": "GUY",
+            "name": "Guyana",
+            "mcc": [
+                "738"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "HK": {
+            "alpha-3": "HKG",
+            "name": "HongKong(China)",
+            "mcc": [
+                "454"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "HM": {
+            "alpha-3": "HMD",
+            "name": "HeardIslandAndMcdonaldIslands",
+            "mcc": [
+                "672"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "HN": {
+            "alpha-3": "HND",
+            "name": "Honduras",
+            "mcc": [
+                "708"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "HR": {
+            "alpha-3": "HRV",
+            "name": "Croatia",
+            "mcc": [
+                "219"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "HT": {
+            "alpha-3": "HTI",
+            "name": "Haiti",
+            "mcc": [
+                "372"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "HU": {
+            "alpha-3": "HUN",
+            "name": "Hungary",
+            "mcc": [
+                "216"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "ID": {
+            "alpha-3": "IDN",
+            "name": "Indonesia",
+            "mcc": [
+                "510"
+            ],
+            "childAccount": {
+                "minorAge": 21
+            },
+            "child": 21
+        },
+        "IE": {
+            "alpha-3": "IRL",
+            "name": "Ireland",
+            "mcc": [
+                "272"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "IL": {
+            "alpha-3": "ISR",
+            "name": "Israel",
+            "mcc": [
+                "425"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "IM": {
+            "alpha-3": "IMN",
+            "name": "IsleOfMan",
+            "mcc": [
+                "900"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "IN": {
+            "alpha-3": "IND",
+            "name": "India",
+            "mcc": [
+                "404",
+                "405",
+                "406"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "IO": {
+            "alpha-3": "IOT",
+            "name": "BritishIndianOceanTerritory",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "IQ": {
+            "alpha-3": "IRQ",
+            "name": "Iraq",
+            "mcc": [
+                "418"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "IR": {
+            "alpha-3": "IRN",
+            "name": "Iran,IslamicRepublicOf",
+            "mcc": [
+                "432"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "IS": {
+            "alpha-3": "ISL",
+            "name": "Iceland",
+            "mcc": [
+                "274"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 13,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 13
+        },
+        "IT": {
+            "alpha-3": "ITA",
+            "name": "Italy",
+            "mcc": [
+                "222"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 14
+        },
+        "JE": {
+            "alpha-3": "JEY",
+            "name": "Jersey",
+            "mcc": [
+                "902"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "JM": {
+            "alpha-3": "JAM",
+            "name": "Jamaica",
+            "mcc": [
+                "338"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "JO": {
+            "alpha-3": "JOR",
+            "name": "Jordan",
+            "mcc": [
+                "416"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "JP": {
+            "alpha-3": "JPN",
+            "name": "Japan",
+            "mcc": [
+                "440",
+                "441"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "KE": {
+            "alpha-3": "KEN",
+            "name": "Kenya",
+            "mcc": [
+                "639"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "KG": {
+            "alpha-3": "KGZ",
+            "name": "Kyrgyzstan",
+            "mcc": [
+                "437"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "KH": {
+            "alpha-3": "KHM",
+            "name": "Cambodia",
+            "mcc": [
+                "456"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "KI": {
+            "alpha-3": "KIR",
+            "name": "Kiribati",
+            "mcc": [
+                "545"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "KM": {
+            "alpha-3": "COM",
+            "name": "Comoros",
+            "mcc": [
+                "654"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "KN": {
+            "alpha-3": "KNA",
+            "name": "SaintKittsAndNevis",
+            "mcc": [
+                "356"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "KR": {
+            "alpha-3": "KOR",
+            "name": "Korea,Republicof",
+            "mcc": [
+                "450"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 0
+                }
+            },
+            "child": 14
+        },
+        "KW": {
+            "alpha-3": "KWT",
+            "name": "Kuwait",
+            "mcc": [
+                "419"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "KY": {
+            "alpha-3": "CYM",
+            "name": "CaymanIslands",
+            "mcc": [
+                "346"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "KZ": {
+            "alpha-3": "KAZ",
+            "name": "Kazakhstan",
+            "mcc": [
+                "401"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "LA": {
+            "alpha-3": "LAO",
+            "name": "LaoPeople\u0027SDemocraticRepublic",
+            "mcc": [
+                "457"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "LB": {
+            "alpha-3": "LBN",
+            "name": "Lebanon",
+            "mcc": [
+                "415"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "LC": {
+            "alpha-3": "LCA",
+            "name": "SaintLucia",
+            "mcc": [
+                "358"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "LI": {
+            "alpha-3": "LIE",
+            "name": "Liechtenstein",
+            "mcc": [
+                "295"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "LK": {
+            "alpha-3": "LKA",
+            "name": "SriLanka",
+            "mcc": [
+                "413"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "LR": {
+            "alpha-3": "LBR",
+            "name": "Liberia",
+            "mcc": [
+                "618"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "LS": {
+            "alpha-3": "LSO",
+            "name": "Lesotho",
+            "mcc": [
+                "651"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "LT": {
+            "alpha-3": "LTU",
+            "name": "Lithuania",
+            "mcc": [
+                "246"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "LU": {
+            "alpha-3": "LUX",
+            "name": "Luxembourg",
+            "mcc": [
+                "270"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "LV": {
+            "alpha-3": "LVA",
+            "name": "Latvia",
+            "mcc": [
+                "247"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "LY": {
+            "alpha-3": "LBY",
+            "name": "Libya",
+            "mcc": [
+                "606"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MA": {
+            "alpha-3": "MAR",
+            "name": "Morocco",
+            "mcc": [
+                "604"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MC": {
+            "alpha-3": "MCO",
+            "name": "Monaco",
+            "mcc": [
+                "212"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "MD": {
+            "alpha-3": "MDA",
+            "name": "Moldova",
+            "mcc": [
+                "259"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "ME": {
+            "alpha-3": "MNE",
+            "name": "Montenegro",
+            "mcc": [
+                "297"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 18,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 18
+        },
+        "MF": {
+            "alpha-3": "MAF",
+            "name": "SaintMartin(FrenchPart)",
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "MG": {
+            "alpha-3": "MDG",
+            "name": "Madagascar",
+            "mcc": [
+                "646"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MH": {
+            "alpha-3": "MHL",
+            "name": "MarshallIslands",
+            "mcc": [
+                "551"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MK": {
+            "alpha-3": "MKD",
+            "name": "FYROM",
+            "mcc": [
+                "294"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 14,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 14
+        },
+        "ML": {
+            "alpha-3": "MLI",
+            "name": "Mali",
+            "mcc": [
+                "610"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MM": {
+            "alpha-3": "MMR",
+            "name": "Myanmar",
+            "mcc": [
+                "414"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MN": {
+            "alpha-3": "MNG",
+            "name": "Mongolia",
+            "mcc": [
+                "428"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MO": {
+            "alpha-3": "MAC",
+            "name": "Macao(China)",
+            "mcc": [
+                "455"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MP": {
+            "alpha-3": "MNP",
+            "name": "NorthernMarianaIslands",
+            "mcc": [
+                "534"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MQ": {
+            "alpha-3": "MTQ",
+            "name": "Martinique",
+            "mcc": [
+                "904"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "MR": {
+            "alpha-3": "MRT",
+            "name": "Mauritania",
+            "mcc": [
+                "609"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MS": {
+            "alpha-3": "MSR",
+            "name": "Montserrat",
+            "mcc": [
+                "354"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MT": {
+            "alpha-3": "MLT",
+            "name": "Malta",
+            "mcc": [
+                "278"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MU": {
+            "alpha-3": "MUS",
+            "name": "Mauritius",
+            "mcc": [
+                "617"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MV": {
+            "alpha-3": "MDV",
+            "name": "Maldives",
+            "mcc": [
+                "472"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MW": {
+            "alpha-3": "MWI",
+            "name": "Malawi",
+            "mcc": [
+                "650"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "MX": {
+            "alpha-3": "MEX",
+            "name": "Mexico",
+            "mcc": [
+                "334"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "MY": {
+            "alpha-3": "MYS",
+            "name": "Malaysia",
+            "mcc": [
+                "502"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "MZ": {
+            "alpha-3": "MOZ",
+            "name": "Mozambique",
+            "mcc": [
+                "643"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NA": {
+            "alpha-3": "NAM",
+            "name": "Namibia",
+            "mcc": [
+                "649"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NC": {
+            "alpha-3": "NCL",
+            "name": "NewCaledonia",
+            "mcc": [
+                "546"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NE": {
+            "alpha-3": "NER",
+            "name": "Niger",
+            "mcc": [
+                "614"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NF": {
+            "alpha-3": "NFK",
+            "name": "NorfolkIsland",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NG": {
+            "alpha-3": "NGA",
+            "name": "Nigeria",
+            "mcc": [
+                "621"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "NI": {
+            "alpha-3": "NIC",
+            "name": "Nicaragua",
+            "mcc": [
+                "710"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "NL": {
+            "alpha-3": "NLD",
+            "name": "Netherlands",
+            "mcc": [
+                "204"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "NO": {
+            "alpha-3": "NOR",
+            "name": "Norway",
+            "mcc": [
+                "242"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 15,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 15
+        },
+        "NP": {
+            "alpha-3": "NPL",
+            "name": "Nepal",
+            "mcc": [
+                "429"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NR": {
+            "alpha-3": "NRU",
+            "name": "Nauru",
+            "mcc": [
+                "536"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NU": {
+            "alpha-3": "NIU",
+            "name": "Niue",
+            "mcc": [
+                "555"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "NZ": {
+            "alpha-3": "NZL",
+            "name": "NewZealand",
+            "mcc": [
+                "530"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "OM": {
+            "alpha-3": "OMN",
+            "name": "Oman",
+            "mcc": [
+                "422"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PA": {
+            "alpha-3": "PAN",
+            "name": "Panama",
+            "mcc": [
+                "714"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "PE": {
+            "alpha-3": "PER",
+            "name": "Peru",
+            "mcc": [
+                "716"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PF": {
+            "alpha-3": "PYF",
+            "name": "FrenchPolynesia",
+            "mcc": [
+                "547"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "PG": {
+            "alpha-3": "PNG",
+            "name": "PapuaNewGuinea",
+            "mcc": [
+                "537"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PH": {
+            "alpha-3": "PHL",
+            "name": "Philippines",
+            "mcc": [
+                "515"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "PK": {
+            "alpha-3": "PAK",
+            "name": "Pakistan",
+            "mcc": [
+                "410"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PL": {
+            "alpha-3": "POL",
+            "name": "Poland",
+            "mcc": [
+                "260"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "PM": {
+            "alpha-3": "SPM",
+            "name": "SaintPierreAndMiquelon",
+            "mcc": [
+                "308"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "PN": {
+            "alpha-3": "PCN",
+            "name": "Pitcairn",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PR": {
+            "alpha-3": "PRI",
+            "name": "PuertoRico",
+            "mcc": [
+                "330"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PS": {
+            "alpha-3": "PSE",
+            "name": "PalestinianTerritory,Occupied",
+            "mcc": [
+                "423"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PT": {
+            "alpha-3": "PRT",
+            "name": "Portugal",
+            "mcc": [
+                "268"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 13,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 13
+        },
+        "PW": {
+            "alpha-3": "PLW",
+            "name": "Palau",
+            "mcc": [
+                "552"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "PY": {
+            "alpha-3": "PRY",
+            "name": "Paraguay",
+            "mcc": [
+                "744"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "QA": {
+            "alpha-3": "QAT",
+            "name": "Qatar",
+            "mcc": [
+                "427"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "RE": {
+            "alpha-3": "REU",
+            "name": "Reunion",
+            "mcc": [
+                "647"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "RO": {
+            "alpha-3": "ROU",
+            "name": "Romania",
+            "mcc": [
+                "226"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "RS": {
+            "alpha-3": "SRB",
+            "name": "Serbia",
+            "mcc": [
+                "220"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 15,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 15
+        },
+        "RU": {
+            "alpha-3": "RUS",
+            "name": "RussianFederation",
+            "mcc": [
+                "250",
+                "289"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "RW": {
+            "alpha-3": "RWA",
+            "name": "Rwanda",
+            "mcc": [
+                "635"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SA": {
+            "alpha-3": "SAU",
+            "name": "SaudiArabia",
+            "mcc": [
+                "420"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SB": {
+            "alpha-3": "SLB",
+            "name": "SolomonIslands",
+            "mcc": [
+                "540"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SC": {
+            "alpha-3": "SYC",
+            "name": "Seychelles",
+            "mcc": [
+                "633"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SD": {
+            "alpha-3": "SDN",
+            "name": "Sudan",
+            "mcc": [
+                "634"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SE": {
+            "alpha-3": "SWE",
+            "name": "Sweden",
+            "mcc": [
+                "240"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "SG": {
+            "alpha-3": "SGP",
+            "name": "Singapore",
+            "mcc": [
+                "525"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SH": {
+            "alpha-3": "SHN",
+            "name": "SaintHelena",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SI": {
+            "alpha-3": "SVN",
+            "name": "Slovenia",
+            "mcc": [
+                "293"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "SJ": {
+            "alpha-3": "SJM",
+            "name": "SvalbardAndJanMayen",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SK": {
+            "alpha-3": "SVK",
+            "name": "Slovakia",
+            "mcc": [
+                "231"
+            ],
+            "groups": [
+                "eu",
+                "gdpr"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "SL": {
+            "alpha-3": "SLE",
+            "name": "SierraLeone",
+            "mcc": [
+                "619"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SM": {
+            "alpha-3": "SMR",
+            "name": "SanMarino",
+            "mcc": [
+                "292"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "SN": {
+            "alpha-3": "SEN",
+            "name": "Senegal",
+            "mcc": [
+                "608"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "SO": {
+            "alpha-3": "SOM",
+            "name": "Somalia",
+            "mcc": [
+                "637"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SR": {
+            "alpha-3": "SUR",
+            "name": "Suriname",
+            "mcc": [
+                "746"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SS": {
+            "alpha-3": "SSD",
+            "name": "SouthSudan",
+            "mcc": [
+                "659"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "ST": {
+            "alpha-3": "STP",
+            "name": "SaoTomeAndPrincipe",
+            "mcc": [
+                "626"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "SV": {
+            "alpha-3": "SLV",
+            "name": "ElSalvador",
+            "mcc": [
+                "706"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "SY": {
+            "alpha-3": "SYR",
+            "name": "SyrianArabRepublic",
+            "mcc": [
+                "417"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "SZ": {
+            "alpha-3": "SWZ",
+            "name": "Swaziland",
+            "mcc": [
+                "653"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TC": {
+            "alpha-3": "TCA",
+            "name": "TurksAndCaicosIslands",
+            "mcc": [
+                "376"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "TD": {
+            "alpha-3": "TCD",
+            "name": "Chad",
+            "mcc": [
+                "622"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TF": {
+            "alpha-3": "ATF",
+            "name": "FrenchSouthernTerritories",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TG": {
+            "alpha-3": "TGO",
+            "name": "Togo",
+            "mcc": [
+                "615"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TH": {
+            "alpha-3": "THA",
+            "name": "Thailand",
+            "mcc": [
+                "520"
+            ],
+            "childAccount": {
+                "minorAge": 20
+            },
+            "child": 20
+        },
+        "TJ": {
+            "alpha-3": "TJK",
+            "name": "Tajikistan",
+            "mcc": [
+                "436"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TK": {
+            "alpha-3": "TKL",
+            "name": "Tokelau",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TL": {
+            "alpha-3": "TLS",
+            "name": "Timor-Leste",
+            "mcc": [
+                "514",
+                "670"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TM": {
+            "alpha-3": "TKM",
+            "name": "Turkmenistan",
+            "mcc": [
+                "438"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TN": {
+            "alpha-3": "TUN",
+            "name": "Tunisia",
+            "mcc": [
+                "605"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TO": {
+            "alpha-3": "TON",
+            "name": "Tonga",
+            "mcc": [
+                "539"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TR": {
+            "alpha-3": "TUR",
+            "name": "Turkey",
+            "mcc": [
+                "286"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TT": {
+            "alpha-3": "TTO",
+            "name": "TrinidadAndTobago",
+            "mcc": [
+                "374"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TV": {
+            "alpha-3": "TUV",
+            "name": "Tuvalu",
+            "mcc": [
+                "553"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TW": {
+            "alpha-3": "TWN",
+            "name": "Taiwan",
+            "mcc": [
+                "466"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "TZ": {
+            "alpha-3": "TZA",
+            "name": "Tanzania,UnitedRepublicOf",
+            "mcc": [
+                "640"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "UA": {
+            "alpha-3": "UKR",
+            "name": "Ukraine",
+            "mcc": [
+                "255"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "UG": {
+            "alpha-3": "UGA",
+            "name": "Uganda",
+            "mcc": [
+                "641"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "UM": {
+            "alpha-3": "UMI",
+            "name": "UnitedStatesMinorOutlyingIslands",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "US": {
+            "alpha-3": "USA",
+            "name": "UnitedStates",
+            "mcc": [
+                "310",
+                "311",
+                "312",
+                "313",
+                "314",
+                "315",
+                "316"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 13,
+                "android": {
+                    "sepVersionCode": 140100
+                }
+            },
+            "child": 13
+        },
+        "UY": {
+            "alpha-3": "URY",
+            "name": "Uruguay",
+            "mcc": [
+                "748"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "UZ": {
+            "alpha-3": "UZB",
+            "name": "Uzbekistan",
+            "mcc": [
+                "434"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "VA": {
+            "alpha-3": "VAT",
+            "name": "HolySee(VaticanCityState)",
+            "mcc": [
+                "225"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "VC": {
+            "alpha-3": "VCT",
+            "name": "SaintVincentAndTheGrenadines",
+            "mcc": [
+                "360"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "VE": {
+            "alpha-3": "VEN",
+            "name": "Venezuela",
+            "mcc": [
+                "734"
+            ],
+            "childAccount": {
+                "minorAge": 14
+            },
+            "child": 14
+        },
+        "VG": {
+            "alpha-3": "VGB",
+            "name": "VirginIslands,British",
+            "mcc": [
+                "348"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "VI": {
+            "alpha-3": "VIR",
+            "name": "VirginIslands,U.S.",
+            "mcc": [
+                "332"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "VN": {
+            "alpha-3": "VNM",
+            "name": "Vietnam",
+            "mcc": [
+                "452"
+            ],
+            "childAccount": {
+                "minorAge": 16
+            },
+            "child": 16
+        },
+        "VU": {
+            "alpha-3": "VUT",
+            "name": "Vanuatu",
+            "mcc": [
+                "541"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "WF": {
+            "alpha-3": "WLF",
+            "name": "WallisAndFutuna",
+            "mcc": [
+                "543"
+            ],
+            "childAccount": {
+                "minorAge": 15
+            },
+            "child": 15
+        },
+        "WS": {
+            "alpha-3": "WSM",
+            "name": "Samoa",
+            "mcc": [
+                "549"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "XK": {
+            "alpha-3": "XKX",
+            "name": "Kosovo",
+            "mcc": [
+                "221"
+            ],
+            "groups": [
+                "eu"
+            ],
+            "childAccount": {
+                "childAccountSupported": true,
+                "minorAge": 16,
+                "android": {
+                    "sepVersionCode": 150100
+                }
+            },
+            "child": 16
+        },
+        "YE": {
+            "alpha-3": "YEM",
+            "name": "Yemen",
+            "mcc": [
+                "421"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "YT": {
+            "alpha-3": "MYT",
+            "name": "Mayotte",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "YU": {
+            "alpha-3": "YUG",
+            "name": "Yugoslavia",
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "ZA": {
+            "alpha-3": "ZAF",
+            "name": "SouthAfrica",
+            "mcc": [
+                "655"
+            ],
+            "childAccount": {
+                "minorAge": 18
+            },
+            "child": 18
+        },
+        "ZM": {
+            "alpha-3": "ZMB",
+            "name": "Zambia",
+            "mcc": [
+                "645"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        },
+        "ZW": {
+            "alpha-3": "ZWE",
+            "name": "Zimbabwe",
+            "mcc": [
+                "648"
+            ],
+            "childAccount": {
+                "minorAge": 13
+            },
+            "child": 13
+        }
+    }
+}

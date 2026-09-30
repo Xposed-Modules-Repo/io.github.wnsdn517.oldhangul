@@ -1,0 +1,6 @@
+package androidx.emoji2.text;
+
+/* JADX INFO: loaded from: classes2.dex */
+public interface i {
+    void a(Dj.g gVar);
+}

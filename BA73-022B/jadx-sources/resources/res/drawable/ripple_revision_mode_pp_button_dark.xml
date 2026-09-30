@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/basic_interaction_contained_btn_ripple_color">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/black"/>
+            <corners android:radius="@dimen/revision_mode_button_radius"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/revision_mode_pp_button_background_tint_color_dark"/>
+            <corners android:radius="@dimen/revision_mode_button_radius"/>
+        </shape>
+    </item>
+</ripple>

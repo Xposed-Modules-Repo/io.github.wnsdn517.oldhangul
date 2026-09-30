@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/text_shortcut_text_holder" android:background="?android:selectableItemBackground" android:paddingTop="@dimen/language_list_preference_padding_top" android:paddingBottom="@dimen/language_list_preference_padding_bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/text_shortcut_list_left_margin" android:paddingEnd="@dimen/list_right_margin"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:gravity="center" android:id="@id/text_shortcut_checkbox" android:background="@android:color/transparent" android:focusable="false" android:visibility="invisible" android:clickable="false" android:layout_width="@dimen/text_shortcuts_list_item_checkbox_width" android:layout_height="match_parent" android:layout_marginStart="@dimen/text_shortcuts_list_item_checkbox_margin_start" android:layout_marginEnd="@dimen/text_shortcuts_list_item_checkbox_margin_end" />
+    <LinearLayout android:orientation="vertical" android:id="@id/title_group" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceListItem" android:ellipsize="marquee" android:id="@id/text_shortcut_shortcut" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textAppearance="?android:textAppearanceListItemSecondary" android:ellipsize="marquee" android:id="@id/text_shortcut_content" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

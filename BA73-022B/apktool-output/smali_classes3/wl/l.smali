@@ -1,0 +1,24 @@
+.class public final Lwl/l;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lrx/c;
+
+
+# instance fields
+.field public a:Z
+
+
+# virtual methods
+.method public final getKoin()Lrx/a;
+    .locals 0
+
+    invoke-static {}, Lwl/k;->l()Lrx/b;
+
+    move-result-object p0
+
+    iget-object p0, p0, Lrx/b;->a:Lrx/a;
+
+    return-object p0
+.end method

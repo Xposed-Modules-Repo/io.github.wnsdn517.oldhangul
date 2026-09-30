@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tag="layout/custom_symbols_layout_dialog_0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="locale">
+        <ImageView
+            android:layout_width="@dimen/toolbar_off_popup_img_width"
+            android:layout_height="@dimen/toolbar_off_popup_img_height"
+            android:layout_marginTop="@dimen/toolbar_off_popup_img_marginTop"
+            android:src="@drawable/cm_key_hint"/>
+        <TextView
+            android:textSize="@dimen/custom_symbols_text_size"
+            android:textStyle="normal"
+            android:textColor="@color/basic_interaction_description_text_color"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/toolbar_off_msg"
+            android:lineSpacingExtra="@dimen/textAppearanceMedium_lineSpacingExtra"
+            android:fontFamily="sec"
+            android:paddingStart="@dimen/custom_symbols_text_start_margin"
+            android:paddingEnd="@dimen/custom_symbols_text_end_margin"
+            android:layout_marginVertical="@dimen/toolbar_off_popup_desc_marginTop"
+            android:textFontWeight="400"/>
+    </LinearLayout>
+</ScrollView>

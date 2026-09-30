@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/settings_direct_writing">
+    <PreferenceCategory>
+        <com.samsung.android.honeyboard.settings.directwriting.DirectWritingCustomViewPreference
+            android:persistent="true"
+            android:key="settings_direct_writing_custom_view"/>
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <androidx.preference.SwitchPreferenceCompat
+            android:persistent="true"
+            android:title="@string/settings_direct_writing_show_tool_bar"
+            android:key="settings_direct_writing_show_toolbar"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+</PreferenceScreen>

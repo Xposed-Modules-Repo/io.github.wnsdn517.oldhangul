@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.textboard.friends.search.view.SearchBoardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchable_board_holder"
+    android:tag="layout/expression_search_board_layout_0"
+    android:background="?attr/search_board_content_bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale"/>

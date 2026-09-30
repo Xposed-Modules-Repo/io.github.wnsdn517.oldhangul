@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ਇੱਕ ਵਾਰ ਜਦੋਂ %d ਤਿਆਰ ਕੀਤੇ ਚਿੱਤਰ ਦੀ ਸੀਮਾ ਤੱਕ ਪਹੁੰਚ ਜਾਂਦੇ ਹੋ, ਤਾਂ ਨਵਾਂ ਚਿੱਤਰ ਤਿਆਰ ਕਰਨ ਨਾਲ ਤੁਹਾਡਾ ਸਭ ਤੋਂ ਪੁਰਾਣਾ ਚਿੱਤਰ ਮਿਟ ਜਾਵੇਗਾ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ਇੱਕ ਵਾਰ ਜਦੋਂ %d ਤਿਆਰ ਕੀਤੇ ਚਿੱਤਰਾਂ ਦੀ ਸੀਮਾ ਤੱਕ ਪਹੁੰਚ ਜਾਂਦੇ ਹੋ, ਤਾਂ ਨਵਾਂ ਚਿੱਤਰ ਤਿਆਰ ਕਰਨ ਨਾਲ ਤੁਹਾਡਾ ਸਭ ਤੋਂ ਪੁਰਾਣਾ ਚਿੱਤਰ ਮਿਟ ਜਾਵੇਗਾ।</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ਕੀ %d ਸਟਿੱਕਰ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ਕੀ %d ਸਟਿੱਕਰ ਮਿਟਾਉਣੇ ਹਨ?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ਕੀ %d ਇਮੋਜੀ ਜੋੜਾ ਮਿਟਾਉਣਾ ਹੈ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ਕੀ %d ਇਮੋਜੀ ਜੋੜੇ ਮਿਟਾਉਣੇ ਹਨ?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Galaxy AI ਦੀਆਂ ਉੱਨਤ ਗਿਆਨ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ ਤੁਹਾਡੀ ਉਮਰ ਘੱਟ ਤੋਂ ਘੱਟ %d ਸਾਲ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Galaxy AI ਦੀਆਂ ਉੱਨਤ ਗਿਆਨ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ ਤੁਹਾਡੀ ਉਮਰ ਘੱਟ ਤੋਂ ਘੱਟ %d ਸਾਲ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ਕੀ %d ਆਈਟਮ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ਕੀ %d ਆਈਟਮਸ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ਕੀ %d ਪਿੰਨ ਕੀਤੀ ਆਈਟਮ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ਕੀ %d ਪਿੰਨ ਕੀਤੀਆਂ ਆਈਟਮਾਂ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਪਿੰਨ ਕੀਤੀ ਆਈਟਮ ਸ਼ਾਮਲ ਕਰੋ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਪਿੰਨ ਕੀਤੀ ਆਈਟਮਾਂ ਸ਼ਾਮਲ ਕਰੋ</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਲਿਖਣ ਦੇ ਸੁਝਾਅ ਦੀ ਸਮੀਖਿਆ ਕਰੋ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਲਿਖਣ ਦੇ ਸੁਝਾਵਾਂ ਦੀ ਸਮੀਖਿਆ ਕਰੋ</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਤੋਂ ਵੱਧ ਸਟਿੱਕਰ ਜੋੜਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ। ਸਟਿੱਕਰਾਂ ਨੂੰ ਹਟਾਉਣ ਲਈ ਗੈਲਰੀ ਵਿੱਚ ਫ਼ੋਟੋ ਸੰਪਾਦਕ ਤੇ ਜਾਓ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਤੋਂ ਵੱਧ ਸਟਿੱਕਰ ਜੋੜੇ ਨਹੀਂ ਜਾ ਸਕਦੇ। ਸਟਿੱਕਰਾਂ ਨੂੰ ਹਟਾਉਣ ਲਈ ਗੈਲਰੀ ਵਿੱਚ ਫ਼ੋਟੋ ਸੰਪਾਦਕ ਤੇ ਜਾਓ।</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਤੋਂ ਜ਼ਿਆਦਾ ਰੰਗ ਦਿਖਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਤੋਂ ਜ਼ਿਆਦਾ ਰੰਗ ਦਿਖਾਏ ਨਹੀਂ ਜਾ ਸਕਦੇ।</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਨੂੰ ਚੁਣਿਆ ਗਿਆ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਨੂੰ ਚੁਣਿਆ ਗਿਆ</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ਕੀ %d ਟੈਕਸਟ ਸ਼ੌਰਟਕੱਟ ਮਿਟਾਉਣਾ ਹੈ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ਕੀ %d ਟੈਕਸਟ ਸ਼ੌਰਟਕੱਟਸ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਭਾਸ਼ਾ ਨੂੰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾਵੇਗਾ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਭਾਸ਼ਾਵਾਂ ਨੂੰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾਵੇਗਾ।</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਨੂੰ ਚੁਣਿਆ ਗਿਆ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਨੂੰ ਚੁਣਿਆ ਗਿਆ</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ਤੁਸੀਂ %d ਵਰਣ ਚੁਣਿਆ ਹੈ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ਤੁਸੀਂ %d ਵਰਣ ਚੁਣੇ ਹਨ।</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ਸੁਧਾਰ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ਸੁਧਾਰ</item>
+    </plurals>
+</resources>

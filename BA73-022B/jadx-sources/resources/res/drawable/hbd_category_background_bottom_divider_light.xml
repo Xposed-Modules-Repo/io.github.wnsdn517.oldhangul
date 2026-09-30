@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/category_bg_color">
+        <shape>
+            <solid android:color="@color/hbd_category_bg_color_light_6x"/>
+        </shape>
+    </item>
+    <item
+        android:gravity="bottom"
+        android:id="@+id/category_top_divider"
+        android:height="@dimen/category_divider_size">
+        <shape>
+            <solid android:color="@color/hbd_category_divider_color_light"/>
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:paddingBottom="@dimen/friends_content_footer_padding" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="@dimen/friends_content_layout_margin" android:paddingHorizontal="@dimen/common_content_msg_layout_horizontal_padding"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/content_msg_text" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/ContentMessageText" />
+</LinearLayout>

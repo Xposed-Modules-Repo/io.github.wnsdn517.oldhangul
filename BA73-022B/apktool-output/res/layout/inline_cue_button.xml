@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button android:textSize="@dimen/inline_cue_text_size" android:textColor="@color/inline_cue_button_color" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/inline_cue_button_padding_start_end" android:paddingEnd="@dimen/inline_cue_button_padding_start_end"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

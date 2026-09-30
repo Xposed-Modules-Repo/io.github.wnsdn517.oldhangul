@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/col" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:id="@id/app_bar" android:layout_width="match_parent" android:layout_height="match_parent">
+        <include layout="@layout/settings_preference_collapsing_layout" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView android:id="@id/high_contrast_settings_nested_scroll_view" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.appcompat.widget.SeslSwitchBar android:id="@id/high_contrast_main_switch" android:layout_width="match_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+                <androidx.recyclerview.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/android_list" android:background="@drawable/tw_fullscreen_background" android:paddingTop="@dimen/high_contrast_layout_padding" android:layout_width="@dimen/preference_main_layout_listview_width" android:layout_height="match_parent" android:numColumns="@integer/theme_grid_no_columns" android:layout_weight="@integer/preference_setting_layout_weight_middle" />
+            </LinearLayout>
+            <TextView android:textAppearance="@style/textAppearanceMedium" android:textStyle="normal" android:layout_gravity="center" android:id="@id/summary" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/shortcutphrase_margin" android:layout_marginBottom="@dimen/shortcutphrase_margin" android:lineSpacingExtra="@dimen/textAppearanceMedium_lineSpacingExtra" android:layout_marginStart="?android:listPreferredItemPaddingStart" android:layout_marginEnd="?android:listPreferredItemPaddingEnd" />
+            <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <Button android:gravity="center" android:id="@id/bt_show_ime" style="@style/setting_show_keyboard_button" />
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout android:id="@id/sesl_floating_toolbar_layout" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:clipToOutline="false" app:layout_anchor="@id/app_bar">
+        <androidx.appcompat.widget.Toolbar android:layout_gravity="bottom" android:id="@id/toolbar" android:layout_width="match_parent" android:layout_height="?actionBarSize" app:layout_collapseMode="pin" />
+    </com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

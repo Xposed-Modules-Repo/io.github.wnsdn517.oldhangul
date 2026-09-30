@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:title="@string/settings_voice_input">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup
+        android:persistent="false"
+        android:key="SETTINGS_VOICE_INPUT"
+        app:entryValues="@array/array_voice_input_entry_value"
+        app:hideCategoryTitle="true"
+        app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/settings_voice_input_samsung"
+            android:key="SETTINGS_VOICE_INPUT_SAMSUNG"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/settings_voice_input_google"
+            android:key="SETTINGS_VOICE_INPUT_GOOGLE"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/settings_voice_input_none"
+            android:key="SETTINGS_VOICE_INPUT_NONE"/>
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <PreferenceCategory android:key="honey_voice_offline_language_pack">
+        <Preference
+            android:title="@string/settings_voice_input_offline_language_pack"
+            android:key="SETTINGS_VOICE_INPUT_OFFLINE_LANGUAGE_PACK"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:key="honey_voice_other_settings">
+        <SwitchPreferenceCompat
+            android:title="@string/pref_use_side_key_title"
+            android:key="SETTINGS_VOICE_INPUT_USE_SIDE_KEY"
+            android:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            android:title="@string/pref_offensive_words_title"
+            android:key="SETTINGS_VOICE_INPUT_HIDE_OFFENSIVE_WORD"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:key="honey_voice_privacy_notice">
+        <Preference
+            android:persistent="true"
+            android:title="@string/help_about_privacy"
+            android:key="SETTINGS_VOICE_INPUT_PRIVACY_NOTICE"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:key="SETTINGS_KEYBOARD_BUTTON_ON_NAVIGATION_BAR_RELATIVE_LINK_CATEGORY">
+        <com.samsung.android.honeyboard.settings.common.TipsPreference android:key="SETTINGS_KEYBOARD_BUTTON_ON_NAVIGATION_BAR_RELATIVE_LINK"/>
+    </PreferenceCategory>
+</PreferenceScreen>

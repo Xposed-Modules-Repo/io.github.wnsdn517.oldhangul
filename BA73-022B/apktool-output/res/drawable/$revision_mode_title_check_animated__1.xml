@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:ordering="together"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <set android:ordering="sequentially">
+        <objectAnimator android:interpolator="@drawable/$revision_mode_title_check_animated__2" android:duration="349" android:valueFrom="0" android:valueTo="0" android:propertyName="trimPathStart" />
+    </set>
+    <set android:ordering="sequentially">
+        <objectAnimator android:interpolator="@drawable/$revision_mode_title_check_animated__3" android:duration="316" android:valueFrom="0" android:valueTo="1" android:propertyName="trimPathEnd" />
+        <objectAnimator android:interpolator="@drawable/$revision_mode_title_check_animated__4" android:duration="33" android:valueFrom="1" android:valueTo="1" android:propertyName="trimPathEnd" />
+    </set>
+</set>

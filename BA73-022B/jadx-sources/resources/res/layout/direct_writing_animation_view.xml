@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.directwriting.writing.animation.view.AnimationView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tag="layout/direct_writing_animation_view_0"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>

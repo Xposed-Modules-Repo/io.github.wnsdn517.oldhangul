@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.base.fullscreenlayout.ExtractEditLayout android:orientation="horizontal" android:background="@color/app_theme_sesl_background_color" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.inputmethodservice.ExtractEditText android:textColor="?android:editTextColor" android:gravity="top" android:id="@android:id/inputExtractEditText" android:background="@color/transparent" android:paddingTop="@dimen/extract_edittext_padding_top_bottom" android:paddingBottom="@dimen/extract_edittext_padding_top_bottom" android:scrollbars="vertical" android:layout_width="0.0px" android:layout_height="match_parent" android:minLines="1" android:layout_weight="1.0" android:inputType="text" android:paddingStart="@dimen/extract_edittext_padding_start_end" android:paddingEnd="@dimen/extract_edittext_padding_start_end" style="@android:style/Widget.EditText" />
+    <FrameLayout android:id="@android:id/inputExtractAccessories" android:layout_width="wrap_content" android:layout_height="match_parent" android:paddingStart="8.0dp" android:paddingEnd="8.0dp">
+        <com.samsung.android.honeyboard.base.fullscreenlayout.ExtractButton android:layout_gravity="center" android:id="@android:id/inputExtractAction" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ExtractButtonStyle" />
+    </FrameLayout>
+</com.samsung.android.honeyboard.base.fullscreenlayout.ExtractEditLayout>

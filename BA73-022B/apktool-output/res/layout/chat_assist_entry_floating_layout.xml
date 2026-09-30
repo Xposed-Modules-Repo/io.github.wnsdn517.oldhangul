@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:tag="layout/chat_assist_entry_floating_layout_0" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:visibility="visible" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="10.0dp">
+        <LinearLayout android:orientation="horizontal" android:id="@id/chat_assist_translation" android:tag="binding_1" android:background="@drawable/chat_assist_item_container_bg" android:layout_marginTop="0.0dp" android:foreground="@drawable/recoil_chat_assist" android:layout_marginHorizontal="0.0dp" android:paddingVertical="@dimen/writing_toolkit_start_icon_item_margin_vertical" style="@style/WritingToolkitItemContainerStyle">
+            <include android:id="@id/chat_assist_translation_item" layout="@layout/chat_assist_start_icon_item" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/chat_assist_style_and_grammar" android:background="@drawable/chat_assist_item_container_bg" android:layout_marginHorizontal="0.0dp" android:paddingHorizontal="0.0dp" android:paddingVertical="0.0dp" style="@style/ChatAssistItemContainerStyle">
+            <LinearLayout android:tag="binding_2" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_left" android:layout_weight="1.0" android:paddingVertical="20.0dp">
+                <include android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/chat_assist_top_icon_item" />
+            </LinearLayout>
+            <LinearLayout android:tag="binding_3" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_center" android:layout_weight="1.0" android:paddingVertical="20.0dp">
+                <include android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/chat_assist_top_icon_item" />
+            </LinearLayout>
+            <LinearLayout android:tag="binding_4" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_right" android:layout_weight="1.0" android:paddingVertical="20.0dp">
+                <include android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/chat_assist_top_icon_item" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/chat_assist_bullet_and_table" android:background="@drawable/chat_assist_item_container_bg" android:layout_marginHorizontal="0.0dp" android:paddingHorizontal="0.0dp" android:paddingVertical="0.0dp" style="@style/WritingToolkitStartIconItemContainerStyle">
+            <LinearLayout android:tag="binding_5" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_left" android:layout_weight="1.0" android:paddingVertical="@dimen/writing_toolkit_start_icon_item_margin_vertical">
+                <include layout="@layout/chat_assist_start_icon_item" />
+            </LinearLayout>
+            <LinearLayout android:tag="binding_6" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_right" android:layout_weight="1.0" android:paddingVertical="@dimen/writing_toolkit_start_icon_item_margin_vertical">
+                <include layout="@layout/chat_assist_start_icon_item" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/chat_assist_composer" android:tag="binding_7" android:background="@drawable/chat_assist_item_container_bg" android:layout_marginBottom="@dimen/writing_toolkit_item_container_last_margin_bottom" android:foreground="@drawable/recoil_chat_assist" android:layout_marginHorizontal="0.0dp" android:paddingVertical="@dimen/writing_toolkit_start_icon_item_margin_vertical" style="@style/WritingToolkitItemContainerStyle">
+            <include layout="@layout/chat_assist_start_icon_item" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

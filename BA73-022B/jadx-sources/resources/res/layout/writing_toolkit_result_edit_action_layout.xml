@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="end|center_vertical"
+    android:orientation="horizontal"
+    android:id="@+id/writing_toolkit_result_item_action_container"
+    android:tag="layout/writing_toolkit_result_edit_action_layout_0"
+    android:background="@color/writing_toolkit_result_item_container_bg_color"
+    android:paddingTop="@dimen/writing_toolkit_result_item_action_container_padding_top"
+    android:paddingBottom="@dimen/writing_toolkit_result_item_action_container_padding_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/writing_toolkit_result_item_action_container_padding_horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+    <TextView
+        android:id="@+id/writing_toolkit_cancel"
+        android:text="@string/writing_toolkit_cancel"
+        android:layout_marginEnd="@dimen/writing_toolkit_result_action_text_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/writing_toolkit_done"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/WritingToolkitResultActionTextStyle"/>
+    <TextView
+        android:id="@+id/writing_toolkit_done"
+        android:text="@string/writing_toolkit_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/WritingToolkitResultActionTextStyle"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

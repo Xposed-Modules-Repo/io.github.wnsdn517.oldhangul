@@ -1,0 +1,213 @@
+{
+  "DCM": {
+    "emails": [
+      {
+        "value": "docomo.ne.jp"
+      },
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "ezweb.ne.jp"
+      },
+      {
+        "value": "auone.jp"
+      },
+      {
+        "value": "softbank.ne.jp"
+      },
+      {
+        "value": "i.softbank.jp"
+      },
+      {
+        "value": "disney.ne.jp"
+      },
+      {
+        "value": "willcom.com"
+      },
+      {
+        "value": "emnet.ne.jp"
+      }
+    ]
+  },
+  "KDI": {
+    "emails": [
+      {
+        "value": "au.com"
+      },
+      {
+        "value": "ezweb.ne.jp"
+      },
+      {
+        "value": "auone.jp"
+      },
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "docomo.ne.jp"
+      },
+      {
+        "value": "softbank.ne.jp"
+      },
+      {
+        "value": "i.softbank.jp"
+      },
+      {
+        "value": "disney.ne.jp"
+      },
+      {
+        "value": "willcom.com"
+      },
+      {
+        "value": "emnet.ne.jp"
+      }
+    ]
+  },
+  "RKT": {
+    "emails": [
+      {
+        "value": "rakuten.jp"
+      },
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "docomo.ne.jp"
+      },
+      {
+        "value": "au.com"
+      },
+      {
+        "value": "auone.jp"
+      },
+      {
+        "value": "softbank.ne.jp"
+      },
+      {
+        "value": "i.softbank.jp"
+      },
+      {
+        "value": "ezweb.ne.jp"
+      },
+      {
+        "value": "disney.ne.jp"
+      },
+      {
+        "value": "willcom.com"
+      },
+      {
+        "value": "emnet.ne.jp"
+      }
+    ]
+  },
+  "XJP": {
+    "emails": [
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "docomo.ne.jp"
+      },
+      {
+        "value": "ezweb.ne.jp"
+      },
+      {
+        "value": "auone.jp"
+      },
+      {
+        "value": "softbank.ne.jp"
+      },
+      {
+        "value": "i.softbank.jp"
+      },
+      {
+        "value": "disney.ne.jp"
+      },
+      {
+        "value": "willcom.com"
+      },
+      {
+        "value": "emnet.ne.jp"
+      }
+    ]
+  },
+  "JCO": {
+    "emails": [
+      {
+        "value": "au.com"
+      },
+      {
+        "value": "ezweb.ne.jp"
+      },
+      {
+        "value": "auone.jp"
+      },
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "docomo.ne.jp"
+      },
+      {
+        "value": "softbank.ne.jp"
+      },
+      {
+        "value": "i.softbank.jp"
+      },
+      {
+        "value": "disney.ne.jp"
+      },
+      {
+        "value": "willcom.com"
+      },
+      {
+        "value": "emnet.ne.jp"
+      }
+    ]
+  },
+  "UQM": {
+    "emails": [
+      {
+        "value": "au.com"
+      },
+      {
+        "value": "ezweb.ne.jp"
+      },
+      {
+        "value": "auone.jp"
+      },
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "docomo.ne.jp"
+      },
+      {
+        "value": "softbank.ne.jp"
+      },
+      {
+        "value": "i.softbank.jp"
+      },
+      {
+        "value": "disney.ne.jp"
+      },
+      {
+        "value": "willcom.com"
+      },
+      {
+        "value": "emnet.ne.jp"
+      }
+    ]
+  },
+  "default": {
+    "emails": [
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "yahoo.co.jp"
+      }
+    ]
+  }
+}

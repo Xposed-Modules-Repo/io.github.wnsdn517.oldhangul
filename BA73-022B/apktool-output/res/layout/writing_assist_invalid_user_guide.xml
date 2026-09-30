@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:text="@string/writing_assist_invalid_user_restricted_title" style="@style/DialogTextTitleStyle" />
+    </LinearLayout>
+    <TextView android:id="@id/on_device_off_body" android:text="@string/writing_assist_invalid_user_restricted_body" style="@style/DialogTextStyleDesc" />
+</LinearLayout>

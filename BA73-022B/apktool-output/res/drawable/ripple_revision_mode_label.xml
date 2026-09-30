@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple android:color="@color/basic_interaction_contained_btn_ripple_color"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/black" />
+            <corners android:radius="@dimen/revision_mode_item_background_radius" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/revision_mode_item_label_background" />
+</ripple>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ai_writer_nested_scroll"
+    android:background="?attr/chat_assist_label_nest_scroll_bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/ai_card_handler_layout"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:contentDescription="@string/ai_writer_handle_for_expanding">
+            <View
+                android:background="@drawable/ai_gen_handler"
+                android:layout_width="@dimen/ai_writer_handler_width"
+                android:layout_height="@dimen/ai_writer_handler_height"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/aiContentPanel"
+            android:paddingBottom="@dimen/friends_content_footer_padding"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

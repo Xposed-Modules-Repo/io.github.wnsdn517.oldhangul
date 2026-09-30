@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/reset_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:title="@string/reset_keyboard_settings" android:key="reset_keyboard_settings" />
+    <Preference android:title="@string/pref_delete_dynamic_title" android:key="settings_erase_personalized_predictions" />
+    <Preference android:title="@string/pref_delete_recognition_area_title" android:key="settings_erase_key_press_model" />
+    <com.samsung.android.honeyboard.settings.common.PreferenceWithBadgeImageView android:title="@string/clear_cache_title" android:key="settings_clear_cache" />
+</PreferenceScreen>

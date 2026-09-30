@@ -59,13 +59,10 @@ final class ClipboardColumns {
         }
         if (isRecyclerView(view.getClass())) {
             try {
-                Object manager = view.getClass().getMethod("getLayoutManager").invoke(view);
+                Object manager = findMethod(view.getClass(), "getLayoutManager").invoke(view);
                 if (manager != null) {
-                    Method get = manager.getClass().getMethod("getSpanCount");
-                    int span = (Integer) get.invoke(manager);
-                    if (span > max) {
-                        manager.getClass().getMethod("setSpanCount", int.class).invoke(manager, max);
-                    }
+                    int wanted = Math.max(1, Math.min(max, 8));
+                    findMethod(manager.getClass(), "setSpanCount", int.class).invoke(manager, wanted);
                 }
             } catch (ReflectiveOperationException | RuntimeException ignored) {
                 // Not a grid (a plain list): nothing to cap.
@@ -86,5 +83,19 @@ final class ClipboardColumns {
             }
         }
         return false;
+    }
+
+    private static Method findMethod(Class<?> type, String name, Class<?>... args)
+            throws NoSuchMethodException {
+        for (Class<?> c = type; c != null; c = c.getSuperclass()) {
+            try {
+                Method method = c.getDeclaredMethod(name, args);
+                method.setAccessible(true);
+                return method;
+            } catch (NoSuchMethodException ignored) {
+                // Samsung uses anonymous subclasses; continue with the parent.
+            }
+        }
+        throw new NoSuchMethodException(type.getName() + "." + name);
     }
 }

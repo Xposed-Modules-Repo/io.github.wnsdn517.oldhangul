@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/settings_button_and_symbol_layout"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:key="SETTINGS_BUTTON_AND_SYMBOL_LAYOUT" app:entryValues="@array/array_button_and_symbol_layout_value" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_button_and_symbol_layout_default" android:key="SETTINGS_BUTTON_AND_SYMBOL_LAYOUT_DEFAULT" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_button_and_symbol_layout_alternative" android:key="SETTINGS_BUTTON_AND_SYMBOL_LAYOUT_ALTERNATIVE" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <PreferenceCategory />
+    <com.samsung.android.honeyboard.settings.common.ButtonPreference android:key="SETTINGS_BUTTON_AND_SYMBOL_LAYOUT_APPLY_BUTTON" />
+</PreferenceScreen>

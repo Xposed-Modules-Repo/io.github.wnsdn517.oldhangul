@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="button_style_entries">
+        <item>@string/flat</item>
+        <item>@string/outlined</item>
+        <item>@string/filled</item>
+    </array>
+    <array name="button_style_values">
+        <item>flat</item>
+        <item>outlined</item>
+        <item>filled</item>
+    </array>
+</resources>

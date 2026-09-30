@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.graphics.drawable.SeslRecoilDrawable xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" app:seslRecoilColor="@color/rp_candidate_btn_color_pressed_ripple_default">
+    <item android:gravity="center">
+        <shape android:shape="oval">
+            <size
+                android:height="@dimen/expression_recoil_oval_size"
+                android:width="@dimen/expression_recoil_oval_size"/>
+            <solid android:color="@color/transparent"/>
+        </shape>
+    </item>
+</androidx.appcompat.graphics.drawable.SeslRecoilDrawable>

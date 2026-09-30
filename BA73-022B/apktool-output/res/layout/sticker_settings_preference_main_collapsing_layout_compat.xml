@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/col" android:layout_width="match_parent" android:layout_height="match_parent"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+        <com.google.android.material.appbar.AppBarLayout android:id="@id/app_bar" android:layout_width="match_parent" android:layout_height="match_parent">
+            <com.google.android.material.appbar.CollapsingToolbarLayout android:id="@id/collapsing_toolbar" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_scrollFlags="scroll|exitUntilCollapsed" style="@style/collapsing_toolbar_layout_style">
+                <View android:layout_gravity="bottom" android:background="@android:color/transparent" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="?actionBarSize" app:background="@android:color/transparent" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/setting_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="false" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <include layout="@layout/sticker_settings_preference_content_layout" />
+        </LinearLayout>
+        <com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout android:id="@id/sesl_floating_toolbar_layout" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:clipToOutline="false" app:layout_anchor="@id/app_bar">
+            <androidx.appcompat.widget.Toolbar android:layout_gravity="bottom" android:id="@id/toolbar" android:background="@android:color/transparent" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="?actionBarSize" android:clipToOutline="false" app:background="@android:color/transparent" />
+        </com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout>
+        <com.google.android.material.oneui.floatingactioncontainer.FloatingBottomLayout android:layout_gravity="bottom" android:id="@id/floating_bottom_layout" android:paddingBottom="8.0dp" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.google.android.material.bottomnavigation.BottomNavigationView android:layout_gravity="center" android:id="@id/bottom_bar" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="?actionBarSize" app:menu="@menu/sticker_menu_delete" app:seslViewType="IconOnly" style="@style/SettingBottomNavigationView" />
+        </com.google.android.material.oneui.floatingactioncontainer.FloatingBottomLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

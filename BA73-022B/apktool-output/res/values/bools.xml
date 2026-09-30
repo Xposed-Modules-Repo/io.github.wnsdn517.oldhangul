@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="enable_system_alarm_service_default">false</bool>
+    <bool name="enable_system_foreground_service_default">true</bool>
+    <bool name="flick_toggle_input_default_value">true</bool>
+    <bool name="half_width_input_default_value">false</bool>
+    <bool name="is_default_keyboard">true</bool>
+    <bool name="japanese_input_word_learning_default_value">true</bool>
+    <bool name="japanese_wildcard_prediction_default_value">false</bool>
+    <bool name="mushroom_default_value">false</bool>
+    <bool name="open_theme_installed">false</bool>
+    <bool name="rts_tablet_location">false</bool>
+    <bool name="sesl_action_bar_text_item_mode">false</bool>
+    <bool name="sesl_config_closeDialogWhenTouchOutside">true</bool>
+    <bool name="sesl_responsive_pane_navigation_drawer_default_open">false</bool>
+    <bool name="sesl_seekbar_sliding_animation">true</bool>
+    <bool name="sucTwoPaneLayoutStyle">false</bool>
+    <bool name="suc_footer_bar_button_align_end">false</bool>
+    <bool name="sudUseTabletLayout">false</bool>
+    <bool name="sud_footer_bar_hide_when_ime_shown">false</bool>
+    <bool name="theme_designer_use_color_bubble_8way_bg">false</bool>
+    <bool name="theme_designer_use_color_bubble_8way_top_bg">false</bool>
+    <bool name="theme_designer_use_color_bubble_bg">false</bool>
+    <bool name="theme_designer_use_color_bubble_focus_bg">false</bool>
+    <bool name="theme_designer_use_color_function_key_bg">false</bool>
+    <bool name="theme_designer_use_color_keyboard_bg">false</bool>
+    <bool name="theme_designer_use_color_normal_key_bg">false</bool>
+    <bool name="theme_designer_use_color_number_key_bg">false</bool>
+    <bool name="theme_designer_use_color_pressed_key_bg">false</bool>
+    <bool name="trace_view_trail_shadow">false</bool>
+    <bool name="window_light_status_bar">true</bool>
+    <bool name="workmanager_test_configuration">false</bool>
+</resources>

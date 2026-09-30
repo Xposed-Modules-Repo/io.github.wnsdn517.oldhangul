@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <size
+                android:height="@dimen/candidate_collapse_btn_bg_size"
+                android:width="@dimen/candidate_collapse_btn_bg_size"/>
+            <solid android:color="@color/rp_candidate_close_button_bg_light"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/collapse_icon_light"/>
+</layer-list>

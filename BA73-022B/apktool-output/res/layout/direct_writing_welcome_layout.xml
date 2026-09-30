@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.directwriting.writing.welcome.view.WelcomeRootWindow android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="ltr"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/welcome_view" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/welcome_popup_bg" android:background="@drawable/welcome_drawable_popup_bg" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent" android:elevation="@dimen/welcome_elevation" />
+        <LinearLayout android:orientation="vertical" android:id="@id/welcome_content_view" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent" android:elevation="@dimen/welcome_elevation">
+            <com.airbnb.lottie.LottieAnimationView android:id="@id/welcome_anim_view" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="@dimen/welcome_height" android:scaleType="centerCrop" app:lottie_loop="false" />
+            <TextView android:textSize="@dimen/welcome_font_height" android:textColor="@color/welcome_text_color" android:layout_gravity="center" android:id="@id/welcome_text_above" android:visibility="gone" android:layout_width="@dimen/welcome_text_width" android:layout_height="wrap_content" android:text="@string/direct_writing_welcome_text_above" android:fontFamily="sec" android:textAlignment="center" android:textFontWeight="300" />
+            <TextView android:textSize="@dimen/welcome_font_height" android:textColor="@color/welcome_text_color" android:layout_gravity="center" android:id="@id/welcome_text_below" android:visibility="gone" android:layout_width="@dimen/welcome_text_width" android:layout_height="wrap_content" android:text="@string/direct_writing_welcome_text_below" android:fontFamily="sec" android:textAlignment="center" android:textFontWeight="300" />
+        </LinearLayout>
+    </FrameLayout>
+</com.samsung.android.honeyboard.directwriting.writing.welcome.view.WelcomeRootWindow>

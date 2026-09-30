@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">Sasniedzot %d ģenerētus attēlus, jauna attēla ģenerēšanas dēļ tiks izdzēsts vecākais attēls.</item>
+        <item quantity="one">Sasniedzot %d ģenerētu attēlu, jauna attēla ģenerēšanas dēļ tiks izdzēsts vecākais attēls.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Sasniedzot %d ģenerētus attēlus, jauna attēla ģenerēšanas dēļ tiks izdzēsts vecākais attēls.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">Vai izdzēst %d uzlīmes?</item>
+        <item quantity="one">Vai izdzēst %d uzlīmi?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Vai izdzēst %d uzlīmes?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">Vai dzēst %d emocijzīmju pārus?</item>
+        <item quantity="one">Vai dzēst %d emocijzīmju pāri?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Vai dzēst %d emocijzīmju pārus?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">Lai izmantotu Galaxy AI paplašinātā intelekta funkcijas, tev jābūt vismaz %d gadus vecam.</item>
+        <item quantity="one">Lai izmantotu Galaxy AI paplašinātā intelekta funkcijas, tev jābūt vismaz %d gadu vecam.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Lai izmantotu Galaxy AI paplašinātā intelekta funkcijas, tev jābūt vismaz %d gadus vecam.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">Vai izdzēst %d objektu?</item>
+        <item quantity="one">Vai izdzēst %d objektu?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Vai izdzēst %d objektus?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">Vai izdzēst %d piespraustos vienumus?</item>
+        <item quantity="one">Vai izdzēst %d piesprausto vienumu?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Vai izdzēst %d piespraustos vienumus?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">Iekļaut %d piespraustos vienumus</item>
+        <item quantity="one">Iekļaut %d piesprausto vienumu</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Iekļaut %d piespraustos vienumus</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">Pārskatīt %d rakst. ieteikumus</item>
+        <item quantity="one">Pārskatīt %d rakst. ieteikumu</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Pārskatīt %d rakst. ieteikumus</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="zero">%d jaunu paziņojumu</item>
+        <item quantity="one">%d jauns paziņojums</item>
+        <item quantity="other">%d jauni paziņojumi</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">Var pievienot ne vairāk kā %d uzlīmes. Lai noņemtu uzlīmes, atveriet fotoattēlu redaktoru programmā Galerija.</item>
+        <item quantity="one">Var pievienot ne vairāk kā %d uzlīmi. Lai noņemtu uzlīmes, atveriet fotoattēlu redaktoru programmā Galerija.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Var pievienot ne vairāk kā %d uzlīmes. Lai noņemtu uzlīmes, atveriet fotoattēlu redaktoru programmā Galerija.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">Var parādīt ne vairāk kā %d krāsas.</item>
+        <item quantity="one">Var parādīt ne vairāk kā %d krāsu.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Var parādīt ne vairāk kā %d krāsas.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">Izvēlēti %d</item>
+        <item quantity="one">Izvēlēts %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Izvēlēti %d vienumi</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">Vai izdzēst %d teksta īsceļus?</item>
+        <item quantity="one">Vai izdzēst %d teksta īsceļu?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Vai izdzēst %d teksta īsceļus?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">Atjaunināmas %d valodas.</item>
+        <item quantity="one">Atjaunināma %d valoda.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Atjaunināmas %d valodas.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">Izvēlēti %d</item>
+        <item quantity="one">Izvēlēts %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Izvēlēti %d vienumi</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">Jūs izvēlējāties %d rakstzīmes.</item>
+        <item quantity="one">Jūs izvēlējāties %d rakstzīmi.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Jūs izvēlējāties %d rakstzīmes.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">%d labojumi</item>
+        <item quantity="one">%d labojums</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d labojumi</item>
+    </plurals>
+</resources>

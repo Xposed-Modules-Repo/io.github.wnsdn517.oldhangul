@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/_ic_samsung_keyboard_multimodal_on_svi_land__0_res_0x7f08006b">
+    <target
+        android:name="s3"
+        android:animation="@drawable/_ic_samsung_keyboard_multimodal_on_svi_land__1_res_0x7f08006c"/>
+    <target
+        android:name="s3pg1p10"
+        android:animation="@drawable/_ic_samsung_keyboard_multimodal_on_svi_land__4_res_0x7f08006f"/>
+</animated-vector>

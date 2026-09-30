@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen android:id="@id/sticker_settings_select" android:title="@string/manage_expression_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

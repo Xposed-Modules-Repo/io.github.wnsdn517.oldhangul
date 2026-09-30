@@ -1,0 +1,30 @@
+{
+  "default": {
+    "emails": [
+      {
+        "value": "qq.com"
+      },
+      {
+        "value": "139.com"
+      },
+      {
+        "value": "126.com"
+      },
+      {
+        "value": "163.com"
+      },
+      {
+        "value": "yahoo.com.cn"
+      },
+      {
+        "value": "hotmail.com"
+      },
+      {
+        "value": "sohu.com"
+      },
+      {
+        "value": "sina.com"
+      }
+    ]
+  }
+}

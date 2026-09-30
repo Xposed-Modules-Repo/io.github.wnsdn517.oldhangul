@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="oval"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:height="@dimen/toolbar_reorderable_oval_height" android:width="@dimen/toolbar_reorderable_oval_width" />
+    <stroke android:width="@dimen/toolbar_reorderable_oval_stroke" android:color="@color/rp_toolbar_reorderable_area_color" />
+</shape>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.icecone.rts.view.RtsResultLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/rtsResultLinearLayout"
+    android:tag="layout/rts_result_layout_0"
+    android:background="@drawable/sticker_rts_result_bg"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/sticker_rts_result_shadow_elevation"
+    android:paddingHorizontal="@dimen/sticker_rts_result_layout_margin"
+    android:paddingVertical="@dimen/sticker_rts_result_layout_margin">
+    <androidx.recyclerview.widget.RecyclerView
+        android:orientation="horizontal"
+        android:id="@+id/rts_recycler_view"
+        android:tag="binding_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+</com.samsung.android.honeyboard.icecone.rts.view.RtsResultLayout>

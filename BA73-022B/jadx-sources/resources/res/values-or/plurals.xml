@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ଥରେ ଆପଣ %dଟି ଉତ୍ପନ୍ନ ହୋଇଥିବା ଫଟୋରେ ପହଞ୍ଚିବା ପରେ, ଏକ ନୂତନ ଫଟୋ ଉତ୍ପନ୍ନ କରିବା ଦ୍ୱାରା ଆପଣଙ୍କ ପୁରାତନ ଫଟୋ ଡିଲିଟ୍ ହେବ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ଥରେ ଆପଣ %dଟି ଉତ୍ପନ୍ନ ହୋଇଥିବା ଫଟୋରେ ପହଞ୍ଚିବା ପରେ, ଏକ ନୂତନ ଫଟୋ ଉତ୍ପନ୍ନ କରିବା ଦ୍ୱାରା ଆପଣଙ୍କ ପୁରାତନ ଫଟୋ ଡିଲିଟ୍ ହେବ।</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଷ୍ଟିକର୍ ଡିଲିଟ୍ କରିବେ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଷ୍ଟିକର୍ ଡିଲିଟ୍ କରିବେ?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଇମୋଜି ପେୟାର୍ ଡିଲିଟ୍ କରିବେ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଇମୋଜି ପେୟାର୍ ଡିଲିଟ୍ କରିବେ?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Galaxy AIର ଆଡଭାନ୍ସ ଇଣ୍ଟେଲିଜେନ୍ସ ଫିଚର୍ସ ବ୍ୟବହାର କରିବାକୁ ଆପଣଙ୍କ ବୟସ ଅତି କମରେ %d ବର୍ଷ ହେବା ଆବଶ୍ୟକ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Galaxy AIର ଆଡଭାନ୍ସ ଇଣ୍ଟେଲିଜେନ୍ସ ଫିଚର୍ସ ବ୍ୟବହାର କରିବାକୁ ଆପଣଙ୍କ ବୟସ ଅତି କମରେ %d ବର୍ଷ ହେବା ଆବଶ୍ୟକ।</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଆଇଟମ୍ ଡିଲିଟ୍ କରିବେ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଆଇଟମ୍ ଡିଲିଟ୍ କରିବେ?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ପିନ୍ ହୋଇଥିବା ଆଇଟମ୍ ଡିଲିଟ୍ କରିବେ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ପିନ୍ ହୋଇଥିବା ଆଇଟମ୍ ଡିଲିଟ୍ କରିବେ?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ପିନ୍ ହୋଇଥିବା ଆଇଟମ୍ ଅନ୍ତର୍ଭୁକ୍ତ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ପିନ୍ ହୋଇଥିବା ଆଇଟମ୍ ଅନ୍ତର୍ଭୁକ୍ତ</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଲିଖନ ପ୍ରସ୍ତାବ ରିଭିୟୁ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଲିଖନ ପ୍ରସ୍ତାବ ରିଭିୟୁ</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d new notification</item>
+        <item quantity="other">%d new notifications</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ରୁ ଅଧିକ ଷ୍ଟିକର୍ ଯୋଡି ପାରିବେ ନାହିଁ। ଷ୍ଟିକରଗୁଡିକ ଅପସାରଣ କରିବାକୁ ଗ୍ୟାଲେରୀରେ ଫଟୋ ଏଡିଟର୍ ପାଖକୁ ଯାଆନ୍ତୁ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ରୁ ଅଧିକ ଷ୍ଟିକର୍ ଯୋଡି ପାରିବେ ନାହିଁ। ଷ୍ଟିକରଗୁଡିକ ଅପସାରଣ କରିବାକୁ ଗ୍ୟାଲେରୀରେ ଫଟୋ ଏଡିଟର୍ ପାଖକୁ ଯାଆନ୍ତୁ।</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ରୁ ଅଧିକ ରଙ୍ଗ ଦେଖାଇ ପାରିବେ ନାହିଁ।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ରୁ ଅଧିକ ରଙ୍ଗ ଦେଖାଇ ପାରିବେ ନାହିଁ।</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଚୟନିତ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଚୟନିତ</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଟେକ୍ସଟ୍ ସର୍ଟକଟ୍ ଡିଲିଟ୍ କରିବେ?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଟେକ୍ସଟ୍ ସର୍ଟକଟ୍ ଡିଲିଟ୍ କରିବେ?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଭାଷା ଅପଡେଟ୍ ହୋଇଛି।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଭାଷା ଅପଡେଟ୍ ହୋଇଛି।</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ଚୟନିତ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ଚୟନିତ</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">ଆପଣ %dଟି ବର୍ଣ୍ଣ ଚୟନ କରିଛନ୍ତି।</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">ଆପଣ %dଟି ବର୍ଣ୍ଣ ଚୟନ କରିଛନ୍ତି।</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%dଟି ସଂଶୋଧନ</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">N/A</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%dଟି ସଂଶୋଧନ</item>
+    </plurals>
+</resources>

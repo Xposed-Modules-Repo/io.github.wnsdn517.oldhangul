@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/ai_animation_outer_border_radius" />
+    <solid android:color="?generative_ai_writer_label_container" />
+    <stroke android:width="1.0dp" android:color="?generative_ai_writer_label_bound_container" />
+</shape>

@@ -1,0 +1,15 @@
+{
+  "default": {
+    "emails": [
+      {
+        "value": "gmail.com"
+      },
+      {
+        "value": "outlook.com"
+      },
+      {
+        "value": "yahoo.com"
+      }
+    ]
+  }
+}

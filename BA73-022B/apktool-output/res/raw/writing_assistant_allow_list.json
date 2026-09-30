@@ -1,0 +1,165 @@
+{
+  "policy_version": 1.0,
+  "allowlist": [
+    {
+      "item": "com.samsung.android.calendar",
+      "default_on": true
+    },
+    {
+      "item": "com.samsung.android.app.notes",
+      "default_on": true
+    },
+    {
+      "item": "com.samsung.android.bixby.agent",
+      "default_on": true
+    },
+    {
+      "item": "com.samsung.android.email.provider",
+      "default_on": true
+    },
+    {
+      "item": "com.samsung.android.forest",
+      "default_on": true
+    },
+    {
+      "item": "com.samsung.android.app.reminder",
+      "default_on": true
+    },
+    {
+      "item": "com.samsung.android.spdfnote",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.gm",
+      "default_on": true
+    },
+    {
+      "item": "com.yahoo.mobile.client.android.mail",
+      "default_on": true
+    },
+    {
+      "item": "ru.mail.mailapp",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.apps.docs",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.office.officehubrow",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.office.outlook",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.skydrive",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.office.word",
+      "default_on": true
+    },
+    {
+      "item": "com.adobe.reader",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.office.excel",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.calendar",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.apps.docs.editors.docs",
+      "default_on": true
+    },
+    {
+      "item": "com.intsig.camscanner",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.apps.docs.editors.sheets",
+      "default_on": true
+    },
+    {
+      "item": "com.jio.myjio",
+      "default_on": true
+    },
+    {
+      "item": "com.socialnmobile.dictapps.notepad.color.note",
+      "default_on": true
+    },
+    {
+      "item": "cn.wps.moffice_eng",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.keep",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.office.powerpoint",
+      "default_on": true
+    },
+    {
+      "item": "com.myairtelapp",
+      "default_on": true
+    },
+    {
+      "item": "com.teacapps.barcodescanner",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.appmanager",
+      "default_on": true
+    },
+    {
+      "item": "com.dropbox.android",
+      "default_on": true
+    },
+    {
+      "item": "com.dencreak.dlcalculator",
+      "default_on": true
+    },
+    {
+      "item": "com.tf.thinkdroid.viewer",
+      "default_on": true
+    },
+    {
+      "item": "com.hp.android.printservice",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.apps.docs.editors.slides",
+      "default_on": true
+    },
+    {
+      "item": "com.evernote",
+      "default_on": true
+    },
+    {
+      "item": "com.getnotion.android",
+      "default_on": true
+    },
+    {
+      "item": "com.microsoft.office.onenote",
+      "default_on": true
+    },
+    {
+      "item": "com.google.android.apps.subscriptions.red",
+      "default_on": true
+    },
+    {
+      "item": "com.android.chrome",
+      "default_on": true
+    },
+    {
+      "item": "org.mozilla.firefox",
+      "default_on": true
+    }
+  ]
+}

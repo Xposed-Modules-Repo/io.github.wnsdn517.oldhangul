@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <size
+        android:height="@dimen/toolbar_reorder_bg_size"
+        android:width="@dimen/toolbar_reorder_bg_size"/>
+    <solid android:color="?attr/bee_drag_shadow_background"/>
+</shape>

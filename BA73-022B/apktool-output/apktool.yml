@@ -1,0 +1,22 @@
+version: 3.0.3
+apkFileName: smausngkeyboard_patchedby_morphe.apk
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: 33
+  targetSdkVersion: 33
+versionInfo:
+  versionCode: 594048300
+  versionName: 5.9.40.48
+resourcesInfo:
+  packageId: 127
+doNotCompress:
+- arsc
+- ogg
+- png
+- so
+- wav
+- webp
+- assets/dexopt/baseline.prof
+- assets/dexopt/baseline.profm

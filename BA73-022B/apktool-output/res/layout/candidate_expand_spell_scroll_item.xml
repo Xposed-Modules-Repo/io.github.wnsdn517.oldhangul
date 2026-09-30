@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:gravity="center" android:tag="layout/candidate_expand_spell_scroll_item_0" android:background="@drawable/ripple_candidate_selector" android:focusable="false" android:clickable="true" android:singleLine="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

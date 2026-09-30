@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/tilt_unselected">
+    <target
+        android:name="morphing"
+        android:animation="@drawable/_tilt_av_unselected__0_res_0x7f080317"/>
+</animated-vector>

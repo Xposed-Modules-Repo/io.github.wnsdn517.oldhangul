@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_gravity="center" android:id="@id/moreMsgScroll" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+        <RelativeLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/moreMsg" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/common_content_msg_desc_text_size" android:textColor="?common_content_msg_text_color_attr" android:gravity="center" android:id="@id/moreMsgText" android:layout_width="match_parent" android:layout_height="wrap_content" android:fontFamily="sans-serif" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/moreMsgBtn" android:layout_marginTop="@dimen/raised_btn_vertical_gap" android:minHeight="@dimen/sticker_more_raised_btn_height" android:layout_below="@id/moreMsgText" android:layout_centerInParent="true" style="@style/RaisedButton" />
+        </RelativeLayout>
+    </ScrollView>
+</merge>

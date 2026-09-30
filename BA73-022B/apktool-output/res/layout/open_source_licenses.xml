@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/action_bar" />
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <RelativeLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:id="@id/text_open_source_licenses" android:layout_marginTop="@dimen/common_ui_description_layout_left_margin" android:layout_marginEnd="@dimen/common_ui_description_layout_left_margin" style="@style/common_ui_description_layout_style" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

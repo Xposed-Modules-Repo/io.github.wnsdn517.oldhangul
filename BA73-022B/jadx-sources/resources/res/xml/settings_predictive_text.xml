@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/predictive_text">
+    <PreferenceCategory android:key="SETTINGS_PREDICTION"/>
+    <PreferenceCategory android:key="SETTINGS_PREDICTION_ON_COVER"/>
+    <PreferenceCategory>
+        <SwitchPreferenceCompat
+            android:title="@string/predict_phrases"
+            android:key="SETTINGS_PHRASE_PREDICTION_ON"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>

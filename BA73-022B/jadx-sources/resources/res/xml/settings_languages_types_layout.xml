@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settings_main"
+    android:title="@string/select_languages">
+    <PreferenceCategory android:key="lang_prefs"/>
+    <com.samsung.android.honeyboard.settings.common.TopPreferenceCategory android:key="lang_prefs_top"/>
+    <PreferenceCategory>
+        <com.samsung.android.honeyboard.settings.languagesandtypes.ui.ManageInputLanguageButtonPreference
+            android:title="@string/manage_input_languages"
+            android:key="manage_input_languages_button"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:key="subOptionsnumbersandsymbols">
+        <com.samsung.android.honeyboard.settings.numbersandsymbols.NumbersAndSymbolsSpinnerPreference
+            android:title="@string/number_and_symbols_keypad_type"
+            android:key="SETTINGS_DEFAULT_NUMBER_AND_SYMBOLS_KEYPAD_TYPE"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:key="subOptions">
+        <com.samsung.android.honeyboard.settings.languagesandtypes.ui.LanguageChangeSpinnerPreference
+            android:title="@string/language_switching_method"
+            android:key="settings_language_switching_method"
+            android:defaultValue="false"/>
+        <com.samsung.android.honeyboard.settings.languagesandtypes.ui.PhonepadInLandscapePreference
+            android:title="@string/use_phonepad_only_portrait_title"
+            android:key="settings_use_phonepad_in_landscape"
+            android:defaultValue="false"
+            settings:keywords="@string/search_synonym_use_phonepad_portrait_only"/>
+        <Preference
+            android:title="@string/moakey_settings"
+            android:key="settings_moakey"
+            android:defaultValue="false"/>
+        <androidx.preference.SwitchPreferenceCompat
+            android:title="@string/single_vowel_option_title"
+            android:key="settings_prevent_double_consonants"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>

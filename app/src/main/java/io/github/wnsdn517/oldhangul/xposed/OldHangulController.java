@@ -15,8 +15,10 @@ import io.github.wnsdn517.oldhangul.engine.Jamo;
 import io.github.wnsdn517.oldhangul.engine.Laughter;
 
 import java.util.Random;
+import java.util.ArrayDeque;
 
 import de.robv.android.xposed.XSharedPreferences;
+import de.robv.android.xposed.XposedBridge;
 
 /**
  * Takes over Korean dubeolsik composition inside Samsung Keyboard.
@@ -27,8 +29,8 @@ import de.robv.android.xposed.XSharedPreferences;
  * Samsung's key action (vibration, sound, releasing Shift, redrawing the
  * keyboard) still runs. Every other key first commits the composing text.
  *
- * <p>Samsung must not touch the text while a syllable is composed here: its
- * finishComposingText/setComposingText calls are blocked meanwhile (see
+ * <p>Samsung must not replace the text while a syllable is composed here: its
+ * setComposingText/setComposingRegion calls are blocked meanwhile (see
  * {@link #isComposing}), backspace over Hangul is handled here, and every edit
  * first checks that our composing text is still right before the cursor and
  * rewrites it, so a dropped composing region never duplicates text.
@@ -80,6 +82,10 @@ final class OldHangulController {
     private boolean languageKnown;
     /** The current language is Korean with a dubeolsik (qwerty) layout. */
     private boolean koreanQwerty;
+    /** True while Samsung is using key-based language detection for bilingual input. */
+    private boolean bilingualKeyMode;
+    private boolean multilingual;
+    private boolean samsungShifted;
     private boolean shiftArchaic = true;
     /** Korean was typed more recently than a letter of another script. */
     private boolean koreanActive;
@@ -95,6 +101,7 @@ final class OldHangulController {
     private boolean directInput = true;
     /** The editor reported no composing region while we were composing. */
     private boolean composingMaybeLost;
+    private boolean internalEdit;
     /**
      * When the module last edited the text. Selection updates that arrive shortly
      * after are the editor echoing that edit; apps that apply input asynchronously
@@ -102,10 +109,11 @@ final class OldHangulController {
      */
     private long lastEditAt;
     private static final long EDIT_ECHO_MS = 500;
+    /** Cursor position observed after our last edit; -1 means not known yet. */
+    private int lastSelection = -1;
     /** Samsung's accelerating delete took over a held backspace. */
     private boolean samsungRepeating;
     private boolean fastDelete = true;
-    private boolean shakeUndo = true;
     /** The last key split an archaic cluster; a second space is a real space, backspace undoes it. */
     private boolean justSplit;
     /** The user undid a split: the next space keeps the cluster and types a space. */
@@ -115,6 +123,16 @@ final class OldHangulController {
     /** Key code whose release is ignored after its long press was handled. */
     private int suppressedRelease;
     private long suppressedAt;
+    private final ArrayDeque<String> editHistory = new ArrayDeque<>();
+    private android.widget.PopupWindow undoPanel;
+    private final TypingStats typingStats = new TypingStats();
+    private android.widget.TextView typingMeterView;
+    private android.widget.TextView undoButtonView;
+    private android.view.ViewGroup typingMeterParent;
+    private android.widget.PopupWindow typingPanel;
+    private android.view.View typingOverlay;
+    private android.view.WindowManager typingOverlayManager;
+    private long lastHistoryAt;
 
     /** Letters of a held ㅋ, or null when not repeating. */
     private Laughter repeating;
@@ -147,6 +165,15 @@ final class OldHangulController {
 
     void attach(InputMethodService service) {
         this.service = service;
+        // The tool button belongs to the keyboard chrome, so create it as soon
+        // as the keyboard window exists rather than waiting for the first key.
+        handler.post(this::updateTypingMeter);
+    }
+
+    void ensureUndoButton() {
+        updateTypingMeter();
+        handler.postDelayed(this::updateTypingMeter, 350);
+        handler.postDelayed(this::updateTypingMeter, 1000);
     }
 
     void reloadPrefs() {
@@ -172,7 +199,6 @@ final class OldHangulController {
         fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
         directInput = prefs.getBoolean(Prefs.DIRECT_INPUT, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
-        shakeUndo = prefs.getBoolean(Prefs.SHAKE_UNDO, true);
         notifyShiftLayer();
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
@@ -201,8 +227,16 @@ final class OldHangulController {
         return debugLog;
     }
 
-    boolean shakeUndo() {
-        return enabled && shakeUndo;
+    /** Keyboard service context (the Samsung Keyboard package), or null before onCreate. */
+    android.content.Context serviceContext() {
+        return service;
+    }
+
+    /** Writes to the LSPosed log only while the debug log option is on. */
+    void debug(String message) {
+        if (debugLog) {
+            XposedBridge.log("OldHangul: " + message);
+        }
     }
 
     /**
@@ -233,8 +267,15 @@ final class OldHangulController {
         boolean other = type.contains("phonepad") || type.contains("chunjiin") || type.contains("naratgul")
                 || type.contains("vega") || type.contains("single_vowel");
         boolean qwerty = korean && !other;
-        boolean byKeys = bilingual && !korean;
-        if (byKeys ? !languageKnown : languageKnown && qwerty == koreanQwerty) {
+        // In multilingual mode the language callback is not authoritative:
+        // Samsung often reports the currently selected language, not the key
+        // actually pressed.  Let onCharacter() decide from the real key code.
+        boolean byKeys = bilingual;
+        // In bilingual mode languageKnown intentionally remains false.  The old
+        // condition treated that sentinel as "not initialized" on every callback,
+        // repeatedly resetting key-language detection and losing the active side.
+        if (byKeys ? bilingualKeyMode
+                : languageKnown && !bilingualKeyMode && qwerty == koreanQwerty && bilingual == multilingual) {
             return;
         }
         commitComposing();
@@ -242,13 +283,15 @@ final class OldHangulController {
         // Leaving Korean: nothing of ours may stay composing, or Samsung's own
         // composing (kana, swipe words) would be blocked.
         languageKnown = !byKeys;
+        bilingualKeyMode = byKeys;
+        multilingual = bilingual;
         koreanQwerty = qwerty;
         dubeolsik = qwerty || !korean;
         koreanActive = qwerty;
-        // In bilingual/multilingual mode, disable archaic composition and auto-ㅇ
-        // to avoid interfering with Samsung's own predictions/swipe for the other language.
-        boolean effectiveArchaic = archaic && !bilingual;
-        boolean effectiveAutoIeung = prefs.getBoolean(Prefs.AUTO_IEUNG, true) && !bilingual;
+        // Other scripts are gated by koreanLayoutActive(), so Korean features
+        // remain available after an actual Korean key even in multilingual mode.
+        boolean effectiveArchaic = archaic;
+        boolean effectiveAutoIeung = prefs.getBoolean(Prefs.AUTO_IEUNG, true);
         composer.configure(effectiveArchaic, effectiveAutoIeung);
         vowelIeungPref = prefs.getBoolean(Prefs.VOWEL_IEUNG, true) && !bilingual;
         composer.setVowelIeung(false); // reset; will be set dynamically in type()
@@ -270,10 +313,29 @@ final class OldHangulController {
      * Samsung sends the Shift layer's code itself, so this only feeds the labels.
      */
     char shiftVariant(int code) {
-        if (!enabled || !archaic || !shiftArchaic || (languageKnown && !koreanQwerty)) {
+        if (!enabled || !archaic || !shiftArchaic) {
             return 0;
         }
         return archaicVariant(code);
+    }
+
+    /** Same lookup, using the label Samsung actually renders on this build. */
+    char shiftVariant(String label, int code) {
+        if (label != null) {
+            for (int i = 0; i < label.length();) {
+                int cp = label.codePointAt(i);
+                if (cp <= Character.MAX_VALUE) {
+                    char variant = shiftVariant(cp);
+                    if (variant != 0) return variant;
+                }
+                i += Character.charCount(cp);
+            }
+        }
+        return shiftVariant(code);
+    }
+
+    boolean internalEditActive() {
+        return internalEdit;
     }
 
     /** A syllable is being composed here; Samsung must leave the composing text alone. */
@@ -288,7 +350,18 @@ final class OldHangulController {
 
     /** Cheap check for the hot label hook: is the archaic Shift layer in use right now? */
     boolean shiftLayerActive() {
-        return enabled && archaic && shiftArchaic && (!languageKnown || koreanQwerty);
+        // In multilingual mode the language callback can still say “English”
+        // while the shared keyboard is showing the Korean layer. Do not unhook
+        // the label replacement based on that callback.
+        return enabled && archaic && shiftArchaic;
+    }
+
+    void setSamsungShifted(boolean shifted) {
+        samsungShifted = shifted;
+    }
+
+    boolean samsungShifted() {
+        return samsungShifted;
     }
 
     // ------------------------------------------------------------ key actions
@@ -337,6 +410,9 @@ final class OldHangulController {
                 return true;
             }
         }
+        if (SPACE_ACTION.equals(action)) {
+            recordExternalInput(' ');
+        }
         commitComposing();
         inWord = false;
         return false;
@@ -351,18 +427,102 @@ final class OldHangulController {
         }
         suppressedRelease = 0;
         detectLayout(key);
-        if (Jamo.isKey(code) || code == CHEONJIIN_ARAEA) {
+        char jamo = compositionKey(key);
+        boolean koreanKey = jamo != 0;
+        if (koreanKey) {
             koreanActive = true;
-        } else if (Character.isLetter(code) && Character.UnicodeScript.of(code) != Character.UnicodeScript.HANGUL) {
+        } else if (isForeignLetter(key)) {
             // A letter of another script (Latin, kana, ...): another language is active.
             koreanActive = false;
         }
-        if (!dubeolsik || !Jamo.isKey(code)) {
+        if (!dubeolsik || !koreanKey) {
+            if (Character.isLetterOrDigit(code)) {
+                recordExternalInput((char) code);
+            }
             commitComposing();
             inWord = false;
             return false;
         }
-        return type((char) code);
+        // In bilingual mode Samsung can leave a stale physical key code behind.
+        // The visible single-jamo label is the authoritative input.
+        return jamo == 0 ? false : type(jamo);
+    }
+
+    private static boolean isKoreanInputKey(int code) {
+        return Jamo.isKey(code) || code == CHEONJIIN_ARAEA
+                || code == Jamo.PANSIOS || code == Jamo.YESIEUNG
+                || code == Jamo.YEORINHIEUH || code == Jamo.ARAEA;
+    }
+
+    /** Samsung key codes are not stable across multilingual keyboard layouts. */
+    private static boolean isKoreanInputKey(KeyEventInfo key) {
+        String label = key.label == null ? "" : key.label;
+        boolean hasLetter = false;
+        for (int i = 0; i < label.length(); ) {
+            int cp = label.codePointAt(i);
+            if (isKoreanInputKey(cp)) return true;
+            if (Character.isLetter(cp)) hasLetter = true;
+            i += Character.charCount(cp);
+        }
+        // Prefer the visible key label over a stale physical-layout code. In
+        // multilingual mode an English key can retain the Korean key code
+        // (for example ㅗ) while its actual label is “d” or “i”.
+        if (hasLetter) return false;
+        if (isKoreanInputKey(key.keyCode)) return true;
+        return false;
+    }
+
+    private static boolean isForeignLetter(KeyEventInfo key) {
+        String label = key.label == null ? "" : key.label;
+        if (!label.isEmpty()) {
+            for (int i = 0; i < label.length(); ) {
+                int cp = label.codePointAt(i);
+                if (Character.isLetter(cp)) {
+                    return !isKoreanInputKey(cp);
+                }
+                i += Character.charCount(cp);
+            }
+        }
+        return Character.isLetter(key.keyCode)
+                && Character.UnicodeScript.of(key.keyCode) != Character.UnicodeScript.HANGUL;
+    }
+
+    /** Normalizes Samsung's key label to the jamo accepted by the composer. */
+    private static char compositionKey(KeyEventInfo key) {
+        String label = key.label == null ? "" : key.label;
+        for (int i = 0; i < label.length();) {
+            int cp = label.codePointAt(i);
+            if (cp <= Character.MAX_VALUE && isKoreanInputKey(cp)) return (char) cp;
+            i += Character.charCount(cp);
+        }
+        // A few builds expose the rendered vowel syllable instead of its jamo.
+        switch (label) {
+            case "아": return 'ㅏ'; case "애": return 'ㅐ'; case "야": return 'ㅑ';
+            case "얘": return 'ㅒ'; case "어": return 'ㅓ'; case "에": return 'ㅔ';
+            case "여": return 'ㅕ'; case "예": return 'ㅖ'; case "오": return 'ㅗ';
+            case "요": return 'ㅛ'; case "우": return 'ㅜ'; case "유": return 'ㅠ';
+            case "으": return 'ㅡ'; case "이": return 'ㅣ';
+            default:
+                boolean hasForeignLetter = false;
+                for (int i = 0; i < label.length();) {
+                    int cp = label.codePointAt(i);
+                    hasForeignLetter |= Character.isLetter(cp);
+                    i += Character.charCount(cp);
+                }
+                return !hasForeignLetter && isKoreanInputKey(key.keyCode)
+                        && key.keyCode <= Character.MAX_VALUE
+                        ? (char) key.keyCode : 0;
+        }
+    }
+
+    private void recordExternalInput(char code) {
+        typingStats.record(String.valueOf(code));
+        updateTypingMeter();
+    }
+
+    void recordExternalText(String text) {
+        typingStats.record(text);
+        updateTypingMeter();
     }
 
     private void detectLayout(KeyEventInfo key) {
@@ -472,15 +632,21 @@ final class OldHangulController {
             return false;
         }
         ic.beginBatchEdit();
+        boolean previousInternalEdit = internalEdit;
+        internalEdit = true;
         try {
             takeBackComposing(ic);
             // Update vowelIeung: lone vowels outside a word don't get auto-ㅇ.
             composer.setVowelIeung(vowelIeungPref && inWord);
             apply(ic, composer.type(key));
+            rememberEdit("입력 " + key);
+            typingStats.record(String.valueOf(key));
+            updateTypingMeter();
             inWord = true;
             // After typing, update vowelIeung for subsequent keys in this word.
             composer.setVowelIeung(vowelIeungPref && inWord);
         } finally {
+            internalEdit = previousInternalEdit;
             ic.endBatchEdit();
         }
         return true;
@@ -493,10 +659,13 @@ final class OldHangulController {
             return;
         }
         ic.beginBatchEdit();
+        boolean previousInternalEdit = internalEdit;
+        internalEdit = true;
         try {
             takeBackComposing(ic);
             apply(ic, out);
         } finally {
+            internalEdit = previousInternalEdit;
             ic.endBatchEdit();
         }
     }
@@ -553,14 +722,18 @@ final class OldHangulController {
         }
         if (!composer.isEmpty()) {
             ic.beginBatchEdit();
+            boolean previousInternalEdit = internalEdit;
+            internalEdit = true;
             try {
                 takeBackComposing(ic);
                 HangulComposer.Output out = composer.backspace();
                 if (out != null) {
                     apply(ic, out);
+                    rememberEdit("삭제");
                     return true;
                 }
             } finally {
+                internalEdit = previousInternalEdit;
                 ic.endBatchEdit();
             }
         }
@@ -575,10 +748,13 @@ final class OldHangulController {
                 return false;
             }
             ic.deleteSurroundingTextInCodePoints(1, 0);
+            rememberEdit("삭제");
             inWord = false;
             return true;
         }
         ic.beginBatchEdit();
+        boolean previousInternalEdit = internalEdit;
+        internalEdit = true;
         try {
             ic.finishComposingText();
             ic.deleteSurroundingText(r.length, 0);
@@ -590,6 +766,7 @@ final class OldHangulController {
                 composing = "";
             }
         } finally {
+            internalEdit = previousInternalEdit;
             ic.endBatchEdit();
         }
         return true;
@@ -644,14 +821,20 @@ final class OldHangulController {
             return;
         }
         ic.beginBatchEdit();
+        boolean previousInternalEdit = internalEdit;
+        internalEdit = true;
         try {
             commitComposing();
             if (!directMode) {
                 ic.finishComposingText();
             }
             ic.commitText(text, 1);
+            rememberEdit("입력 " + text);
+            typingStats.record(text);
+            updateTypingMeter();
             lastEditAt = SystemClock.uptimeMillis();
         } finally {
+            internalEdit = previousInternalEdit;
             ic.endBatchEdit();
         }
         inWord = false;
@@ -664,7 +847,13 @@ final class OldHangulController {
         }
         InputConnection ic = inputConnection();
         if (ic != null && !directMode) {
-            ic.finishComposingText();
+            boolean previousInternalEdit = internalEdit;
+            internalEdit = true;
+            try {
+                ic.finishComposingText();
+            } finally {
+                internalEdit = previousInternalEdit;
+            }
             lastEditAt = SystemClock.uptimeMillis();
         }
         composer.reset();
@@ -690,17 +879,36 @@ final class OldHangulController {
      * empty composing state overwrite the editor's text.
      */
     void onRestartInput() {
-        if (!composer.isEmpty()) {
-            composingMaybeLost = true;
+        // A restart is also used by chat apps after Send and by translation/search
+        // actions.  Keeping the old composer here makes the next key replace or
+        // resurrect the word that belonged to the previous editor state.  Clear
+        // only our composing span; on a new editor this is a harmless no-op.
+        InputConnection ic = inputConnection();
+        if (ic != null && !composing.isEmpty() && !directMode) {
+            boolean previousInternalEdit = internalEdit;
+            internalEdit = true;
+            try {
+                ic.setComposingText("", 1);
+            } finally {
+                internalEdit = previousInternalEdit;
+            }
         }
+        composer.reset();
+        composing = "";
+        composingMaybeLost = false;
         backspaceOwned = false;
         stopRepeat();
+        inWord = false;
+        justSplit = false;
+        splitDeclined = false;
+        lastSelection = -1;
     }
 
     void resetState() {
         composer.reset();
         composing = "";
         composingMaybeLost = false;
+        lastSelection = -1;
         inWord = false;
         justSplit = false;
         splitDeclined = false;
@@ -729,8 +937,25 @@ final class OldHangulController {
             return;
         }
         if (candidatesStart < 0 || candidatesEnd < 0) {
-            // Region dropped by the editor; the next edit takes our text back first.
-            composingMaybeLost = true;
+            // If the cursor moved, our composing state belongs to the old
+            // position.  Do not carry it over to the new position (that is what
+            // makes text reappear after tapping another field or pressing Send).
+            CharSequence before = inputConnection() == null ? null
+                    : inputConnection().getTextBeforeCursor(composing.length(), 0);
+            if ((lastSelection >= 0 && newSelStart == newSelEnd
+                    && newSelEnd != lastSelection)
+                    || (before != null && !composing.contentEquals(before))) {
+                composer.reset();
+                composing = "";
+                composingMaybeLost = false;
+                inWord = false;
+            } else {
+                // Region dropped at the same cursor: the next edit can still
+                // take the old text back if the editor left it immediately
+                // before the cursor.
+                composingMaybeLost = true;
+            }
+            lastSelection = newSelEnd;
             return;
         }
         if (newSelStart != newSelEnd || newSelEnd != candidatesEnd) {
@@ -740,6 +965,7 @@ final class OldHangulController {
         } else {
             composingMaybeLost = false;
         }
+        lastSelection = newSelEnd;
         args[4] = -1;
         args[5] = -1;
     }
@@ -748,8 +974,231 @@ final class OldHangulController {
         return service == null ? null : service.getCurrentInputConnection();
     }
 
-    /** Package-private access for {@link ShakeUndo}. */
-    InputConnection currentInputConnection() {
-        return inputConnection();
+    private void rememberEdit(String label) {
+        long now = SystemClock.uptimeMillis();
+        if (!editHistory.isEmpty() && now - lastHistoryAt < 1200
+                && ((label.startsWith("입력") && editHistory.peekFirst().startsWith("입력"))
+                || (label.startsWith("삭제") && editHistory.peekFirst().startsWith("삭제")))) {
+            editHistory.removeFirst();
+            editHistory.addFirst(label.startsWith("입력") ? "입력 작업" : "삭제 작업");
+            lastHistoryAt = now;
+            return;
+        }
+        editHistory.addFirst(label);
+        lastHistoryAt = now;
+        while (editHistory.size() > 24) editHistory.removeLast();
+    }
+
+    private String lastMeterText = "";
+    private boolean lastMeterUndoable;
+
+    private void updateTypingMeter() {
+        if (service == null || service.getWindow() == null) return;
+        String summary = typingStats.summary();
+        boolean undoable = !editHistory.isEmpty();
+        boolean attached = typingOverlay != null && typingOverlay.getWindowToken() != null;
+        if (attached && summary.equals(lastMeterText) && undoable == lastMeterUndoable) {
+            return;  // nothing to redraw; this runs on every key press
+        }
+        lastMeterText = summary;
+        lastMeterUndoable = undoable;
+        android.view.View decor = service.getWindow().getWindow().getDecorView();
+        float density = service.getResources().getDisplayMetrics().density;
+        try {
+            if (typingOverlay == null) {
+                android.widget.LinearLayout bar = new android.widget.LinearLayout(service);
+                bar.setGravity(android.view.Gravity.CENTER_VERTICAL);
+                bar.setPadding((int) (10 * density), 0, (int) (4 * density), 0);
+                android.graphics.drawable.GradientDrawable bg =
+                        new android.graphics.drawable.GradientDrawable();
+                bg.setColor(0xCC202124);
+                bg.setCornerRadius(11 * density);
+                bar.setBackground(bg);
+                if (typingMeterView == null) {
+                    typingMeterView = new android.widget.TextView(service);
+                    typingMeterView.setTextColor(0xFFE6E6E6);
+                    typingMeterView.setTextSize(10);
+                    typingMeterView.setSingleLine(true);
+                    typingMeterView.setGravity(android.view.Gravity.CENTER);
+                }
+                if (undoButtonView == null) {
+                    undoButtonView = new android.widget.TextView(service);
+                    undoButtonView.setText("\u21B6");
+                    undoButtonView.setTextSize(14);
+                    undoButtonView.setTextColor(0xFFE6E6E6);
+                    undoButtonView.setGravity(android.view.Gravity.CENTER);
+                    undoButtonView.setPadding((int) (8 * density), 0, (int) (8 * density), 0);
+                    undoButtonView.setContentDescription("되돌리기");
+                    undoButtonView.setOnClickListener(v -> undoOnce());
+                }
+                // Content-sized: a stretched bar covered Samsung's keyboard-close and
+                // keyboard-switch buttons next to it.
+                bar.addView(typingMeterView, new android.widget.LinearLayout.LayoutParams(-2, -1));
+                bar.addView(undoButtonView, new android.widget.LinearLayout.LayoutParams(-2, -1));
+                typingOverlay = bar;
+            }
+            typingMeterView.setText(summary);
+            undoButtonView.setEnabled(undoable);
+            undoButtonView.setAlpha(undoable ? 1.0f : 0.35f);
+            if (typingOverlay.getWindowToken() == null) {
+                android.view.WindowManager wm = (android.view.WindowManager)
+                        service.getSystemService(android.content.Context.WINDOW_SERVICE);
+                android.view.WindowManager.LayoutParams lp =
+                        new android.view.WindowManager.LayoutParams(
+                                -2, (int) (22 * density + 0.5f),
+                                android.view.WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG,
+                                android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                                        | android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                                        | android.view.WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+                                android.graphics.PixelFormat.TRANSLUCENT);
+                lp.token = decor.getWindowToken();
+                lp.gravity = android.view.Gravity.BOTTOM | android.view.Gravity.CENTER_HORIZONTAL;
+                lp.y = (int) (2 * density);
+                wm.addView(typingOverlay, lp);
+                typingOverlayManager = wm;
+                debug("typing meter overlay attached (content-sized, 22dp)");
+            }
+        } catch (Throwable t) {
+            XposedBridge.log("OldHangul: typing meter overlay unavailable: " + t);
+        }
+        UndoBee.refresh();
+    }
+
+    String typingSummary() {
+        return typingStats.summary();
+    }
+
+    /** Shows recent edits inside the keyboard so shaking opens a selectable history. */
+    void showUndoHistory() {
+        if (service == null || service.getWindow() == null || undoPanel != null) return;
+        android.view.View decor = service.getWindow().getWindow().getDecorView();
+        android.widget.LinearLayout box = new android.widget.LinearLayout(service);
+        box.setOrientation(android.widget.LinearLayout.VERTICAL);
+        box.setPadding(24, 16, 24, 10);
+        android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+        bg.setColor(0xF51F1F1F);
+        bg.setCornerRadius(18);
+        box.setBackground(bg);
+        android.widget.TextView title = new android.widget.TextView(service);
+        title.setText("실행 기록 · " + typingStats.summary());
+        title.setTextColor(android.graphics.Color.WHITE);
+        title.setTextSize(17);
+        title.setPadding(8, 4, 8, 14);
+        box.addView(title);
+        int count = 0;
+        for (String item : editHistory) {
+            android.widget.TextView row = new android.widget.TextView(service);
+            row.setText(item + "    되돌리기");
+            row.setTextColor(android.graphics.Color.WHITE);
+            row.setTextSize(15);
+            row.setPadding(8, 12, 8, 12);
+            android.graphics.drawable.GradientDrawable rowBg =
+                    new android.graphics.drawable.GradientDrawable();
+            rowBg.setColor(0x24FFFFFF);
+            rowBg.setCornerRadius(12);
+            row.setBackground(rowBg);
+            row.setOnClickListener(v -> { undoOnce(); dismissUndoHistory(); });
+            android.widget.LinearLayout.LayoutParams rowParams =
+                    new android.widget.LinearLayout.LayoutParams(-1, -2);
+            rowParams.setMargins(0, 3, 0, 3);
+            box.addView(row, rowParams);
+            if (++count >= 8) break;
+        }
+        if (count == 0) {
+            android.widget.TextView empty = new android.widget.TextView(service);
+            empty.setText("최근 입력 기록이 없습니다");
+            empty.setTextColor(0xBFFFFFFF);
+            empty.setGravity(android.view.Gravity.CENTER);
+            empty.setPadding(8, 20, 8, 20);
+            box.addView(empty);
+        }
+        android.widget.TextView close = new android.widget.TextView(service);
+        close.setText("닫기");
+        close.setTextColor(0xFF9CC2FF);
+        close.setGravity(android.view.Gravity.CENTER);
+        close.setPadding(8, 12, 8, 4);
+        close.setOnClickListener(v -> dismissUndoHistory());
+        box.addView(close);
+        undoPanel = new android.widget.PopupWindow(box, -1, -2, true);
+        undoPanel.setBackgroundDrawable(bg);
+        undoPanel.setOutsideTouchable(true);
+        undoPanel.setOnDismissListener(() -> undoPanel = null);
+        undoPanel.showAtLocation(decor, android.view.Gravity.BOTTOM, 12, 12);
+    }
+
+    private void dismissUndoHistory() {
+        if (undoPanel != null) undoPanel.dismiss();
+    }
+
+    void undoFromBee() {
+        undoOnce();
+    }
+
+    private void undoOnce() {
+        InputConnection ic = inputConnection();
+        if (ic == null) return;
+        boolean handled = false;
+
+        // Do not depend on the target app implementing the optional editor Undo
+        // menu. Our composing text is owned by this controller, so remove it
+        // directly. This also works in Termux and WebView editors.
+        if (!composer.isEmpty()) {
+            ic.beginBatchEdit();
+            boolean previousInternalEdit = internalEdit;
+            internalEdit = true;
+            try {
+                if (directMode) {
+                    int length = composing.codePointCount(0, composing.length());
+                    if (length > 0) ic.deleteSurroundingTextInCodePoints(length, 0);
+                } else {
+                    ic.setComposingText("", 1);
+                }
+                composer.reset();
+                composing = "";
+                composingMaybeLost = false;
+                inWord = false;
+                handled = true;
+            } finally {
+                internalEdit = previousInternalEdit;
+                ic.endBatchEdit();
+            }
+        } else if (!editHistory.isEmpty()) {
+            // A symbol or an already committed edit made by this module.
+            CharSequence before = ic.getTextBeforeCursor(2, 0);
+            if (before != null && before.length() > 0) {
+                ic.deleteSurroundingTextInCodePoints(1, 0);
+                handled = true;
+            }
+        }
+
+        if (!handled) {
+            boolean undone = ic.performContextMenuAction(android.R.id.undo);
+            if (!undone) {
+                long now = SystemClock.uptimeMillis();
+                ic.sendKeyEvent(new android.view.KeyEvent(now, now,
+                        android.view.KeyEvent.ACTION_DOWN, android.view.KeyEvent.KEYCODE_Z, 0,
+                        android.view.KeyEvent.META_CTRL_ON));
+                ic.sendKeyEvent(new android.view.KeyEvent(now, now,
+                        android.view.KeyEvent.ACTION_UP, android.view.KeyEvent.KEYCODE_Z, 0,
+                        android.view.KeyEvent.META_CTRL_ON));
+            }
+        }
+        if (!editHistory.isEmpty()) editHistory.removeFirst();
+    }
+
+    boolean blockSamsungComposition() {
+        return isComposing() && !internalEdit;
+    }
+
+    /** Samsung/the toolbar finished the editor's composing span externally. */
+    void externalFinishComposing() {
+        if (internalEdit || composer.isEmpty()) return;
+        // The text may already be committed by the editor.  Keep the model in
+        // sync and let the next Korean key start a fresh composition.
+        composer.reset();
+        composing = "";
+        composingMaybeLost = false;
+        inWord = false;
+        lastSelection = -1;
     }
 }

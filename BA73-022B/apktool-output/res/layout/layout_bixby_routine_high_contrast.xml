@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/routine_high_contrast" android:background="@color/app_theme_background_color" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.recyclerview.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/android_list" android:background="@drawable/tw_fullscreen_background" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/high_contrast_theme_margin_bottom" android:numColumns="@integer/theme_grid_no_columns" android:paddingStart="@dimen/high_contrast_theme_layout_margin" android:paddingEnd="@dimen/high_contrast_theme_layout_margin" android:nestedScrollingEnabled="false" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

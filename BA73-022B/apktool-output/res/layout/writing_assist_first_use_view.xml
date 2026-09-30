@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/ai_writer_ftu_top_padding" android:paddingBottom="@dimen/ai_writer_ftu_bottom_padding" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="@dimen/ai_writer_ftu_start_padding" android:paddingEnd="@dimen/ai_writer_ftu_end_padding"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/writing_assist_ftu_title" android:layout_marginTop="@dimen/writing_assist_dialog_title_text_margin_top" android:text="@string/writing_assist_ftu_title" style="@style/FTUDialogTextTitleStyle" />
+    </LinearLayout>
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/writing_assist_ftu_image" android:background="@drawable/writing_assist_ftu_background" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dp" android:src="@drawable/writing_assist_ftu_image" android:scaleType="center" android:layout_marginHorizontal="24.0dp" />
+            <TextView android:id="@id/writing_assist_ftu_function_and_its_benefit" android:text="@string/writing_assist_ftu_function_and_its_benefit" style="@style/FTUDialogTextStyleDesc" />
+            <View android:background="@color/writing_assist_guide_description_divider_color" android:layout_width="match_parent" android:layout_height="@dimen/writing_assist_dialog_divider_height" android:layout_marginBottom="@dimen/writing_assist_dialog_divider_margin_bottom" android:layout_marginHorizontal="@dimen/writing_assist_dialog_divider_margin_horizontal" />
+            <TextView android:textColor="@color/writing_assist_guide_description_text_color" android:id="@id/writing_assist_ftu_description" android:text="@string/writing_assist_ftu_description_global" style="@style/FTUDialogTextStyleDescBody" />
+            <TextView android:textColor="@color/writing_assist_guide_description_text_color" android:id="@id/writing_assist_ftu_pp" style="@style/FTUDialogTextStyleDescBody" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

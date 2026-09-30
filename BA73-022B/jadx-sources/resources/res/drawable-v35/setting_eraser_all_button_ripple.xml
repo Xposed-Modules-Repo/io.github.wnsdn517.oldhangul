@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.sdk.pen.setting.util.SpenRecoilDrawable xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:recoilColor="@color/dialog_action_ripple"
+    app:recoilRadius="@dimen/eraser_all_button_recoil_radius"/>

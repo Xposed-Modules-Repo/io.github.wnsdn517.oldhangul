@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/col" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@id/bottom_navigation"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+        <com.google.android.material.appbar.AppBarLayout android:id="@id/app_bar" android:layout_width="match_parent" android:layout_height="match_parent">
+            <include layout="@layout/settings_preference_collapsing_layout" />
+        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/setting_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="false" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <include layout="@layout/settings_preference_content_layout" />
+        </LinearLayout>
+        <com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout android:id="@id/sesl_floating_toolbar_layout" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:clipToOutline="false" app:layout_anchor="@id/app_bar">
+            <androidx.appcompat.widget.Toolbar android:layout_gravity="bottom" android:id="@id/toolbar" android:background="@android:color/transparent" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="?actionBarSize" android:clipToOutline="false" app:background="@android:color/transparent" app:title="@string/app_name" />
+        </com.google.android.material.oneui.floatingactioncontainer.FloatingToolbarLayout>
+        <com.google.android.material.oneui.floatingactioncontainer.FloatingBottomLayout android:layout_gravity="center|bottom" android:id="@id/floating_bottom_container" android:paddingBottom="8.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <include layout="@layout/bottom_button_layout" />
+        </com.google.android.material.oneui.floatingactioncontainer.FloatingBottomLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <LinearLayout android:id="@id/bottom_navigation" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <include layout="@layout/bottom_navigation_view" />
+    </LinearLayout>
+</RelativeLayout>

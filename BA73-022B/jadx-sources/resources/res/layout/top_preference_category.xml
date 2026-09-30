@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="@dimen/setting_top_preference_category_title_size"
+    android:id="@android:id/title"
+    android:paddingTop="@dimen/setting_top_preference_category_size"
+    android:paddingBottom="@dimen/setting_top_preference_category_size"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="?android:attr/listSeparatorTextViewStyle"/>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:tag="layout/writing_toolkit_result_item_layout_result_edit_mode_0"
+    android:background="@drawable/writing_toolkit_result_item_container_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale"
+    android:clipToOutline="true">
+    <com.samsung.android.writingtoolkit.common.view.AiTransitionEffectView
+        android:id="@+id/writing_toolkit_result_effect_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+            android:scrollbarThumbVertical="@drawable/writing_toolkit_scrollbar"
+            android:id="@+id/writing_toolkit_result_nested_scroll_view"
+            android:tag="binding_1"
+            android:scrollbars="vertical"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <EditText
+                android:scrollbarStyle="outsideOverlay"
+                android:id="@+id/writing_toolkit_result_text"
+                android:tag="binding_2"
+                android:background="@null"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:imeOptions="flagNoExtractUi"
+                android:nestedScrollingEnabled="true"
+                android:paddingHorizontal="@dimen/writing_toolkit_result_item_container_padding_horizontal"
+                android:lastBaselineToBottomHeight="@dimen/writing_toolkit_result_item_action_container_height"
+                style="@style/WritingToolkitResultItemTextStyle"/>
+        </androidx.core.widget.NestedScrollView>
+    </com.samsung.android.writingtoolkit.common.view.AiTransitionEffectView>
+</FrameLayout>

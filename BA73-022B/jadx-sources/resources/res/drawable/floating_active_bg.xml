@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/floating_active_bg"
+        android:left="1dp"
+        android:right="1dp"
+        android:bottom="1dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="5dp"/>
+            <stroke
+                android:width="@dimen/floating_keyboard_active_stroke_width"
+                android:color="?attr/floating_keyboard_border_active"/>
+        </shape>
+    </item>
+</layer-list>

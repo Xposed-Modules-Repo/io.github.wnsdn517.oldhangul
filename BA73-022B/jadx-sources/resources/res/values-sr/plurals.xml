@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="ai_expression_delete_generated_image_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Kada dođete do %d generisane slike, generisanje nove slike će izbrisati najstariju sliku.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Kada dođete do %d generisane slike, generisanje nove slike će izbrisati najstariju sliku.</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Kada dođete do %d generisanih slika, generisanje nove slike će izbrisati najstariju sliku.</item>
+    </plurals>
+    <plurals name="ai_expression_delete_message">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Želite li da izbrišete %d nalepnicu?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Želite li da izbrišete %d nalepnice?</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Želite li da izbrišete %d nalepnica?</item>
+    </plurals>
+    <plurals name="ambi_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Želite li da izbrišete %d par emotikona?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Želite li da izbrišete %d para emotikona?</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Želite li da izbrišete %d parova emotikona?</item>
+    </plurals>
+    <plurals name="chat_assist_child_account_notice">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Morate imati najmanje %d godinu da biste koristili funkcije napredne inteligencije usluge Galaxy AI.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Morate imati najmanje %d godine da biste koristili funkcije napredne inteligencije usluge Galaxy AI.</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Morate imati najmanje %d godina da biste koristili funkcije napredne inteligencije usluge Galaxy AI.</item>
+    </plurals>
+    <plurals name="clipboard_delete_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Želite li da izbrišete %d stavku?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Želite li da izbrišete %d stavke?</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Želite li da izbrišete %d stavki?</item>
+    </plurals>
+    <plurals name="clipboard_delete_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Želite li da obrišete %d zakačenu stavku?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Želite li da obrišete %d zakačene stavke?</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Želite li da obrišete %d zakačenih stavki?</item>
+    </plurals>
+    <plurals name="clipboard_include_pinned_items">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Uvrsti %d zakačenu stavku</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Uvrsti %d zakačene stavke</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Uvrsti %d zakačenih stavki</item>
+    </plurals>
+    <plurals name="grammarly_corrections_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Pregled %d predloga za pisanje</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Pregled %d predloga za pisanje</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Pregled %d predloga za pisanje</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d ново обавештење</item>
+        <item quantity="few">%d нова обавештења</item>
+        <item quantity="other">%d нових обавештења</item>
+    </plurals>
+    <plurals name="object_capture_toast_could_not_add_more_than_n_stickers">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Možete da dodate najviše %d nalepnicu. Idite u uređivač fotografija u Galeriji da biste uklonili nalepnice.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Možete da dodate najviše %d nalepnice. Idite u uređivač fotografija u Galeriji da biste uklonili nalepnice.</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Možete da dodate najviše %d nalepnica. Idite u uređivač fotografija u Galeriji da biste uklonili nalepnice.</item>
+    </plurals>
+    <plurals name="plurals_count_show_colors">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Možete da prikažete najviše %d boju.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Možete da prikažete najviše %d boje.</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Možete da prikažete najviše %d boja.</item>
+    </plurals>
+    <plurals name="plurals_settings_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Izabrano: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Izabrano: %d</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Izabrano: %d</item>
+    </plurals>
+    <plurals name="plurals_text_shortcut_delete_confirmation_popup_title">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Želite li da izbrišete %d prečicu za tekst?</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Želite li da izbrišete %d prečice za tekst?</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Želite li da izbrišete %d prečica za tekstov?</item>
+    </plurals>
+    <plurals name="plurals_updated_languages_size">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Ažuriraće se %d jezik.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Ažuriraće se %d jezika.</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Ažuriraće se %d jezika.</item>
+    </plurals>
+    <plurals name="sticker_setting_plurals_selected">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Izabrano: %d</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Izabrano: %d</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Izabrano: %d</item>
+    </plurals>
+    <plurals name="writing_toolkit_noti_selected_text_length">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">Izabrali ste %d znak.</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">Izabrali ste %d znaka.</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">Izabrali ste %d znakova.</item>
+    </plurals>
+    <plurals name="writing_toolkit_spell_and_grammar_count">
+        <item quantity="zero">N/A</item>
+        <item quantity="one">%d ispravka</item>
+        <item quantity="two">N/A</item>
+        <item quantity="few">%d ispravke</item>
+        <item quantity="many">N/A</item>
+        <item quantity="other">%d ispravki</item>
+    </plurals>
+</resources>

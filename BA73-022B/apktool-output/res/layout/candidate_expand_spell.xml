@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.textboard.candidate.view.CandidateExpandSpellView android:orientation="horizontal" android:id="@id/candidate_expand_spell_view" android:tag="layout/candidate_expand_spell_0" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/english_filter_button" android:tag="binding_1" android:clickable="true" android:layout_width="wrap_content" android:layout_height="match_parent" android:scaleType="fitCenter" android:contentDescription="@string/accessibility_description_lang_candidate_left_btn" />
+    <HorizontalScrollView android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/spell_scroll_view" android:tag="binding_2" android:scrollbars="none" android:layout_width="wrap_content" android:layout_height="match_parent">
+        <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/spell_container" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </HorizontalScrollView>
+    <ImageButton android:id="@id/single_multi_filter_button" android:tag="binding_3" android:clickable="true" android:layout_width="wrap_content" android:layout_height="match_parent" android:scaleType="fitCenter" android:contentDescription="@string/accessibility_description_lang_candidate_right_btn" />
+</com.samsung.android.honeyboard.textboard.candidate.view.CandidateExpandSpellView>

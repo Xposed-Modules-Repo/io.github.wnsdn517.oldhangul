@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/sticker_creator_layout_padding_top"
+    android:paddingBottom="@dimen/sticker_creator_layout_padding_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:soundEffectsEnabled="false">
+    <Button
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:id="@+id/about_creator_link_button"
+        android:layout_width="wrap_content"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_common_info_detail_solid"
+        android:drawableTint="?attr/common_content_msg_text_color_attr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/RaisedButton"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

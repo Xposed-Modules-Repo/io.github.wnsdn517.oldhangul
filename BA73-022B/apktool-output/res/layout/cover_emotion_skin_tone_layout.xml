@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:background="@color/cover_emoticon_background_color" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:id="@id/cover_emoticon_skin_tone_appbar_layout" android:layout_width="match_parent" android:layout_height="@dimen/cover_emoticon_toolbar_height" app:expanded="true" app:seslHeightProportion="0.0" app:seslUseCustomHeight="true" app:seslUseCustomPadding="true" app:seslUseFloatingToolbar="false">
+        <LinearLayout android:orientation="horizontal" android:background="@color/cover_emoticon_background_color" android:layout_width="match_parent" android:layout_height="@dimen/cover_emoticon_toolbar_height" app:layout_scrollFlags="scroll|enterAlways">
+            <androidx.appcompat.widget.AppCompatImageView android:id="@id/cover_emoticon_skin_tone_back_button" style="@style/CoverEmoticonBackButtonStyle" />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cover_emoticon_skin_tone_recycler_view" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

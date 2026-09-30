@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="72.0dp" android:paddingBottom="@dimen/language_list_preference_padding_bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/list_left_margin" android:paddingEnd="@dimen/list_right_margin"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="#d32f2f" android:id="@id/input_test_export_name_warning_text" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" android:text="@string/settings_input_test_export_name_required" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/input_test_elapsed_time_text" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/input_test_average_time_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12.0dp" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp">
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/input_test_prompt_set_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/settings_input_test_prompt_set_label" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp">
+            <androidx.appcompat.widget.AppCompatSpinner android:id="@id/input_test_prompt_set_spinner" android:layout_width="0.0dp" android:layout_height="wrap_content" android:minWidth="140.0dp" android:layout_weight="1.0" android:spinnerMode="dropdown" />
+            <androidx.appcompat.widget.AppCompatButton android:id="@id/input_test_prompt_set_open_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="0.0dp" android:text="@string/settings_input_test_prompt_set_open_button" android:layout_marginStart="8.0dp" />
+            <androidx.appcompat.widget.AppCompatButton android:id="@id/input_test_prompt_set_start_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="0.0dp" android:text="@string/settings_input_test_start_button" android:layout_marginStart="8.0dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceListItem" android:textStyle="bold" android:ellipsize="end" android:id="@id/input_test_editor_title" android:layout_width="0.0dp" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" />
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/input_test_progress_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12.0dp" />
+        </LinearLayout>
+        <LinearLayout android:gravity="end" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp">
+            <androidx.appcompat.widget.AppCompatButton android:id="@id/input_test_clear_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="0.0dp" android:text="@string/clear_m" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/input_test_prompt_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:paddingStart="16.0dp" />
+    <com.samsung.android.honeyboard.settings.smarttyping.inputtest.InputTestLockedEditText android:gravity="start|center" android:id="@id/input_test_editor" android:background="?android:editTextBackground" android:paddingTop="12.0dp" android:paddingBottom="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:minHeight="48.0dp" android:cursorVisible="true" android:maxLines="1" android:singleLine="true" android:inputType="textCapSentences" android:privateImeOptions="disableManualSuggestionPick=true;disableAutoReplacement=true;inputType=qwerty_edittext;disableLearning=true;disableDeleteAccelerator=true;disableAutoPeriod=true;disableSpellCheck=true;disableLongPress=true;disableSwipeInput=true" android:imeOptions="actionDone" android:textIsSelectable="false" android:paddingStart="16.0dp" android:paddingEnd="16.0dp" android:importantForAutofill="no" />
+</LinearLayout>

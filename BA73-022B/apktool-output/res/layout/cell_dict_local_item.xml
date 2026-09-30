@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/frame" android:background="?android:selectableItemBackground" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="?android:listPreferredItemHeight" android:paddingStart="?listPreferredItemPaddingStart" android:paddingEnd="?listPreferredItemPaddingEnd"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/del_checkBox" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/text_shortcuts_list_item_checkbox_margin_end" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/title_group" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" android:layout_marginBottom="6.0dp" android:layout_marginEnd="6.0dp" android:layout_toStartOf="@id/enabled" android:layout_toEndOf="@id/del_checkBox">
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?android:textColorPrimary" android:ellipsize="end" android:id="@id/cell_dbName" android:fadingEdge="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="1" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="?android:textColorSecondary" android:ellipsize="end" android:id="@id/cell_dbKeyWords" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="1" />
+    </LinearLayout>
+    <Switch android:id="@id/enabled" android:focusable="false" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginTop="6.0dp" android:layout_marginBottom="6.0dp" android:layout_centerVertical="true" android:layout_marginStart="6.0dp" android:layout_alignParentEnd="true" />
+</RelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/gif_background_rounding_transparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/gif_content_item_padding"
+    android:soundEffectsEnabled="false"
+    android:contentDescription="@string/gif_item_content_description">
+    <ImageView
+        android:id="@+id/gif_content_item"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"/>
+    <ImageView
+        android:id="@+id/gif_content_item_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"/>
+    <RelativeLayout
+        android:id="@+id/gif_content_signature"
+        android:background="@drawable/gif_logo_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gif_content_item">
+        <ImageView
+            android:id="@+id/gif_content_cp_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/gif_content_cp_logo_right_padding"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+</RelativeLayout>

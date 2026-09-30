@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:id="@+id/layout"
+    android:tag="layout/suggested_replies_layout_0"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/suggested_replies_layout_margin_bottom"
+    android:layout_marginEnd="@dimen/suggested_replies_information_button_margin_horizontal">
+    <com.samsung.android.honeyboard.icecone.suggestedreplies.view.SuggestedRepliesCustomScrollView
+        android:orientation="horizontal"
+        android:id="@+id/suggested_replies_nested_scroll"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/suggested_replies_scroll_layout_margin_horizontal"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/suggested_replies_result_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/suggested_replies_layout_margin_horizontal"/>
+    </com.samsung.android.honeyboard.icecone.suggestedreplies.view.SuggestedRepliesCustomScrollView>
+    <ImageButton
+        android:gravity="center"
+        android:id="@+id/suggested_replies_information"
+        android:background="@drawable/ai_default_container"
+        android:padding="@dimen/suggested_replies_information_button_padding"
+        android:layout_width="@dimen/intelligent_info_icon_size"
+        android:layout_height="match_parent"
+        android:src="@drawable/writing_assist_info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

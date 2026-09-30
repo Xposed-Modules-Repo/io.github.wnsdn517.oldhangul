@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/settings_voice_input_offline_language_pack">
+    <PreferenceCategory android:key="SETTINGS_CATEGORY_OFFLINE_VOICE_INPUT">
+        <Preference
+            android:title="@string/settings_voice_input_install_offline_language_pack"
+            android:key="SETTINGS_INSTALL_OFFLINE_LANGUAGE_PACK"/>
+    </PreferenceCategory>
+</PreferenceScreen>

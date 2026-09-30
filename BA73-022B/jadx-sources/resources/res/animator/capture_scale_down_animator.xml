@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@animator/_capture_scale_down_animator__0_res_0x7f02000a"
+    android:duration="200"
+    android:valueType="floatType"
+    android:propertyName="scaleX"/>

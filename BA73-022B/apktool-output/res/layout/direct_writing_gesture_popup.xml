@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/direct_writing_spen_ic_dw_help_dialog_bg" android:paddingBottom="@dimen/setting_direct_writing_gesture_popup_padding_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/setting_direct_writing_gesture_popup_width" android:paddingStart="@dimen/setting_direct_writing_gesture_popup_padding_start">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/setting_direct_writing_gesture_popup_title_text_size" android:textColor="@color/direct_writing_gesture_popup_title_text" android:paddingTop="@dimen/setting_direct_writing_gesture_popup_title_padding_top" android:paddingBottom="@dimen/setting_direct_writing_gesture_popup_title_padding_bottom" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/settings_direct_writing_gesture_popup_title" android:layout_weight="0.85" />
+        <LinearLayout android:gravity="center" android:layout_width="0.0dp" android:layout_height="@dimen/setting_direct_writing_gesture_popup_close_button_container_height_width" android:layout_weight="0.15">
+            <androidx.appcompat.widget.AppCompatImageButton android:id="@id/close_button" android:background="@drawable/direct_writing_spen_ic_dw_help_dialog_close" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/settings_direct_writing_gesture_popup_close" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/direct_writing_spen_ic_dw_help_dialog" android:paddingStart="@dimen/setting_direct_writing_gesture_popup_padding_start" android:paddingEnd="@dimen/setting_direct_writing_gesture_popup_padding_end" />
+</LinearLayout>

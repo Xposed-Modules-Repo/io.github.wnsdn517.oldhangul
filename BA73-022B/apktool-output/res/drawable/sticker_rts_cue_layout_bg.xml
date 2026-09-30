@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/sticker_rts_cue_layout_bg_radius" />
+    <solid android:color="@color/sticker_rts_cue_bg_color" />
+    <size android:height="@dimen/sticker_rts_cue_layout_bg_size" android:width="@dimen/sticker_rts_cue_layout_bg_size" />
+    <stroke android:width="@dimen/sticker_rts_result_bg_stroke_size" android:color="@color/sticker_rts_cue_bg_stroke_color" />
+</shape>

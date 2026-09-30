@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="domain_popup_string_values">
+        <item>.gov</item>
+        <item>.edu</item>
+        <item>.org</item>
+        <item>.net</item>
+        <item>.go.cz</item>
+        <item>.or.cz</item>
+        <item>.co.cz</item>
+        <item>.cz</item>
+    </string-array>
+</resources>

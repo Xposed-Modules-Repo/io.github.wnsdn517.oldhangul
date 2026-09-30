@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:theme="@style/RecyclerViewTheme" android:orientation="vertical" android:id="@id/bitmoji_content_page" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/sticker_friendmoji_tag_recycler_view" />
+    <include layout="@layout/common_loading_layout_merged" />
+</FrameLayout>

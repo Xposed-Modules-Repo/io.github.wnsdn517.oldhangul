@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.AppCompat" parent="@style/Base.V35.Theme.AppCompat">
+    </style>
+    <style name="Base.Theme.AppCompat.Dialog" parent="@style/Base.V35.Theme.AppCompat.Dialog">
+    </style>
+    <style name="Base.Theme.AppCompat.Light" parent="@style/Base.V35.Theme.AppCompat.Light">
+    </style>
+    <style name="Base.Theme.AppCompat.Light.Dialog" parent="@style/Base.V35.Theme.AppCompat.Light.Dialog">
+    </style>
+    <style name="Base.ThemeOverlay.AppCompat.Dialog" parent="@style/Base.V35.ThemeOverlay.AppCompat.Dialog">
+    </style>
+    <style name="Base.ThemeOverlay.AppCompat.Light.Dialog" parent="@style/Base.V35.ThemeOverlay.AppCompat.Light.Dialog">
+    </style>
+    <style name="Base.V35.Theme.AppCompat" parent="@style/Base.V29.Theme.AppCompat">
+        <item name="android:scrollbarThumbVertical">@drawable/sesl_scroll_thumb_dark</item>
+    </style>
+    <style name="Base.V35.Theme.AppCompat.Dialog" parent="@style/Base.V21.Theme.AppCompat.Dialog">
+        <item name="android:scrollbarThumbVertical">@drawable/sesl_dialog_scroll_thumb_dark</item>
+    </style>
+    <style name="Base.V35.Theme.AppCompat.Light" parent="@style/Base.V29.Theme.AppCompat.Light">
+        <item name="android:scrollbarThumbVertical">@drawable/sesl_scroll_thumb</item>
+    </style>
+    <style name="Base.V35.Theme.AppCompat.Light.Dialog" parent="@style/Base.V21.Theme.AppCompat.Light.Dialog">
+        <item name="android:scrollbarThumbVertical">@drawable/sesl_dialog_scroll_thumb</item>
+    </style>
+    <style name="Base.V35.ThemeOverlay.AppCompat.Dialog" parent="@style/Base.V21.ThemeOverlay.AppCompat.Dialog">
+        <item name="android:scrollbarThumbVertical">@drawable/sesl_dialog_scroll_thumb_dark</item>
+    </style>
+    <style name="Base.V35.ThemeOverlay.AppCompat.Light.Dialog" parent="@style/Base.V7.ThemeOverlay.AppCompat.Light.Dialog">
+        <item name="android:scrollbarThumbVertical">@drawable/sesl_dialog_scroll_thumb</item>
+    </style>
+    <style name="DialogActionButtonTextStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/component_common</item>
+        <item name="android:ellipsize">3</item>
+        <item name="android:gravity">0x11</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:stateListAnimator">@animator/spen_recoil_button_selector</item>
+    </style>
+    <style name="SettingImageButtonStyle" parent="@android:style/Widget.ImageButton">
+        <item name="android:background">@drawable/spen_brush_btn_ripple_effect</item>
+        <item name="android:stateListAnimator">@animator/spen_recoil_button_selector</item>
+    </style>
+</resources>

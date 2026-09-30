@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:left="3dp"
+        android:top="11dp"
+        android:right="3dp"
+        android:bottom="11dp">
+        <vector
+            android:height="2dp"
+            android:width="18dp"
+            android:viewportWidth="18"
+            android:viewportHeight="2">
+            <path
+                android:fillColor="#00000000"
+                android:pathData="M1,1H17"
+                android:strokeColor="@color/setting_qt_dialer_dot_color"
+                android:strokeWidth="1.5"
+                android:strokeLineCap="round"/>
+        </vector>
+    </item>
+</layer-list>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/lo_switcher_top_padding_for_elevation" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/lo_switcher_horizontal_padding_for_elevation">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/loswitcher_default_layout" android:background="@drawable/loswitcher_activity_bg" android:clickable="true" android:layout_width="match_parent" android:layout_height="@dimen/lo_switcher_layout_height" android:elevation="@dimen/lo_switcher_image_elevation" android:stateListAnimator="?seslSmallTouchAnimator" android:paddingVertical="@dimen/lo_switcher_image_padding_vertical">
+            <ImageView android:id="@id/suw_default_img" android:background="@drawable/suw_kbd_general" android:adjustViewBounds="true" style="@style/lo_swticher_image_view_style" />
+            <TextView android:textColor="@color/lo_switcher_text_color" android:layout_marginTop="@dimen/lo_switcher_text_top_margin" android:text="@string/lo_switcher_default_description" style="@style/lo_swticher_text_view_style" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/loswitcher_simple_layout" android:background="@drawable/loswitcher_activity_bg" android:clickable="true" android:layout_width="match_parent" android:layout_height="@dimen/lo_switcher_layout_height" android:layout_marginTop="@dimen/lo_switcher_margin_between_images" android:layout_marginBottom="@dimen/lo_switcher_margin_bottom_image" android:elevation="@dimen/lo_switcher_image_elevation" android:stateListAnimator="?seslSmallTouchAnimator" android:paddingVertical="@dimen/lo_switcher_image_padding_vertical">
+            <ImageView android:id="@id/suw_simple_img" android:background="@drawable/suw_kbd_simple" android:adjustViewBounds="true" style="@style/lo_swticher_image_view_style" />
+            <TextView android:textColor="@color/lo_switcher_text_color" android:layout_marginTop="@dimen/lo_switcher_text_top_margin" android:text="@string/lo_switcher_simple_description" style="@style/lo_swticher_text_view_style" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

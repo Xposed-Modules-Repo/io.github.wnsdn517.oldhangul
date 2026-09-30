@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:height="@dimen/expand_candidate_divider_size" android:width="@dimen/expand_candidate_divider_size" />
+    <solid android:color="?candidate_expand_divider_color" />
+</shape>

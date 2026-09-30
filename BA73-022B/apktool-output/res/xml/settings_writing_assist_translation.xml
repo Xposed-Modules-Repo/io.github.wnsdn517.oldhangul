@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/settings_writing_assist_translation"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.aiwriter.translation.WritingAssistTranslationCustomViewPreference android:persistent="true" android:key="SETTINGS_WRITING_ASSIST_TRANSLATION_DESCRIPTION" />
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:key="SETTINGS_TRANSLATION_MODE" app:entryValues="@array/array_translation_mode_value" app:hideCategoryTitle="true" app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/settings_writing_assist_translation_samsung" android:key="SETTINGS_TRANSLATION_SAMSUNG_MODE" android:summary="@string/settings_writing_assist_translation_samsung_description" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:key="SETTINGS_TRANSLATION_GOOGLE_MODE" android:summary="@string/settings_writing_assist_translation_google_description" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+    <PreferenceCategory>
+        <com.samsung.android.honeyboard.settings.aiwriter.preference.LanguageSummaryPreference android:title="@string/settings_writing_assist_translation_language_packs" android:key="SETTINGS_WRITING_ASSIST_TRANSLATION_LANGUAGE_PACKS" />
+    </PreferenceCategory>
+</PreferenceScreen>

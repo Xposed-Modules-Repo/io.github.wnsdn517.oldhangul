@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/textinput_ic_search_button"
+        android:id="@+id/search"
+        android:title="@string/search"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/delete"
+        android:title="@string/xt9_words_list_delete"/>
+    <item
+        android:icon="@drawable/settings_header_icon_refresh"
+        android:id="@+id/check_for_update"
+        android:title="@string/check_for_updates"/>
+</menu>

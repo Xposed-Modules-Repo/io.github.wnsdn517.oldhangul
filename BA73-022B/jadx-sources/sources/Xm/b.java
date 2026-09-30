@@ -1,0 +1,56 @@
+package Xm;
+
+import java.util.ArrayList;
+
+/* JADX INFO: loaded from: classes3.dex */
+public abstract class b {
+
+    /* JADX INFO: renamed from: a, reason: collision with root package name */
+    public static final ArrayList f12950a;
+
+    static {
+        ArrayList arrayList = new ArrayList();
+        f12950a = arrayList;
+        A2.a.t(arrayList, "🐵", "🐒", "🦍", "🦧");
+        A2.a.t(arrayList, "🐶", "🐕", "🦮", "🐕\u200d🦺");
+        A2.a.t(arrayList, "🐩", "🐺", "🦊", "🦝");
+        A2.a.t(arrayList, "🐱", "🐈", "🐈\u200d⬛", "🦁");
+        A2.a.t(arrayList, "🐯", "🐅", "🐆", "🐴");
+        A2.a.t(arrayList, "🫎", "🫏", "🐎", "🦄");
+        A2.a.t(arrayList, "🦓", "🦌", "🦬", "🐮");
+        A2.a.t(arrayList, "🐂", "🐃", "🐄", "🐷");
+        A2.a.t(arrayList, "🐖", "🐗", "🐽", "🐏");
+        A2.a.t(arrayList, "🐑", "🐐", "🐪", "🐫");
+        A2.a.t(arrayList, "🦙", "🦒", "🐘", "🦣");
+        A2.a.t(arrayList, "🦏", "🦛", "🐭", "🐁");
+        A2.a.t(arrayList, "🐀", "🐹", "🐰", "🐇");
+        A2.a.t(arrayList, "🐿", "🦫", "🦔", "🦇");
+        A2.a.t(arrayList, "🐻", "🐨", "🐻\u200d❄️", "🐼");
+        A2.a.t(arrayList, "🦥", "🦦", "🦨", "🦘");
+        A2.a.t(arrayList, "🦡", "🐾", "🦃", "🐔");
+        A2.a.t(arrayList, "🐓", "🐣", "🐤", "🐥");
+        A2.a.t(arrayList, "🐦", "🐧", "🕊", "🦅");
+        A2.a.t(arrayList, "🦆", "🦢", "🦉", "🦤");
+        A2.a.t(arrayList, "🪶", "🦩", "🦚", "🦜");
+        A2.a.t(arrayList, "🪽", "🐦\u200d⬛", "🪿", "🐦\u200d🔥");
+        A2.a.t(arrayList, "🐸", "🐊", "🐢", "🦎");
+        A2.a.t(arrayList, "🐍", "🐲", "🐉", "🦕");
+        A2.a.t(arrayList, "🦖", "🐳", "🐋", "🐬");
+        A2.a.t(arrayList, "🦭", "🐟", "🐠", "🐡");
+        A2.a.t(arrayList, "🦈", "🐙", "🦀", "🦞");
+        A2.a.t(arrayList, "🦐", "🦑", "🐚", "🪸");
+        A2.a.t(arrayList, "🪼", "\u1facd", "🐌", "🦋");
+        A2.a.t(arrayList, "🐛", "🐜", "🐝", "🪲");
+        A2.a.t(arrayList, "🐞", "🦗", "🕷", "🪳");
+        A2.a.t(arrayList, "🕸", "🦂", "🦟", "🪰");
+        A2.a.t(arrayList, "🪱", "🦠", "💐", "🌸");
+        A2.a.t(arrayList, "💮", "🪷", "🏵", "🌹");
+        A2.a.t(arrayList, "🥀", "🌺", "🌻", "🌼");
+        A2.a.t(arrayList, "🌷", "🪻", "🌱", "🪴");
+        A2.a.t(arrayList, "🌲", "🌳", "🌴", "🌵");
+        A2.a.t(arrayList, "🌾", "🌿", "☘️", "🍀");
+        A2.a.t(arrayList, "🍁", "🍂", "🍃", "🪹");
+        arrayList.add("🪺");
+        arrayList.add("\u1fabe");
+    }
+}

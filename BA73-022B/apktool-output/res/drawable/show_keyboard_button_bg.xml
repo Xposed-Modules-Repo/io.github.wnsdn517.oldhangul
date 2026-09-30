@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/button_show_ime_bg">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/basic_interaction_contained_button_radius" />
+            <solid android:color="@color/background_button_background_tint_color" />
+        </shape>
+    </item>
+</selector>

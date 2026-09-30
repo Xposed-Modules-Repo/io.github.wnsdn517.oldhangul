@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/common_content_msg_desc_text_size" android:textColor="?common_content_msg_text_color_attr" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/no_search_result" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/no_results" android:paddingHorizontal="@dimen/common_content_msg_layout_horizontal_padding" />
+</merge>

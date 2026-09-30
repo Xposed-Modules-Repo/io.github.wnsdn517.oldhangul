@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/setting_common_popup_width_v60"
+    android:layout_height="@dimen/setting_pen_layout_popup_variable_height">
+    <com.samsung.android.sdk.pen.setting.pencommon.SpenPenPreviewV2
+        android:gravity="center_vertical"
+        android:id="@+id/fixed_width_view"
+        android:background="@drawable/setting_pen_width_item_background"
+        android:layout_width="118dp"
+        android:layout_height="32dp"
+        android:foreground="@drawable/setting_pen_width_item_foreground"
+        android:contentDescription="@string/pen_string_fixed_thickness"
+        android:paddingStart="19dp"
+        android:paddingEnd="19dp"
+        android:layout_marginStart="26dp"
+        app:enlargedValue="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:previewType="straight"/>
+    <com.samsung.android.sdk.pen.setting.pencommon.SpenPenPreviewV2
+        android:gravity="center_vertical"
+        android:id="@+id/variable_width_view"
+        android:background="@drawable/setting_pen_width_item_background"
+        android:layout_width="118dp"
+        android:layout_height="32dp"
+        android:foreground="@drawable/setting_pen_width_item_foreground"
+        android:contentDescription="@string/pen_string_variable_thickness"
+        android:paddingStart="19dp"
+        android:paddingEnd="19dp"
+        android:layout_marginEnd="24dp"
+        app:enlargedValue="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:previewType="straight"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

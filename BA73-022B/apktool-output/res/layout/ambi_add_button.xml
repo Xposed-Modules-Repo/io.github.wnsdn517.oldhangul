@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" android:contentDescription="@string/ambi_create_stickers"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center" android:background="@drawable/common_add_button_background" android:layout_width="match_parent" android:layout_height="match_parent" android:maxWidth="@dimen/ai_expression_create_button_max_size" android:maxHeight="@dimen/ai_expression_create_button_max_size">
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/ambi_add_item_icon" android:layout_width="0.0dp" android:layout_height="0.0dp" android:src="@drawable/ic_common_add_button" android:tint="?common_add_button_icon_color_attr" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHeight_percent="@dimen/ai_expression_create_button_icon_size" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintWidth_percent="@dimen/ai_expression_create_button_icon_size" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

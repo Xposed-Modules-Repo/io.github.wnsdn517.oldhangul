@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="rectangle">
+        <stroke android:width="@dimen/ai_expression_style_view_selected_item_high_contrast_stroke_size" android:color="@color/ai_expression_style_item_selected_high_contrast_stroke_color" />
+        <size android:height="@dimen/ai_sticker_style_view_item_height_with_selected_outline" android:width="@dimen/ai_sticker_style_view_item_width_with_selected_outline" />
+        <corners android:radius="@dimen/ai_expression_style_view_selected_item_inner_radius" />
+    </shape>
+</inset>

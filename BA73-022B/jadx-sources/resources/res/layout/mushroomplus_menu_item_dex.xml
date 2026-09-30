@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/mushroomplus_list_left_margin"
+    android:paddingEnd="@dimen/mushroomplus_list_right_margin">
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/mushroom_item_icon"
+        android:layout_width="@dimen/app_icon_size"
+        android:layout_height="@dimen/app_icon_size"/>
+    <TextView
+        android:textSize="@dimen/mushroomplus_list_text_size"
+        android:textColor="@color/mushroomplus_title_text_color"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/mushroom_item_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:paddingStart="@dimen/mushroomplus_list_left_margin"
+        android:paddingEnd="@dimen/mushroomplus_list_right_margin"/>
+</LinearLayout>

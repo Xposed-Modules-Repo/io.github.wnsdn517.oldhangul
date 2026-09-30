@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button android:id="@id/migrate_reset" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dp" android:text="Reset" app:layout_constraintTop_toTopOf="parent" />
+    <Button android:id="@id/migrate_read_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dp" android:text="Read status" app:layout_constraintTop_toBottomOf="@id/migrate_reset" />
+    <Button android:id="@id/migrate_request_property" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dp" android:text="Request Property" app:layout_constraintTop_toBottomOf="@id/migrate_read_status" />
+    <Button android:id="@id/migrate_request_text_shortcut" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dp" android:text="Request TextShortcut" app:layout_constraintTop_toBottomOf="@id/migrate_request_property" />
+    <Button android:id="@id/migrate_request_lm_migrate" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dp" android:text="Request TextShortcut" app:layout_constraintTop_toBottomOf="@id/migrate_request_text_shortcut" />
+</androidx.constraintlayout.widget.ConstraintLayout>

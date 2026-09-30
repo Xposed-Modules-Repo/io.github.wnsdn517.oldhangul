@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/touch_and_hold_delay_title"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="true" android:key="settings_touch_and_hold_space_bar" app:entryValues="@array/array_touch_and_hold_space_type_entry_value" app:hideCategoryTitle="true">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/touch_and_hold_space_no_action" android:key="settings_touch_and_hold_space_no_action" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/touch_and_hold_space_cursor_control" android:key="settings_touch_and_hold_space_cursor_control" android:summary="@string/touch_and_hold_space_cursor_control_summary" />
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference android:persistent="false" android:title="@string/touch_and_hold_space_voice_input" android:key="settings_touch_and_hold_space_voice_input" android:summary="@string/touch_and_hold_space_voice_input_summary" />
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

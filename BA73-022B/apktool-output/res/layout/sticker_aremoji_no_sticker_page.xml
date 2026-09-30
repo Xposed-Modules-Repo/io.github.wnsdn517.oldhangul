@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/no_sticker_page" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingHorizontal="@dimen/common_content_msg_layout_horizontal_padding"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/content_msg_title" android:text="@string/sticker_aremoji_no_sticker_title" android:layout_marginStart="@dimen/common_ftu_page_width_margin" android:layout_marginEnd="@dimen/common_ftu_page_width_margin" style="@style/ContentTitleStubText" />
+    <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <TextView android:gravity="center" android:id="@id/content_msg_text" android:text="@string/sticker_aremoji_no_sticker_body" android:layout_marginStart="@dimen/common_ftu_page_width_margin" android:layout_marginEnd="@dimen/common_ftu_page_width_margin" style="@style/ContentMessageText" />
+    <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <Button android:gravity="center" android:id="@id/create_stickers_button" android:text="@string/sticker_aremoji_no_sticker_button" style="@style/RaisedButtonMarginTop" />
+    <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

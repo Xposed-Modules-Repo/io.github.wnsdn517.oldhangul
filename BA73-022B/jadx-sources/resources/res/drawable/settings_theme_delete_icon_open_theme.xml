@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/delete_icon"
+        android:drawable="@drawable/ic_delete_font_size_button"/>
+</layer-list>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="30.0dp" android:width="50.0dp" android:viewportWidth="50.0" android:viewportHeight="30.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:name="s1" android:pivotX="0.0" android:pivotY="0.0" android:scaleX="1.0" android:scaleY="1.0" android:rotation="0.0" android:translateX="844.375" android:translateY="-435.875" layer_name="check">
+        <group android:name="s1pg1" android:pivotX="0.0" android:pivotY="0.0" android:scaleX="1.0" android:scaleY="1.0" android:rotation="0.0" android:translateX="0.0" android:translateY="0.0" layer_name="Shape 1">
+            <path android:name="s1pg1p10" android:pathData="M -841.125 446 C -841.125 446 -823 463.25 -823 463.25 C -823 463.25 -797.625 438.5 -797.625 438.5 " android:strokeColor="#02bb8f" android:strokeWidth="3.0" android:trimPathStart="0.0" android:trimPathEnd="0.0" android:trimPathOffset="0.0" android:strokeLineCap="round" android:strokeLineJoin="round" android:strokeMiterLimit="4.0" android:strokeAlpha="1.0" layer_name="Path 1" />
+        </group>
+    </group>
+</vector>

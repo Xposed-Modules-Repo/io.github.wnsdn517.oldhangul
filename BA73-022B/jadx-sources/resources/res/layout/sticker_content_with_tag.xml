@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/RecyclerViewTheme"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:background="?attr/common_content_background_color_attr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/sticker_app_bar"
+            app:expanded="true"
+            app:seslHeightProportion="0"
+            app:seslUseCustomHeight="true"
+            app:seslUseCustomPadding="true"
+            app:seslUseFloatingToolbar="false"
+            style="@style/StickerTagAppBar">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/sticker_tool_bar"
+                app:layout_scrollFlags="enterAlways|scroll"
+                style="@style/StickerTagCollapsingToolBar">
+                <include layout="@layout/sticker_tag_search"/>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/sticker_content_view_pager"
+            android:paddingTop="0dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="locale"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        <include
+            android:id="@+id/sticker_content_tag_error_layout"
+            layout="@layout/common_content_msg_btn_view_merged"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include layout="@layout/common_loading_layout_merged"/>
+</FrameLayout>

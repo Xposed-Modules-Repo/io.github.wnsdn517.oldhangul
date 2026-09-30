@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_mode_done">Concluído</string>
+    <string name="abc_capital_off">DESATIVADO</string>
+    <string name="abc_capital_on">ATIVADO</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">espaço</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="copy">Copiar</string>
+    <string name="expand_button_title">Avançado</string>
+    <string name="not_set">Não definido</string>
+    <string name="preference_copied">\"%1$s\" copiado para a área de transferência.</string>
+    <string name="sud_accessibility_button_label">Acessibilidade</string>
+    <string name="sud_back_button_label">Voltar</string>
+    <string name="sud_card_view_check_mark_icon_label">marcado</string>
+    <string name="sud_default_device_name">dispositivo</string>
+    <string name="sud_expressive_accessibility_more_button_label">Rolar para baixo</string>
+    <string name="sud_less_info">Menos informações</string>
+    <string name="sud_lottie_animation_view_accessibility_action_pause">pausar</string>
+    <string name="sud_lottie_animation_view_accessibility_action_resume">retomar</string>
+    <string name="sud_lottie_animation_view_accessibility_description">Animação</string>
+    <string name="sud_more_button_label">Mais</string>
+    <string name="sud_more_info">Mais informações</string>
+    <string name="sud_next_button_label">Avançar</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="v7_preference_off">DESATIVADO</string>
+    <string name="v7_preference_on">ATIVADO</string>
+</resources>

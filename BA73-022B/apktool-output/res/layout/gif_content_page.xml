@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:theme="@style/RecyclerViewTheme" android:id="@id/gif_content_page_layout" android:background="?common_content_background_color_attr" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/gif_recycler_view" android:scrollbars="none" android:clipToPadding="false" android:paddingHorizontal="@dimen/gif_content_layout_horizontal_padding" android:paddingVertical="@dimen/gif_content_layout_vertical_padding" style="@style/CommonRecyclerView" />
+    <TextView android:layout_gravity="center|top" android:id="@id/gif_no_recently_used_gif" android:visibility="gone" android:text="@string/no_recently_used_gif" android:paddingHorizontal="@dimen/common_content_msg_layout_horizontal_padding" style="@style/ContentMessageText" />
+    <include layout="@layout/common_no_search_results" />
+    <com.samsung.android.honeyboard.icecone.common.view.content.NetworkMsgPage android:id="@id/gif_no_network_layout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" />
+    <include layout="@layout/common_loading_layout_merged" />
+    <include layout="@layout/common_loading_layout_with_button" />
+</FrameLayout>

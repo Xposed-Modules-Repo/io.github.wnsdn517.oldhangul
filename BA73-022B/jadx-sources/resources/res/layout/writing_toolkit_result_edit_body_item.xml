@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/writing_toolkit_result_edit_body_container"
+    android:tag="layout/writing_toolkit_result_edit_body_item_0"
+    android:background="@drawable/writing_composer_text_container_bg"
+    android:focusable="true"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/writing_toolkit_result_edit_body_container_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:imeOptions="flagNoExtractUi"
+            app:layout_constraintBottom_toTopOf="@+id/writing_toolkit_result_edit_body_container_copy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginBottom="@dimen/writing_composer_result_text_margin_bottom"
+            style="@style/WritingComposerEditTextStyle"/>
+        <TextView
+            android:id="@+id/writing_toolkit_result_edit_body_container_copy"
+            android:text="@string/writing_toolkit_copy"
+            android:contentDescription="@string/writing_toolkit_copy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/writing_toolkit_result_edit_body_container_replace_or_share"
+            style="@style/WritingComposerResultItemTextButtonStyle"/>
+        <TextView
+            android:id="@+id/writing_toolkit_result_edit_body_container_replace_or_share"
+            android:tag="binding_1"
+            android:layout_marginEnd="@dimen/writing_composer_result_item_text_button_margin_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/WritingComposerResultItemTextButtonStyle"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

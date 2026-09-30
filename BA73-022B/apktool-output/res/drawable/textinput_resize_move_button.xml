@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple android:color="@color/raised_btn_ripple_color_dark"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/resize_move_button_background">
+        <shape android:shape="oval">
+            <solid android:color="#ffd9d9d9" />
+        </shape>
+    </item>
+</ripple>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:title="@string/touch_and_hold_delay_title">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup
+        android:persistent="false"
+        android:key="settings_touch_and_hold_delay"
+        app:entryValues="@array/array_touch_and_hold_delay_type_entry_value"
+        app:valueType="int">
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/touch_and_hold_delay_selector_title_short"
+            android:key="settings_touch_and_hold_delay_short"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/touch_and_hold_delay_selector_title_medium"
+            android:key="settings_touch_and_hold_delay_medium"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/touch_and_hold_delay_selector_title_long"
+            android:key="settings_touch_and_hold_delay_long"/>
+        <com.samsung.android.honeyboard.settings.common.RadioButtonPreference
+            android:persistent="false"
+            android:title="@string/touch_and_hold_delay_selector_title_custom"
+            android:key="settings_touch_and_hold_delay_custom"/>
+    </com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup>
+</PreferenceScreen>

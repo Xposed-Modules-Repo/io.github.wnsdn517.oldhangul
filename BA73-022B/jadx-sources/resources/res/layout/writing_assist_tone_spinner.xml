@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="@dimen/writing_assist_intelligent_writing_function_btn_text_size"
+    android:ellipsize="marquee"
+    android:id="@android:id/text1"
+    android:padding="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:singleLine="true"
+    android:textFontWeight="400"
+    style="?android:attr/spinnerDropDownItemStyle"/>

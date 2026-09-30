@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="50" android:drawable="@drawable/textinput_cn_spell_text_cloud_00" />
+    <item android:duration="50" android:drawable="@drawable/textinput_cn_spell_text_cloud_01" />
+    <item android:duration="50" android:drawable="@drawable/textinput_cn_spell_text_cloud_02" />
+    <item android:duration="50" android:drawable="@drawable/textinput_cn_spell_text_cloud_03" />
+    <item android:duration="50" android:drawable="@drawable/textinput_cn_spell_text_cloud_04" />
+</animation-list>

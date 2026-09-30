@@ -37,6 +37,18 @@ public final class Jamo {
                 SPELLING.put(e.getValue(), e.getKey());
             }
         }
+        // Unicode has several 치음/청치음 choseong characters whose names do
+        // not describe a keyboard spelling, so the generated table cannot
+        // infer them.  They are still valid standalone archaic initials and
+        // must be recapturable when the editor gives one back to us.
+        SPELLING.put('\u113C', "ㅅ"); // ᄼ
+        SPELLING.put('\u113D', "ㅆ"); // ᄽ
+        SPELLING.put('\u113E', "ㅅ"); // ᄾ
+        SPELLING.put('\u113F', "ㅆ"); // ᄿ
+        SPELLING.put('\u114E', "ㅈ"); // ᅎ
+        SPELLING.put('\u114F', "ㅉ"); // ᅏ
+        SPELLING.put('\u1150', "ㅈ"); // ᅐ
+        SPELLING.put('\u1151', "ㅉ"); // ᅑ
     }
 
     private static Map<String, Character> load(String keys, String values) {

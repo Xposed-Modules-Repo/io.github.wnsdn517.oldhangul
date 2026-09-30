@@ -1,0 +1,29 @@
+package com.google.android.gms.dynamic;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+/* JADX INFO: loaded from: classes2.dex */
+final class zac implements DeferredLifecycleHelper.zaa {
+    private final /* synthetic */ Activity val$activity;
+    private final /* synthetic */ DeferredLifecycleHelper zart;
+    private final /* synthetic */ Bundle zary;
+    private final /* synthetic */ Bundle zarz;
+
+    public zac(DeferredLifecycleHelper deferredLifecycleHelper, Activity activity, Bundle bundle, Bundle bundle2) {
+        this.zart = deferredLifecycleHelper;
+        this.val$activity = activity;
+        this.zarz = bundle;
+        this.zary = bundle2;
+    }
+
+    @Override // com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa
+    public final int getState() {
+        return 0;
+    }
+
+    @Override // com.google.android.gms.dynamic.DeferredLifecycleHelper.zaa
+    public final void zaa(LifecycleDelegate lifecycleDelegate) {
+        this.zart.zaru.onInflate(this.val$activity, this.zarz, this.zary);
+    }
+}

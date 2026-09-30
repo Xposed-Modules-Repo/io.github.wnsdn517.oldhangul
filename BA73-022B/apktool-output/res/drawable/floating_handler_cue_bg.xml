@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/floating_handler_cue_bg" android:bottom="@dimen/dex_floating_keypad_title_bar_frame_bottom_margin">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/floating_keyboard_handler_cue_color_light" />
+            <corners android:radius="3.0dp" />
+        </shape>
+    </item>
+</layer-list>

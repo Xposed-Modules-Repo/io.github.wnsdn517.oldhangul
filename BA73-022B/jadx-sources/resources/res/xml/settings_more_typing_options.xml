@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto" android:title="@string/setting_more_typing_options">
+    <androidx.preference.SwitchPreferenceCompat
+        android:persistent="true"
+        android:title="@string/use_auto_caps"
+        android:key="SETTINGS_DEFAULT_AUTO_CAPS"/>
+    <Preference
+        android:persistent="true"
+        android:title="@string/use_auto_spacing"
+        android:key="SETTINGS_DEFAULT_AUTO_SPACING"
+        android:defaultValue="true"/>
+    <androidx.preference.SwitchPreferenceCompat
+        android:persistent="true"
+        android:title="@string/use_auto_period"
+        android:key="SETTINGS_DEFAULT_AUTO_PERIOD"/>
+    <androidx.preference.SwitchPreferenceCompat
+        android:persistent="true"
+        android:title="@string/setting_multilingual_typing_main_text"
+        android:key="SETTINGS_MULTILINGUAL_TYPING"
+        android:summary="@string/setting_multilingual_typing_sub_text"
+        settings:keywords="@string/search_synonym_multilingual_typing"/>
+</PreferenceScreen>

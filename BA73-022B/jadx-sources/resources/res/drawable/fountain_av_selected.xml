@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/fountain_selected">
+    <target
+        android:name="morphing"
+        android:animation="@drawable/_fountain_av_selected__0_res_0x7f080029"/>
+</animated-vector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/background_color_dark" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/toast_dialog_area" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <TextView android:textSize="@dimen/cover_screen_text_size" android:textColor="@color/cover_screen_toast_dialog_text_color" android:gravity="center" android:id="@id/toast_dialog_text" android:layout_width="match_parent" android:layout_height="match_parent" android:fontFamily="sec-roboto-light" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

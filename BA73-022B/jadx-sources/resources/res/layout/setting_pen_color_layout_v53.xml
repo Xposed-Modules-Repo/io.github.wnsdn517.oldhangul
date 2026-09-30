@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.sdk.pen.setting.colorpalette.SpenPaletteView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pen_palette_view"
+    android:layout_width="@dimen/setting_common_popup_width_v53"
+    android:layout_height="134dp"
+    android:paddingStart="18dp"
+    android:paddingEnd="18dp"
+    app:childPadding="6dp"
+    app:childSize="40dp"
+    app:indicatorHeight="50dp"/>

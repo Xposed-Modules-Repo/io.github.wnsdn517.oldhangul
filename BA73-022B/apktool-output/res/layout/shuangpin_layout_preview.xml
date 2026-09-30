@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/shuangpin_layout_main" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/shuangpin_layout_main_image_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/shuangpin_top_margin" android:adjustViewBounds="true" android:layout_marginStart="@dimen/shuangpin_left_right_margin" android:layout_marginEnd="@dimen/shuangpin_left_right_margin" />
+    <TextView android:textColor="@color/basic_interaction_description_text_color" android:gravity="center_horizontal" android:id="@id/shuangpin_layout_main_text_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/shuangpin_top_margin_tv" android:layout_marginBottom="@dimen/shuangpin_bottom_margin_tv" />
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetTop="4dp"
+    android:insetBottom="4dp">
+    <androidx.appcompat.graphics.drawable.SeslRecoilDrawable xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:seslRecoilColor="@color/sesl_ripple_color_light"
+        app:seslRecoilMask="@drawable/sesl_bottom_navigation_ripple_mask_text_light"/>
+</inset>

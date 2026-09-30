@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector android:drawable="@drawable/$anim_from_more_no_badge__0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <target android:name="s6" android:animation="@drawable/$anim_from_more_no_badge__1" />
+    <target android:name="s6pg1p300" android:animation="@drawable/$anim_from_more_no_badge__4" />
+    <target android:name="s5pg1p10" android:animation="@drawable/$anim_from_more_no_badge__5" />
+    <target android:name="s4pg1p10" android:animation="@drawable/$anim_from_more_no_badge__7" />
+    <target android:name="s3" android:animation="@drawable/$anim_from_more_no_badge__9" />
+    <target android:name="s3pg1p10" android:animation="@drawable/$anim_from_more_no_badge__11" />
+    <target android:name="s2pg1p10" android:animation="@drawable/$anim_from_more_no_badge__12" />
+    <target android:name="s1" android:animation="@drawable/$anim_from_more_no_badge__13" />
+    <target android:name="s1pg1p10" android:animation="@drawable/$anim_from_more_no_badge__15" />
+</animated-vector>

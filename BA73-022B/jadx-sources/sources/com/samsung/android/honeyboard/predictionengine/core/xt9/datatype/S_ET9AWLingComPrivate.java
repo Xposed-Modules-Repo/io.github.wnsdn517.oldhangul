@@ -1,0 +1,56 @@
+package com.samsung.android.honeyboard.predictionengine.core.xt9.datatype;
+
+/* JADX INFO: loaded from: classes3.dex */
+public class S_ET9AWLingComPrivate {
+    public byte bContextWordSize;
+    public byte bDefaultIndex;
+    public byte bExactIndex;
+    public boolean bHasRealWord;
+    public byte bLastBuildLen;
+    public boolean bLastBuildShrinking;
+    public byte bListSize;
+    public byte bPreviousContextWordSize;
+    public byte bPrimaryFence;
+    public boolean bRequiredFound;
+    public byte bSecondaryFence;
+    public boolean bSpcDuringBuild;
+    public boolean bStemsAllowed;
+    public byte bTotalCompletionWords;
+    public byte bTotalExpTermPuncts;
+    public byte bTotalSpcWords;
+    public byte bTotalSymbInputs;
+    public byte bTotalWords;
+    public int dwDevStateBits;
+    public int dwStateBits;
+    public byte eCurrSelectionListMode;
+    public byte eSelectionListMode;
+    public byte[] pASDBGetEntry;
+    public S_ET9AWInfo.S_ET9AWPrivWordInfo pLastCompletionWord;
+    public S_ET9AWInfo.S_ET9AWPrivWordInfo pLastSpcWord;
+    public S_ET9AWInfo.S_ET9AWPrivWordInfo pLastWord;
+    public byte[] pUDBGetEntry;
+    public S_ET9AWInfo.S_ET9AWPrivWordInfo pWordList;
+    public short sExpEmbeddedPunct;
+    public int snLinSearchCount;
+    public short wCurrBuildLang;
+    public short wCurrBuildSecondLanguage;
+    public short wCurrLockPoint;
+    public short wInfoInitOK;
+    public short wLdbASGetEntryRec;
+    public short wMaxCompletionCount;
+    public short wMaxWordLength;
+    public short wPreviousWordLanguage;
+    public short wTotalWordInserts;
+    public short wWordCompletionPoint;
+    public short wWordStemsPoint;
+    public short[] sExpTermPuncts = new short[16];
+    public S_ET9ALdbInfo.S_ET9ALdb ALdb = new S_ET9ALdbInfo.S_ET9ALdb();
+    public S_ET9ALdbInfo.S_ET9ALDBAutoSub sLDBAutoSub = new S_ET9ALdbInfo.S_ET9ALDBAutoSub();
+    public byte[] bWordList = new byte[32];
+    public short[] sContextWord = new short[127];
+    public short[] sPreviousContextWord = new short[127];
+    public Xt9Datatype.S_ET9ASpc ASpc = new Xt9Datatype.S_ET9ASpc();
+    public S_ET9AWInfo.S_ET9AWBuildInfo sBuildInfo = new S_ET9AWInfo.S_ET9AWBuildInfo();
+    public S_ET9AWInfo.S_ET9AWPrivWordInfo LeftHandWord = new S_ET9AWInfo.S_ET9AWPrivWordInfo();
+    public byte[] bLangSupported = new byte[127];
+}

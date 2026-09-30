@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:tag="layout/expression_search_preview_item_0" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/search_preview_scrollview_horizontal_padding" android:paddingVertical="@dimen/search_card_view_vertical_padding">
+        <FrameLayout android:orientation="horizontal" android:paddingBottom="@dimen/search_card_view_inner_bottom_padding" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/search_card_view_text_view_horizontal_margin">
+            <TextView android:textSize="@dimen/search_preview_content_title_text_size" android:textColor="?search_preview_board_message_text_color" android:gravity="center_vertical" android:layout_gravity="start" android:id="@id/search_preview_item_label" android:layout_width="wrap_content" android:layout_height="match_parent" />
+            <TextView android:textSize="@dimen/search_preview_content_show_more_text_size" android:textColor="?search_preview_board_show_more_text_color" android:layout_gravity="end|center" android:id="@id/search_item_expand" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/search_more" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/search_preview_holder" android:background="@null" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

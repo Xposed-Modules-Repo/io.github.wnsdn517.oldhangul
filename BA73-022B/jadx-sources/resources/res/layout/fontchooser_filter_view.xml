@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="@dimen/font_filter_text_size"
+    android:textColor="@color/fontchooser_filter_text_color"
+    android:ellipsize="end"
+    android:id="@android:id/text1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:singleLine="true"
+    android:fontFamily="sec"
+    android:textAlignment="inherit"
+    android:paddingStart="@dimen/font_filter_padding_start"
+    android:paddingEnd="@dimen/font_filter_padding_end"
+    android:textFontWeight="400"
+    style="?android:attr/spinnerItemStyle"/>

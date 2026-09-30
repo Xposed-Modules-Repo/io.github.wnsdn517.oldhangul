@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ftu_layout" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/fixed_ftu_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+        <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <TextView android:id="@id/ftu_page_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/common_ftu_page_width_margin" android:layout_marginEnd="@dimen/common_ftu_page_width_margin" style="@style/ContentTitleStubText" />
+        <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <TextView android:gravity="center" android:id="@id/ftu_page_description" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/ftu_page_single_cp_description" android:layout_marginStart="@dimen/common_ftu_page_width_margin" android:layout_marginEnd="@dimen/common_ftu_page_width_margin" style="@style/ContentContentStubText" />
+        <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <Button android:gravity="center" android:id="@id/ftu_page_positive_btn" android:text="@string/string_continue" style="@style/RaisedButton" />
+        <Space android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

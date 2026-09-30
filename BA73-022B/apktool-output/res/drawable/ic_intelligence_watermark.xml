@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="7.0dp" android:width="7.0dp" android:viewportWidth="7.0" android:viewportHeight="7.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#ffffff" android:pathData="M0,0h7v7h-7z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillAlpha="0.0" android:fillType="evenOdd" />
+    <path android:fillColor="#fafaff" android:pathData="M3.6281,5.0225L1.8011,5.0225L1.4843,6L0.5,6L2.2258,1L3.2438,1L4.9697,6L3.9449,6L3.6281,5.0225ZM2.7112,2.2166L2.0843,4.1505L3.3449,4.1505L2.7112,2.2166ZM5.5292,1L6.5,1L6.5,6L5.5292,6L5.5292,1Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+    <path android:fillColor="#000000" android:pathData="M3.6281,5.0225L1.8011,5.0225L1.4843,6L0.5,6L2.2258,1L3.2438,1L4.9697,6L3.9449,6L3.6281,5.0225ZM2.7112,2.2166L2.0843,4.1505L3.3449,4.1505L2.7112,2.2166ZM5.5292,1L6.5,1L6.5,6L5.5292,6L5.5292,1Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+    <path android:fillColor="@drawable/$ic_intelligence_watermark__0" android:pathData="M3.6281,5.0225L1.8011,5.0225L1.4843,6L0.5,6L2.2258,1L3.2438,1L4.9697,6L3.9449,6L3.6281,5.0225ZM2.7112,2.2166L2.0843,4.1505L3.3449,4.1505L2.7112,2.2166ZM5.5292,1L6.5,1L6.5,6L5.5292,6L5.5292,1Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+</vector>

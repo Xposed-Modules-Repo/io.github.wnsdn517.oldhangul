@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:tag="layout/writing_toolkit_result_table_item_layout_result_edit_mode_0"
+    android:background="@drawable/writing_toolkit_result_item_container_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="locale"
+    android:clipToOutline="true">
+    <com.samsung.android.writingtoolkit.common.view.AiTransitionEffectView
+        android:id="@+id/writing_toolkit_result_effect_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.samsung.android.writingtoolkit.view.WritingToolkitTableResultView
+            android:orientation="vertical"
+            android:id="@+id/writing_toolkit_table_result_edit"
+            android:tag="binding_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </com.samsung.android.writingtoolkit.common.view.AiTransitionEffectView>
+</FrameLayout>

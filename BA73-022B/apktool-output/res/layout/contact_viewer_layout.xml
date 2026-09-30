@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="20.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbarStyle="outsideInset" android:scrollbars="horizontal|vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+        <HorizontalScrollView android:scrollbars="horizontal|vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TableLayout android:id="@id/dbTable" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </HorizontalScrollView>
+    </ScrollView>
+</LinearLayout>

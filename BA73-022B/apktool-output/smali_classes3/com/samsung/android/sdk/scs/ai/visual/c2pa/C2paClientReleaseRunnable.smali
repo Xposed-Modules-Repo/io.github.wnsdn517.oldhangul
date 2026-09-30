@@ -1,0 +1,83 @@
+.class public Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paClientReleaseRunnable;
+.super Lcom/samsung/android/sdk/scs/base/tasks/h;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/samsung/android/sdk/scs/base/tasks/h;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final TAG:Ljava/lang/String; = "C2paClientSaveManifestsToCacheRunnable"
+
+
+# instance fields
+.field private final mServiceExecutor:Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paServiceExecutor;
+
+
+# direct methods
+.method public constructor <init>(Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paServiceExecutor;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/samsung/android/sdk/scs/base/tasks/h;-><init>()V
+
+    iput-object p1, p0, Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paClientReleaseRunnable;->mServiceExecutor:Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paServiceExecutor;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public execute()V
+    .locals 2
+
+    sget-object v0, Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paClientReleaseRunnable;->TAG:Ljava/lang/String;
+
+    const-string v1, "execute release()"
+
+    invoke-static {v0, v1}, LKt/e;->f(Ljava/lang/String;Ljava/lang/String;)V
+
+    :try_start_0
+    iget-object v0, p0, Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paClientReleaseRunnable;->mServiceExecutor:Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paServiceExecutor;
+
+    invoke-virtual {v0}, Lcom/samsung/android/sdk/scs/ai/visual/c2pa/C2paServiceExecutor;->getC2PAService()Lcom/samsung/android/visual/ai/sdkcommon/i;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/samsung/android/visual/ai/sdkcommon/g;
+
+    invoke-virtual {v0}, Lcom/samsung/android/visual/ai/sdkcommon/g;->e()V
+
+    iget-object v0, p0, Lcom/samsung/android/sdk/scs/base/tasks/h;->mSource:Lcom/samsung/android/sdk/scs/base/tasks/d;
+
+    sget-object v1, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+
+    invoke-virtual {v0, v1}, Lcom/samsung/android/sdk/scs/base/tasks/d;->b(Ljava/lang/Object;)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    return-void
+
+    :catch_0
+    move-exception v0
+
+    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+
+    iget-object p0, p0, Lcom/samsung/android/sdk/scs/base/tasks/h;->mSource:Lcom/samsung/android/sdk/scs/base/tasks/d;
+
+    invoke-virtual {p0, v0}, Lcom/samsung/android/sdk/scs/base/tasks/d;->a(Ljava/lang/Exception;)V
+
+    return-void
+.end method
+
+.method public getFeatureName()Ljava/lang/String;
+    .locals 0
+
+    const-string p0, "FEATURE_C2PA"
+
+    return-object p0
+.end method

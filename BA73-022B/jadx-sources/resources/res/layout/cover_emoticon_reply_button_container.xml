@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_horizontal"
+    android:paddingBottom="@dimen/cover_emoticon_reply_button_container_bottom_padding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/cover_emoticon_reply_button_container_horizontal_padding">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cancel_button"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/send_button"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/CoverEmoticonTextButtonStyle"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/send_button"
+        android:text="@string/key_label_enter_send"
+        android:layout_marginStart="@dimen/cover_emoticon_text_button_gap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button"
+        style="@style/CoverEmoticonTextButtonStyle"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="center"
+        android:height="@dimen/ambi_remove_image_size"
+        android:width="@dimen/ambi_remove_image_size">
+        <shape android:shape="oval">
+            <solid android:color="@color/ambi_remove_image_bg"/>
+            <stroke
+                android:width="@dimen/ambi_remove_image_border"
+                android:color="@color/ambi_remove_image_border_color"/>
+        </shape>
+    </item>
+    <item
+        android:gravity="center"
+        android:height="@dimen/ambi_remove_image_minus_icon_thickness"
+        android:width="@dimen/ambi_remove_image_minus_icon_size">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/ambi_remove_image_minus_icon_color"/>
+        </shape>
+    </item>
+</layer-list>

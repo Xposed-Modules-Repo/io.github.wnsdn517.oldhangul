@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:theme="@style/recyclerViewTheme" android:id="@id/content_layout" android:tag="layout/emoticon_content_0" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/emoticon_recycler_view" android:tag="binding_1" android:paddingBottom="@dimen/friends_content_footer_padding" android:layout_marginVertical="@dimen/friends_content_layout_margin" android:paddingHorizontal="@dimen/friends_content_layout_padding" style="@style/friends_board_scrollable_view_style" />
+    <TextView android:textColor="?emoticon_message_text_color" android:id="@id/error_message" android:tag="binding_2" style="@style/friends_board_error_message_view_style" />
+</FrameLayout>

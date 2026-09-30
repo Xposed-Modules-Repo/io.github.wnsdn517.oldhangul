@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/curation_store_button" android:text="@string/sticker_more_store_button" android:drawablePadding="10.0dp" android:drawableStart="@drawable/ic_galaxy_store" android:drawableTint="?raised_btn_text_color_attr" style="@style/RaisedButton" />
+</merge>

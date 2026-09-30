@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:id="@id/sticker_app_bar" app:expanded="true" app:seslHeightProportion="0.0" app:seslUseCustomHeight="true" app:seslUseCustomPadding="true" app:seslUseFloatingToolbar="false" style="@style/StickerTagAppBar">
+        <com.google.android.material.appbar.CollapsingToolbarLayout app:layout_scrollFlags="scroll|enterAlways" style="@style/StickerTagCollapsingToolBar">
+            <include layout="@layout/sticker_tag_bitmoji" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/sticker_content_recycler_view" app:layout_behavior="@string/appbar_scrolling_view_behavior" style="@style/CommonTagRecyclerView" />
+    <androidx.viewpager2.widget.ViewPager2 android:id="@id/sticker_content_view_pager" android:paddingTop="0.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="locale" app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

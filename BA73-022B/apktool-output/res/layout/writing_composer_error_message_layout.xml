@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:tag="layout/writing_composer_error_message_layout_0" android:background="@drawable/writing_toolkit_result_item_container_bg" android:layout_marginBottom="@dimen/writing_composer_result_container_margin_bottom" android:paddingHorizontal="@dimen/writing_composer_error_message_horizontal_padding" android:clipToOutline="true" style="@style/WritingComposerBodyStyle"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/start_guideline" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="@dimen/writing_toolkit_error_message_start_guideline_percent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="@id/end_guideline" app:layout_constraintStart_toStartOf="@id/start_guideline" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="@dimen/writing_toolkit_error_message_text_vertical_bias">
+        <TextView android:id="@id/writing_composer_error_message_text" android:tag="binding_1" style="@style/WritingToolkitErrorMessageTextStyle" />
+        <TextView android:id="@id/writing_composer_error_message_button" android:tag="binding_2" style="@style/WritingToolkitErrorMessageButtonStyle" />
+    </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/end_guideline" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="@dimen/writing_toolkit_error_message_end_guideline_percent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

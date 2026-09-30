@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.samsung.android.honeyboard.resize.view.KeyboardResizeLayout android:id="@id/keyboard_resize_layout_onehand" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.samsung.android.honeyboard.resize.view.ResizeOneHandTouchPanel android:gravity="center" android:orientation="vertical" android:id="@id/resize_onehand_touch_panel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/resize_onehand_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/onehanded_calibrate_left" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/size_and_transparency_button_text_size" android:id="@id/resize_onehand_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/klst_touch_panel_body_stretch" />
+    </com.samsung.android.honeyboard.resize.view.ResizeOneHandTouchPanel>
+</com.samsung.android.honeyboard.resize.view.KeyboardResizeLayout>

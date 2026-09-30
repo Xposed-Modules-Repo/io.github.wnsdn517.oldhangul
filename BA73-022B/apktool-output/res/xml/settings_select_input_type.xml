@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:id="@id/settings_select_input_type" android:title="Language" android:key="settings_select_input_type"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:enabled="true" android:key="supported_input_type_list" app:entryValues="@array/array_select_input_type_layout_value" app:valueType="int" />
+    <PreferenceCategory>
+        <Preference android:persistent="false" android:title="@string/multilanguage_input" android:key="bilingual_language" android:summary="@string/multilanguage_input_none" app:isPreferenceVisible="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

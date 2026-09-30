@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/setting_brush_eraser_all_button_ripple"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/drawing_brush_setting_popup_clear_button_height"
+    android:layout_marginTop="12dp">
+    <com.samsung.android.sdk.pen.setting.common.SpenShowButtonShapeText
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="64dp"
+        android:minHeight="36dp"
+        android:text="@string/pen_string_clear_all"
+        android:includeFontPadding="false"
+        android:layout_centerInParent="true"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+</RelativeLayout>

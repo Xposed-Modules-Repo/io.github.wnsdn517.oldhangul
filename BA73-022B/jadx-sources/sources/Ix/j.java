@@ -1,0 +1,17 @@
+package Ix;
+
+import java.util.Map;
+import kotlin.TuplesKt;
+import kotlin.collections.MapsKt;
+
+/* JADX INFO: loaded from: classes4.dex */
+public final class j {
+
+    /* JADX INFO: renamed from: a, reason: collision with root package name */
+    public final Map f4780a;
+
+    public j() {
+        p029au.f[] fVarArr = p029au.f.f18442a;
+        this.f4780a = MapsKt.mapOf(TuplesKt.to("Doodle", "shadow, background, ugly, low resolution, rough texture, messy, blurry, crop, dark, scary, angry, sad, evil, broken, noise, frame, low quality, deformed, gross, bizarre, odd, distorted, photo, realistic, dot, low resolution, noisy, rough texture, bad anatomy, anatomy, distorted, unrealistic objects, jpeg artifacts, pixelated, grainy texture, dull, dark, mutated hands, poorly drawn hands, poorly drawn feet, poorly drawn face, body out of frame, mutated hands, poorly drawn hands, poorly drawn feets, poorly drawn face, long neck, extra limbs, fewer fingers, disfigured, body out of frame, lines of palm, extra fingers, missing fingers, extra feets, missing feets, malformed hands, malformed feets, deformed hands, deformed feets"), TuplesKt.to("Illustration", "shadow, background, ugly, low resolution, rough texture, messy, blurry, crop, dark, scary, angry, sad, evil, broken, noise, frame, low quality, deformed, gross, bizarre, odd, distorted, photo, realistic, dot, actual images, low resolution, noisy, rough texture, bad anatomy, anatomy, distorted, unrealistic objects, jpeg artifacts, pixelated, grainy texture, dull, dark, mutated hands, poorly drawn hands, poorly drawn feet, poorly drawn face, body out of frame, mutated hands, poorly drawn hands, poorly drawn feets, poorly drawn face, long neck, extra limbs, fewer fingers, disfigured, body out of frame, lines of palm, extra fingers, missing fingers, extra feets, missing feets, malformed hands, malformed feets, deformed hands, deformed feets"), TuplesKt.to("3D emoji", "shadow, background, ugly, low resolution, rough texture, messy, blurry, crop, dark, scary, angry, sad, evil, broken, noise, frame, low quality, deformed, gross, bizarre, odd, distorted, photo, realistic, dot, low resolution, noisy, rough texture, bad anatomy, anatomy, distorted, unrealistic objects, jpeg artifacts, pixelated, grainy texture, dull, dark, mutated hands, poorly drawn hands, poorly drawn feet, poorly drawn face, body out of frame, mutated hands, poorly drawn hands, poorly drawn feets, poorly drawn face, long neck, extra limbs, fewer fingers, disfigured, body out of frame, lines of palm, extra fingers, missing fingers, extra feets, missing feets, malformed hands, malformed feets, deformed hands, deformed feets"), TuplesKt.to("Retro logo", "sophisticated, vivid, delicate, textured, shaded, complex, grotesque, ugly, messy, crop, cropped, dark, scary, angry, sad, evil, hairy spiky, broken, noise, frame, low quality, deformed, gross, bizarre, odd, distorted, contort, girl, boy, baby, photography, photo, realistic, 3D rendering, violent, actual images, low resolution, noisy, rough texture, bad anatomy, anatomy, distorted, unrealistic objects, jpeg artifacts, pixelated, grainy texture, dull, dark, mutated hands, poorly drawn hands, poorly drawn feet, poorly drawn face, body out of frame, mutated hands, poorly drawn hands, poorly drawn feets, poorly drawn face, long neck, extra limbs, fewer fingers, disfigured, body out of frame, lines of palm, extra fingers, missing fingers, extra feets, missing feets, malformed hands, malformed feets, deformed hands, deformed feets"));
+    }
+}

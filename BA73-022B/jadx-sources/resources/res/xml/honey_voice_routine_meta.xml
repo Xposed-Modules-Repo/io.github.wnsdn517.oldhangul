@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actions>
+    <action
+        category="samsung_keyboard"
+        component="com.samsung.android.honeyboard.settings.routine.RoutineActionHandler"
+        extraFlags="hide_param_label"
+        icon="@drawable/ic_routines_ic_samsung_keyboard_voice_input"
+        label="@string/samsung_keyboard_voice_input"
+        reversible="forced"
+        tag="samsung_keyboard_voice_input">
+        <configuration targetUi="com.samsung.android.honeyboard.settings.routine.RoutineVoiceActivity"/>
+    </action>
+    <action
+        category="samsung_keyboard"
+        component="com.samsung.android.honeyboard.settings.routine.RoutineActionHandler"
+        icon="@drawable/routines_ic_samsung_keyboard_languages_and_types"
+        label="@string/select_languages"
+        reversible="true"
+        tag="samsung_keyboard_input_type">
+        <configuration targetUi="com.samsung.android.honeyboard.settings.routine.RoutineInputTypeActivity"/>
+    </action>
+    <action
+        category="samsung_keyboard"
+        component="com.samsung.android.honeyboard.settings.routine.RoutineActionHandler"
+        icon="@drawable/routines_ic_samsung_keyboard_keyboard_mode"
+        label="@string/dream_modes_button20"
+        reversible="true"
+        tag="samsung_keyboard_view_type">
+        <configuration targetUi="com.samsung.android.honeyboard.settings.routine.RoutineViewTypeActivity"/>
+    </action>
+    <action
+        category="samsung_keyboard"
+        component="com.samsung.android.honeyboard.settings.routine.RoutineHighContrastHandler"
+        icon="@drawable/routines_ic_samsung_keyboard_high_contrast_keyboard"
+        label="@string/high_contrast_keyboard"
+        reversible="true"
+        tag="samsung_keyboard_high_contrast">
+        <configuration targetUi="com.samsung.android.honeyboard.settings.routine.RoutineHighContrastActivity"/>
+    </action>
+    <action
+        category="samsung_keyboard"
+        component="com.samsung.android.honeyboard.settings.routine.RoutineActionHandler"
+        extraFlags="hide_param_label"
+        icon="@drawable/ic_routines_ic_samsung_keyboard_clipboard"
+        label="@string/clear_clipboard"
+        reversible="false"
+        subLabel="@string/clear_clipboard_sub_label"
+        tag="samsung_keyboard_clear_clipboard">
+        <configuration targetUi="com.samsung.android.honeyboard.settings.routine.RoutineClearClipboardActivity"/>
+    </action>
+</actions>

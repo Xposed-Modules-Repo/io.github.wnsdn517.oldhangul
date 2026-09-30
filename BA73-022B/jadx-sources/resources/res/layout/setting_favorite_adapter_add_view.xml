@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/setting_favorite_item_width"
+    android:layout_height="@dimen/setting_favorite_item_height">
+    <ImageView
+        android:layout_gravity="bottom|center_horizontal"
+        android:id="@+id/add_icon"
+        android:background="@drawable/setting_favorite_add_view_bg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="11dp"
+        android:src="@drawable/setting_favorite_add_button"
+        android:scaleType="centerInside"
+        android:tint="@color/setting_handwriting_icon_enable_color"/>
+</FrameLayout>

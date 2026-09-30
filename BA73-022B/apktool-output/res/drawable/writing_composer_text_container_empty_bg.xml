@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/writing_composer_text_container_radius" />
+    <solid android:color="@color/writing_composer_text_container_empty_bg_color" />
+</shape>

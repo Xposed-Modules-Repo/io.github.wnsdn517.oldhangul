@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:id="@+id/writing_toolkit_main_item"
+    android:tag="layout/chat_assist_start_icon_item_0"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stateListAnimator="?attr/seslSmallTouchAnimator"
+    android:paddingHorizontal="@dimen/writing_toolkit_start_icon_item_margin_horizontal">
+    <ImageView
+        android:layout_gravity="center"
+        android:tag="binding_1"
+        android:layout_width="@dimen/writing_toolkit_icon_size"
+        android:layout_height="@dimen/writing_toolkit_icon_size"
+        android:tint="?attr/chat_assist_item_text_color"
+        android:importantForAccessibility="no"
+        android:layout_marginEnd="@dimen/writing_toolkit_start_icon_item_gap"/>
+    <TextView
+        android:textColor="?attr/chat_assist_item_text_color"
+        android:tag="binding_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/WritingToolkitItemTextStyle"/>
+</LinearLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DialogTextTheme" parent="@style/DialogTheme">
+        <item name="android:textColor">@color/sesl_dialog_body_text_color_dark</item>
+        <item name="android:fontFamily">sec</item>
+        <item name="android:textFontWeight">400</item>
+    </style>
+    <style name="DialogTextTitleStyle" parent="@style/DialogTextStyle">
+        <item name="android:textSize">@dimen/rp_dialog_title_text_size</item>
+        <item name="android:textColor">@color/sesl_dialog_title_text_color_dark</item>
+        <item name="android:layout_marginTop">@dimen/rp_dialog_title_text_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/rp_dialog_title_text_margin_bottom</item>
+        <item name="android:minHeight">27.0dp</item>
+        <item name="android:fontFamily">sec</item>
+        <item name="android:textFontWeight">600</item>
+    </style>
+    <style name="ExtractButtonStyle" parent="@style/Base.TextAppearance.AppCompat.Widget.Button">
+        <item name="android:fontFamily">sec</item>
+        <item name="android:textFontWeight">600</item>
+    </style>
+    <style name="FontChooserToolbarStyle" parent="@style/Widget.Design.CollapsingToolbar" />
+    <style name="ListPrimaryTextStyle" parent="@style/ListTextStyle">
+        <item name="android:textSize">@dimen/rp_list_primary_text_size</item>
+        <item name="android:textColor">@color/sesl_primary_text_color_dark</item>
+    </style>
+    <style name="Setting.BottomNavigationView" parent="@style/Widget.Design.BottomNavigationView.Text" />
+    <style name="SettingBottomNavigationView" parent="@style/Widget.Design.BottomNavigationView.Floating.Icon" />
+    <style name="SettingsTheme" parent="@style/IceconeAppTheme">
+        <item name="android:layout">@layout/sticker_settings_preference_main_collapsing_layout_compat</item>
+        <item name="android:actionBarTheme">@style/action_mode_style</item>
+        <item name="android:colorAccent">@color/accent_material_dark</item>
+        <item name="android:statusBarColor">@color/status_bar_color_dark</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+        <item name="actionBarTheme">@style/action_mode_style</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+    <style name="SetupWizardPermission" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:actionBarTheme">@style/action_mode_style</item>
+        <item name="android:statusBarColor">@color/status_bar_color</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="actionBarItemBackground">?android:actionBarItemBackground</item>
+        <item name="actionBarTheme">@style/action_mode_style</item>
+        <item name="colorControlActivated">#ff6363</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+    <style name="SudDynamicColorTheme.DayNight" parent="@style/SudDynamicColorTheme" />
+    <style name="SudFullDynamicColorTheme.DayNight" parent="@style/SudFullDynamicColorTheme" />
+    <style name="SudThemeGlif.DayNight" parent="@style/SudThemeGlif" />
+    <style name="SudThemeGlifExpressive.DayNight" parent="@style/SudThemeGlifExpressive" />
+    <style name="SudThemeGlifV2.DayNight" parent="@style/SudThemeGlifV2" />
+    <style name="SudThemeGlifV3.DayNight" parent="@style/SudThemeGlifV3" />
+    <style name="SudThemeGlifV4.DayNight" parent="@style/SudThemeGlifV4" />
+    <style name="SudThemeMaterial.DayNight" parent="@style/SudThemeMaterial" />
+    <style name="SudThemeModalGlifExpressive.DayNight" parent="@style/SudThemeModalGlifExpressive" />
+    <style name="Theme.AppCompat.DayNight" parent="@style/Theme.AppCompat" />
+    <style name="Theme.AppCompat.DayNight.Dialog" parent="@style/Theme.AppCompat.Dialog" />
+    <style name="Theme.AppCompat.DayNight.Dialog.Alert" parent="@style/Theme.AppCompat.Dialog.Alert" />
+    <style name="Theme.AppCompat.DayNight.NoActionBar" parent="@style/Theme.AppCompat.NoActionBar" />
+    <style name="Theme.FontChooser" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:colorPrimary">@color/fontchooser_app_theme_primary</item>
+    </style>
+    <style name="Theme.Material3.DynamicColors.DayNight.NoActionBar" parent="@style/Theme.Material3.DynamicColors.Dark.NoActionBar" />
+    <style name="Theme.MaterialComponents.DayNight" parent="@style/Theme.MaterialComponents" />
+    <style name="Theme.MaterialComponents.DayNight.Bridge" parent="@style/Theme.MaterialComponents.Bridge" />
+    <style name="action_mode_style" parent="@style/Theme.AppCompat.DayNight">
+        <item name="android:actionBarStyle">@style/ThemeOverlay.AppCompat.ActionBar</item>
+        <item name="android:actionModeStyle">@style/Widget.AppCompat.ActionMode</item>
+        <item name="actionModeCloseButtonStyle">@style/action_mode_close_button_style</item>
+    </style>
+    <style name="collapsing_toolbar_layout_style" parent="@style/Widget.Design.CollapsingToolbar">
+        <item name="android:fontFamily">sec</item>
+        <item name="android:textFontWeight">600</item>
+    </style>
+    <style name="customMushroomTheme" parent="@style/customTheme">
+        <item name="android:textColor">@color/mushroomplus_list_text_color_dark</item>
+        <item name="android:actionBarTheme">@style/action_mode_style</item>
+        <item name="android:statusBarColor">@color/status_bar_color_dark</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+    <style name="customSettingsTheme" parent="@style/customTheme">
+        <item name="android:layout">@layout/settings_preference_main_collapsing_layout_compat</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:actionBarTheme">@style/action_mode_style</item>
+        <item name="android:statusBarColor">@color/status_bar_color_dark</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:windowLightStatusBar">@bool/window_light_status_bar</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@color/transparent</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+        <item name="actionBarTheme">@style/action_mode_style</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+    <style name="customSettingsThemeAboutPage" parent="@style/customSettingsTheme" />
+</resources>

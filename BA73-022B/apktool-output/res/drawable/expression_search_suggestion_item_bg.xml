@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/alternative_bubble_focused_background">
+        <shape android:shape="rectangle">
+            <corners android:radius="15.0dp" />
+            <solid android:color="?search_suggestion_list_item_bg" />
+        </shape>
+    </item>
+</layer-list>

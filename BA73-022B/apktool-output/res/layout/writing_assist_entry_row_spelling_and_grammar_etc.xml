@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="center_vertical" android:tag="layout/writing_assist_entry_row_spelling_and_grammar_etc_0" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/WritingAssistEntryRowNormal">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:divider="@drawable/writing_toolkit_item_horizontal_divider" android:measureWithLargestChild="true" android:showDividers="middle" android:dividerPadding="@dimen/writing_assist_entry_column_divider_padding" android:importantForAccessibility="noHideDescendants">
+            <LinearLayout android:gravity="center|top" android:id="@id/writing_assist_entry_item_spelling_content" android:tag="binding_1" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:paddingStart="@dimen/writing_assist_entry_row_padding_horizontal" android:paddingEnd="@dimen/writing_assist_entry_row_gap" android:paddingVertical="@dimen/writing_assist_entry_row_use_vertical_item_padding_vertical">
+                <include android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/writing_assist_entry_vertical_item" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center|top" android:id="@id/writing_assist_entry_item_writing_style_content" android:tag="binding_2" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:paddingHorizontal="@dimen/writing_assist_entry_row_gap" android:paddingVertical="@dimen/writing_assist_entry_row_use_vertical_item_padding_vertical">
+                <include android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/writing_assist_entry_vertical_item" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center|top" android:id="@id/writing_assist_entry_item_summarize_content" android:tag="binding_3" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:paddingStart="@dimen/writing_assist_entry_row_gap" android:paddingEnd="@dimen/writing_assist_entry_row_padding_horizontal" android:paddingVertical="@dimen/writing_assist_entry_row_use_vertical_item_padding_vertical">
+                <include android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/writing_assist_entry_vertical_item" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+            <View android:id="@id/writing_assist_entry_item_spelling_recoil_bg" android:tag="binding_4" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_left" android:layout_weight="1.0" />
+            <View android:id="@id/writing_assist_entry_item_writing_style_recoil_bg" android:tag="binding_5" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_center" android:layout_weight="1.0" />
+            <View android:id="@id/writing_assist_entry_item_summarize_recoil_bg" android:tag="binding_6" android:focusable="true" android:clickable="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:foreground="@drawable/recoil_chat_assist_right" android:layout_weight="1.0" />
+        </LinearLayout>
+    </FrameLayout>
+</merge>

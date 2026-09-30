@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/writing_toolkit_content"
+    android:tag="layout/writing_toolkit_content_layout_0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/writing_toolkit_header"
+        layout="@layout/writing_toolkit_header"/>
+    <FrameLayout
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/writing_toolkit_body"
+        android:tag="binding_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/writing_toolkit_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/writing_toolkit_main_layout"/>
+        <include
+            android:id="@+id/writing_toolkit_loading"
+            layout="@layout/writing_toolkit_loading_layout"/>
+        <include
+            android:id="@+id/writing_toolkit_result"
+            layout="@layout/writing_toolkit_result_layout"/>
+        <include
+            android:id="@+id/writing_toolkit_result_table"
+            layout="@layout/writing_toolkit_result_table_layout"/>
+        <include
+            android:id="@+id/writing_toolkit_error_message"
+            layout="@layout/writing_toolkit_error_message_layout"/>
+    </FrameLayout>
+</LinearLayout>

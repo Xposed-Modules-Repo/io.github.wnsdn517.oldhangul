@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset android:insetLeft="@dimen/revision_mode_badge_margin" android:insetRight="@dimen/revision_mode_badge_margin" android:insetTop="@dimen/revision_mode_badge_margin" android:insetBottom="@dimen/revision_mode_badge_margin"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="oval">
+        <size android:height="@dimen/revision_mode_badge_height" android:width="@dimen/revision_mode_badge_width" />
+        <solid android:color="@color/revision_mode_badge_color" />
+    </shape>
+</inset>

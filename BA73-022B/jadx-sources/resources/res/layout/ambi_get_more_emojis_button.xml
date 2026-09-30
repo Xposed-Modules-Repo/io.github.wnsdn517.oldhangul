@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ambi_get_more_emojis_button"
+    android:background="@drawable/ambi_get_more_emojis_button_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/ambi_get_more_emojis_button_margin_bottom"
+    android:contentDescription="@string/ambi_get_more_emojis_button"
+    android:layout_marginHorizontal="@dimen/ambi_get_more_emojis_button_margin_horizontal">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/ambi_get_more_emojis_button_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foreground="@drawable/ripple_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ambi_get_more_emojis_button_icon"
+        android:layout_width="@dimen/ambi_get_more_emojis_button_icon_size"
+        android:layout_height="@dimen/ambi_get_more_emojis_button_icon_size"
+        android:src="@drawable/ic_download_emoji_pairs"
+        android:tint="?attr/ambi_button_icon_color_attr"
+        android:layout_marginStart="@dimen/ambi_get_more_emojis_button_icon_margin_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ambi_get_more_emojis_button_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:textSize="@dimen/ambi_get_more_emojis_button_font_size"
+        android:textColor="?attr/ambi_button_text_color_attr"
+        android:id="@+id/ambi_get_more_emojis_button_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ambi_get_more_emojis_button"
+        android:includeFontPadding="false"
+        android:layout_marginStart="@dimen/ambi_get_more_emojis_button_text_margin_start"
+        android:layout_marginEnd="@dimen/ambi_get_more_emojis_button_text_margin_end"
+        android:layout_marginVertical="@dimen/ambi_get_more_emojis_button_text_margin_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ambi_get_more_emojis_button_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/roboto_medium"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

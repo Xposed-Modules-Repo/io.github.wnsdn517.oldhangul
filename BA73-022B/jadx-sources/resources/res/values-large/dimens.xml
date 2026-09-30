@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ai_expression_create_layout_margin_bottom">8dp</dimen>
+    <dimen name="ai_expression_generate_button_height">52dp</dimen>
+    <dimen name="ai_expression_generate_button_margin_top">16dp</dimen>
+    <dimen name="ai_expression_generate_button_width">240dp</dimen>
+    <dimen name="ai_expression_input_inner_margin_end">14dp</dimen>
+    <dimen name="ai_expression_input_inner_margin_vertical">18dp</dimen>
+    <dimen name="ai_expression_input_limit_text_margin_bottom">14dp</dimen>
+    <dimen name="ai_expression_result_page_editor_margin_end">15dp</dimen>
+    <dimen name="ai_expression_result_page_editor_margin_vertical">11dp</dimen>
+    <dimen name="ai_expression_result_page_style_view_first_start">18dp</dimen>
+    <dimen name="ai_expression_style_view_height_with_selected_outline">64dp</dimen>
+    <dimen name="ai_expression_style_view_padding_bottom">8dp</dimen>
+    <dimen name="ai_sticker_result_item_view_all_icon_size">24dp</dimen>
+    <dimen name="ai_sticker_style_view_all_badge_margin_start">19dp</dimen>
+    <dimen name="ai_sticker_style_view_all_badge_margin_top">5dp</dimen>
+    <dimen name="ai_sticker_style_view_all_icon_margin_top">10dp</dimen>
+    <dimen name="ai_sticker_style_view_all_icon_size">24dp</dimen>
+    <dimen name="ai_sticker_style_view_item_height">60dp</dimen>
+    <dimen name="ai_sticker_style_view_item_height_with_selected_outline">64dp</dimen>
+    <dimen name="ai_sticker_style_view_item_width">100dp</dimen>
+    <dimen name="ai_sticker_style_view_item_width_with_selected_outline">104dp</dimen>
+    <dimen name="ai_sticker_styles_layout_item_margin_horizontal">5dp</dimen>
+    <dimen name="ai_sticker_styles_layout_item_margin_vertical">5dp</dimen>
+    <dimen name="ai_sticker_styles_layout_margin_top">33dp</dimen>
+    <dimen name="emoticon_item_size">40dp</dimen>
+    <dimen name="emoticon_item_vertical_padding">24dp</dimen>
+    <dimen name="setting_direct_writing_animation_view_height">266dp</dimen>
+    <dimen name="sticker_rts_result_bg_outer_radius">17dp</dimen>
+    <dimen name="sticker_rts_result_bottom_padding">17dp</dimen>
+    <dimen name="sticker_rts_result_item_margin_vertical">9dp</dimen>
+    <dimen name="sticker_rts_result_item_size">62dp</dimen>
+    <dimen name="sticker_rts_result_layout_margin">9dp</dimen>
+    <dimen name="sticker_rts_result_layout_size">80dp</dimen>
+</resources>

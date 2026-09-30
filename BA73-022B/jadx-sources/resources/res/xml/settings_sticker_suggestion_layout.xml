@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settings_suggest_sticker"
+    android:title="@string/setting_suggest_sticker">
+    <PreferenceCategory
+        android:title="@string/setting_suggest_sticker_description"
+        android:key="sticker_suggestion_category_cp">
+        <androidx.preference.SwitchPreferenceCompat
+            android:persistent="true"
+            android:enabled="false"
+            android:title="@string/setting_suggest_sticker_emoji_pairs_title"
+            android:key="SETTINGS_DEFAULT_SUGGEST_STICKER_EMOJI_PAIRS"
+            android:defaultValue="true"/>
+        <androidx.preference.SwitchPreferenceCompat
+            android:persistent="true"
+            android:enabled="false"
+            android:title="@string/setting_suggest_sticker_bitmoji_title"
+            android:key="SETTINGS_DEFAULT_SUGGEST_STICKER_BITMOJI"
+            android:defaultValue="false"/>
+        <androidx.preference.SwitchPreferenceCompat
+            android:persistent="true"
+            android:enabled="false"
+            android:title="@string/setting_suggest_sticker_aremoji_title"
+            android:key="SETTINGS_DEFAULT_SUGGEST_STICKER_AREMOJI"
+            android:defaultValue="true"/>
+        <androidx.preference.SwitchPreferenceCompat
+            android:persistent="true"
+            android:enabled="false"
+            android:title="@string/setting_suggest_sticker_preloaded_and_downloaded_title"
+            android:key="SETTINGS_DEFAULT_SUGGEST_STICKER_PRELOADED_AND_DOWNLOADED"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:key="sticker_suggestion_category_other">
+        <Preference
+            android:title="@string/setting_suggest_sticker_method"
+            android:key="SETTINGS_SUGGEST_STICKER_METHOD"/>
+        <Preference
+            android:title="@string/setting_suggest_sticker_manage_apps"
+            android:key="SETTINGS_SUGGEST_STICKER_MANAGE_APPS"/>
+    </PreferenceCategory>
+</PreferenceScreen>

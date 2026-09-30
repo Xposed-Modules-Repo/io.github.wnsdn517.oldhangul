@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:soundEffectsEnabled="false"
+    android:paddingStart="@dimen/sticker_recycler_view_padding"
+    android:paddingVertical="@dimen/sticker_curation_layout_padding_vertical">
+    <TextView
+        android:id="@+id/curation_title"
+        android:layout_height="@dimen/sticker_curation_tv_height"
+        android:text="Title"
+        android:singleLine="true"
+        android:paddingEnd="@dimen/sticker_curation_tv_title_margin_end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/MojitokCurationTextViewMsgTitle"/>
+    <ImageView
+        android:id="@+id/creator_icon"
+        android:layout_width="@dimen/sticker_creator_link_icon_size"
+        android:layout_height="@dimen/sticker_creator_link_icon_size"
+        android:src="@drawable/ic_common_info_detail_solid"
+        android:tint="?attr/common_content_msg_text_color_attr"
+        android:contentDescription="@string/sticker_curation_social_media_link"
+        android:layout_marginEnd="@dimen/sticker_curation_info_icon_margin"
+        app:layout_constraintEnd_toEndOf="@+id/curation_title"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/curation_image_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/curation_title"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

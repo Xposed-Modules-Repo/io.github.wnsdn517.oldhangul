@@ -1,0 +1,1797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="594048300"
+    android:versionName="5.9.40.48"
+    android:compileSdkVersion="36"
+    android:compileSdkVersionCodename="16"
+    package="com.samsung.android.honeyboard"
+    platformBuildVersionCode="36"
+    platformBuildVersionName="16">
+    <uses-sdk
+        android:minSdkVersion="33"
+        android:targetSdkVersion="33"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="33"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
+    <uses-permission android:name="android.permission.MANAGE_USB"/>
+    <uses-permission android:name="android.permission.MANAGE_USERS"/>
+    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.SET_PROCESS_LIMIT"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="com.sec.spp.permission.TOKEN_9c765dc16e3841610b7321bb752963fa85ecd35f4d24460bff16a76ce0f787690fe604cf5567e8b6a4efddcbd6a8f4541a520d1be2822a0a788d1cfac5271d9ee0abc311ee234cc7b2eac91afe5ec3f16dbf76391e070e3712ec178e0280489dce19a8af19f6fa2b4dd89de18e8fe2727350f86bcbdd1939771a99eab2a87e78"/>
+    <uses-permission android:name="com.sec.android.diagmonagent.permission.DIAGMON"/>
+    <uses-permission android:name="com.sec.android.diagmonagent.permission.PROVIDER"/>
+    <uses-permission android:name="com.sec.android.app.twdvfs.DVFS_BOOSTER_PERMISSION"/>
+    <uses-permission android:name="com.sec.android.settings.permission.SOFT_RESET"/>
+    <uses-permission android:name="com.wssnps.permission.COM_WSSNPS"/>
+    <uses-permission android:name="com.samsung.helphub.permission.HELP"/>
+    <uses-permission android:name="com.sec.android.permission.SIDESYNC_RECEIVER_PERMISSION"/>
+    <uses-permission android:name="com.sec.android.inputmethod.scloudsync.permission.READ"/>
+    <uses-permission android:name="com.sec.android.inputmethod.scloudsync.permission.WRITE"/>
+    <uses-permission android:name="com.samsung.android.knox.permission.KNOX_CUSTOM_SYSTEM"/>
+    <uses-permission android:name="com.samsung.android.knox.permission.KNOX_DEVICE_CONFIGURATION"/>
+    <uses-permission android:name="com.samsung.android.service.tagservice.permission.ACCESS_PROVIDER"/>
+    <uses-permission android:name="com.sec.android.inputmethod.permission.RESOURCEMANAGER_LANGUAGE_UPDATE"/>
+    <uses-permission android:name="com.sec.android.inputmethod.permission.MIGRATE_DATA"/>
+    <uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY"/>
+    <uses-permission android:name="com.samsung.systemui.POPUP_UI_PERMISSION"/>
+    <uses-permission android:name="com.samsung.android.bixby.agent.permission.READ_LANGUAGE"/>
+    <uses-permission android:name="com.samsung.android.bixby.permission.BIXBY_DICTATION"/>
+    <uses-permission android:name="com.sec.android.app.samsungapps.accesspermisson.UPDATE_EXISTS"/>
+    <uses-permission android:name="com.samsung.android.samsungaccount.permission.ACCOUNT_MANAGER"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+    <uses-permission android:name="com.samsung.accessibility.UPDATE_MY_A11Y_NOT"/>
+    <uses-permission android:name="com.samsung.android.stickercenter.permission.sticker.READ"/>
+    <uses-permission android:name="com.samsung.android.stickercenter.service.ACCESS"/>
+    <uses-permission android:name="com.bitstrips.imoji.provider.READ"/>
+    <uses-permission android:name="com.bitstrips.imoji.provider.FRIENDS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
+    <uses-permission android:name="com.samsung.android.messaging.permission.READ_MESSAGE"/>
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES"/>
+    <uses-permission android:name="com.samsung.sea.retailagent.permission.RETAILMODE"/>
+    <uses-permission android:name="com.samsung.android.app.deepsky.permission.ACCESS_SERVICE"/>
+    <uses-permission android:name="android.permission.STATUS_BAR_SERVICE"/>
+    <permission
+        android:label="@string/setting_title"
+        android:name="com.samsung.android.honeyboard.permission.KEYBOARD_SETTING"
+        android:protectionLevel="signatureOrSystem"
+        android:description="@string/high_contrast_keyboard_permission_description"/>
+    <permission
+        android:name="com.samsung.android.honeyboard.permission.READ_KEYBOARD_PRIVATE_DATA"
+        android:protectionLevel="signatureOrSystem"/>
+    <permission
+        android:name="com.samsung.android.honeyboard.permission.EDIT_FIELD_INFO"
+        android:protectionLevel="signatureOrSystem"/>
+    <permission
+        android:name="com.samsung.android.honeyboard.permission.PLUGIN"
+        android:protectionLevel="signatureOrSystem"/>
+    <permission
+        android:name="com.samsung.android.bixby.agent.permission.EXECUTE_DICTATION"
+        android:protectionLevel="signatureOrSystem"/>
+    <uses-permission android:name="android.permission.GET_RUNTIME_PERMISSIONS"/>
+    <uses-permission android:name="com.samsung.android.provider.indexing.permission.ACCESS_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.providers.media.READ"/>
+    <uses-permission android:name="com.samsung.android.app.notes.READ"/>
+    <uses-permission android:name="com.samsung.android.pass.permissions.USE_PASS_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.pass.permissions.MANAGE_PASS_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.samsungpass.permission.autofillform"/>
+    <uses-permission android:name="com.samsung.android.samsungpass.permission.EASYSIGNIN"/>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="com.samsung.android.permission.BIOMETRICS_PRIVILEGED"/>
+    <uses-permission android:name="com.samsung.android.permission.FINGERPRINT_PRIVILEGED"/>
+    <uses-permission android:name="android.permission.STATUS_BAR"/>
+    <uses-permission android:name="com.netflix.partner"/>
+    <uses-permission android:name="com.samsung.android.permission.SSRM_NOTIFICATION_PERMISSION"/>
+    <uses-permission android:name="com.samsung.android.permission.MODIFY_THEME"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+    <uses-permission android:name="com.samsung.accessibility.permission.ACCESSIBILITY_SHORTCUT_EDIT"/>
+    <uses-permission android:name="android.permission.REAL_GET_TASKS"/>
+    <supports-screens
+        android:anyDensity="true"
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"/>
+    <uses-permission android:name="com.samsung.android.settings.intelligence.READ_SETTINGS_SEARCH_DATA_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.mobileservice.sasettings.permission.USE_SASETTINGS"/>
+    <uses-permission android:name="com.samsung.android.settings.permission.ACCESS_EPISODE"/>
+    <uses-permission android:name="com.samsung.android.scloud.backup.lib.read"/>
+    <uses-permission android:name="com.samsung.android.scloud.backup.lib.write"/>
+    <permission
+        android:name="com.samsung.android.honeyboard.permission.BACKUP_RESTORE"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="com.samsung.android.permission.RETURN_REMOTE_INPUT"/>
+    <uses-permission android:name="com.samsung.android.settings.permission.MANAGE_LANGUAGE_PACK"/>
+    <uses-permission android:name="android.permission.DEVICE_POWER"/>
+    <uses-permission android:name="com.samsung.android.pde.permission.BIOMETRIC_AUTH_FOR_MANAGE_PERSONAL_DATA"/>
+    <permission
+        android:label="@string/service_permission_label"
+        android:name="com.samsung.android.honeyboard.icecone.provider.READ"
+        android:protectionLevel="system|signature"
+        android:description="@string/service_permission_description"/>
+    <uses-permission
+        android:name="com.samsung.android.app.sketchbook.permission.ACCESS_AIDRAWING_CONFIG"
+        android:protectionLevel="signatureOrSystem"/>
+    <uses-permission android:name="android.permission.READ_CLIPBOARD_IN_BACKGROUND"/>
+    <uses-permission android:name="com.sec.spp.permission.TOKEN_c4130892a7b094e4e1253098303fc277049065984971e98e008abed5462b469caeafebbfedf493aa289769f48d5c91341b793638571f7883e318c83ec85817cf5b46149facdf981928386712a0db5982c3edb8d7008cee36a44b467c165de1dc1e51bd7b41e549546793d8c8e322d22ebdbfb23afce88727552fc8d396831913"/>
+    <uses-permission android:name="com.samsung.android.honeyboard.permission.PLUGIN"/>
+    <uses-permission android:name="com.samsung.android.app.tips.permission.USE_INTENT_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.honeyboard.icecone.service.ACCESS"/>
+    <uses-permission android:name="android.permission.UNLIMITED_TOASTS"/>
+    <uses-permission android:name="com.samsung.android.mcfds.permission.USE_CONTINUITY_PROVIDER"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="com.samsung.android.permission.RETURN_REMOTE_INPUT_VOICE"/>
+    <uses-permission android:name="com.samsung.android.permission.EXTRACT_SMARTCLIP_DATA"/>
+    <uses-permission android:name="com.samsung.android.visual.cloudcore.permission.BIND_C2PA_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.honeyboard.permission.KEYBOARD_SETTING"/>
+    <uses-permission android:name="com.samsung.android.provider.directwriting.resource.READ"/>
+    <permission
+        android:label="@string/writing_assist_ftu_title"
+        android:name="com.samsung.android.honeyboard.permission.WRITING_ASSIST_FTU"
+        android:protectionLevel="system|signature"
+        android:description="@string/writing_assist_ftu_description_global"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_PROFILES"/>
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER"/>
+    <uses-permission android:name="com.samsung.sec.android.application.csc"/>
+    <uses-permission android:name="com.samsung.kidshome.broadcast.DEFAULT_HOME_CHANGE_PERMISSION"/>
+    <uses-permission android:name="com.samsung.android.permission.SMART_SUGGESTIONS_OTP"/>
+    <uses-permission android:name="com.samsung.android.permission.SMART_REPLY"/>
+    <uses-permission android:name="com.samsung.android.permission.SMART_REPLY_CLOSE"/>
+    <uses-permission android:name="com.samsung.android.permission.SMART_REPLY_START"/>
+    <uses-permission android:name="com.samsung.android.permission.SUGGESTED_REPLIES_START"/>
+    <uses-permission android:name="com.samsung.android.permission.SUGGESTED_REPLIES"/>
+    <uses-permission android:name="sec.android.permission.READ_MSG_PREF"/>
+    <uses-permission android:name="sec.android.permission.WRITE_MSG_PREF"/>
+    <uses-permission android:name="com.samsung.android.permission.WRITE_SCPM"/>
+    <uses-permission android:name="com.samsung.android.permission.READ_SCPM"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS_PRIVILEGED"/>
+    <uses-permission android:name="com.samsung.android.permission.GENAI_RECLAIM"/>
+    <permission
+        android:name="com.samsung.android.honeyboard.permission.SetupWizardPermissionActivity"
+        android:protectionLevel="signatureOrSystem"/>
+    <permission
+        android:name="com.samsung.android.honeyboard.permission.ThemeApplyReceiver"
+        android:protectionLevel="signatureOrSystem"/>
+    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER"/>
+    <uses-permission android:name="com.samsung.android.scs.permission.SUPPORTED_FEATURE_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.suggestion.permission.SUGGESTION_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.image.permission.BIND_IMAGE_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.image.permission.IMAGE_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.text.permission.TEXT_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.asr.permission.BIND_SPEECH_RECOGNITION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.asr.permission.SPEECH_RECOGNITION_SERVICE_CONFIG_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.asr.permission.SYSTEM_BIND_SPEECH_RECOGNITION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.scs.ai.asr.permission.SYSTEM_SPEECH_RECOGNITION_SERVICE_CONFIG_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.SUPPORTED_FEATURE_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.ai.asr.permission.BIND_SPEECH_RECOGNITION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.ai.asr.permission.SPEECH_RECOGNITION_SERVICE_CONFIG_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.ai.asr.permission.SYSTEM_BIND_SPEECH_RECOGNITION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.ai.asr.permission.SYSTEM_SPEECH_RECOGNITION_SERVICE_CONFIG_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_TONECONVERT_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_TONECONVERT_SERVICE_FOR_EXTERNAL"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_TRANSLATION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SUMMARIZATION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SUMMARIZATION_SERVICE_FOR_EXTERNAL"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_CORRECTION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_CORRECTION_SERVICE_FOR_EXTERNAL"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SUGGESTION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SUGGESTION_SERVICE_FOR_EXTERNAL"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SMART_COVER_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SMART_REPLY_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SMART_REPLY_SERVICE_FOR_EXTERNAL"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_EMOJI_AUGMENTATION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_NOTES_ORGANIZATION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_SMART_CAPTURE_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_CLASSIFICATION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_EXTRACTION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_WRITING_COMPOSER_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_WRITING_COMPOSER_SERVICE_FOR_EXTERNAL"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_FORMAT_CONVERSION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_CONFIGURATION_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_GENERIC_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.permission.BIND_USAGE_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.aitranslator.permission.BIND_TRANSLATION"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.aitranslator.permission.BIND_TRANSLATION_FOR_EXTERNAL"/>
+    <uses-permission android:name="com.samsung.android.aicore.permission.BIND_WALLPAPER_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.aicore.permission.BIND_ON_DEVICE_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.aicore.permission.BIND_DOWNLOAD_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.aicore.permission.SUPPORTED_FEATURE_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.visual.cloudcore.permission.BIND_PORTRAIT_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.visual.cloudcore.permission.SUPPORTED_FEATURE_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.visual.cloudcore.permission.BIND_IMAGE_EDITOR_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.visual.cloudcore.permission.BIND_DOWNLOAD_SERVICE"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.common.permission.SYSTEM_CONFIG_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.common.permission.CONFIG_PROVIDER"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.ai.tts.permission.BIND_TEXT_TO_SPEECH"/>
+    <uses-permission android:name="com.samsung.android.intellivoiceservice.ai.tts.permission.BIND_TEXT_TO_SPEECH_FOR_EXTERNAL"/>
+    <queries>
+        <package android:name="com.samsung.android.intellivoiceservice"/>
+        <intent>
+            <action android:name="com.samsung.android.scs.asr.action.SEARCH_LANGPACK"/>
+        </intent>
+        <intent>
+            <action android:name="com.samsung.android.utils.asset.action.REMOTE_ASSETS_INFO"/>
+        </intent>
+        <intent>
+            <action android:name="com.android.setupwizard.action.PARTNER_CUSTOMIZATION"/>
+        </intent>
+        <intent>
+            <action android:name="com.google.android.setupcompat.restore.restoreprogress.RESTORE_PROGRESS_SERVICE_ACTION"/>
+        </intent>
+    </queries>
+    <permission
+        android:name="com.samsung.android.honeyboard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="com.samsung.android.honeyboard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <uses-permission android:name="com.samsung.android.app.routines.permission.READ_ROUTINE_INFO"/>
+    <uses-permission android:name="com.samsung.android.sdk.handwriting.permission.RESOURCE_LANGUAGE_UPDATE"/>
+    <uses-permission android:name="com.samsung.android.sdk.handwriting.permission.RESOURCE_LANGUAGE_UPDATE_COMMAND"/>
+    <uses-permission android:name="com.samsung.android.app.deepsky.donation.provider.permission.DONATE_ACTION"/>
+    <uses-permission android:name="com.samsung.android.app.deepsky.feedback.provider.permission.SUBMIT_FEEDBACK"/>
+    <uses-permission android:name="com.samsung.android.moneta.datacollector.reception.permission.EXTERNAL_DATA"/>
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-permission android:name="com.samsung.android.voicewakeup.permission.EXECUTE_UTTERANCE_RECORD_SERVICE"/>
+    <uses-permission android:name="android.permission.OBSERVE_SENSOR_PRIVACY"/>
+    <uses-permission android:name="com.samsung.android.bixby.agent.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="com.sec.android.mimage.photoretouching"/>
+    <application
+        android:theme="@style/HoneyBoardAppTheme"
+        android:label="@string/app_name"
+        android:icon="@mipmap/app_icon"
+        android:name="com.samsung.android.honeyboard.app.HoneyBoardApplication"
+        android:allowBackup="false"
+        android:logo="@mipmap/app_icon"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:extractNativeLibs="true"
+        android:usesCleartextTraffic="true"
+        android:directBootAware="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:enableOnBackInvokedCallback="true">
+        <uses-library
+            android:name="SmpsManager"
+            android:required="false"/>
+        <uses-library
+            android:name="handwriting"
+            android:required="false"/>
+        <uses-library
+            android:name="libSDKRecognitionText.spensdk.samsung.so"
+            android:required="false"/>
+        <meta-data
+            android:name="oneUiVersion"
+            android:value="80500"/>
+        <meta-data
+            android:name="SamsungBasicInteraction"
+            android:value="SEP10"/>
+        <meta-data
+            android:name="com.samsung.android.icon_container.has_icon_container"
+            android:value="true"/>
+        <meta-data
+            android:name="com.samsung.android.multidisplay.keep_process_alive"
+            android:value="true"/>
+        <meta-data
+            android:name="android.content.APP_RESTRICTIONS"
+            android:resource="@xml/app_restrictions"/>
+        <meta-data
+            android:name="supported_clip_ex_types"
+            android:value="STICKER"/>
+        <meta-data
+            android:name="com.samsung.android.clipboard.support_remove_clip_items"
+            android:value="true"/>
+        <meta-data
+            android:name="com.samsung.android.honeyboard.KEYS_CAFE_VERSION"
+            android:value="17"/>
+        <meta-data
+            android:name="com.samsung.android.honeyboard.THEME_POLICY_VERSION"
+            android:value="1"/>
+        <meta-data
+            android:name="com.samsung.android.honeyboard.HERB_TEA"
+            android:resource="@xml/herb_tea"/>
+        <meta-data
+            android:name="com.samsung.android.honeyboard.HERB_TEA.MEMECAFE"
+            android:resource="@xml/herb_tea_memecafe"/>
+        <meta-data
+            android:name="support_private_data_provider"
+            android:value="true"/>
+        <meta-data
+            android:name="theming-meta"
+            android:value="theme_metadata"/>
+        <meta-data
+            android:name="theming-meta-xml"
+            android:resource="@xml/theme_metadata"/>
+        <meta-data
+            android:name="com.samsung.android.samsungaccount.b2b.CLIENT_ID"
+            android:value="7743tkx69h"/>
+        <service
+            android:name="com.samsung.android.honeyboard.service.HoneyBoardService"
+            android:permission="android.permission.BIND_INPUT_METHOD"
+            android:exported="true"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="android.view.InputMethod"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method"/>
+        </service>
+        <service
+            android:name="com.samsung.android.honeyboard.base.spellcheckerservice.HoneyBoardSpellCheckerService"
+            android:permission="android.permission.BIND_TEXT_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.textservice.SpellCheckerService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.view.textservice.scs"
+                android:resource="@xml/spellchecker"/>
+        </service>
+        <service
+            android:name="com.samsung.android.honeyboard.icecone.multimodal.intent.MultiModalPendingIntentService"
+            android:enabled="true"
+            android:exported="false"/>
+        <service
+            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:enabled="false"
+            android:exported="true"
+            android:directBootAware="false"/>
+        <receiver
+            android:name="com.samsung.android.honeyboard.receiver.KnoxCustomKeypadReceiver"
+            android:permission="com.samsung.android.knox.permission.KNOX_CUSTOM_SYSTEM"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.knox.intent.action.SET_KEYBOARD_MODE_INTERNAL"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.samsung.android.honeyboard.receiver.RetailResetReceiver"
+            android:permission="com.samsung.sea.retailagent.permission.RETAILMODE"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.sea.rm.DEMO_RESET_STARTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.samsung.android.honeyboard.base.broadcastreceiver.SettingsSoftResetReceiver"
+            android:permission="com.sec.android.settings.permission.SOFT_RESET"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.intent.action.SETTINGS_SOFT_RESET"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="com.samsung.android.honeyboard.provider.EditFieldInfoProvider"
+            android:readPermission="com.samsung.android.honeyboard.permission.EDIT_FIELD_INFO"
+            android:protectionLevel="signatureOrSystem"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.EditFieldInfoProvider"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:authorities="com.samsung.android.honeyboard.provider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+        <provider
+            android:name="com.samsung.android.honeyboard.provider.KeyboardSettingsProvider"
+            android:permission="com.samsung.android.honeyboard.permission.KEYBOARD_SETTING"
+            android:protectionLevel="signatureOrSystem"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.KeyboardSettingsProvider"/>
+        <provider
+            android:name="com.samsung.android.honeyboard.provider.KeyboardPrivateDataProvider"
+            android:readPermission="com.samsung.android.honeyboard.permission.READ_KEYBOARD_PRIVATE_DATA"
+            android:protectionLevel="signatureOrSystem"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.KeyboardPrivateDataProvider"/>
+        <provider
+            android:name="com.samsung.android.honeyboard.provider.RecentEmojiProvider"
+            android:protectionLevel="signatureOrSystem"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.RecentEmojiProvider"/>
+        <provider
+            android:name="com.samsung.android.honeyboard.provider.DictationProvider"
+            android:permission="com.samsung.android.bixby.agent.permission.EXECUTE_DICTATION"
+            android:protectionLevel="signatureOrSystem"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.DictationProvider"/>
+        <provider
+            android:name="com.sec.android.diagmonagent.log.provider.DiagMonProvider"
+            android:permission="com.sec.android.diagmonagent.permission.PROVIDER"
+            android:exported="true"
+            android:authorities="com.sec.android.log.4K0-399-5752101"/>
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:exported="false"
+            android:authorities="com.samsung.android.honeyboard.androidx-startup">
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup"/>
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup"/>
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup"/>
+        </provider>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.samsung.android.honeyboard.sa.SamsungAccountAccessTokenActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.action.REQUEST_SA_ACCESS_TOKEN_FLOW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.DeviceDefault.Light.Panel"
+            android:name="com.samsung.android.honeyboard.friends.ocr.SogouOcrActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|orientation|keyboardHidden|locale"
+            android:resizeableActivity="false"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.test.InputTestActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.test.MigrationDetailTestActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.test.PInTestActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.test.TestHoneyBoardPage"
+            android:exported="false"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.common.HoneyBoardSettingsActivity"
+            android:exported="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.moakeyoptions.MoakeySwipeAngleCustomSettings"
+            android:screenOrientation="behind"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.moakeyoptions.MoakeySwipeAngleSettings"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/setting_chinese_input_options"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.chineseinputoptions.ChineseInputOptions"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/setting_shuangpin"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.chineseinputoptions.SettingsShuangPin"
+            android:exported="false"
+            android:excludeFromRecents="true"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/setting_fuzzy_pinyin_input_title"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.chineseinputoptions.FuzzyPinyinSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.chineseinputoptions.CellDictTabActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.chineseinputoptions.CellDictActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/use_auto_correction"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.autoreplace.AutoReplacementSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="대화방 추천 가중치"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.contactspecific.SpecificAssistSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/use_spell_checker"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.autospellcheck.SpellCheckerSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.SUGGEST_TEXT_CORRECTIONS_SETTING"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/use_auto_spacing"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.autospacing.AutoSpacingSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/setting_suggest_sticker"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.sticker.StickerSuggestionSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:scheme="hbd_setting_sticker"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/setting_suggest_sticker_method"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.sticker.StickerSuggestionMethodSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/setting_suggest_sticker_manage_apps"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.sticker.StickerSuggestionManageAppsSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/setting_more_typing_options"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.moretypingoptions.MoreTypingOptionsSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/dream_modes_button20"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.modes.ModesSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/keyboard_size_and_transparency"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.sizeandtransparency.KeyboardSizeAndTransparencySettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/settings_writing_assist"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.aiwriter.WritingAssistSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.WRITING_ASSIST_SETTINGS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.samsung.android.settings.action.INTELLIGENCE_SERVICE_SETTINGS"/>
+                <action android:name="com.android.settings.MANUFACTURER_APPLICATION_SETTING"/>
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.title"
+                android:resource="@string/settings_writing_assist"/>
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/settings_writing_assist_galaxy_ai_description"/>
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@mipmap/app_icon"/>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.samsung.android.settings.category.ia.intelligenceservice"/>
+            <meta-data
+                android:name="com.android.settings.order"
+                android:value="15000"/>
+            <meta-data
+                android:name="com.samsung.android.settings.is.order"
+                android:value="102000"/>
+            <meta-data
+                android:name="com.samsung.android.settings.is.category"
+                android:value="com.samsung.android.settings.is.category.communicate"/>
+            <meta-data
+                android:name="com.android.settings.keyhint"
+                android:value="key_samsung_keyboard"/>
+            <meta-data
+                android:name="com.samsung.android.settings.ai_supported_mode_content_uri"
+                android:value="content://com.samsung.android.honeyboard.settings.aiwriter.provider.WritingAssistProvider/get_supported_mode"/>
+            <meta-data
+                android:name="com.samsung.android.settings.ai_features_content_uri"
+                android:value="content://com.samsung.android.honeyboard.settings.aiwriter.provider.WritingAssistProvider/get_features"/>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_writing_assist_translation"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.aiwriter.translation.WritingAssistTranslationSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/settings_writing_assist_suggest_replies"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.aiwriter.suggestresponses.WritingAssistSuggestResponsesSettings"
+            android:permission="com.samsung.android.honeyboard.permission.KEYBOARD_SETTING"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.SUGGESTED_REPLIES_SETTING"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsThemeKeyboardLayout"
+            android:label="@string/keyboard_layout"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.layout.KeyboardLayoutSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.KEYBOARD_LAYOUT_SETTING"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/custom_symbols"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.customsymbols.CustomSymbolsSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/keyboard_font_size"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.keyboardfontsize.KeyboardFontSizeSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_swipe_touch_and_feedback"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.defaultactivity.SwipeTouchGestureFeedBackSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/use_keypad_sweeping"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.swipe.KeyboardSwipeSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/touch_and_hold_delay_custom_title"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.touchandhold.delay.TouchAndHoldDelayCustomSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/touch_and_hold_delay_title"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.touchandhold.delay.TouchAndHoldDelaySettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/backspace_speed_title"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.backspacespeed.BackspaceDeleteSpeedSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/touch_and_hold_space_title"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.touchandhold.spacebar.TouchAndHoldSpaceBarSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_touch_feedback"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.touchfeedback.KeyTapFeedbackSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/settings_speak_keyboard_input_aloud"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.speakkeyboardinputaloud.SpeakKeyboardInputAloudSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.SPEAK_KEYBOARD_INPUT_ALOUD_SETTING"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/SecGlifLight_Basic"
+            android:name="com.samsung.android.honeyboard.settings.loswitcher.LoSwitcherActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.LO_SWITCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/TranslucentDialogTheme"
+            android:label="@string/settings_speak_keyboard_input_aloud"
+            android:icon="@drawable/ic_speak_keyboard_input_aloud"
+            android:name="com.samsung.android.honeyboard.settings.swipetouchandfeedback.speakkeyboardinputaloud.SpeakKeyboardInputAloudShortcut"
+            android:exported="true"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.ACCESSIBILITY_SHORTCUT_TARGET"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityshortcut.target"
+                android:resource="@xml/settings_speak_keyboard_input_aloud_shortcut"/>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsThemeAboutPage"
+            android:label="@string/about_samsung_keyboard"
+            android:name="com.samsung.android.honeyboard.settings.aboutsamsungkeyboard.AboutHoneyBoard"
+            android:exported="true"/>
+        <activity
+            android:theme="@style/nonCollapsingCustomTheme"
+            android:label="@string/keyboard_themes"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.theme.KeyboardThemesSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/high_contrast_keyboard"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.highcontrast.HighContrastThemeSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="com.sec.android.inputmethod.HIGH_CONTRAST_THEME_SETTING"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/input_method_type_box_hwr"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.handwriting.HwrSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/setting_handwriting_recognition_type_title"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.handwriting.KeyboardChinaHwrTypeSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/select_languages"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.languagesandtypes.ui.LanguagesAndTypesActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.languagesandtypes.selectinputtype.ui.SelectInputTypeActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/multilanguage_input"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.languagesandtypes.selectinputtype.ui.AddBilingualLanguageActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/manage_input_languages"
+            android:name="com.samsung.android.honeyboard.settings.languagesandtypes.manageinputlanguages.ui.ManageInputLanguages"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.sec.android.inputmethod.implement.setting.AC_LANGUAGES_SETTINGS"/>
+                <action android:name="android.intent.action.SEARCH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/language_searchable_voice"/>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_select_input_language"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.languagesandtypes.editinput.ui.EditInputLanguages"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/reset_settings"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.resetsettings.ResetSettingsActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_pp_third_party_content"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.privacypolicy.PrivacyPolicySettingsActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.privacypolicy.PrivacyPolicySettingsLinkActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/samsung_keyboard_lab"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.KeyboardDeveloperOptions"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/legal_info_open_source_licenses"
+            android:name="com.samsung.android.honeyboard.settings.aboutsamsungkeyboard.OpenSourceLicensesActivity"
+            android:exported="false"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_category_japanese_input_options"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.japaneseinputoptions.JapaneseInputOptionsSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/ti_preference_8flick_custom_title_txt"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.japaneseinputoptions.MultiFlickCustomActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme8FlickRange"
+            android:label="@string/ti_preference_flick_angle_title_txt"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.japaneseinputoptions.Jpn8FlickDiagonalRangeSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/text_shortcuts_label"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.textshortcuts.TextShortcutsSettings"
+            android:exported="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation|keyboardHidden"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_input_test_title"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.inputtest.InputTestSettingsActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.KeyboardLayoutTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.KeyFontTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.MoaKeyTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.SpaceCursorControlSpeedTuningTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.SwiftKeyWordListTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.ContactViewerTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.AiModelTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.settings.developeroptions.knoxTest.KnoxTestActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/moakey_settings"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.moakeyoptions.MoakeySettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/settings_direct_writing"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.directwriting.DirectWritingSettings"
+            android:permission="com.samsung.android.honeyboard.permission.KEYBOARD_SETTING"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.DIRECT_WRITING_SETTING"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:name="com.samsung.android.honeyboard.settings.thirdpartyaccessnotice.ThirdPartyAccessNoticeActivity"
+            android:exported="false"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:name="com.samsung.android.honeyboard.settings.thirdpartyaccessnotice.IntegratedThirdPartyAccessActivity"
+            android:exported="false"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/touch_event_record"
+            android:name="com.samsung.android.honeyboard.settings.touchtest.TouchEventRecordActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/touch_event_record"
+            android:name="com.samsung.android.honeyboard.settings.touchtest.TouchTypoTestActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="smallestScreenSize|screenSize|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
+        <activity
+            android:theme="@style/customSettingsMainTheme"
+            android:label="@string/setting_suggest_sticker_manage_apps"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.autospellcheck.SpellCheckerManageAppsSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_button_and_symbol_layout"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.layout.ButtonAndSymbolLayoutActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_voice_input"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.voiceinput.VoiceInputSettings"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation">
+            <intent-filter>
+                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="@string/honeyboard_common_scheme"
+                    android:host="start_voice_input"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_voice_input_offline_language_pack"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.voiceinput.VoiceInputLanguagePackSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/settings_permissions_title"
+            android:name="com.samsung.android.honeyboard.settings.permissions.PermissionsSettingsActivity"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/predictive_text"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.predictivetext.PredictiveTextSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:label="@string/keyboard_toolbar"
+            android:icon="@mipmap/app_icon"
+            android:name="com.samsung.android.honeyboard.settings.styleandlayout.keyboardtoolbar.KeyboardToolbarSettings"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <provider
+            android:name="com.samsung.android.honeyboard.settings.search.provider.HoneyIndexableSearchProvider"
+            android:permission="android.permission.READ_SEARCH_INDEXABLES"
+            android:protectionLevel="signatureOrSystem"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.settings.provider.HoneyIndexableSearchProvider"
+            android:grantUriPermissions="true">
+            <intent-filter>
+                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER"/>
+            </intent-filter>
+            <meta-data
+                android:name="com.samsung.android.settings.require_settings_key"
+                android:value="top_level_keyboard_settings_main"/>
+            <meta-data
+                android:name="com.samsung.android.settings.require_settings_title"
+                android:value="@string/app_name"/>
+            <meta-data
+                android:name="com.samsung.android.settings.intelligence.tag_preset"
+                android:resource="@raw/tag_preset"/>
+            <meta-data
+                android:name="com.samsung.android.settings.require_various_index"
+                android:value="true"/>
+        </provider>
+        <provider
+            android:name="com.samsung.android.honeyboard.settings.smarttyping.provider.TextShortcutsProvider"
+            android:protectionLevel="signatureOrSystem"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.settings.smarttyping.provider.TextShortcutsProvider"/>
+        <meta-data
+            android:name="com.samsung.android.sdk.routines.v3.meta.ACTION"
+            android:resource="@xml/honey_voice_routine_meta"/>
+        <activity
+            android:theme="@style/ConfigUiDialog"
+            android:name="com.samsung.android.honeyboard.settings.routine.RoutineVoiceActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true">
+            <meta-data
+                android:name="com.samsung.android.supports_pop_over"
+                android:value="false"/>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:name="com.samsung.android.honeyboard.settings.routine.RoutineInputTypeActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:noHistory="true">
+            <meta-data
+                android:name="com.samsung.android.supports_pop_over"
+                android:value="false"/>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:name="com.samsung.android.honeyboard.settings.routine.RoutineViewTypeActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:noHistory="true">
+            <meta-data
+                android:name="com.samsung.android.supports_pop_over"
+                android:value="false"/>
+        </activity>
+        <activity
+            android:theme="@style/customSettingsTheme"
+            android:name="com.samsung.android.honeyboard.settings.routine.RoutineHighContrastActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:noHistory="true"/>
+        <activity
+            android:theme="@style/ConfigUiDialog"
+            android:name="com.samsung.android.honeyboard.settings.routine.RoutineClearClipboardActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true">
+            <meta-data
+                android:name="com.samsung.android.supports_pop_over"
+                android:value="false"/>
+        </activity>
+        <provider
+            android:name="com.samsung.android.honeyboard.settings.aiwriter.provider.WritingAssistProvider"
+            android:permission="com.samsung.android.permission.SEC_DYNAMIC_MENU_PROVIDER"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.settings.aiwriter.provider.WritingAssistProvider">
+            <intent-filter>
+                <action android:name="com.samsung.android.settings.DYNAMIC_MENU_PROVIDER"/>
+            </intent-filter>
+        </provider>
+        <receiver
+            android:name="com.samsung.android.honeyboard.backupandrestore.smartswitch.SmartSwitchReceiver"
+            android:permission="com.wssnps.permission.COM_WSSNPS"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.intent.action.REQUEST_BACKUP_SIP"/>
+                <action android:name="com.samsung.android.intent.action.REQUEST_RESTORE_SIP"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="com.samsung.android.honeyboard.backupandrestore.episodeprovider.BackupRestoreProvider"
+            android:permission="com.samsung.android.settings.permission.ACCESS_EPISODE"
+            android:protectionLevel="signatureOrSystem"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.backup"
+            android:syncable="false">
+            <intent-filter>
+                <action android:name="com.samsung.android.intent.action.SCENE"/>
+            </intent-filter>
+        </provider>
+        <receiver
+            android:name="com.samsung.android.honeyboard.backupandrestore.smartswitch.ClipboardSmartSwitchReceiver"
+            android:permission="com.wssnps.permission.COM_WSSNPS"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.intent.action.REQUEST_BACKUP_CLIP_BOARD"/>
+                <action android:name="com.samsung.android.intent.action.REQUEST_RESTORE_CLIP_BOARD"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="com.samsung.android.honeyboard.backupandrestore.settings.dev.EpisodeTestActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:name="com.samsung.android.honeyboard.backupandrestore.settings.dev.LmBnrTestActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation"/>
+        <meta-data
+            android:name="com.sec.android.easyMover.ios.support_restore"
+            android:value="true"/>
+        <activity
+            android:theme="@style/customMushroomTheme"
+            android:label="@string/ti_mushroom_launcher_title_txt"
+            android:name="com.samsung.android.honeyboard.textboard.friends.mushroom.JapanMushroomPlus"
+            android:excludeFromRecents="true"/>
+        <activity
+            android:theme="@style/CoverEmoticonStyle"
+            android:name="com.samsung.android.honeyboard.textboard.friends.emoticon.cover.CoverEmoticon"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|orientation">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.COVER_EMOTICON"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="@string/honeyboard_common_scheme"
+                    android:host="cover-emoticon"/>
+            </intent-filter>
+        </activity>
+        <provider
+            android:name="com.samsung.android.honeyboard.icecone.provider.RichcontentProvider"
+            android:protectionLevel="signatureOrSystem"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.RichcontentProvider"/>
+        <provider
+            android:name="com.samsung.android.honeyboard.icecone.provider.CDCPContentProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.CDCPContentProvider"/>
+        <activity
+            android:theme="@style/SettingsTheme"
+            android:name="com.samsung.android.honeyboard.icecone.setting.view.ExpSettingSelectActivity"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/SettingsTheme"
+            android:name="com.samsung.android.honeyboard.icecone.setting.view.SubStickerPackSettingSelectActivity"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/SettingsTheme"
+            android:name="com.samsung.android.honeyboard.icecone.setting.view.ExpSettingEditActivity"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <activity
+            android:theme="@style/Theme.Transparent"
+            android:name="com.samsung.android.honeyboard.icecone.sticker.PopoverTransparentActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation">
+            <meta-data
+                android:name="com.samsung.android.multiwindow.nonresizeable"
+                android:value="true"/>
+        </activity>
+        <activity
+            android:theme="@style/Theme.Transparent"
+            android:name="com.samsung.android.honeyboard.icecone.sticker.SnapkitActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="@string/honeyboard_common_scheme"
+                    android:host="login-kit"/>
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="resource-map"
+            android:resource="@xml/resource_map"/>
+        <activity
+            android:theme="@style/AppCompatDialogTheme"
+            android:name="com.samsung.android.honeyboard.icecone.honeyvoice.popup.PopUpSVoiceReco"
+            android:exported="true"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation">
+            <intent-filter>
+                <action android:name="samsung.honeyboard.honeyvoice.action.RECOGNIZE_SPEECH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/AppCompatDialogTheme"
+            android:name="com.samsung.android.honeyboard.icecone.honeyvoice.popup.DataTransferActivity"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout"/>
+        <activity
+            android:theme="@style/AppCompatDialogTheme"
+            android:name="com.samsung.android.honeyboard.icecone.honeyvoice.popup.PopupSVoicePermissionRequestActivity"
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout"/>
+        <activity
+            android:theme="@style/AppCompatDialogTheme"
+            android:name="com.samsung.android.honeyboard.icecone.honeyvoice.popup.tos.HoneyVoicePopupTosActivity"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"/>
+        <provider
+            android:name="com.samsung.android.honeyboard.icecone.honeyvoice.provider.VoiceLanguageListProvider"
+            android:protectionLevel="signatureOrSystem"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.VoiceLanguageListProvider"/>
+        <activity
+            android:theme="@style/Theme.Toolkit"
+            android:name="com.samsung.android.writingtoolkit.writingassist.activity.WritingAssistActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="smallestScreenSize|screenSize|uiMode|screenLayout|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"
+            android:noHistory="true"
+            android:autoRemoveFromRecents="true"/>
+        <activity
+            android:theme="@style/Theme.Toolkit"
+            android:name="com.samsung.android.writingtoolkit.writingassist.activity.WritingAssistTableActivity"
+            android:exported="false"
+            android:process=".imeWebView"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"
+            android:noHistory="true"
+            android:autoRemoveFromRecents="true"/>
+        <provider
+            android:name="com.samsung.android.writingtoolkit.writingassist.activity.WebViewWarmupContentProvider"
+            android:protectionLevel="signatureOrSystem"
+            android:exported="false"
+            android:process=".imeWebView"
+            android:authorities="com.samsung.android.writingtoolkit.writingassist.activity.WebViewWarmupContentProvider"
+            android:launchMode="singleTask"/>
+        <service
+            android:label="FakeHoneyBoard"
+            android:name="com.samsung.android.writingtoolkit.service.FakeHoneyBoardService"
+            android:permission="android.permission.BIND_INPUT_METHOD"
+            android:exported="true"
+            android:process=":writingtoolkit">
+            <intent-filter>
+                <action android:name="android.view.InputMethod"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/toolkit_method"/>
+        </service>
+        <activity
+            android:theme="@style/Theme.WritingToolkit"
+            android:name="com.samsung.android.writingtoolkit.view.WritingToolkitActivity"
+            android:exported="true"
+            android:process=":writingtoolkit"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:autoRemoveFromRecents="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.intent.action.WritingToolkit"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:scheme="@string/honeyboard_common_scheme"
+                    android:host="@string/writing_toolkit_host"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.Toolkit"
+            android:name="com.samsung.android.writingtoolkit.view.ToolkitActivity"
+            android:exported="false"
+            android:process=":writingtoolkit"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"
+            android:noHistory="true"
+            android:autoRemoveFromRecents="true"/>
+        <activity
+            android:theme="@style/Theme.ToolkitOnDex"
+            android:name="com.samsung.android.writingtoolkit.view.ToolkitActivityOnDex"
+            android:exported="false"
+            android:process=":writingtoolkit"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"
+            android:autoRemoveFromRecents="true"/>
+        <meta-data
+            android:name="direct_writing_marketing_name"
+            android:resource="@string/direct_writing_marketing_name"/>
+        <meta-data
+            android:name="direct_writing_description"
+            android:resource="@string/direct_writing_description"/>
+        <receiver
+            android:name="com.samsung.android.honeyboard.base.cscloader.CscUpdateReceiver"
+            android:permission="com.samsung.sec.android.application.csc"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.UpdatePreferences"/>
+                <action android:name="com.samsung.android.honeyboard.UpdatePreferences.CSC"/>
+                <action android:name="com.samsung.android.honeyboard.UpdatePreferences.OMC"/>
+                <action android:name="com.samsung.android.honeyboard.RELOAD_CSC_SETTINGS"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.samsung.android.honeyboard.base.broadcastreceiver.CrossProfileChangedReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.pm.action.CAN_INTERACT_ACROSS_PROFILES_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.samsung.android.honeyboard.base.broadcastreceiver.broadcastreceiverlist.SASignOutBroadcastReceiver"
+            android:permission="com.osp.app.signin.BROADCAST_PERMISSION"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.account.SAMSUNGACCOUNT_SIGNOUT_COMPLETED"/>
+                <action android:name="com.samsung.account.SAMSUNGACCOUNT_SIGNIN_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.samsung.android.honeyboard.base.broadcastreceiver.broadcastreceiverlist.ThemeApplyReceiver"
+            android:permission="com.samsung.android.honeyboard.permission.ThemeApplyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.theme.themecenter.THEME_APPLY"/>
+                <action android:name="com.samsung.android.theme.themecenter.THEME_APPLY_START"/>
+                <action android:name="com.samsung.android.theme.themecenter.THEME_REAPPLY"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.samsung.android.honeyboard.base.broadcastreceiver.WritingToolkitSettingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.WRITING_TOOLKIT_SETTINGS_VALUES"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.samsung.android.honeyboard.base.broadcastreceiver.broadcastreceiverlist.DeviceLocaleChangeReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:name="com.samsung.android.honeyboard.base.permission.PermissionActivity"
+            android:exported="false"
+            android:taskAffinity=""/>
+        <activity
+            android:theme="@style/Theme.Transparent"
+            android:name="com.samsung.android.honeyboard.base.plugins.PluginDelegateActivity"
+            android:exported="false"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:theme="@style/SetupWizardPermission"
+            android:name="com.samsung.android.honeyboard.base.setupwizardpermission.SetupWizardPermissionActivity"
+            android:permission="com.samsung.android.honeyboard.permission.SetupWizardPermissionActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:uiOptions="none">
+            <intent-filter>
+                <action android:name="com.sec.android.app.secsetupwizard.APP_PERMISSIONS_FOR_CHINA"/>
+                <action android:name="com.samsung.android.spv.ACTION_VIEW_DETAIL"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:name="com.samsung.android.honeyboard.base.permission.PermissionDeniedCoverActivity"
+            android:exported="false"
+            android:taskAffinity=""/>
+        <activity
+            android:theme="@style/AppCompatDialogTheme"
+            android:name="com.samsung.android.honeyboard.base.saccount.AiWriterSaActivity"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:configChanges="screenSize|orientation"/>
+        <activity
+            android:theme="@style/AppCompatDialogTheme"
+            android:name="com.samsung.android.honeyboard.base.aiwriter.view.WritingAssistDialogActivity"
+            android:permission="com.samsung.android.honeyboard.permission.WRITING_ASSIST_FTU"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:configChanges="smallestScreenSize|screenSize|screenLayout|orientation"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="com.samsung.android.honeyboard.intent.action.START_FTU_DIALOG"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.google.android.enterprise.connectedapps.CrossProfileConnector_Service"
+            android:exported="false"/>
+        <service
+            android:name="com.samsung.android.honeyboard.base.keyinputstatistics.KeyInputStatisticsUpdaterJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service
+            android:name="com.samsung.android.honeyboard.base.keyscafe.statistics.KeysCafeStatisticsJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity
+            android:theme="@style/Theme.FontChooser"
+            android:name="com.samsung.android.fontchooser.FontChooserActivity"
+            android:exported="true"
+            android:process=":fontchooser"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.samsung.android.intent.action.SecFontChooser"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <provider
+            android:name="com.samsung.android.fontchooser.DLFontProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":fontchooser"
+            android:authorities="com.samsung.android.fontchooser.dlfontprovider"/>
+        <activity
+            android:theme="@style/Theme.FontChooser"
+            android:name="com.samsung.android.fontchooser.FontChooserPreviewActivity"
+            android:exported="true"
+            android:process=":fontchooser"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"/>
+        <meta-data
+            android:name="com.samsung.android.fontchooser.supported"
+            android:value="true"/>
+        <meta-data
+            android:name="com.samsung.android.fontchooser.provider.version"
+            android:value="1000000"/>
+        <activity
+            android:theme="@style/seslEyeDropper"
+            android:name="androidx.picker.eyeDropper.SeslEyeDropperActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            android:configChanges="fontScale|colorMode|layoutDirection|density|smallestScreenSize|screenSize|uiMode|screenLayout|orientation|navigation|keyboardHidden|keyboard|touchscreen|locale|mnc|mcc"/>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"/>
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+            android:exported="true"
+            android:visibleToInstantApps="true"/>
+        <service
+            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+            android:enabled="@bool/enable_system_alarm_service_default"
+            android:exported="false"
+            android:directBootAware="false"/>
+        <service
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:enabled="@bool/enable_system_foreground_service_default"
+            android:exported="false"
+            android:directBootAware="false"/>
+        <receiver
+            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:directBootAware="false"/>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+            android:enabled="false"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+            android:enabled="@bool/enable_system_alarm_service_default"
+            android:exported="false"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+            android:permission="android.permission.DUMP"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="com.samsung.android.sdk.routines.v3.internal.RoutineSdkContentProvider"
+            android:permission="com.samsung.android.permission.sdk.routines.v3.ACCESS_ROUTINES"
+            android:exported="true"
+            android:authorities="com.samsung.android.honeyboard.provider.routines.v3">
+            <intent-filter>
+                <action android:name="com.samsung.android.sdk.routines.v3.ROUTINE_PROVIDER"/>
+            </intent-filter>
+            <meta-data
+                android:name="com.samsung.android.sdk.routines.v3.version"
+                android:value="3.1.28"/>
+            <meta-data
+                android:name="com.samsung.android.sdk.routines.v3.version_code"
+                android:value="30123"/>
+        </provider>
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:permission="android.permission.DUMP"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="false">
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:exported="false"
+            android:directBootAware="true"/>
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false"/>
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false"/>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <uses-library
+            android:name="com.samsung.android.spensdk.framework-v1"
+            android:required="false"/>
+        <uses-native-library
+            android:name="libSDKonnxruntime.spenocr.samsung.so"
+            android:required="false"/>
+        <meta-data
+            android:name="com.samsung.android.app.sdk.deepsky.versionName"
+            android:value="1.0.8"/>
+        <uses-native-library
+            android:name="libOpenCL.so"
+            android:required="false"/>
+        <uses-native-library
+            android:name="libobjectcapture_jni.arcsoft.so"
+            android:required="false"/>
+        <uses-native-library
+            android:name="libobjectcapture.arcsoft.so"
+            android:required="false"/>
+        <uses-native-library
+            android:name="libdvs.camera.samsung.so"
+            android:required="false"/>
+        <meta-data
+            android:name="com.samsung.android.app.sdk.deepsky.objectcapture.versionName"
+            android:value="8.0.8"/>
+        <meta-data
+            android:name="SPDE.build.signature"
+            android:value="89fe8ab20a1900f87d00ba600f8ee9bc767b6715/185023188/global-release/HoneyBoard-548300-5.9.40"/>
+        <meta-data
+            android:name="SPDE.env.version"
+            android:value="8.12.0/G36.2.9/1.2.16"/>
+        <activity
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
+            android:label="@string/morphe_samsung_keyboard_feedback_title"
+            android:name="app.revanced.extension.samsungkeyboard.FeedbackSettingsActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"/>
+    </application>
+</manifest>

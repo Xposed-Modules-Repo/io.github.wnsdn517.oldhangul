@@ -1,0 +1,70 @@
+{
+  "urls": {
+    "input_h": [
+      {
+        "value": "http://"
+      },
+      {
+        "value": "http://www."
+      },
+      {
+        "value": "https://"
+      },
+      {
+        "value": "html"
+      }
+    ],
+    "input_w": [
+      {
+        "value": "www."
+      }
+    ],
+    "input_dot_jpn": [
+      {
+        "value": ".com"
+      },
+      {
+        "value": ".co.jp"
+      },
+      {
+        "value": ".ne.jp"
+      },
+      {
+        "value": ".net"
+      },
+      {
+        "value": ".NET"
+      },
+      {
+        "value": ".jp"
+      },
+      {
+        "value": ".or.jp"
+      },
+      {
+        "value": ".org"
+      },
+      {
+        "value": ".ac.jp"
+      },
+      {
+        "value": ".ed.jp"
+      },
+      {
+        "value": ".go.jp"
+      },
+      {
+        "value": ".gr.jp"
+      },
+      {
+        "value": ".ad.jp"
+      },
+      {
+        "value": ".lg.jp"
+      },
+      {
+        "value": ".html"
+      }
+    ]
+  }
+}

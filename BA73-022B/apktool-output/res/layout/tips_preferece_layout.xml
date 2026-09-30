@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/tips_preference_background" android:paddingLeft="@dimen/tips_preference_padding_left" android:paddingRight="@dimen/tips_preference_padding_left" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/tips_preference_title_size" android:textColor="@color/tips_preference_title_color" android:id="@id/tips_title" android:paddingTop="@dimen/tips_preference_title_padding_top" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/link_container" android:paddingTop="@dimen/tips_preference_link_description_padding_top" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/tips_preference_link_container_margin_bottom" />
+</LinearLayout>

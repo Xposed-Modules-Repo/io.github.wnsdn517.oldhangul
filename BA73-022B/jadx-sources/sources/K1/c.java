@@ -1,0 +1,60 @@
+package K1;
+
+import java.util.Map;
+
+/* JADX INFO: loaded from: classes2.dex */
+public final class c implements Map.Entry {
+
+    /* JADX INFO: renamed from: a, reason: collision with root package name */
+    public final Object f5494a;
+
+    /* JADX INFO: renamed from: b, reason: collision with root package name */
+    public final Object f5495b;
+
+    /* JADX INFO: renamed from: c, reason: collision with root package name */
+    public c f5496c;
+
+    /* JADX INFO: renamed from: d, reason: collision with root package name */
+    public c f5497d;
+
+    public c(Object obj, Object obj2) {
+        this.f5494a = obj;
+        this.f5495b = obj2;
+    }
+
+    @Override // java.util.Map.Entry
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof c)) {
+            return false;
+        }
+        c cVar = (c) obj;
+        return this.f5494a.equals(cVar.f5494a) && this.f5495b.equals(cVar.f5495b);
+    }
+
+    @Override // java.util.Map.Entry
+    public final Object getKey() {
+        return this.f5494a;
+    }
+
+    @Override // java.util.Map.Entry
+    public final Object getValue() {
+        return this.f5495b;
+    }
+
+    @Override // java.util.Map.Entry
+    public final int hashCode() {
+        return this.f5495b.hashCode() ^ this.f5494a.hashCode();
+    }
+
+    @Override // java.util.Map.Entry
+    public final Object setValue(Object obj) {
+        throw new UnsupportedOperationException("An entry modification is not supported");
+    }
+
+    public final String toString() {
+        return this.f5494a + "=" + this.f5495b;
+    }
+}

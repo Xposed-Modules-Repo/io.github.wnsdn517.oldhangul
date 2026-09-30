@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.CollapsingToolbarLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/collapsing_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_scrollFlags="exitUntilCollapsed|scroll"
+    app:supportActionModeOverLay="false"
+    app:title="@string/app_name"
+    style="@style/collapsing_toolbar_layout_style">
+    <View
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:background="@android:color/transparent"/>
+</com.google.android.material.appbar.CollapsingToolbarLayout>

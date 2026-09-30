@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/multilanguage_input" android:key="settings_add_bilingual_language"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.samsung.android.honeyboard.settings.common.RadioButtonPreferenceGroup android:persistent="false" android:enabled="true" android:title="@string/add_multilanguage" android:key="supported_bilingual_list" app:valueType="int" />
+</PreferenceScreen>
