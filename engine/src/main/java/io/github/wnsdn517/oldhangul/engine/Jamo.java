@@ -23,6 +23,9 @@ public final class Jamo {
     public static final char YEORINHIEUH = 'ㆆ'; // ㆆ
     public static final char ARAEA = 'ㆍ';       // ㆍ
 
+    /** 치두음 / 정치음 initials: Shift keys of the Old Korean IME layout (ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ). */
+    public static final String TOOTH_INITIALS = "ᄼᄾᅎᅐᅔᅕ";
+
     static final Map<String, Character> LEADING = load(JamoTables.LEADING_KEYS, JamoTables.LEADING_VALUES);
     static final Map<String, Character> VOWEL = load(JamoTables.VOWEL_KEYS, JamoTables.VOWEL_VALUES);
     static final Map<String, Character> TRAILING = load(JamoTables.TRAILING_KEYS, JamoTables.TRAILING_VALUES);
@@ -37,18 +40,6 @@ public final class Jamo {
                 SPELLING.put(e.getValue(), e.getKey());
             }
         }
-        // Unicode has several 치음/청치음 choseong characters whose names do
-        // not describe a keyboard spelling, so the generated table cannot
-        // infer them.  They are still valid standalone archaic initials and
-        // must be recapturable when the editor gives one back to us.
-        SPELLING.put('\u113C', "ㅅ"); // ᄼ
-        SPELLING.put('\u113D', "ㅆ"); // ᄽ
-        SPELLING.put('\u113E', "ㅅ"); // ᄾ
-        SPELLING.put('\u113F', "ㅆ"); // ᄿ
-        SPELLING.put('\u114E', "ㅈ"); // ᅎ
-        SPELLING.put('\u114F', "ㅉ"); // ᅏ
-        SPELLING.put('\u1150', "ㅈ"); // ᅐ
-        SPELLING.put('\u1151', "ㅉ"); // ᅑ
     }
 
     private static Map<String, Character> load(String keys, String values) {
@@ -67,7 +58,8 @@ public final class Jamo {
 
     public static boolean isConsonantKey(int c) {
         return (c >= 0x3131 && c <= 0x314E && baseOf((char) c) != null)
-                || c == PANSIOS || c == YESIEUNG || c == YEORINHIEUH;
+                || c == PANSIOS || c == YESIEUNG || c == YEORINHIEUH
+                || (c <= Character.MAX_VALUE && TOOTH_INITIALS.indexOf((char) c) >= 0);
     }
 
     public static boolean isVowelKey(int c) {

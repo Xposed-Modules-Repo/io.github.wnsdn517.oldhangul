@@ -62,7 +62,17 @@ final class ClipboardColumns {
                 Object manager = findMethod(view.getClass(), "getLayoutManager").invoke(view);
                 if (manager != null) {
                     int wanted = Math.max(1, Math.min(max, 8));
-                    findMethod(manager.getClass(), "setSpanCount", int.class).invoke(manager, wanted);
+                    // Skip redundant sets: this runs on every global layout.
+                    try {
+                        Object current = findMethod(manager.getClass(), "getSpanCount").invoke(manager);
+                        if (current instanceof Integer && (Integer) current == wanted) {
+                            // Already capped.
+                        } else {
+                            findMethod(manager.getClass(), "setSpanCount", int.class).invoke(manager, wanted);
+                        }
+                    } catch (NoSuchMethodException e) {
+                        findMethod(manager.getClass(), "setSpanCount", int.class).invoke(manager, wanted);
+                    }
                 }
             } catch (ReflectiveOperationException | RuntimeException ignored) {
                 // Not a grid (a plain list): nothing to cap.

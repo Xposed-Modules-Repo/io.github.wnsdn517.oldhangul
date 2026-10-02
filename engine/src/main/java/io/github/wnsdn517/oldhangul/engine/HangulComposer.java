@@ -344,8 +344,11 @@ public final class HangulComposer {
                 prev = addNuclei(out, i, i, runEnd);
             } else if (runEnd == n) {
                 // Final consonants: as many as possible become the previous syllable's
-                // trailing cluster, the rest wait as orphans.
-                int t = prev == null ? i : longestTrailing(prev, i, tripleStart(i, runEnd));
+                // trailing cluster, the rest wait as orphans.  No triple cap here:
+                // ㅅㅅㅅ only becomes the archaic initial ᄴ once a vowel follows, and a
+                // vowel re-parses the run as the next syllable's leading cluster anyway.
+                // So 가+ㅅㅅㅅ is 갔ㅅ until ㅣ turns it into 가ᄴᅵ.
+                int t = prev == null ? i : longestTrailing(prev, i, runEnd);
                 if (prev != null) {
                     prev.end = t;
                 }
@@ -417,6 +420,9 @@ public final class HangulComposer {
             return true;
         }
         for (int i = from; i < to; i++) {
+            if (Jamo.TOOTH_INITIALS.indexOf(keys.charAt(i)) >= 0) {
+                return true;  // ᄼᄼ ᄾᄾ ᅎᅎ ᅐᅐ: these have no compatibility letter to show instead
+            }
             String base = Jamo.baseOf(keys.charAt(i));
             if (base != null && base.length() > 1) {
                 return true;
@@ -590,11 +596,21 @@ public final class HangulComposer {
                 if (s.leadEnd - s.start > 1) {
                     String spelling = spell(s.start, s.leadEnd);
                     Character compat = Jamo.COMPAT.get(spelling);
+                    Character single = Jamo.LEADING.get(spelling);
                     if (compat != null) {
                         sb.append(compat.charValue());
+                    } else if (single != null) {
+                        // An initial-only cluster has no compatibility letter (ᄼᄼ, ㅅㅅㅅ, ㅂㅅㄱ...) but is one
+                        // jamo: show it as that single letter (ᄽ, ᄴ ...) as soon as it is complete, with the
+                        // vowel filler so it is drawn as one syllable block.
+                        sb.append(single.charValue()).append(Jamo.FILLER_VOWEL);
                     } else {
-                        // Only an initial exists: show it alone (ᄴ + vowel filler).
-                        sb.append(Jamo.LEADING.get(spelling).charValue()).append(Jamo.FILLER_VOWEL);
+                        for (int k = s.start; k < s.leadEnd; k++) {
+                            char ch = keys.charAt(k);
+                            if (ch != BREAK) {
+                                sb.append(ch);
+                            }
+                        }
                     }
                 } else if (keys.charAt(s.start) != BREAK) {
                     sb.append(keys.charAt(s.start));

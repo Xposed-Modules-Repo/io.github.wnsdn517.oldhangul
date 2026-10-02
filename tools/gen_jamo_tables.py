@@ -25,7 +25,22 @@ VOW = {
 }
 
 
+# 치두음 / 정치음 initials (U+113C..1155): single keys of the Old Korean IME's Shift layer.
+# Unicode spells them CHITUEUM+SIOS ..., so they are base letters, not clusters.
+TOOTH = {
+    "CHITUEUM": {"SIOS": "ᄼ", "CIEUC": "ᅎ", "CHIEUCH": "ᅔ"},
+    "CEONGCHIEUM": {"SIOS": "ᄾ", "CIEUC": "ᅐ", "CHIEUCH": "ᅕ"},
+}
+
+
 def cons_part(p):
+    for prefix, table in TOOTH.items():
+        if p.startswith(prefix):
+            rest = p[len(prefix):]
+            if rest.startswith("SSANG"):
+                base = table.get(rest[5:])
+                return None if base is None else base * 2
+            return table.get(rest)
     if p.startswith("SSANG"):
         b = cons_part(p[5:])
         return None if b is None else b * 2

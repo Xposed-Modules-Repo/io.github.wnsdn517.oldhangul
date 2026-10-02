@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">삼성 키보드 옛한글</string>
-    <string name="xposed_description">삼성 키보드 두벌식에 옛한글 조합, 자동 ㅇ 채우기, ㅋ 길게 눌러 ㅋㅋㅋ 입력을 추가합니다.</string>
+    <string name="xposed_description">삼성 키보드(HoneyBoard) 두벌식에 옛한글 조합(ᄴ·ᄫ·ㆍ 등), 쉬프트 옛 자모, 윗줄 밀어 숫자, 다중언어에서 키 위치 기준 영/한 판별, 영어↔한국어/일본어 언어 키(짧게·길게), CPM/WPM 속도 표시, 계산·단위 환산, 실행취소를 더합니다. 사용: ① LSPosed에서 이 모듈을 켜고 범위로 ‘삼성 키보드(com.samsung.android.honeyboard)’만 선택 ② 앱의 ‘삼성 키보드 재시작’ 버튼 ③ 앱 서랍의 ‘삼성 키보드 옛한글’에서 기능을 켜고 끔. 문제 확인용 ‘자세한 로그’를 켜면 LSPosed 로그에 OldHangul: 로 기록됩니다. 기준 버전 5.9.40.</string>
 </resources>

@@ -57,10 +57,12 @@ final class HookTargets {
     Method engineFactory;
     /** Samsung's key-preview bubble factory: (PreviewBubbleData) -> view id. Optional. */
     Method previewShow;
+    /** Language manager's toggleLanguage(boolean next). Optional. */
+    Method languageToggle;
     /** Toolbar ("Bee world") members, all optional: the undo button is skipped if any is missing. */
     BeeTargets bee;
 
-    private static final int CACHE_VERSION = 7;
+    private static final int CACHE_VERSION = 8;
     private static final String BEE_UPDATE_ALL = "call updateAllBees";
     private static final String BEE_ADD = "addBee : already exist";
     private static final String BEE_SAVE = "saveCurrentBeeSet: ";
@@ -73,6 +75,7 @@ final class HookTargets {
     private static final String SHIFT_STATE = "getCurrentShiftState()I";
     private static final String USES_IS_SHIFTED = "keycode change to lowercase for auto caps flick";
     private static final String ENGINE_FACTORY = "engineName is null";
+    private static final String LANGUAGE_TOGGLE = "toggleLanguage : ";
     private static final String SIZE_CONFIG = "sizeConfig";
     private static final String PREVIEW_DATA = "PreviewBubbleData(previewBubbleType=";
     private static final String PREVIEW_SHOWN = "BubbleLayerManager Preview is not displayed, preview already has parent.";
@@ -178,6 +181,14 @@ final class HookTargets {
                 t.previewShow.setAccessible(true);
             } catch (RuntimeException | ReflectiveOperationException e) {
                 XposedBridge.log("OldHangul: key preview not found, swipe preview may show the letter: " + e);
+            }
+            try {
+                MethodData toggle = single(bridge.findMethod(FindMethod.create().matcher(MethodMatcher.create()
+                        .usingStrings(LANGUAGE_TOGGLE).paramCount(1))), "toggleLanguage");
+                t.languageToggle = toggle.getMethodInstance(cl);
+                t.languageToggle.setAccessible(true);
+            } catch (RuntimeException | ReflectiveOperationException e) {
+                XposedBridge.log("OldHangul: language toggle not found: " + e);
             }
             try {
                 t.bee = BeeTargets.search(bridge, cl, BEE_UPDATE_ALL, BEE_ADD, BEE_SAVE);
@@ -294,6 +305,7 @@ final class HookTargets {
         }
         p.setProperty("keyTouch", touch.toString());
         p.setProperty("previewShow", previewShow == null ? "" : describe(previewShow));
+        p.setProperty("languageToggle", languageToggle == null ? "" : describe(languageToggle));
         p.setProperty("engineFactory", engineFactory == null ? "" : describe(engineFactory));
         p.setProperty("sizeHeightRatio", sizeHeightRatio == null ? "" : describe(sizeHeightRatio));
         p.setProperty("sizeWidthRatio", sizeWidthRatio == null ? "" : describe(sizeWidthRatio));
@@ -320,6 +332,8 @@ final class HookTargets {
         }
         String preview = p.getProperty("previewShow", "");
         t.previewShow = preview.isEmpty() ? null : resolve(cl, preview);
+        String toggle = p.getProperty("languageToggle", "");
+        t.languageToggle = toggle.isEmpty() ? null : resolve(cl, toggle);
         String factory = p.getProperty("engineFactory", "");
         t.engineFactory = factory.isEmpty() ? null : resolve(cl, factory);
         String height = p.getProperty("sizeHeightRatio", "");

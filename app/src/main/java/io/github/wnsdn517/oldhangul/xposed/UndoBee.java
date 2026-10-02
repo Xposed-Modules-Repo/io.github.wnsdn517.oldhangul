@@ -42,6 +42,14 @@ final class UndoBee {
     private static OldHangulController controller;
     private static Object bee;
     private static Object callback;
+    /**
+     * State Samsung keeps on every Bee (Q6.a): sleeping (hidden in the toolbar editor), new badge.
+     * A Bee that answers "not visible" (beeVisibility != 1) is moved to the hidden map by
+     * Samsung's visibility pass, and one that forgets setSleep(true) cannot be brought back from
+     * the editor's hidden list: both made the button impossible to re-add after hiding it.
+     */
+    private static boolean sleeping;
+    private static boolean isNewBee;
 
     private UndoBee() {}
 
@@ -65,18 +73,29 @@ final class UndoBee {
     }
 
     /** Redraws the button's description (typing speed) after the numbers changed. */
+    private static Method invalidateMethod;
+    private static boolean invalidateLookedUp;
+
     static void refresh() {
         Object cb = callback;
         if (cb == null || bee == null) return;
         try {
-            for (Class<?> type : cb.getClass().getInterfaces()) {
-                for (Method m : type.getDeclaredMethods()) {
-                    // Q6.b.i() is the "invalidate" callback (BeeAbstract.invalidate calls it).
-                    if (m.getName().equals("i") && m.getParameterTypes().length == 0) {
-                        m.invoke(cb);
-                        return;
+            if (!invalidateLookedUp) {
+                invalidateLookedUp = true;
+                for (Class<?> type : cb.getClass().getInterfaces()) {
+                    for (Method m : type.getDeclaredMethods()) {
+                        // Q6.b.i() is the "invalidate" callback (BeeAbstract.invalidate calls it).
+                        if (m.getName().equals("i") && m.getParameterTypes().length == 0) {
+                            m.setAccessible(true);
+                            invalidateMethod = m;
+                            break;
+                        }
                     }
+                    if (invalidateMethod != null) break;
                 }
+            }
+            if (invalidateMethod != null) {
+                invalidateMethod.invoke(cb);
             }
         } catch (Throwable ignored) {
         }
@@ -85,10 +104,21 @@ final class UndoBee {
     private static void place(Object owner) {
         try {
             Context context = controller.serviceContext();
-            if (context == null || targets == null) return;
+            if (context == null || targets == null || controller == null) return;
+            if (!controller.undoButtonEnabled()) {
+                controller.debug("undo Bee skipped (disabled in settings)");
+                return;
+            }
             Object world = targets.world.get(owner);
             if (world == null) return;
-            if (targets.find.invoke(world, ID) != null) return; // already somewhere in the toolbar
+            // find() checks both visible (f20668k) and hidden (f20669l) maps in
+            // BeeWorld(J.java:408): a hidden Bee is still "somewhere", so never
+            // force it back — that is what made a hidden button unrecoverable
+            // when combined with an unconditional save().
+            if (targets.find.invoke(world, ID) != null) {
+                controller.debug("undo Bee already in world (visible or hidden), keeping user order");
+                return;
+            }
 
             Object beeObject = getOrCreate(context);
             Object setting = targets.setting.get(world);
@@ -125,6 +155,24 @@ final class UndoBee {
                 return null;
             case "getBeeFlags":
                 return 1;
+            case "getBeeVisibility":
+                return 0;  // 1 means "hidden by policy": Samsung moves such a Bee to its hidden map
+            case "isSleep":
+                return sleeping;
+            case "setSleep":
+                sleeping = args != null && args.length > 0 && Boolean.TRUE.equals(args[0]);
+                return null;
+            case "isNew":
+                return isNewBee;
+            case "setNew":
+                isNewBee = args != null && args.length > 0 && Boolean.TRUE.equals(args[0]);
+                return null;
+            case "renew":
+                isNewBee = args != null && args.length > 0 && Boolean.TRUE.equals(args[0]);
+                return null;
+            case "invalidate":
+                refresh();
+                return null;
             case "getPinBeePriority":
                 return Integer.MAX_VALUE;
             case "needLabel":
@@ -172,7 +220,7 @@ final class UndoBee {
                     "clipboard", "string", context.getPackageName());
         }
         Constructor<?> ctor = builderType.getConstructor(Context.class, Icon.class, int.class);
-        Object builder = ctor.newInstance(context, icon(), labelId);
+        Object builder = ctor.newInstance(context, icon(context), labelId);
 
         // The builder's description: the public, non-final String field that starts as "".
         for (Field f : builderType.getFields()) {
@@ -185,20 +233,34 @@ final class UndoBee {
         return infoCtor.newInstance(builder);
     }
 
-    private static Icon icon() {
+    /** Samsung's own undo vector (ic_undo), in the style of the other toolbar icons; a drawn arrow if it is missing. */
+    private static Icon icon(Context context) {
+        try {
+            int id = context.getResources().getIdentifier("ic_undo", "drawable", context.getPackageName());
+            if (id != 0) {
+                return Icon.createWithResource(context, id);
+            }
+        } catch (RuntimeException ignored) {
+            // fall through
+        }
         Bitmap bitmap = Bitmap.createBitmap(96, 96, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.DKGRAY);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(9f);
         paint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawArc(18, 18, 78, 78, -55, 275, false, paint);
+        paint.setStrokeJoin(Paint.Join.ROUND);
         Path arrow = new Path();
-        arrow.moveTo(17, 22);
-        arrow.lineTo(17, 48);
-        arrow.lineTo(42, 35);
+        arrow.moveTo(34, 24);
+        arrow.lineTo(16, 42);
+        arrow.lineTo(34, 60);
         canvas.drawPath(arrow, paint);
+        Path curve = new Path();
+        curve.moveTo(18, 42);
+        curve.lineTo(52, 42);
+        curve.cubicTo(76, 42, 82, 62, 82, 78);
+        canvas.drawPath(curve, paint);
         return Icon.createWithBitmap(bitmap);
     }
 }

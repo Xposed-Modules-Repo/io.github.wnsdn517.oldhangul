@@ -30,6 +30,23 @@ public final class Prefs {
     public static final String CLIPBOARD_COLUMNS_DEFAULT = "3";
     /** Loads Samsung's Japanese engine in the background when the keyboard starts. */
     public static final String PRELOAD_JAPANESE = "preload_japanese";
+    /** Shows the small CPM/WPM meter at the bottom of the keyboard. */
+    public static final String TYPING_METER = "typing_meter";
+    /** Shows calculator / unit-conversion results next to the meter. */
+    public static final String CALC_TOOLS = "calc_tools";
+    /** Shows the undo button in Samsung's top toolbar (Bee). Hidden Bees stay hidden. */
+    public static final String UNDO_BUTTON = "undo_button";
+    /** Language key: tap flips English and one language, long press moves to the next language pair. */
+    public static final String LANGUAGE_PAIR = "language_pair";
+    /**
+     * Experimental: modern jamo keys also go to Samsung's engine (its text is blocked) so its
+     * suggestion and Hanja candidates follow what is typed; a picked candidate replaces the word.
+     */
+    public static final String SAMSUNG_SUGGEST = "samsung_suggest";
+    /** Keeps Samsung's "paste what you copied" suggestion as a small chip at the side once typing starts. */
+    public static final String CLIP_CHIP = "clip_chip";
+    /** Exchange rate cards (100 usd, 5000원, ¥1000...); rates come from free keyless APIs. */
+    public static final String CURRENCY = "currency";
     /** Writes every key action and Samsung shift change to the LSPosed log. Off by default. */
     public static final String DEBUG_LOG = "debug_log";
     /** Broadcast the hooked keyboard answers by restarting itself (sender needs {@link #RESTART_PERMISSION}). */

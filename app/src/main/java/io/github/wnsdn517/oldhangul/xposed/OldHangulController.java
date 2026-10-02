@@ -54,6 +54,10 @@ final class OldHangulController {
     private static final String DUBEOLSIK_ONLY = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠ";
     /** 천지인's ㆍ key sends U+119E (dubeolsik's Shift+ㅏ sends ㆍ, U+318D). */
     private static final int CHEONJIIN_ARAEA = 0x119E;
+    /** 방점 (tone marks) of the Old Korean IME's Shift layer: single dot 거성, double dot 상성. */
+    static final char TONE_SINGLE = '\u302E';
+    static final char TONE_DOUBLE = '\u302F';
+
 
     private static final long SUPPRESS_TIMEOUT_MS = 10_000;
     private static final long REPEAT_MAX_MS = 30_000;
@@ -75,6 +79,9 @@ final class OldHangulController {
     private boolean unlimitedSize;
     private boolean numberSwipe;
     private int clipboardColumns;
+    private boolean typingMeter = true;
+    private boolean calcTools = true;
+    private boolean undoButton = true;
 
     /** Whether the current Korean layout is dubeolsik (the only layout composed here). */
     private boolean dubeolsik = true;
@@ -85,6 +92,25 @@ final class OldHangulController {
     /** True while Samsung is using key-based language detection for bilingual input. */
     private boolean bilingualKeyMode;
     private boolean multilingual;
+    /** Experimental: Samsung's engine also gets the modern jamo keys (see Prefs.SAMSUNG_SUGGEST). */
+    private boolean samsungSuggest;
+    /**
+     * Samsung's engine did not see every key of this word (an archaic jamo or tone mark was
+     * swallowed), so what it would commit for the word can differ from what is in the editor.
+     */
+    private boolean samsungDesynced;
+    /**
+     * A key action that ends the word (space, enter...) is running while Samsung's engine still
+     * holds that word: its text for the word must not reach the editor, which has it already.
+     */
+    private boolean samsungWordPending;
+    /** A suggestion was just picked: Samsung's text replaces the word until then. */
+    private long candidatePickUntil;
+    /**
+     * Multilingual typing: Samsung's engine decided this word is not Korean (it sent
+     * Latin text), so it owns the word until it ends and keys are left to it.
+     */
+    private boolean samsungWord;
     private boolean samsungShifted;
     private boolean shiftArchaic = true;
     /** Korean was typed more recently than a letter of another script. */
@@ -127,12 +153,21 @@ final class OldHangulController {
     private android.widget.PopupWindow undoPanel;
     private final TypingStats typingStats = new TypingStats();
     private android.widget.TextView typingMeterView;
-    private android.widget.TextView undoButtonView;
+    private android.graphics.drawable.GradientDrawable meterBackground;
     private android.view.ViewGroup typingMeterParent;
     private android.widget.PopupWindow typingPanel;
     private android.view.View typingOverlay;
     private android.view.WindowManager typingOverlayManager;
     private long lastHistoryAt;
+    /** Last time the meter text was redrawn; keystrokes only schedule a redraw. */
+    private long lastMeterUpdateAt;
+    private final Runnable meterTick = this::updateTypingMeterNow;
+    private boolean meterPending;
+    /** Recent committed text for the calculator / unit tools (bounded). */
+    private final StringBuilder recentText = new StringBuilder();
+    private ToolSuggester.Result toolResult;
+    private android.widget.LinearLayout toolCards;
+    private android.widget.HorizontalScrollView toolScroll;
 
     /** Letters of a held ㅋ, or null when not repeating. */
     private Laughter repeating;
@@ -165,6 +200,7 @@ final class OldHangulController {
 
     void attach(InputMethodService service) {
         this.service = service;
+        CurrencyFeed.start(service.getFilesDir());
         // The tool button belongs to the keyboard chrome, so create it as soon
         // as the keyboard window exists rather than waiting for the first key.
         handler.post(this::updateTypingMeter);
@@ -199,6 +235,12 @@ final class OldHangulController {
         fastDelete = prefs.getBoolean(Prefs.FAST_DELETE, true);
         directInput = prefs.getBoolean(Prefs.DIRECT_INPUT, true);
         shiftArchaic = prefs.getBoolean(Prefs.SHIFT_ARCHAIC, true);
+        samsungSuggest = prefs.getBoolean(Prefs.SAMSUNG_SUGGEST, true);
+        typingMeter = prefs.getBoolean(Prefs.TYPING_METER, true);
+        calcTools = prefs.getBoolean(Prefs.CALC_TOOLS, true);
+        CurrencyTool.setEnabled(prefs.getBoolean(Prefs.CURRENCY, true));
+        if (service != null) CurrencyFeed.refreshIfStale();
+        undoButton = prefs.getBoolean(Prefs.UNDO_BUTTON, true);
         notifyShiftLayer();
         laughStyle = Laughter.Style.of(prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF));
         composer.configure(archaic, prefs.getBoolean(Prefs.AUTO_IEUNG, true));
@@ -211,6 +253,227 @@ final class OldHangulController {
         return enabled ? clipboardColumns : 0;
     }
 
+    /** Long-press vibration for presses handled here (Samsung's own is skipped with its long press). */
+    void longPressHaptic() {
+        try {
+            if (service == null || service.getWindow() == null) return;
+            service.getWindow().getWindow().getDecorView().performHapticFeedback(
+                    android.view.HapticFeedbackConstants.LONG_PRESS,
+                    android.view.HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+        } catch (RuntimeException e) {
+            debug("haptic failed: " + e);
+        }
+    }
+
+    // ---------------------------------------------------------------- clipboard chip
+
+    private String smartText = "";
+    private boolean smartUsed;
+    /** The chip while it sits in Samsung's candidate row, and what it changed there. */
+    private android.view.View clipChip;
+    private android.view.ViewGroup clipRoot;
+    private android.view.View clipHolder;
+    private Object clipHolderParams;
+    private int clipHolderEndToStart;
+    private java.lang.reflect.Field clipEndToStart;
+    private final Runnable clipChipExpire = this::removeClipChip;
+
+    void onSmartCandidateShown(String text) {
+        smartText = text == null ? "" : text;
+        smartUsed = false;
+        debug("smart candidate shown: " + smartText);
+    }
+
+    /** Tapped or closed by the user: nothing to keep. */
+    void onSmartCandidateUsed() {
+        smartUsed = true;
+        removeClipChip();
+    }
+
+    void onSmartCandidateVisible() {
+        removeClipChip();
+    }
+
+    /** Samsung drops its suggestion (typing started, timeout...): keep it as a small chip. */
+    void onSmartCandidateHidden() {
+        if (!enabled || smartUsed || smartText.isEmpty() || !prefs.getBoolean(Prefs.CLIP_CHIP, true)) {
+            return;
+        }
+        // Samsung rebuilds its candidate row right after hiding the suggestion; try again if it is not there yet.
+        final String text = smartText;
+        handler.postDelayed(() -> { if (!showClipChip(text)) handler.postDelayed(() -> showClipChip(text), 300); }, 150);
+    }
+
+    /**
+     * Puts the chip into Samsung's candidate row (a ConstraintLayout: close button | candidates |
+     * expand button) between the candidates and the expand button, and ends the candidates at the
+     * chip instead of the expand button, so the words slide over and nothing is covered.
+     */
+    private boolean showClipChip(String text) {
+        if (service == null || service.getWindow() == null || smartUsed || clipChip != null) return clipChip != null;
+        try {
+            android.view.View decor = service.getWindow().getWindow().getDecorView();
+            android.view.View row = findIdView(decor, "candidate_view");
+            android.view.View holder = findIdView(decor, "candidates_holder");
+            android.view.View expand = findIdView(decor, "candidate_expand_button_frame");
+            if (!(row instanceof android.view.ViewGroup) || holder == null || expand == null
+                    || row.getVisibility() != android.view.View.VISIBLE) {
+                debug("clip chip: candidate row not ready");
+                return false;
+            }
+            android.view.ViewGroup.LayoutParams rowParams = holder.getLayoutParams();
+            boolean constraint = false;
+            for (Class<?> c = row.getClass(); c != null; c = c.getSuperclass()) {
+                constraint |= c.getName().contains("ConstraintLayout");
+            }
+            if (rowParams == null || !constraint) {
+                debug("clip chip: candidate row is not a ConstraintLayout");
+                return false;
+            }
+            // Samsung ships ConstraintLayout.LayoutParams renamed (androidx...widget.d): its int
+            // fields are found by position, in the library's declaration order, and checked
+            // against the row's real constraints (the candidates start at the close button and end
+            // at the expand button).
+            java.lang.reflect.Field[] ints = constraintIntFields(rowParams.getClass());
+            android.view.View closeFrame = findIdView(decor, "candidate_close_button_frame");
+            if (ints == null || closeFrame == null
+                    || ints[FIELD_START_TO_END].getInt(rowParams) != closeFrame.getId()
+                    || ints[FIELD_END_TO_START].getInt(rowParams) != expand.getId()) {
+                debug("clip chip: constraint fields do not match this build");
+                return false;
+            }
+            float density = service.getResources().getDisplayMetrics().density;
+            android.widget.LinearLayout chip = new android.widget.LinearLayout(service);
+            chip.setOrientation(android.widget.LinearLayout.HORIZONTAL);
+            chip.setGravity(android.view.Gravity.CENTER);
+            chip.setPadding((int) (7 * density), 0, (int) (5 * density), 0);
+            android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+            bg.setColor(0x33808080);
+            bg.setCornerRadius(12 * density);
+            chip.setBackground(bg);
+            android.widget.ImageView icon = new android.widget.ImageView(service);
+            int iconId = service.getResources().getIdentifier("ic_smartcandidate_clipboard", "drawable", service.getPackageName());
+            if (iconId != 0) {
+                android.graphics.drawable.Drawable d = service.getResources().getDrawable(iconId, null).mutate();
+                d.setTint(0xFF8AB4F8);
+                icon.setImageDrawable(d);
+            }
+            chip.addView(icon, new android.widget.LinearLayout.LayoutParams((int) (16 * density), (int) (16 * density)));
+            // Only the first few characters: it is a reminder, the words are what matter.
+            String shown = text.replace('\n', ' ').trim();
+            if (shown.codePointCount(0, shown.length()) > 3) {
+                shown = shown.substring(0, shown.offsetByCodePoints(0, 3)) + "…";
+            }
+            android.widget.TextView label = new android.widget.TextView(service);
+            label.setText(shown);
+            label.setTextColor(0xFFC7CBD0);
+            label.setTextSize(12f);
+            label.setSingleLine(true);
+            label.setIncludeFontPadding(false);
+            label.setPadding((int) (4 * density), 0, 0, 0);
+            chip.addView(label);
+            chip.setOnClickListener(v -> pasteClip(text));
+            chip.setOnLongClickListener(v -> { smartUsed = true; removeClipChip(); return true; });
+            chip.setContentDescription("복사한 글 붙여넣기");
+            chip.setId(android.view.View.generateViewId());
+
+            android.view.ViewGroup root = (android.view.ViewGroup) row;
+            Object lp = rowParams.getClass().getConstructor(int.class, int.class).newInstance(-2, 0);
+            ints[FIELD_TOP_TO_TOP].setInt(lp, 0);          // PARENT_ID
+            ints[FIELD_BOTTOM_TO_BOTTOM].setInt(lp, 0);
+            ints[FIELD_END_TO_START].setInt(lp, expand.getId());
+            ((android.view.ViewGroup.MarginLayoutParams) lp).setMargins((int) (3 * density), (int) (8 * density),
+                    (int) (3 * density), (int) (8 * density));
+            clipHolderParams = holder.getLayoutParams();
+            clipEndToStart = ints[FIELD_END_TO_START];
+            clipHolderEndToStart = clipEndToStart.getInt(clipHolderParams);
+            clipHolder = holder;
+            clipRoot = root;
+            root.addView(chip, (android.view.ViewGroup.LayoutParams) lp);
+            clipEndToStart.setInt(clipHolderParams, chip.getId());
+            holder.setLayoutParams((android.view.ViewGroup.LayoutParams) clipHolderParams);
+            root.requestLayout();
+            clipChip = chip;
+            handler.removeCallbacks(clipChipExpire);
+            handler.postDelayed(clipChipExpire, 120_000);
+            debug("clip chip inserted in the candidate row for '" + shown + "'");
+            return true;
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            debug("clip chip failed: " + e);
+            removeClipChip();
+            return false;
+        }
+    }
+
+    private void pasteClip(String text) {
+        InputConnection ic = inputConnection();
+        if (ic == null) return;
+        commitSymbol(text);
+        smartUsed = true;
+        removeClipChip();
+    }
+
+    void onKeyboardHidden() {
+        removeClipChip();
+    }
+
+    /** Takes the chip out and gives the candidates their old width back. */
+    private void removeClipChip() {
+        handler.removeCallbacks(clipChipExpire);
+        try {
+            if (clipHolder != null && clipHolderParams != null && clipEndToStart != null) {
+                clipEndToStart.setInt(clipHolderParams, clipHolderEndToStart);
+                clipHolder.setLayoutParams((android.view.ViewGroup.LayoutParams) clipHolderParams);
+            }
+            if (clipRoot != null && clipChip != null) {
+                clipRoot.removeView(clipChip);
+                clipRoot.requestLayout();
+            }
+        } catch (ReflectiveOperationException | RuntimeException ignored) {
+            // the row is gone already
+        }
+        clipChip = null;
+        clipRoot = null;
+        clipHolder = null;
+        clipHolderParams = null;
+    }
+
+    // Positions of the int fields of ConstraintLayout.LayoutParams in declaration order
+    // (guideBegin, guideEnd, leftToLeft, leftToRight, rightToLeft, rightToRight, topToTop, topToBottom,
+    // bottomToTop, bottomToBottom, baselineToBaseline, baselineToTop, baselineToBottom, circleConstraint,
+    // circleRadius, startToEnd, startToStart, endToStart, endToEnd).
+    private static final int FIELD_TOP_TO_TOP = 6;
+    private static final int FIELD_BOTTOM_TO_BOTTOM = 9;
+    private static final int FIELD_START_TO_END = 15;
+    private static final int FIELD_END_TO_START = 17;
+
+    private static java.lang.reflect.Field[] constraintIntFields(Class<?> lpClass) {
+        java.util.ArrayList<java.lang.reflect.Field> out = new java.util.ArrayList<>();
+        for (java.lang.reflect.Field f : lpClass.getDeclaredFields()) {
+            if (f.getType() == int.class && !java.lang.reflect.Modifier.isStatic(f.getModifiers())
+                    && java.lang.reflect.Modifier.isPublic(f.getModifiers())) {
+                f.setAccessible(true);
+                out.add(f);
+            }
+        }
+        return out.size() > FIELD_END_TO_START ? out.toArray(new java.lang.reflect.Field[0]) : null;
+    }
+
+    /** The view with this id name in Samsung's keyboard (ids are looked up by name: the package's R is obfuscated away). */
+    private android.view.View findIdView(android.view.View root, String idName) {
+        int id = service.getResources().getIdentifier(idName, "id", service.getPackageName());
+        return id == 0 ? null : root.findViewById(id);
+    }
+
+    /** Suggestions Samsung just built, in creation order (see ModuleMain.hookCandidates). */
+    void onCandidate(int index, String text, int kind) {
+        if (debugLog && index == 0) debug("candidate top=" + text);
+    }
+
+    boolean languagePairToggle() {
+        return enabled && prefs.getBoolean(Prefs.LANGUAGE_PAIR, true);
+    }
+
     boolean numberSwipe() {
         return enabled && numberSwipe;
     }
@@ -221,6 +484,14 @@ final class OldHangulController {
 
     boolean preloadJapanese() {
         return preloadJapanese;
+    }
+
+    boolean undoButtonEnabled() {
+        return enabled && undoButton;
+    }
+
+    boolean typingMeterEnabled() {
+        return enabled && typingMeter;
     }
 
     boolean debugLog() {
@@ -251,7 +522,16 @@ final class OldHangulController {
         listener.run();
     }
 
+    private Runnable labelCacheClearer;
+
+    void setLabelCacheClearer(Runnable clearer) {
+        labelCacheClearer = clearer;
+    }
+
     private void notifyShiftLayer() {
+        if (labelCacheClearer != null) {
+            labelCacheClearer.run();
+        }
         if (shiftLayerListener != null) {
             shiftLayerListener.run();
         }
@@ -313,22 +593,38 @@ final class OldHangulController {
      * Samsung sends the Shift layer's code itself, so this only feeds the labels.
      */
     char shiftVariant(int code) {
-        if (!enabled || !archaic || !shiftArchaic) {
+        if (!enabled || !archaic || !shiftArchaic || !koreanKeyCode(code)) {
             return 0;
         }
         return archaicVariant(code);
     }
 
+    /**
+     * Latin key codes (z x c ... in the multilingual layout, whose keys carry the
+     * Korean and the Latin code) only count while a Korean layout is showing; an
+     * English-only keyboard keeps its letters.
+     */
+    private boolean koreanKeyCode(int code) {
+        boolean latin = (code >= 'a' && code <= 'z') || (code >= 'A' && code <= 'Z');
+        return !latin || koreanLayoutActive() || multilingual;
+    }
+
     /** Same lookup, using the label Samsung actually renders on this build. */
     char shiftVariant(String label, int code) {
         if (label != null) {
+            boolean latin = false;
             for (int i = 0; i < label.length();) {
                 int cp = label.codePointAt(i);
-                if (cp <= Character.MAX_VALUE) {
+                if (cp <= Character.MAX_VALUE && !((cp >= 'a' && cp <= 'z') || (cp >= 'A' && cp <= 'Z'))) {
                     char variant = shiftVariant(cp);
                     if (variant != 0) return variant;
+                } else {
+                    latin = true;
                 }
                 i += Character.charCount(cp);
+            }
+            if (latin) {
+                return 0; // a Latin key label is an English key, whatever code it also carries
             }
         }
         return shiftVariant(code);
@@ -379,6 +675,16 @@ final class OldHangulController {
         if (key == null) {
             return false;
         }
+        // Test-only trace for language/enter/send keys: short vs long press is
+        // distinguished here by touchAction (1=down, 2=up, 3=repeat) and in
+        // ModuleMain.hookLongPress by the presenter code. Ql/H LanguageKeyA
+        // uses -401 for the language-select dialog; other codes just switch.
+        // Remapping short=KO/EN + long=JA is NOT done here: without device
+        // logs for the exact codes it would break language switching.
+        if (debugLog && action.contains("Language")) {
+            debug("language key action=" + action + " code=" + key.keyCode
+                    + " label=" + key.label + " touch=" + key.touchAction);
+        }
         if (key.keyCode == KEY_DOWN_FEEDBACK) {
             // A new key press: a pending long-press release can no longer arrive.
             suppressedRelease = 0;
@@ -410,12 +716,36 @@ final class OldHangulController {
                 return true;
             }
         }
-        if (SPACE_ACTION.equals(action)) {
-            recordExternalInput(' ');
-        }
+        boolean hadWord = !composer.isEmpty() || samsungDesynced;
         commitComposing();
+        samsungWordPending = (multilingual || samsungSuggest) && hadWord && !samsungWord;
+        samsungDesynced = false;
         inWord = false;
         return false;
+    }
+
+    /** Samsung's key action finished. */
+    void afterKeyAction() {
+        samsungWordPending = false;
+    }
+
+    /** A suggestion / Hanja candidate was tapped: Samsung is about to put it in place of the word. */
+    void onCandidatePicked() {
+        debug("candidate picked, composing=" + composing);
+        candidatePickUntil = SystemClock.uptimeMillis() + 1200;
+        composer.reset();
+        composing = "";
+        composingMaybeLost = false;
+        inWord = false;
+        samsungDesynced = false;
+        samsungWordPending = false;
+    }
+
+    private static boolean isBlank(CharSequence text) {
+        for (int i = 0; i < text.length(); i++) {
+            if (!Character.isWhitespace(text.charAt(i))) return false;
+        }
+        return true;
     }
 
     private boolean onCharacter(KeyEventInfo key) {
@@ -436,39 +766,71 @@ final class OldHangulController {
             koreanActive = false;
         }
         if (!dubeolsik || !koreanKey) {
-            if (Character.isLetterOrDigit(code)) {
-                recordExternalInput((char) code);
-            }
+            // Not counted here: the text Samsung sends to the editor is the single
+            // source for non-Korean typing (see onExternalComposing/onExternalCommit).
             commitComposing();
             inWord = false;
+            if (debugLog) {
+                debug("foreign key label=" + key.label + " code=" + code
+                        + " koreanActive=" + koreanActive);
+            }
             return false;
         }
-        // In bilingual mode Samsung can leave a stale physical key code behind.
-        // The visible single-jamo label is the authoritative input.
-        return jamo == 0 ? false : type(jamo);
+        if (multilingual) {
+            return typeMultilingual(jamo, key);
+        }
+        if (samsungSuggest) {
+            type(jamo);
+            if (!modernJamo(jamo)) {
+                samsungDesynced = true;
+                return true;
+            }
+            return false;
+        }
+        return type(jamo);
     }
 
     private static boolean isKoreanInputKey(int code) {
         return Jamo.isKey(code) || code == CHEONJIIN_ARAEA
                 || code == Jamo.PANSIOS || code == Jamo.YESIEUNG
-                || code == Jamo.YEORINHIEUH || code == Jamo.ARAEA;
+                || code == Jamo.YEORINHIEUH || code == Jamo.ARAEA
+                || isTone(code);
+    }
+
+    static boolean isTone(int code) {
+        return code == TONE_SINGLE || code == TONE_DOUBLE;
     }
 
     /** Samsung key codes are not stable across multilingual keyboard layouts. */
     private static boolean isKoreanInputKey(KeyEventInfo key) {
         String label = key.label == null ? "" : key.label;
-        boolean hasLetter = false;
+        // The visible label wins over a stale physical-layout code. In
+        // multilingual mode an English key can retain the Korean key code
+        // (for example ㅗ) while its actual label is "d" or "i". If the label
+        // holds an ASCII letter, it is a foreign key even when a Korean jamo
+        // is also present (e.g. a stale code behind the label).
+        if (containsAsciiLetter(label)) return false;
         for (int i = 0; i < label.length(); ) {
             int cp = label.codePointAt(i);
             if (isKoreanInputKey(cp)) return true;
+            i += Character.charCount(cp);
+        }
+        boolean hasLetter = false;
+        for (int i = 0; i < label.length(); ) {
+            int cp = label.codePointAt(i);
             if (Character.isLetter(cp)) hasLetter = true;
             i += Character.charCount(cp);
         }
-        // Prefer the visible key label over a stale physical-layout code. In
-        // multilingual mode an English key can retain the Korean key code
-        // (for example ㅗ) while its actual label is “d” or “i”.
         if (hasLetter) return false;
-        if (isKoreanInputKey(key.keyCode)) return true;
+        return isKoreanInputKey(key.keyCode);
+    }
+
+    private static boolean containsAsciiLetter(String label) {
+        for (int i = 0; i < label.length(); ) {
+            int cp = label.codePointAt(i);
+            if ((cp >= 'A' && cp <= 'Z') || (cp >= 'a' && cp <= 'z')) return true;
+            i += Character.charCount(cp);
+        }
         return false;
     }
 
@@ -487,9 +849,41 @@ final class OldHangulController {
                 && Character.UnicodeScript.of(key.keyCode) != Character.UnicodeScript.HANGUL;
     }
 
+    /**
+     * Multilingual typing: both languages share the Korean keys and only Samsung's
+     * engine knows which one the word is in. So the key is composed here as Korean
+     * AND left to Samsung (not swallowed): while Samsung agrees on Korean its text
+     * is blocked; the moment it sends Latin text the word is English, ours is dropped
+     * and Samsung's text goes through (see {@link #allowSamsungComposition}).
+     */
+    private boolean typeMultilingual(char jamo, KeyEventInfo key) {
+        if (samsungWord) {
+            return false;
+        }
+        type(jamo);
+        if (!modernJamo(jamo)) {
+            // Samsung does not know ㅿ ᄼ 〮 ...: keep them to ourselves, and remember its engine missed one.
+            samsungDesynced = true;
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean modernJamo(char c) {
+        return c >= 0x3131 && c <= 0x3163;
+    }
+
+    private void clearWordLanguage() {
+        samsungWord = false;
+    }
+
     /** Normalizes Samsung's key label to the jamo accepted by the composer. */
     private static char compositionKey(KeyEventInfo key) {
         String label = key.label == null ? "" : key.label;
+        // "hello" must never become Korean: an ASCII letter on the label means
+        // the physical key is English right now, regardless of a stale Korean
+        // key code Samsung left behind (Dm/b KeyRequestInfo keyCode reuse).
+        if (containsAsciiLetter(label)) return 0;
         for (int i = 0; i < label.length();) {
             int cp = label.codePointAt(i);
             if (cp <= Character.MAX_VALUE && isKoreanInputKey(cp)) return (char) cp;
@@ -515,33 +909,128 @@ final class OldHangulController {
         }
     }
 
-    private void recordExternalInput(char code) {
-        typingStats.record(String.valueOf(code));
+    /** Samsung's setComposingText (cumulative span): feeds the meter and the tools. */
+    void onExternalComposing(String text) {
+        if (text == null) return;
+        typingStats.onComposing(text);
+        noteTyped(text.length() > 0 ? text.substring(text.length() - 1) : text);
+        externalComposing = text;
+        refreshToolTip();
         updateTypingMeter();
+        if (debugLog) debug("external composing len=" + text.length() + " " + typingStats.summary());
     }
 
-    void recordExternalText(String text) {
-        typingStats.record(text);
+    /** Samsung's commitText. */
+    void onExternalCommit(String text) {
+        if (text == null || text.isEmpty()) return;
+        typingStats.onCommit(text);
+        appendRecent(text);
+        externalComposing = "";
         updateTypingMeter();
+        if (debugLog) debug("external commit len=" + text.length() + " " + typingStats.summary());
+    }
+
+    private String externalComposing = "";
+
+    private void appendRecent(String text) {
+        noteTyped(text);
+        refreshToolTip();
+    }
+
+    private final Runnable toolRead = this::readToolFromEditor;
+
+    /**
+     * The tool answers come from the text the editor really has before the cursor
+     * (not from a record of what was typed, which went stale after edits, cursor
+     * moves and Send). Read once shortly after the last change.
+     */
+    private int charsSinceDigit = 99;
+
+    private void noteTyped(CharSequence text) {
+        if (text == null) return;
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            // digits, Korean numerals (오만원), currency symbols: something the tools may answer
+            if ((c >= '0' && c <= '9') || c == '=' || c == '%'
+                    || "일이삼사오육칠팔구십백천만억조".indexOf(c) >= 0 || "$€£¥￥₩₫฿₹₽₺₱₪₴".indexOf(c) >= 0) {
+                charsSinceDigit = 0;
+                return;
+            }
+        }
+        charsSinceDigit += text.length();
+    }
+
+    /** Reads the editor only when a number was typed lately or an answer is showing (to update or clear it). */
+    private void refreshToolTip() {
+        if (!calcTools) {
+            handler.removeCallbacks(toolRead);
+            toolResult = null;
+            return;
+        }
+        if (toolResult == null && charsSinceDigit > 12) {
+            return;
+        }
+        handler.removeCallbacks(toolRead);
+        handler.postDelayed(toolRead, 200);
+    }
+
+    private void readToolFromEditor() {
+        InputConnection ic = inputConnection();
+        ToolSuggester.Result r = null;
+        if (ic != null && calcTools) {
+            try {
+                CharSequence before = ic.getTextBeforeCursor(48, 0);
+                r = before == null ? null : ToolSuggester.analyze(before.toString());
+            } catch (RuntimeException e) {
+                r = null;
+            }
+        }
+        String now = r == null ? "" : r.display;
+        String was = toolResult == null ? "" : toolResult.display;
+        toolResult = r;
+        if (!now.equals(was)) {
+            updateTypingMeterNow();
+        }
     }
 
     private void detectLayout(KeyEventInfo key) {
-        int code = key.keyCode;
         if (languageKnown) {
             return;
         }
+        String label = key.label == null ? "" : key.label;
+        // Decide from the visible label, not the possibly stale key code:
+        // an ASCII label means the other language's layout is showing.
+        if (containsAsciiLetter(label)) {
+            return;
+        }
+        int code = key.keyCode;
         if (code == CHEONJIIN_ARAEA) {
             dubeolsik = false;
         } else if (DUBEOLSIK_ONLY.indexOf(code) >= 0) {
             dubeolsik = true;
-        } else if (Jamo.isKey(code) && key.label.codePointCount(0, key.label.length()) > 1
-                && !"null".equals(key.label)) {
+        } else if (Jamo.isKey(code) && label.codePointCount(0, label.length()) > 1
+                && !"null".equals(label)) {
             // 천지인 / 나랏글 consonant keys are labelled with several letters ("ㄱㅋ").
             dubeolsik = false;
+        } else if (!label.isEmpty()) {
+            for (int i = 0; i < label.length(); ) {
+                int cp = label.codePointAt(i);
+                if (DUBEOLSIK_ONLY.indexOf(cp) >= 0) {
+                    dubeolsik = true;
+                    break;
+                }
+                i += Character.charCount(cp);
+            }
+        }
+        if (debugLog) {
+            debug("detectLayout label=" + label + " code=" + code + " dubeolsik=" + dubeolsik);
         }
     }
 
     private boolean onBackspace(KeyEventInfo key) {
+        if (key.touchAction != KeyEventInfo.TOUCH_UP) {
+            refreshToolTip();
+        }
         if (composer.isEmpty() && !koreanLayoutActive()) {
             backspaceOwned = false;
             return false;
@@ -588,8 +1077,6 @@ final class OldHangulController {
             ic.commitText(repeating.burst(), 1);
             repeatStartedAt = SystemClock.uptimeMillis();
             handler.postDelayed(repeatTick, repeating.nextDelayMs());
-        } else if (archaic && longPressArchaic && archaicVariant(code) != 0) {
-            type(archaicVariant(code));
         } else {
             return false;
         }
@@ -611,22 +1098,93 @@ final class OldHangulController {
     }
 
     /**
-     * Letters with an archaic sibling reachable by long press. ㄱ ㄷ ㅂ ㅅ ㅈ are
-     * left alone so Samsung's long press still gives ㄲ ㄸ ㅃ ㅆ ㅉ.
+     * The archaic sibling of a key: shown and typed on the Shift layer and typed by
+     * swiping the key down (Old Korean IME layout). ㄱ ㄷ ㅂ ㅅ ㅈ are left alone so
+     * Samsung's own Shift still gives ㄲ ㄸ ㅃ ㅆ ㅉ.
      */
     static char archaicVariant(int code) {
         switch (code) {
-            case 'ㄹ': return Jamo.PANSIOS;     // ㅿ 반치음
-            case 'ㅇ': return Jamo.YESIEUNG;    // ㆁ 옛이응
-            case 'ㅎ': return Jamo.YEORINHIEUH; // ㆆ 여린히읗
-            case 'ㅏ': return Jamo.ARAEA;       // ㆍ 아래아
+            case 'ㄹ': case 'f': case 'F': return Jamo.PANSIOS;     // ㅿ 반치음
+            case 'ㅇ': case 'd': case 'D': return Jamo.YESIEUNG;    // ㆁ 옛이응
+            case 'ㅎ': case 'g': case 'G': return Jamo.YEORINHIEUH; // ㆆ 여린히읗
+            case 'ㅏ': case 'k': case 'K': return Jamo.ARAEA;       // ㆍ 아래아
+            case 'ㅋ': case 'z': case 'Z': return 'ᄼ';              // 치두음 ㅅ
+            case 'ㅌ': case 'x': case 'X': return 'ᄾ';              // 정치음 ㅅ
+            case 'ㅊ': case 'c': case 'C': return 'ᅎ';              // 치두음 ㅈ
+            case 'ㅍ': case 'v': case 'V': return 'ᅐ';              // 정치음 ㅈ
+            case 'ㅠ': case 'b': case 'B': return 'ᅔ';              // 치두음 ㅊ
+            case 'ㅜ': case 'n': case 'N': return 'ᅕ';              // 정치음 ㅊ
+            case 'ㅓ': case 'j': case 'J': return TONE_SINGLE;      // 방점: once 〮, again 〯, again removes it
             default: return 0;
         }
+    }
+
+    /** What swiping a key down types, or 0. The top row keeps its digits; ㅓ swipes the tone mark. */
+    char swipeSymbol(int code) {
+        if (!enabled || !archaic || !longPressArchaic) {
+            return 0;
+        }
+        if (!koreanKeyCode(code)) {
+            return 0;
+        }
+        return archaicVariant(code);
+    }
+
+    boolean swipeArchaic() {
+        return enabled && archaic && longPressArchaic;
+    }
+
+    /**
+     * The tone key: the first press adds 〮 (거성) after the syllable, pressing again turns it into
+     * 〯 (상성), a third press removes it.
+     */
+    private boolean typeTone() {
+        InputConnection ic = inputConnection();
+        if (ic == null) {
+            return false;
+        }
+        commitComposing();
+        CharSequence before = null;
+        try {
+            before = ic.getTextBeforeCursor(1, 0);
+        } catch (RuntimeException ignored) {
+            // no text to look at: just add the first mark
+        }
+        char last = before != null && before.length() == 1 ? before.charAt(0) : 0;
+        if (last != TONE_SINGLE && last != TONE_DOUBLE) {
+            commitSymbol(String.valueOf(TONE_SINGLE));
+            inWord = true;
+            return true;
+        }
+        ic.beginBatchEdit();
+        boolean previous = internalEdit;
+        internalEdit = true;
+        try {
+            ic.deleteSurroundingText(1, 0);
+            if (last == TONE_SINGLE) {
+                ic.commitText(String.valueOf(TONE_DOUBLE), 1);
+            }
+            rememberEdit("방점");
+            lastEditAt = SystemClock.uptimeMillis();
+        } finally {
+            internalEdit = previous;
+            ic.endBatchEdit();
+        }
+        inWord = true;
+        return true;
+    }
+
+    /** A swiped-down archaic key or a Shift-layer tone mark, typed like a normal key. */
+    void typeSwipeSymbol(char symbol) {
+        type(symbol);
     }
 
     // ------------------------------------------------------------ composition
 
     private boolean type(char key) {
+        if (isTone(key)) {
+            return typeTone();
+        }
         InputConnection ic = inputConnection();
         if (ic == null) {
             return false;
@@ -641,8 +1199,12 @@ final class OldHangulController {
             apply(ic, composer.type(key));
             rememberEdit("입력 " + key);
             typingStats.record(String.valueOf(key));
+            appendRecent(String.valueOf(key));
+            noteTyped(composing);
+            refreshToolTip();
             updateTypingMeter();
             inWord = true;
+            debug("type key=" + key + " composing=" + composing + " meter=" + typingStats.summary());
             // After typing, update vowelIeung for subsequent keys in this word.
             composer.setVowelIeung(vowelIeungPref && inWord);
         } finally {
@@ -699,6 +1261,14 @@ final class OldHangulController {
             ic.finishComposingText();
             ic.deleteSurroundingText(composing.length(), 0);
             composing = "";
+        } else if (SystemClock.uptimeMillis() - lastEditAt >= EDIT_ECHO_MS) {
+            // The editor no longer holds our word (a chat app cleared it on Send,
+            // the text was replaced...) and no edit of ours is still in flight:
+            // forget it, or the next key would bring the sent text back.
+            debug("composing gone from editor, dropping composing=" + composing);
+            composer.reset();
+            composing = "";
+            inWord = false;
         }
     }
 
@@ -831,6 +1401,7 @@ final class OldHangulController {
             ic.commitText(text, 1);
             rememberEdit("입력 " + text);
             typingStats.record(text);
+            appendRecent(text);
             updateTypingMeter();
             lastEditAt = SystemClock.uptimeMillis();
         } finally {
@@ -842,6 +1413,7 @@ final class OldHangulController {
 
     /** Finishes the current syllable, leaving its text in the editor. */
     void commitComposing() {
+        clearWordLanguage();
         if (composer.isEmpty()) {
             return;
         }
@@ -863,10 +1435,16 @@ final class OldHangulController {
 
     /** A new editor gained focus. */
     void onStartEditor(EditorInfo info) {
+        removeClipChip();
+        smartText = "";
         boolean terminal = info != null
                 && ((info.inputType & InputType.TYPE_MASK_CLASS) == InputType.TYPE_NULL
                 || TERMINAL_PACKAGES.contains(info.packageName));
         directMode = directInput && terminal;
+        recentText.setLength(0);
+        externalComposing = "";
+        typingStats.endComposing();
+        toolResult = null;
     }
 
     /** Apps whose editors show no composing text. */
@@ -879,20 +1457,19 @@ final class OldHangulController {
      * empty composing state overwrite the editor's text.
      */
     void onRestartInput() {
-        // A restart is also used by chat apps after Send and by translation/search
-        // actions.  Keeping the old composer here makes the next key replace or
-        // resurrect the word that belonged to the previous editor state.  Clear
-        // only our composing span; on a new editor this is a harmless no-op.
-        InputConnection ic = inputConnection();
-        if (ic != null && !composing.isEmpty() && !directMode) {
-            boolean previousInternalEdit = internalEdit;
-            internalEdit = true;
-            try {
-                ic.setComposingText("", 1);
-            } finally {
-                internalEdit = previousInternalEdit;
-            }
-        }
+        // A restart is also used by chat apps after Send (KakaoTalk etc.) and
+        // by translation/search actions. The editor already owns its text at
+        // this point, so do NOT touch it here: the old code called
+        // setComposingText("", 1), which stole focus back from translation UI
+        // and left a stale span that the next key resurrected. Just drop our
+        // internal state; the next key starts fresh.
+        // See HoneyBoardService.onStartInput(..., restarting=true).
+        debug("onRestartInput composing=" + composing);
+        clearWordLanguage();
+        recentText.setLength(0);
+        externalComposing = "";
+        typingStats.endComposing();
+        toolResult = null;
         composer.reset();
         composing = "";
         composingMaybeLost = false;
@@ -905,6 +1482,10 @@ final class OldHangulController {
     }
 
     void resetState() {
+        clearWordLanguage();
+        if (!composer.isEmpty()) {
+            debug("resetState dropping composing=" + composing);
+        }
         composer.reset();
         composing = "";
         composingMaybeLost = false;
@@ -923,55 +1504,140 @@ final class OldHangulController {
      * region is hidden from Samsung so it does not try to manage it.
      */
     void beforeUpdateSelection(Object[] args) {
+        refreshToolTip();
         if (composer.isEmpty() || directMode) {
             return;
         }
         int newSelStart = (Integer) args[2];
         int newSelEnd = (Integer) args[3];
-        int candidatesStart = (Integer) args[4];
-        int candidatesEnd = (Integer) args[5];
-        if (SystemClock.uptimeMillis() - lastEditAt < EDIT_ECHO_MS) {
-            // An echo of our own edit, possibly with stale positions: nothing moved.
-            args[4] = -1;
-            args[5] = -1;
-            return;
+
+        boolean echo = SystemClock.uptimeMillis() - lastEditAt < EDIT_ECHO_MS;
+        CharSequence beforeEcho = null;
+        if (!composing.isEmpty()) {
+            try {
+                InputConnection ic = inputConnection();
+                beforeEcho = ic == null ? null : ic.getTextBeforeCursor(composing.length(), 0);
+            } catch (RuntimeException ignored) {
+                beforeEcho = null;
+            }
         }
-        if (candidatesStart < 0 || candidatesEnd < 0) {
-            // If the cursor moved, our composing state belongs to the old
-            // position.  Do not carry it over to the new position (that is what
-            // makes text reappear after tapping another field or pressing Send).
-            CharSequence before = inputConnection() == null ? null
-                    : inputConnection().getTextBeforeCursor(composing.length(), 0);
-            if ((lastSelection >= 0 && newSelStart == newSelEnd
-                    && newSelEnd != lastSelection)
-                    || (before != null && !composing.contentEquals(before))) {
+
+        if (beforeEcho == null || !composing.contentEquals(beforeEcho)) {
+            // The editor may still be applying our edit asynchronously and answer
+            // with the text from before it, so a mismatch is not proof that the
+            // word is gone. Dropping it here committed every syllable on its own
+            // (see takeBackComposing). Keep the model, flag the region as lost
+            // and let the next key re-sync: takeBackComposing only rewrites the
+            // text when the editor really still holds it.
+            debug("beforeUpdateSelection text mismatch, keeping composing=" + composing
+                    + " echo=" + echo);
+            composingMaybeLost = true;
+            lastSelection = newSelEnd;
+            if (!echo) {
+                // Not an echo of our edit: the text was changed by the app (Send
+                // in a chat app empties the field). Drop the word now so no
+                // later key rewrites it.
+                debug("beforeUpdateSelection: editor changed under us, dropping " + composing);
                 composer.reset();
                 composing = "";
                 composingMaybeLost = false;
                 inWord = false;
-            } else {
-                // Region dropped at the same cursor: the next edit can still
-                // take the old text back if the editor left it immediately
-                // before the cursor.
-                composingMaybeLost = true;
             }
-            lastSelection = newSelEnd;
             return;
         }
-        if (newSelStart != newSelEnd || newSelEnd != candidatesEnd) {
-            // The cursor left the syllable being composed (tap elsewhere, selection).
+
+        int candStart = Math.max(0, newSelEnd - composing.length());
+        int candEnd = newSelEnd;
+        args[4] = candStart;
+        args[5] = candEnd;
+
+        if (!echo && newSelStart != newSelEnd) {
             commitComposing();
             inWord = false;
-        } else {
-            composingMaybeLost = false;
         }
         lastSelection = newSelEnd;
-        args[4] = -1;
-        args[5] = -1;
     }
 
+    /**
+     * Where edits go. Samsung's connection wrapper keeps several connections (index 0
+     * is the app's editor; the others are fields inside the keyboard such as the
+     * translation box) and sends every edit to the active one. While another one is
+     * active our edits must follow it, or typing lands in the app and the keyboard's
+     * own field loses focus.
+     */
     private InputConnection inputConnection() {
-        return service == null ? null : service.getCurrentInputConnection();
+        if (service == null) return null;
+        InputConnection app = service.getCurrentInputConnection();
+        InputConnection wrapper = samsungWrapper;
+        if (wrapper == null) return app;
+        int index = samsungConnectionIndex();
+        if (index != lastConnectionIndex) {
+            debug("input connection index " + lastConnectionIndex + " -> " + index);
+            if (lastConnectionIndex != -1) {
+                // The target of our edits changed: nothing composed here belongs to the new one.
+                composer.reset();
+                composing = "";
+                composingMaybeLost = false;
+                inWord = false;
+                samsungWord = false;
+            }
+            lastConnectionIndex = index;
+        }
+        return index > 0 ? wrapper : app;
+    }
+
+    private InputConnection samsungWrapper;
+    private java.lang.reflect.Field wrapperConnections;
+    private java.lang.reflect.Field wrapperIndex;
+    private int lastConnectionIndex = -1;
+
+    /** Samsung's wrapper (its constructor ran), see ModuleMain.hookSamsungInputConnection. */
+    void setSamsungWrapper(Object wrapper) {
+        if (!(wrapper instanceof InputConnection)) return;
+        samsungWrapper = (InputConnection) wrapper;
+        try {
+            for (Class<?> c = wrapper.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
+                for (java.lang.reflect.Field f : c.getDeclaredFields()) {
+                    if (f.getType() == InputConnection[].class) {
+                        f.setAccessible(true);
+                        wrapperConnections = f;
+                    }
+                }
+            }
+            java.lang.reflect.Field named = null;
+            try {
+                named = wrapper.getClass().getDeclaredField("f18874j");
+            } catch (NoSuchFieldException ignored) {
+                // another build: look for the int that indexes the connections below
+            }
+            wrapperIndex = named;
+            if (wrapperIndex != null) wrapperIndex.setAccessible(true);
+        } catch (RuntimeException e) {
+            debug("wrapper fields: " + e);
+        }
+    }
+
+    /** Index of the connection Samsung's wrapper uses now (0 = the app), or 0 when unknown. */
+    private int samsungConnectionIndex() {
+        try {
+            if (wrapperConnections == null) return 0;
+            InputConnection[] all = (InputConnection[]) wrapperConnections.get(samsungWrapper);
+            if (all == null) return 0;
+            if (wrapperIndex != null) {
+                int i = wrapperIndex.getInt(samsungWrapper);
+                return i >= 0 && i < all.length ? i : 0;
+            }
+            // Unknown field: the app's connection is the one the framework gave us.
+            InputConnection app = service.getCurrentInputConnection();
+            for (int i = 1; i < all.length; i++) {
+                if (all[i] != null && all[i] != app && all[0] == app) {
+                    return 0;
+                }
+            }
+            return 0;
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            return 0;
+        }
     }
 
     private void rememberEdit(String label) {
@@ -993,12 +1659,36 @@ final class OldHangulController {
     private boolean lastMeterUndoable;
 
     private void updateTypingMeter() {
+        // Throttle: typing fires several keys per second; redrawing the overlay
+        // on every keystroke is what made CPM/WPM flicker. At most ~2 redraws/s.
+        long now = SystemClock.uptimeMillis();
+        if (meterPending) return;
+        if (now - lastMeterUpdateAt < 1000
+                && typingOverlay != null && typingOverlay.getWindowToken() != null) {
+            meterPending = true;
+            handler.removeCallbacks(meterTick);
+            handler.postDelayed(meterTick, 1000 - (now - lastMeterUpdateAt));
+            return;
+        }
+        updateTypingMeterNow();
+    }
+
+    private void updateTypingMeterNow() {
+        meterPending = false;
+        lastMeterUpdateAt = SystemClock.uptimeMillis();
         if (service == null || service.getWindow() == null) return;
+        if (!typingMeterEnabled()) {
+            removeTypingMeter();
+            return;
+        }
         String summary = typingStats.summary();
+        if (toolResult != null) {
+            summary += "" + toolResult.display;
+        }
         boolean undoable = !editHistory.isEmpty();
         boolean attached = typingOverlay != null && typingOverlay.getWindowToken() != null;
         if (attached && summary.equals(lastMeterText) && undoable == lastMeterUndoable) {
-            return;  // nothing to redraw; this runs on every key press
+            return;  // nothing to redraw
         }
         lastMeterText = summary;
         lastMeterUndoable = undoable;
@@ -1007,45 +1697,48 @@ final class OldHangulController {
         try {
             if (typingOverlay == null) {
                 android.widget.LinearLayout bar = new android.widget.LinearLayout(service);
-                bar.setGravity(android.view.Gravity.CENTER_VERTICAL);
-                bar.setPadding((int) (10 * density), 0, (int) (4 * density), 0);
-                android.graphics.drawable.GradientDrawable bg =
-                        new android.graphics.drawable.GradientDrawable();
-                bg.setColor(0xCC202124);
-                bg.setCornerRadius(11 * density);
-                bar.setBackground(bg);
+                bar.setGravity(android.view.Gravity.CENTER);
+                bar.setPadding((int) (12 * density), 0, (int) (12 * density), 0);
+                meterBackground = new android.graphics.drawable.GradientDrawable();
+                meterBackground.setColor(0xCC202124);
+                meterBackground.setCornerRadius(11 * density);
+                bar.setBackground(meterBackground);
                 if (typingMeterView == null) {
                     typingMeterView = new android.widget.TextView(service);
                     typingMeterView.setTextColor(0xFFE6E6E6);
-                    typingMeterView.setTextSize(10);
+                    typingMeterView.setTextSize(12.5f);
                     typingMeterView.setSingleLine(true);
+                    typingMeterView.setIncludeFontPadding(false);
                     typingMeterView.setGravity(android.view.Gravity.CENTER);
                 }
-                if (undoButtonView == null) {
-                    undoButtonView = new android.widget.TextView(service);
-                    undoButtonView.setText("\u21B6");
-                    undoButtonView.setTextSize(14);
-                    undoButtonView.setTextColor(0xFFE6E6E6);
-                    undoButtonView.setGravity(android.view.Gravity.CENTER);
-                    undoButtonView.setPadding((int) (8 * density), 0, (int) (8 * density), 0);
-                    undoButtonView.setContentDescription("되돌리기");
-                    undoButtonView.setOnClickListener(v -> undoOnce());
-                }
-                // Content-sized: a stretched bar covered Samsung's keyboard-close and
-                // keyboard-switch buttons next to it.
-                bar.addView(typingMeterView, new android.widget.LinearLayout.LayoutParams(-2, -1));
-                bar.addView(undoButtonView, new android.widget.LinearLayout.LayoutParams(-2, -1));
+                android.widget.LinearLayout.LayoutParams meterParams =
+                        new android.widget.LinearLayout.LayoutParams(-2, -1);
+                meterParams.gravity = android.view.Gravity.CENTER;
+                bar.addView(typingMeterView, meterParams);
+                toolCards = new android.widget.LinearLayout(service);
+                toolCards.setOrientation(android.widget.LinearLayout.HORIZONTAL);
+                toolCards.setGravity(android.view.Gravity.CENTER);
+                // Long answers (big numbers) do not fit the screen: the cards scroll sideways.
+                toolScroll = new android.widget.HorizontalScrollView(service);
+                toolScroll.setHorizontalScrollBarEnabled(false);
+                toolScroll.setHorizontalFadingEdgeEnabled(true);
+                toolScroll.setFadingEdgeLength((int) (18 * density));
+                toolScroll.setOverScrollMode(android.view.View.OVER_SCROLL_NEVER);
+                toolScroll.setVisibility(android.view.View.GONE);
+                toolScroll.addView(toolCards, new android.widget.FrameLayout.LayoutParams(-2, -1));
+                bar.addView(toolScroll, new android.widget.LinearLayout.LayoutParams(-2, -1));
                 typingOverlay = bar;
             }
-            typingMeterView.setText(summary);
-            undoButtonView.setEnabled(undoable);
-            undoButtonView.setAlpha(undoable ? 1.0f : 0.35f);
+            typingMeterView.setText(typingStats.summary());
+            typingMeterView.setGravity(android.view.Gravity.CENTER);
+            updateToolView(density);
             if (typingOverlay.getWindowToken() == null) {
                 android.view.WindowManager wm = (android.view.WindowManager)
                         service.getSystemService(android.content.Context.WINDOW_SERVICE);
+                // Reduced height: 15dp (was 18dp), vertically centered
                 android.view.WindowManager.LayoutParams lp =
                         new android.view.WindowManager.LayoutParams(
-                                -2, (int) (22 * density + 0.5f),
+                                -2, (int) (overlayHeightDp * density + 0.5f),
                                 android.view.WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG,
                                 android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                                         | android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
@@ -1053,15 +1746,142 @@ final class OldHangulController {
                                 android.graphics.PixelFormat.TRANSLUCENT);
                 lp.token = decor.getWindowToken();
                 lp.gravity = android.view.Gravity.BOTTOM | android.view.Gravity.CENTER_HORIZONTAL;
-                lp.y = (int) (2 * density);
+                // Centered in Samsung's bottom bar (the strip under the keys, 48dp on
+                // this build), not stuck to the screen edge.
+                int overlayHeight = lp.height;
+                int barHeight = bottomBarHeight(decor, density);
+                lp.y = Math.max((int) (1 * density), (barHeight - overlayHeight) / 2);
+                debug("typing meter y=" + lp.y + " bar=" + barHeight + " overlay=" + overlayHeight);
                 wm.addView(typingOverlay, lp);
                 typingOverlayManager = wm;
-                debug("typing meter overlay attached (content-sized, 22dp)");
+                debug("typing meter overlay attached (content-sized, 15dp, centered)");
             }
         } catch (Throwable t) {
             XposedBridge.log("OldHangul: typing meter overlay unavailable: " + t);
         }
         UndoBee.refresh();
+    }
+
+    /** Height of the strip below the keys: a full-width view touching the window's bottom edge, else 48dp. */
+    private static int bottomBarHeight(android.view.View decor, float density) {
+        int fallback = (int) (48 * density + 0.5f);
+        int found = findBottomBar(decor, decor.getHeight(), decor.getWidth(), density, 0);
+        return found > 0 ? found : fallback;
+    }
+
+    private static int findBottomBar(android.view.View v, int bottom, int width, float density, int depth) {
+        if (depth > 12 || v.getVisibility() != android.view.View.VISIBLE) return 0;
+        if (v.getHeight() >= 28 * density && v.getHeight() <= 72 * density
+                && v.getWidth() >= width * 0.9f && v.getBottom() >= 0) {
+            int[] loc = new int[2];
+            v.getLocationInWindow(loc);
+            if (Math.abs(loc[1] + v.getHeight() - bottom) <= 3) return v.getHeight();
+        }
+        if (v instanceof android.view.ViewGroup) {
+            android.view.ViewGroup g = (android.view.ViewGroup) v;
+            for (int i = g.getChildCount() - 1; i >= 0; i--) {
+                int r = findBottomBar(g.getChildAt(i), bottom, width, density, depth + 1);
+                if (r > 0) return r;
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * Calculator / unit answers: one card per answer, pushing the CPM/WPM text
+     * out of the bar while they show; tapping a card types it in place of the expression.
+     */
+    private void updateToolView(float density) {
+        if (toolCards == null) return;
+        toolCards.removeAllViews();
+        boolean cards = toolResult != null && !toolResult.cards.isEmpty();
+        typingMeterView.setVisibility(cards ? android.view.View.GONE : android.view.View.VISIBLE);
+        toolScroll.setVisibility(cards ? android.view.View.VISIBLE : android.view.View.GONE);
+        if (cards) toolScroll.scrollTo(0, 0);
+        if (typingOverlay != null) {
+            // The cards are the buttons: no second frame around them (and no padding for the CPM text).
+            typingOverlay.setBackground(cards ? null : meterBackground);
+            typingOverlay.setPadding(cards ? 0 : (int) (12 * density), 0, cards ? 0 : (int) (12 * density), 0);
+        }
+        if (cards) {
+            for (String[] card : toolResult.cards) {
+                android.widget.TextView t = new android.widget.TextView(service);
+                t.setText(card[0]);
+                t.setTextColor(0xFFFFFFFF);
+                t.setTextSize(15f);
+                t.setSingleLine(true);
+                t.setIncludeFontPadding(false);
+                t.setGravity(android.view.Gravity.CENTER);
+                t.setPadding((int) (16 * density), 0, (int) (16 * density), 0);
+                android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+                bg.setColor(0xFF3C5A9A);
+                bg.setCornerRadius(18 * density);
+                t.setBackground(bg);
+                String insert = card[1];
+                t.setOnClickListener(v -> insertToolResult(insert));
+                android.widget.LinearLayout.LayoutParams lp =
+                        new android.widget.LinearLayout.LayoutParams(-2, (int) (36 * density));
+                lp.setMargins((int) (3 * density), 0, (int) (3 * density), 0);
+                toolCards.addView(t, lp);
+            }
+        }
+        int width = -2;
+        if (cards) {
+            toolCards.measure(android.view.View.MeasureSpec.UNSPECIFIED,
+                    android.view.View.MeasureSpec.makeMeasureSpec((int) (36 * density), android.view.View.MeasureSpec.EXACTLY));
+            int screen = service.getResources().getDisplayMetrics().widthPixels;
+            width = Math.min(toolCards.getMeasuredWidth(), screen - (int) (12 * density));
+        }
+        resizeOverlay(density, cards ? 40 : 22, width);
+    }
+
+    private void resizeOverlay(float density, int heightDp, int widthPx) {
+        try {
+            overlayHeightDp = heightDp;
+            if (typingOverlay == null || typingOverlayManager == null || typingOverlay.getWindowToken() == null) {
+                return;
+            }
+            android.view.WindowManager.LayoutParams lp =
+                    (android.view.WindowManager.LayoutParams) typingOverlay.getLayoutParams();
+            int height = (int) (heightDp * density + 0.5f);
+            if (lp == null || (lp.height == height && lp.width == widthPx)) return;
+            lp.height = height;
+            lp.width = widthPx;
+            int bar = bottomBarHeight(service.getWindow().getWindow().getDecorView(), density);
+            lp.y = Math.max((int) (1 * density), (bar - height) / 2);
+            typingOverlayManager.updateViewLayout(typingOverlay, lp);
+        } catch (RuntimeException e) {
+            debug("overlay resize failed: " + e);
+        }
+    }
+
+    private int overlayHeightDp = 22;
+
+    /** Tapping the tool result types it in place of the expression (when that is still right before the cursor). */
+    private void insertToolResult(String insert) {
+        ToolSuggester.Result r = toolResult;
+        InputConnection ic = inputConnection();
+        if (r == null || ic == null) return;
+        commitComposing();
+        boolean previous = internalEdit;
+        internalEdit = true;
+        try {
+            ic.beginBatchEdit();
+            ic.finishComposingText();
+            CharSequence before = ic.getTextBeforeCursor(r.consumed, 0);
+            if (before != null && before.toString().trim().equals(r.expression)) {
+                ic.deleteSurroundingText(r.consumed, 0);
+            }
+            ic.commitText(insert, 1);
+            ic.endBatchEdit();
+            debug("tool inserted " + insert + " for " + r.expression);
+        } finally {
+            internalEdit = previous;
+        }
+        recentText.setLength(0);
+        externalComposing = "";
+        toolResult = null;
+        updateTypingMeter();
     }
 
     String typingSummary() {
@@ -1131,18 +1951,37 @@ final class OldHangulController {
     }
 
     void undoFromBee() {
+        if (!undoButtonEnabled()) {
+            debug("undo Bee tapped while disabled");
+            return;
+        }
         undoOnce();
+    }
+
+    private void removeTypingMeter() {
+        handler.removeCallbacks(meterTick);
+        meterPending = false;
+        if (typingOverlay != null && typingOverlayManager != null) {
+            try {
+                typingOverlayManager.removeView(typingOverlay);
+            } catch (RuntimeException ignored) {
+                // Already removed.
+            }
+        }
+        typingOverlay = null;
+        typingOverlayManager = null;
+        lastMeterText = "";
     }
 
     private void undoOnce() {
         InputConnection ic = inputConnection();
         if (ic == null) return;
-        boolean handled = false;
 
-        // Do not depend on the target app implementing the optional editor Undo
-        // menu. Our composing text is owned by this controller, so remove it
-        // directly. This also works in Termux and WebView editors.
+        // Our composing text is owned by this controller: drop it directly so
+        // the underline never survives an undo. This path also works in Termux
+        // and WebView editors that have no Undo menu.
         if (!composer.isEmpty()) {
+            debug("undo: clearing our composing=" + composing);
             ic.beginBatchEdit();
             boolean previousInternalEdit = internalEdit;
             internalEdit = true;
@@ -1152,47 +1991,105 @@ final class OldHangulController {
                     if (length > 0) ic.deleteSurroundingTextInCodePoints(length, 0);
                 } else {
                     ic.setComposingText("", 1);
+                    ic.finishComposingText();
                 }
                 composer.reset();
                 composing = "";
                 composingMaybeLost = false;
                 inWord = false;
-                handled = true;
             } finally {
                 internalEdit = previousInternalEdit;
                 ic.endBatchEdit();
             }
-        } else if (!editHistory.isEmpty()) {
-            // A symbol or an already committed edit made by this module.
-            CharSequence before = ic.getTextBeforeCursor(2, 0);
-            if (before != null && before.length() > 0) {
-                ic.deleteSurroundingTextInCodePoints(1, 0);
-                handled = true;
-            }
+            if (!editHistory.isEmpty()) editHistory.removeFirst();
+            updateTypingMeter();
+            return;
         }
 
-        if (!handled) {
-            boolean undone = ic.performContextMenuAction(android.R.id.undo);
-            if (!undone) {
-                long now = SystemClock.uptimeMillis();
-                ic.sendKeyEvent(new android.view.KeyEvent(now, now,
+        // Otherwise behave exactly like Ctrl+Z in the editor: ask the editor
+        // for its own Undo first (p040b8/b delegates performContextMenuAction
+        // straight to the app), then send Ctrl+Z as a key event. Never delete
+        // text by hand here: the old code removed one code point for a grouped
+        // "입력 작업" entry, so the amount undone never matched the label.
+        boolean undone = false;
+        try {
+            undone = ic.performContextMenuAction(android.R.id.undo);
+        } catch (RuntimeException e) {
+            debug("undo: performContextMenuAction failed: " + e);
+            undone = false;
+        }
+        debug("undo: editor undo menu -> " + undone);
+        if (!undone) {
+            long now = SystemClock.uptimeMillis();
+            boolean down = false;
+            boolean up = false;
+            try {
+                down = ic.sendKeyEvent(new android.view.KeyEvent(now, now,
                         android.view.KeyEvent.ACTION_DOWN, android.view.KeyEvent.KEYCODE_Z, 0,
                         android.view.KeyEvent.META_CTRL_ON));
-                ic.sendKeyEvent(new android.view.KeyEvent(now, now,
+                up = ic.sendKeyEvent(new android.view.KeyEvent(now, now,
                         android.view.KeyEvent.ACTION_UP, android.view.KeyEvent.KEYCODE_Z, 0,
                         android.view.KeyEvent.META_CTRL_ON));
+            } catch (RuntimeException e) {
+                debug("undo: sendKeyEvent Ctrl+Z failed: " + e);
             }
+            debug("undo: Ctrl+Z down=" + down + " up=" + up);
         }
         if (!editHistory.isEmpty()) editHistory.removeFirst();
+        updateTypingMeter();
+    }
+
+    /** Handles Android Inline Suggestions API responses for candidate preview. */
+    void onInlineSuggestionsResponse(Object response) {
+        if (debugLog) {
+            debug("onInlineSuggestionsResponse received");
+        }
+        updateTypingMeter();
     }
 
     boolean blockSamsungComposition() {
         return isComposing() && !internalEdit;
     }
 
+    /**
+     * Samsung is about to set composing text or commit {@code text} while a word of
+     * ours is composing. Returns true to block it (Samsung still agrees on Korean).
+     * Latin text means Samsung's multilingual engine decided the word is English:
+     * our composition is dropped and Samsung's text is let through.
+     */
+    boolean blockSamsungText(CharSequence text) {
+        if (samsungWordPending) {
+            // The word is already in the editor: only the blank this key adds (space, newline) may pass.
+            return !isBlank(text);
+        }
+        if (!blockSamsungComposition()) {
+            return false;
+        }
+        if (multilingual && containsAsciiLetter(String.valueOf(text))) {
+            debug("multilingual: Samsung decided English '" + text + "', dropping composing=" + composing);
+            composer.reset();
+            composing = "";
+            composingMaybeLost = false;
+            inWord = false;
+            samsungWord = true;
+            return false;
+        }
+        return true;
+    }
+
     /** Samsung/the toolbar finished the editor's composing span externally. */
     void externalFinishComposing() {
-        if (internalEdit || composer.isEmpty()) return;
+        if (internalEdit) return;
+        if (composer.isEmpty()) return;
+        if (isComposing()) {
+            // Our own call was blocked (see ModuleMain's finishComposingText
+            // hook), so the word is still ours. Xposed runs the after hook even
+            // for a blocked call, and clearing here dropped the word on every
+            // keystroke, so Hangul never composed past one syllable.
+            debug("finishComposingText blocked, keeping composing=" + composing);
+            return;
+        }
+        clearWordLanguage();
         // The text may already be committed by the editor.  Keep the model in
         // sync and let the next Korean key start a fresh composition.
         composer.reset();

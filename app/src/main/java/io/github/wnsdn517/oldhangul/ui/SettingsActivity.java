@@ -48,7 +48,7 @@ public final class SettingsActivity extends Activity {
         addSection("옛한글");
         addSwitch(Prefs.ARCHAIC, "옛한글 조합", "옛 자모와 겹자모를 조합합니다");
         addSwitch(Prefs.SHIFT_ARCHAIC, "확장 자판 표시", "쉬프트 자리에 옛 자모를 표시합니다");
-        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모", "ㄹ·ㅇ·ㅎ·ㅏ를 길게 눌러 확장 자모를 입력합니다");
+        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "아래로 밀어 옛 자모", "ㄹ·ㅇ·ㅎ·ㅏ·ㅋ·ㅌ·ㅊ·ㅍ·ㅠ·ㅜ 키를 아래로 밀면 ㅿ ㆁ ㆆ ㆍ ᄼ ᄾ ᅎ ᅐ ᅔ ᅕ 를 입력합니다 (ㅓ 키는 방점: 쉬프트 또는 아래로 밀기, 한 번 〮 · 두 번 〯 · 세 번 지움)");
         addSwitch(Prefs.SPLIT_ON_SPACE, "공백으로 조합 분리", "공백을 눌러 옛한글 조합을 풀어 입력합니다");
 
         addSection("반복 입력");
@@ -61,6 +61,22 @@ public final class SettingsActivity extends Activity {
         addSection("호환성");
         addSwitch(Prefs.DIRECT_INPUT, "터미널 직접 입력", "Termux 등에서 입력 즉시 표시합니다");
         addSwitch(Prefs.UNLIMITED_SIZE, "키보드 크기 확장", "삼성 키보드 크기 조절 범위를 넓힙니다");
+        addSwitch(Prefs.PRELOAD_JAPANESE, "일본어 미리 불러오기", "일본어 첫 전환 멈춤을 줄입니다 (일본어를 쓴 뒤부터)");
+
+        addSection("도구 모음");
+        addSwitch(Prefs.TYPING_METER, "타자 속도 표시", "하단에 CPM/WPM을 작게 표시합니다 (0.5초마다 갱신)");
+        addSwitch(Prefs.CALC_TOOLS, "계산·단위 환산", "12+34, 10 cm, 1024MB-GB, 5\'45\'\' 결과를 속옆에 표시합니다");
+        addSwitch(Prefs.CURRENCY, "환율 변환", "100 usd, $100, 5000원, 1만엔, 100달러 원, 100 usd to krw 처럼 쓰면 카드로 환산합니다. 환율은 open.er-api.com 등 무료 API에서 하루 두 번 이하로 받아 옵니다");
+        addSwitch(Prefs.UNDO_BUTTON, "상단 실행취소 버튼", "끄면 삼성 툴바에 버튼을 두지 않습니다 (숨긴 버튼은 삼성 툴바 편집에서 다시 꺼내세요)");
+        addSwitch(Prefs.DEBUG_LOG, "자세한 로그 (테스트용)", "LSPosed 로그에 OldHangul: 로 키·언어·실행취소 과정을 기록합니다", false);
+
+        addSection("추천 · 한자");
+        addSwitch(Prefs.SAMSUNG_SUGGEST, "삼성 추천·한자 연동 (한글 자판)", "한글을 칠 때 삼성의 추천 단어와 한자 후보가 뜨게 합니다. 후보를 누르면 입력 중인 단어를 바꿉니다. 문제가 있으면 끄세요");
+
+        addSwitch(Prefs.CLIP_CHIP, "복사한 글 칩 유지", "복사한 글을 붙여넣기 추천으로 띄우는 칩이, 글자를 치기 시작해도 사라지지 않고 후보 줄 오른쪽에 작게 남습니다");
+
+        addSection("언어 전환");
+        addSwitch(Prefs.LANGUAGE_PAIR, "언어 키 짧게/길게", "짧게 누르면 영어↔한국어(또는 일본어)만 오가고, 길게 누르면 영한 → 영일처럼 짝을 바꿉니다");
 
         addSection("숫자 입력");
         addSwitch(Prefs.NUMBER_SWIPE, "아래로 밀어 숫자", "윗줄 자판을 아래로 밀어 숫자를 입력합니다");

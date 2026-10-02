@@ -166,9 +166,9 @@ public class HangulComposerTest {
 
     @Test
     public void initialOnlyClustersMergeWithDoubleKeys() {
-        assertEquals("\u1134\u1160", archaic("ㅆㅅ"));     // ᄴ alone
-        assertEquals("\u1134\u1160", archaic("ㅅㅆ"));
-        assertEquals("\u1125\u1160", archaic("ㅂㅆ"));     // ᄥ alone
+        assertEquals("ᄴᅠ", archaic("ㅆㅅ"));     // ᄴ alone
+        assertEquals("ᄴᅠ", archaic("ㅅㅆ"));
+        assertEquals("ᄥᅠ", archaic("ㅂㅆ"));     // ᄥ alone
         assertEquals("\u1134\u1161", archaic("ㅆㅅㅏ"));   // ᄴᅡ
         assertEquals("\u1125\u1161", archaic("ㅂㅆㅏ"));   // ᄥᅡ
         assertEquals("ㅆㅅ", split("ㅆㅅ"));
@@ -180,8 +180,8 @@ public class HangulComposerTest {
 
     @Test
     public void threeSiosPressesMakeTripleSios() {
-        assertEquals("\u1134\u1160", archaic("ㅅㅅㅅ"));
-        assertEquals("가\u1134\u1160", archaic("ㄱㅏㅅㅅㅅ"));  // not 갔ㅅ
+        assertEquals("ᄴᅠ", archaic("ㅅㅅㅅ"));
+        assertEquals("갔ㅅ", archaic("ㄱㅏㅅㅅㅅ"));  // 가 + ㅆ + ㅅ -> 갔ㅅ / 맜ㅅ
         assertEquals("아\u1134\u1175", archaic("ㅇㅏㅅㅅㅅㅣ")); // 아ᄴᅵ
         assertEquals("갔", archaic("ㄱㅏㅅㅅ"));
         assertEquals("갓사", archaic("ㄱㅏㅅㅅㅏ"));
@@ -249,5 +249,30 @@ public class HangulComposerTest {
         assertEquals("ㅠㅠ", vowelIeung("ㅠㅠ"));   // crying face stays
         assertEquals("ㅏㅜㅜ", vowelIeung("ㅏㅜㅜ"));
         assertEquals("ㅡㅡ", vowelIeung("ㅡㅡ"));
+    }
+
+    @Test
+    public void toothInitialsFromTheShiftLayer() {
+        // Shift ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ of the Old Korean IME layout: 치두음 / 정치음 initials.
+        assertEquals("ᄼᅡ", archaic("ᄼㅏ"));
+        assertEquals("ᄾᅡ", archaic("ᄾㅏ"));
+        assertEquals("ᅎᅡ", archaic("ᅎㅏ"));
+        assertEquals("ᅐᅡ", archaic("ᅐㅏ"));
+        assertEquals("ᅔᅡ", archaic("ᅔㅏ"));
+        assertEquals("ᅕᅡ", archaic("ᅕㅏ"));
+        assertEquals("ᄽᅡ", archaic("ᄼᄼㅏ"));       // ᄽ
+        assertEquals("가ᄼᅵ", archaic("ㄱㅏᄼㅣ"));     // after a syllable
+        assertEquals("ᄼᅡᆫ", archaic("ᄼㅏㄴ")); // with a final
+    }
+
+    @Test
+    public void toothInitialPairsMergeWithoutAVowel() {
+        assertEquals("ᄽᅠ", archaic("ᄼᄼ"));   // ᄽ
+        assertEquals("ᄿᅠ", archaic("ᄾᄾ"));   // ᄿ
+        assertEquals("ᅏᅠ", archaic("ᅎᅎ"));   // ᅏ
+        assertEquals("ᅑᅠ", archaic("ᅐᅐ"));   // ᅑ
+        assertEquals("ᄽᅡ", archaic("ᄼᄼㅏ"));
+        // No such letter exists for 치두음/정치음 ㅊ: they stay two letters.
+        assertEquals("ᅕᅕ", archaic("ᅕᅕ"));
     }
 }

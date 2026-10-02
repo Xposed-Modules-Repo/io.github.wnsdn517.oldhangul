@@ -40,7 +40,7 @@ final class NumberSwipe {
     };
 
     /** Downward travel (dp) that makes a touch a swipe. */
-    private static final float SWIPE_DP = 22;
+    private static final float SWIPE_DP = 18;
     /** Holding the swipe this long opens the variants. */
     private static final long HOLD_MS = 250;
     private static final float CELL_DP = 44;
@@ -52,15 +52,25 @@ final class NumberSwipe {
     private int downKey;
     private boolean tracking;
     private int digit = -1;
+    /** The archaic letter a non-digit key types when swiped (0 = none). */
+    private char symbol;
+    /** The finger went down far enough and mostly straight down (maybe before Samsung reported the key). */
+    private boolean swipeShaped;
+    /** Latest position of the tracked finger. */
+    private float lastX;
+    private float lastY;
+    /** Pointer id handed to Samsung as a fresh touch after a swipe ended under a second finger (-1 = none). */
+    private int redirectId = -1;
     private float downX;
     private float downY;
+    private int activePointerId = -1;
     private boolean swiping;
+    private boolean samsungPreviewUpdated;
     private Dialog window;
 
     // Variants popup.
     private PopupWindow popup;
     private PopupWindow preview;
-    private LinearLayout cells;
     private int selected;
     private float popupLeft;
     private float cellPx;
@@ -78,17 +88,57 @@ final class NumberSwipe {
     }
 
     /**
-     * Removes Samsung's own preview bubble (it still shows the letter, not the
-     * digit) so only the digit preview from {@link #showPreview} is visible.
+     * Updates Samsung's own preview bubble (Jn/b.h sets its text via setText
+     * and returns its id) to the digit, so only one bubble is visible.
+     * Returns true when the bubble was found and updated.
      */
+    private boolean updateSamsungPreview(Dialog dialog, char digitChar) {
+        int id = samsungPreviewId;
+        if (id == 0 || dialog.getWindow() == null) {
+            controller.debug("swipe: no Samsung preview id recorded");
+            return false;
+        }
+        try {
+            android.view.View bubble = dialog.getWindow().getDecorView().findViewById(id);
+            android.widget.TextView text = null;
+            if (bubble instanceof android.widget.TextView) {
+                text = (android.widget.TextView) bubble;
+            } else if (bubble instanceof android.view.ViewGroup) {
+                android.view.ViewGroup group = (android.view.ViewGroup) bubble;
+                for (int i = 0; i < group.getChildCount(); i++) {
+                    android.view.View child = group.getChildAt(i);
+                    if (child instanceof android.widget.TextView) {
+                        text = (android.widget.TextView) child;
+                        break;
+                    }
+                }
+            }
+            if (text != null) {
+                text.setText(String.valueOf(digitChar));
+                controller.debug("swipe: Samsung preview id=" + id + " updated to " + digitChar);
+                samsungPreviewUpdated = true;
+                return true;
+            }
+            controller.debug("swipe: Samsung preview id=" + id + " has no TextView");
+            return false;
+        } catch (RuntimeException e) {
+            controller.debug("swipe: Samsung preview update failed: " + e);
+            return false;
+        }
+    }
+
     private void hideSamsungPreview(Dialog dialog) {
+        // Prefer updating over removing; removing is the fallback.
+        if (shown() != null && updateSamsungPreview(dialog, shown().charAt(0))) {
+            samsungPreviewId = 0;
+            return;
+        }
         int id = samsungPreviewId;
         samsungPreviewId = 0;
         if (id == 0 || dialog.getWindow() == null) {
-            controller.debug("swipe: no Samsung preview id recorded");
             return;
         }
-        View bubble = dialog.getWindow().getDecorView().findViewById(id);
+        android.view.View bubble = dialog.getWindow().getDecorView().findViewById(id);
         if (bubble != null && bubble.getParent() instanceof android.view.ViewGroup) {
             ((android.view.ViewGroup) bubble.getParent()).removeView(bubble);
             controller.debug("swipe: removed Samsung letter preview id=" + id);
@@ -122,8 +172,11 @@ final class NumberSwipe {
     }
 
     private void before(XC_MethodHook.MethodHookParam param, Dialog dialog, MotionEvent e) {
-        if (!controller.numberSwipe()) {
+        if (!controller.numberSwipe() && !controller.swipeArchaic()) {
             reset();
+            return;
+        }
+        if (redirectId != -1 && redirect(param, e)) {
             return;
         }
         switch (e.getActionMasked()) {
@@ -134,44 +187,104 @@ final class NumberSwipe {
                 downKey = 0;
                 downX = e.getX();
                 downY = e.getY();
+                try {
+                    activePointerId = e.getPointerId(0);
+                } catch (RuntimeException ignored) {
+                    activePointerId = 0;
+                }
                 return;
-            case MotionEvent.ACTION_POINTER_DOWN:
-                if (swiping) {
+            case MotionEvent.ACTION_POINTER_DOWN: {
+                int index = e.getActionIndex();
+                int id;
+                try {
+                    id = e.getPointerId(index);
+                } catch (RuntimeException ignored) {
+                    tracking = false;
+                    return;
+                }
+                if (swiping && id != activePointerId) {
                     // The next letter is typed while the swipe finger is still down.
                     // Swallowing this touch dropped that letter: finish the digit now
-                    // and let Samsung handle the new finger.
-                    controller.debug("swipe: second finger during swipe, committing digit first");
+                    // and let Samsung handle the new finger untouched.
+                    controller.debug("swipe: second finger during swipe, committing first and passing it on");
                     finish();
+                    // Samsung cancelled the first finger, so a bare POINTER_DOWN is ignored by it:
+                    // hand it over as a normal first touch and follow that finger alone.
+                    redirectId = id;
+                    param.args[0] = single(e, index, MotionEvent.ACTION_DOWN);
                 } else {
                     tracking = false;
                 }
                 return;
-            case MotionEvent.ACTION_MOVE:
-                if (swiping) {
-                    param.setResult(true);
-                    moveVariants(e.getX());
-                    return;
-                }
-                if (tracking && startsSwipe(dialog.getContext(), e)) {
-                    swiping = true;
-                    // Samsung forgets the key press; the letter is not typed.
-                    e.setAction(MotionEvent.ACTION_CANCEL);
-                    // Do not consume this particular event: Samsung must see
-                    // ACTION_CANCEL or its long-press timer remains armed.
-                    hideSamsungPreview(dialog);
-                    showPreview(dialog.getContext());
-                    handler.postDelayed(openVariants, HOLD_MS);
-                }
-                return;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_POINTER_UP:
-                if (swiping) {
-                    param.setResult(true);
-                    if (e.getActionMasked() == MotionEvent.ACTION_UP) {
-                        finish();
+            }
+            case MotionEvent.ACTION_MOVE: {
+                // Only the tracked finger drives the swipe; other fingers' moves
+                // must reach Samsung so the next letter is never swallowed.
+                if (activePointerId != -1) {
+                    int idx;
+                    try {
+                        idx = e.findPointerIndex(activePointerId);
+                    } catch (RuntimeException ignored) {
+                        return;
+                    }
+                    if (idx < 0) return;
+                    float x = e.getX(idx);
+                    float y = e.getY(idx);
+                    lastX = x;
+                    lastY = y;
+                    if (swiping) {
+                        param.setResult(true);
+                        moveVariants(x, y);
+                        return;
+                    }
+                    if (tracking && startsSwipe(dialog.getContext(), x, y)) {
+                        swiping = true;
+                        // Samsung forgets the key press; the letter is not typed.
+                        e.setAction(MotionEvent.ACTION_CANCEL);
+                        // Do not consume this particular event: Samsung must see
+                        // ACTION_CANCEL or its long-press timer remains armed.
+                        hideSamsungPreview(dialog);
+                        if (!samsungPreviewUpdated) {
+                            showPreview(dialog.getContext());
+                        }
+                        handler.postDelayed(openVariants, HOLD_MS);
                     }
                 }
                 return;
+            }
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_POINTER_UP: {
+                int index = e.getActionIndex();
+                int id;
+                try {
+                    id = e.getPointerId(index);
+                } catch (RuntimeException ignored) {
+                    reset();
+                    return;
+                }
+                if (swiping && id == activePointerId) {
+                    param.setResult(true);
+                    if (e.getActionMasked() == MotionEvent.ACTION_UP) {
+                        finish();
+                    } else {
+                        // Tracked finger lifted but another finger remains:
+                        // commit the digit, keep the window for the next DOWN.
+                        finish();
+                    }
+                } else if (!swiping && id == activePointerId) {
+                    if (tracking && swipeShaped && resolveKey()) {
+                        // The swipe was complete but Samsung reported the key late: cancel its
+                        // key press now, before it types the letter on release.
+                        controller.debug("swipe: recognised on release");
+                        e.setAction(MotionEvent.ACTION_CANCEL);
+                        hideSamsungPreview(dialog);
+                        finish();
+                        return;
+                    }
+                    reset();
+                }
+                return;
+            }
             case MotionEvent.ACTION_CANCEL:
                 if (swiping) {
                     param.setResult(true);
@@ -182,20 +295,86 @@ final class NumberSwipe {
         }
     }
 
-    private boolean startsSwipe(Context context, MotionEvent e) {
-        if (digit < 0) {
-            if (downKey == 0) {
-                return false;  // Samsung has not reported the key yet
+    /**
+     * After a swipe ended under a second finger, only that finger exists for Samsung:
+     * its events are rewritten to a single-pointer touch, the first finger's are dropped.
+     * Returns true when the event was handled here.
+     */
+    private boolean redirect(XC_MethodHook.MethodHookParam param, MotionEvent e) {
+        int idx = e.findPointerIndex(redirectId);
+        int action = e.getActionMasked();
+        switch (action) {
+            case MotionEvent.ACTION_MOVE:
+                if (idx < 0) {
+                    param.setResult(true);
+                } else {
+                    param.args[0] = single(e, idx, MotionEvent.ACTION_MOVE);
+                }
+                return true;
+            case MotionEvent.ACTION_POINTER_UP:
+            case MotionEvent.ACTION_UP: {
+                int upId = e.getPointerId(e.getActionIndex());
+                if (upId == redirectId && idx >= 0) {
+                    param.args[0] = single(e, idx, MotionEvent.ACTION_UP);
+                    redirectId = -1;
+                } else {
+                    param.setResult(true); // the finger that swiped lifted: Samsung never saw it
+                    if (action == MotionEvent.ACTION_UP) {
+                        redirectId = -1;
+                    }
+                }
+                return true;
             }
-            digit = digitOf(downKey);
-            if (digit < 0) {
+            case MotionEvent.ACTION_POINTER_DOWN:
+                param.setResult(true); // a third finger: not tracked
+                return true;
+            case MotionEvent.ACTION_CANCEL:
+                redirectId = -1;
+                return false;
+            default:
+                redirectId = -1;
+                return false;
+        }
+    }
+
+    /** A copy of the event holding only one pointer, with the given action. */
+    private static MotionEvent single(MotionEvent e, int index, int action) {
+        MotionEvent.PointerProperties[] props = {new MotionEvent.PointerProperties()};
+        MotionEvent.PointerCoords[] coords = {new MotionEvent.PointerCoords()};
+        e.getPointerProperties(index, props[0]);
+        e.getPointerCoords(index, coords[0]);
+        long downTime = action == MotionEvent.ACTION_DOWN ? e.getEventTime() : e.getDownTime();
+        return MotionEvent.obtain(downTime, e.getEventTime(), action, 1, props, coords, e.getMetaState(),
+                e.getButtonState(), e.getXPrecision(), e.getYPrecision(), e.getDeviceId(), e.getEdgeFlags(),
+                e.getSource(), e.getFlags());
+    }
+
+    private boolean startsSwipe(Context context, float x, float y) {
+        float dy = y - downY;
+        float dx = Math.abs(x - downX);
+        if (dy > dp(context, SWIPE_DP) && dy > dx * 1.2f) {
+            swipeShaped = true;
+        }
+        return swipeShaped && resolveKey();
+    }
+
+    /** What the pressed key types when swiped (a digit or an archaic letter); false while unknown or none. */
+    private boolean resolveKey() {
+        if (digit >= 0 || symbol != 0) {
+            return true;
+        }
+        if (downKey == 0) {
+            return false;  // Samsung has not reported the key yet
+        }
+        digit = controller.numberSwipe() ? digitOf(downKey) : -1;
+        if (digit < 0) {
+            symbol = controller.swipeSymbol(downKey);
+            if (symbol == 0) {
                 tracking = false;
                 return false;
             }
         }
-        float dy = e.getY() - downY;
-        float dx = Math.abs(e.getX() - downX);
-        return dy > dp(context, SWIPE_DP) && dy > dx * 1.5f;
+        return true;
     }
 
     private static int digitOf(int code) {
@@ -213,7 +392,17 @@ final class NumberSwipe {
         return i;
     }
 
+    /** What the swipe will type, for the preview bubble. */
+    private String shown() {
+        return symbol != 0 ? String.valueOf(symbol) : digit >= 0 ? String.valueOf(DIGITS.charAt(digit)) : null;
+    }
+
     private void finish() {
+        if (symbol != 0) {
+            controller.typeSwipeSymbol(symbol);
+            reset();
+            return;
+        }
         String text = popup != null
                 ? String.valueOf(VARIANTS[digit].charAt(selected))
                 : String.valueOf(DIGITS.charAt(digit));
@@ -238,16 +427,20 @@ final class NumberSwipe {
         tracking = false;
         swiping = false;
         digit = -1;
+        symbol = 0;
+        swipeShaped = false;
         downKey = 0;
         samsungPreviewId = 0;
+        activePointerId = -1;
+        samsungPreviewUpdated = false;
     }
 
     // ------------------------------------------------------------ variants
 
     private void showPreview(Context context) {
-        if (preview != null || digit < 0 || window == null || window.getWindow() == null) return;
+        if (preview != null || shown() == null || window == null || window.getWindow() == null) return;
         TextView text = new TextView(context);
-        text.setText(String.valueOf(DIGITS.charAt(digit)));
+        text.setText(shown());
         text.setTextColor(Color.WHITE);
         text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
         text.setGravity(Gravity.CENTER);
@@ -271,6 +464,15 @@ final class NumberSwipe {
         }
     }
 
+    /** At most this many variants per row; more go to the next row, split evenly (5 -> 3+2, 6 -> 3+3). */
+    private static final int MAX_PER_ROW = 4;
+
+    private LinearLayout grid;
+    private final java.util.List<TextView> cellViews = new java.util.ArrayList<>();
+    /** Row lengths from the bottom row up; the bottom row holds the first variants (nearest the finger). */
+    private int[] rowLengths;
+    private float popupTop;
+
     private void showVariants() {
         if (!swiping || digit < 0 || window == null || window.getWindow() == null) {
             return;
@@ -285,52 +487,101 @@ final class NumberSwipe {
         String options = VARIANTS[digit];
         cellPx = dp(context, CELL_DP);
 
-        cells = new LinearLayout(context);
-        cells.setOrientation(LinearLayout.HORIZONTAL);
+        int n = options.length();
+        int rows = (n + MAX_PER_ROW - 1) / MAX_PER_ROW;
+        int perRow = (n + rows - 1) / rows;
+        rowLengths = new int[rows];
+        for (int r = 0, left = n; r < rows; r++) {
+            rowLengths[r] = Math.min(perRow, left);
+            left -= rowLengths[r];
+        }
+
+        grid = new LinearLayout(context);
+        grid.setOrientation(LinearLayout.VERTICAL);
         GradientDrawable bg = new GradientDrawable();
         bg.setColor(0xF0303030);
         bg.setCornerRadius(dp(context, 10));
-        cells.setBackground(bg);
-        for (int i = 0; i < options.length(); i++) {
-            TextView t = new TextView(context);
-            t.setText(String.valueOf(options.charAt(i)));
-            t.setTextColor(Color.WHITE);
-            t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-            t.setGravity(Gravity.CENTER);
-            cells.addView(t, new LinearLayout.LayoutParams((int) cellPx, (int) cellPx));
+        grid.setBackground(bg);
+        cellViews.clear();
+        // Build from the top row down; options are numbered from the bottom row up.
+        int[] rowStart = new int[rows];
+        for (int r = 0, at = 0; r < rows; r++) {
+            rowStart[r] = at;
+            at += rowLengths[r];
         }
-        int width = (int) (cellPx * options.length());
+        for (int r = rows - 1; r >= 0; r--) {
+            LinearLayout line = new LinearLayout(context);
+            line.setOrientation(LinearLayout.HORIZONTAL);
+            for (int c = 0; c < rowLengths[r]; c++) {
+                TextView t = new TextView(context);
+                t.setText(String.valueOf(options.charAt(rowStart[r] + c)));
+                t.setTextColor(Color.WHITE);
+                t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                t.setGravity(Gravity.CENTER);
+                line.addView(t, new LinearLayout.LayoutParams((int) cellPx, (int) cellPx));
+                cellViews.add(t);
+            }
+            grid.addView(line);
+        }
+        int width = (int) (cellPx * perRow);
+        int height = (int) (cellPx * rows);
         int[] origin = new int[2];
         decor.getLocationOnScreen(origin);
         float left = downX - cellPx / 2;
         left = Math.max(0, Math.min(left, decor.getWidth() - width));
         popupLeft = left;
-        popup = new PopupWindow(cells, width, (int) cellPx, false);
+        popupTop = Math.max(0, downY - cellPx * 1.2f - (rows - 1) * cellPx);
+        popup = new PopupWindow(grid, width, height, false);
         popup.setClippingEnabled(false);
         popup.setTouchable(false);
-        int y = (int) Math.max(0, downY - cellPx * 1.2f);
         try {
-            popup.showAtLocation(decor, Gravity.NO_GRAVITY, origin[0] + (int) left, origin[1] + y);
+            popup.showAtLocation(decor, Gravity.NO_GRAVITY, origin[0] + (int) left, origin[1] + (int) popupTop);
         } catch (RuntimeException e) {
             popup = null;
             return;
         }
-        select(0);
+        moveVariants(lastX, lastY);
     }
 
-    private void moveVariants(float x) {
-        if (popup == null) {
+    /** Picks the variant under the finger: column from x, row from y (the finger starts below the grid). */
+    private void moveVariants(float x, float y) {
+        if (popup == null || rowLengths == null) {
             return;
         }
-        int i = (int) Math.floor((x - popupLeft) / cellPx);
-        select(Math.max(0, Math.min(i, cells.getChildCount() - 1)));
+        int rows = rowLengths.length;
+        int rowFromTop = (int) Math.floor((y - popupTop) / cellPx);
+        rowFromTop = Math.max(0, Math.min(rowFromTop, rows - 1));
+        int row = rows - 1 - rowFromTop;  // 0 = bottom row
+        int col = (int) Math.floor((x - popupLeft) / cellPx);
+        col = Math.max(0, Math.min(col, rowLengths[row] - 1));
+        int index = col;
+        for (int r = 0; r < row; r++) {
+            index += rowLengths[r];
+        }
+        select(index);
     }
 
     private void select(int i) {
         selected = i;
-        for (int k = 0; k < cells.getChildCount(); k++) {
-            View cell = cells.getChildAt(k);
-            if (k == i) {
+        // cellViews are in display order (top row first); map the option index back to its view.
+        int rows = rowLengths.length;
+        int viewIndex = 0;
+        int[] viewStart = new int[rows];
+        for (int r = rows - 1, at = 0; r >= 0; r--) {
+            viewStart[r] = at;
+            at += rowLengths[r];
+        }
+        int optionStart = 0;
+        int target = -1;
+        for (int r = 0; r < rows; r++) {
+            if (i >= optionStart && i < optionStart + rowLengths[r]) {
+                target = viewStart[r] + (i - optionStart);
+            }
+            optionStart += rowLengths[r];
+        }
+        for (int k = 0; k < cellViews.size(); k++) {
+            View cell = cellViews.get(k);
+            if (k == target) {
                 GradientDrawable hl = new GradientDrawable();
                 hl.setColor(0xFF3D7BF7);
                 hl.setCornerRadius(cellPx / 5);
