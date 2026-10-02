@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
+import io.github.wnsdn517.oldhangul.BuildConfig;
 import io.github.wnsdn517.oldhangul.Prefs;
 
 /** Module settings. Changes apply the next time the keyboard opens. */
@@ -48,7 +49,7 @@ public final class SettingsActivity extends Activity {
         addSection("옛한글");
         addSwitch(Prefs.ARCHAIC, "옛한글 조합", "옛 자모와 겹자모를 조합합니다");
         addSwitch(Prefs.SHIFT_ARCHAIC, "확장 자판 표시", "쉬프트 자리에 옛 자모를 표시합니다");
-        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "아래로 밀어 옛 자모", "ㄹ·ㅇ·ㅎ·ㅏ·ㅋ·ㅌ·ㅊ·ㅍ·ㅠ·ㅜ 키를 아래로 밀면 ㅿ ㆁ ㆆ ㆍ ᄼ ᄾ ᅎ ᅐ ᅔ ᅕ 를 입력합니다 (ㅓ 키는 방점: 쉬프트 또는 아래로 밀기, 한 번 〮 · 두 번 〯 · 세 번 지움)");
+        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "아래로 밀어 옛 자모", "ㄹ·ㅇ·ㅎ·ㅏ 등 일부 키를 아래로 밀면 옛 자모가 입력됩니다");
         addSwitch(Prefs.SPLIT_ON_SPACE, "공백으로 조합 분리", "공백을 눌러 옛한글 조합을 풀어 입력합니다");
 
         addSection("반복 입력");
@@ -65,15 +66,17 @@ public final class SettingsActivity extends Activity {
 
         addSection("도구 모음");
         addSwitch(Prefs.TYPING_METER, "타자 속도 표시", "하단에 CPM/WPM을 작게 표시합니다 (0.5초마다 갱신)");
-        addSwitch(Prefs.CALC_TOOLS, "계산·단위 환산", "12+34, 10 cm, 1024MB-GB, 5\'45\'\' 결과를 속옆에 표시합니다");
-        addSwitch(Prefs.CURRENCY, "환율 변환", "100 usd, $100, 5000원, 1만엔, 100달러 원, 100 usd to krw 처럼 쓰면 카드로 환산합니다. 환율은 open.er-api.com 등 무료 API에서 하루 두 번 이하로 받아 옵니다");
-        addSwitch(Prefs.UNDO_BUTTON, "상단 실행취소 버튼", "끄면 삼성 툴바에 버튼을 두지 않습니다 (숨긴 버튼은 삼성 툴바 편집에서 다시 꺼내세요)");
-        addSwitch(Prefs.DEBUG_LOG, "자세한 로그 (테스트용)", "LSPosed 로그에 OldHangul: 로 키·언어·실행취소 과정을 기록합니다", false);
+        addSwitch(Prefs.CALC_TOOLS, "계산·단위 환산", "12+34, 10cm-ft 같은 식의 결과를 바로 보여줍니다");
+        addSwitch(Prefs.CURRENCY, "환율 변환", "100 usd, 5000원처럼 쓰면 환율을 계산해 보여줍니다");
+        addSwitch(Prefs.UNDO_BUTTON, "상단 실행취소 버튼", "끄면 삼성 툴바에서 숨깁니다 (삼성 툴바 편집에서 다시 꺼낼 수 있어요)");
+        if (BuildConfig.DEBUG) {
+            addSwitch(Prefs.DEBUG_LOG, "자세한 로그 (개발용)", "LSPosed 로그에 자세히 기록합니다", false);
+        }
 
         addSection("추천 · 한자");
-        addSwitch(Prefs.SAMSUNG_SUGGEST, "삼성 추천·한자 연동 (한글 자판)", "한글을 칠 때 삼성의 추천 단어와 한자 후보가 뜨게 합니다. 후보를 누르면 입력 중인 단어를 바꿉니다. 문제가 있으면 끄세요");
+        addSwitch(Prefs.SAMSUNG_SUGGEST, "삼성 추천·한자 연동", "한글 입력 중 삼성의 추천 단어·한자 후보를 함께 띄웁니다. 문제가 있으면 끄세요");
 
-        addSwitch(Prefs.CLIP_CHIP, "복사한 글 칩 유지", "복사한 글을 붙여넣기 추천으로 띄우는 칩이, 글자를 치기 시작해도 사라지지 않고 후보 줄 오른쪽에 작게 남습니다");
+        addSwitch(Prefs.CLIP_CHIP, "복사한 글 칩 유지", "붙여넣기 칩을 타이핑 중에도 후보 줄 옆에 남겨둡니다");
 
         addSection("언어 전환");
         addSwitch(Prefs.LANGUAGE_PAIR, "언어 키 짧게/길게", "짧게 누르면 영어↔한국어(또는 일본어)만 오가고, 길게 누르면 영한 → 영일처럼 짝을 바꿉니다");
@@ -152,36 +155,6 @@ public final class SettingsActivity extends Activity {
             v.setPadding(0, 0, 0, dp(12));
             list.addView(v);
         }
-    }
-
-    private void addLaughMix() {
-        TextView title = new TextView(this);
-        title.setText("사이에 다른 글자 섞기  (처음 ㅋㅋㅋ 는 그대로)");
-        title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-        title.setPadding(0, dp(4), 0, 0);
-        list.addView(title);
-
-        String[][] options = {
-                {Prefs.LAUGH_MIX_OFF, "섞지 않기     ㅋㅋㅋㅋㅋㅋㅋ"},
-                {"cheonjiin", "천지인 느낌     ㅋㅋㅋㄱㅋㄱㄱㄲㅋ"},
-                {"qwerty", "쿼티 느낌     ㅋㅋㅋㅌㅋㅋㅌㅌㅋ"},
-        };
-        String current = prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF);
-        RadioGroup group = new RadioGroup(this);
-        for (String[] option : options) {
-            RadioButton b = new RadioButton(this);
-            b.setId(View.generateViewId());
-            b.setText(option[1]);
-            b.setChecked(option[0].equals(current));
-            b.setOnCheckedChangeListener((v, checked) -> {
-                if (checked) {
-                    prefs.edit().putString(Prefs.LAUGH_MIX, option[0]).apply();
-                }
-            });
-            group.addView(b);
-        }
-        group.setPadding(0, 0, 0, dp(12));
-        list.addView(group);
     }
 
     private void addChoice(String key, String defaultValue, String titleText, String[][] options) {
