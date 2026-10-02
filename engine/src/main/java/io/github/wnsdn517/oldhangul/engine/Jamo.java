@@ -23,6 +23,9 @@ public final class Jamo {
     public static final char YEORINHIEUH = 'ㆆ'; // ㆆ
     public static final char ARAEA = 'ㆍ';       // ㆍ
 
+    /** 치두음 / 정치음 initials: Shift keys of the Old Korean IME layout (ㅋ ㅌ ㅊ ㅍ ㅠ ㅜ). */
+    public static final String TOOTH_INITIALS = "ᄼᄾᅎᅐᅔᅕ";
+
     static final Map<String, Character> LEADING = load(JamoTables.LEADING_KEYS, JamoTables.LEADING_VALUES);
     static final Map<String, Character> VOWEL = load(JamoTables.VOWEL_KEYS, JamoTables.VOWEL_VALUES);
     static final Map<String, Character> TRAILING = load(JamoTables.TRAILING_KEYS, JamoTables.TRAILING_VALUES);
@@ -55,7 +58,8 @@ public final class Jamo {
 
     public static boolean isConsonantKey(int c) {
         return (c >= 0x3131 && c <= 0x314E && baseOf((char) c) != null)
-                || c == PANSIOS || c == YESIEUNG || c == YEORINHIEUH;
+                || c == PANSIOS || c == YESIEUNG || c == YEORINHIEUH
+                || (c <= Character.MAX_VALUE && TOOTH_INITIALS.indexOf((char) c) >= 0);
     }
 
     public static boolean isVowelKey(int c) {

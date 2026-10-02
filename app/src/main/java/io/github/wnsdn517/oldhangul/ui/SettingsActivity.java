@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
+import io.github.wnsdn517.oldhangul.BuildConfig;
 import io.github.wnsdn517.oldhangul.Prefs;
 
 /** Module settings. Changes apply the next time the keyboard opens. */
@@ -37,57 +38,55 @@ public final class SettingsActivity extends Activity {
         list.setPadding(pad, pad, pad, pad);
 
         addTitle();
-        addText("한국어 쿼티(두벌식)에서만 동작합니다. 바꾼 설정은 키보드를 다시 열면 적용됩니다.", 13);
+        addText("한국어 쿼티 입력을 보완합니다. 변경 사항은 키보드 재시작 후 적용됩니다.", 13);
         addRestartButton();
 
-        addSection("기본");
-        addSwitch(Prefs.ENABLED, "모듈 켜기", "끄면 삼성 키보드 기본 입력으로 돌아갑니다");
-        addSwitch(Prefs.AUTO_IEUNG, "초성 ㅇ 자동 채우기", "ㅏ + ㄴ → 안");
-        addSwitch(Prefs.VOWEL_IEUNG, "모음만 쳐도 ㅇ 붙이기",
-                "세 + ㅛ → 세요     ㅏㅏ → 아아     ㅗ → 오\nㅠㅠ ㅜㅜ ㅡㅡ 는 그대로");
+        addSection("입력");
+        addSwitch(Prefs.ENABLED, "옛한글 입력 보조", "끄면 삼성 키보드 기본 입력을 사용합니다");
+        addSwitch(Prefs.AUTO_IEUNG, "종성 입력 시 ㅇ 보완", "ㅏ + ㄴ → 안");
+        addSwitch(Prefs.VOWEL_IEUNG, "단독 모음의 ㅇ 보완", "단독 모음 입력을 음절 형태로 표시합니다");
 
         addSection("옛한글");
-        addSwitch(Prefs.ARCHAIC, "옛한글 조합", "ㅂㅅㄱ+ㅏ → ᄢᅡ     ㄱ+ㆍ+ㄹ → ᄀᆞᆯ     ㅅㄱ → ㅺ     ㅇㅇ → ㆀ     ㅆㅅ · ㅅㅅㅅ → ᄴ     ㅂㅆ → ᄥ");
-        addSwitch(Prefs.SHIFT_ARCHAIC, "쉬프트 자판에 ㅿ ㆁ ㆆ ㆍ",
-                "ㄹ ㅇ ㅎ ㅏ 자리에 나옵니다 · 바꾸면 키보드 재시작");
-        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "길게 눌러 옛 자모", "ㄹ → ㅿ     ㅇ → ㆁ     ㅎ → ㆆ     ㅏ → ㆍ");
-        addSwitch(Prefs.SPLIT_ON_SPACE, "스페이스로 풀기",
-                "ᄛᅦ → ㄹ에     ㅺ → ㅅㄱ\n한 번 더 누르면 띄어쓰기, 바로 ⌫ 누르면 되돌리기");
+        addSwitch(Prefs.ARCHAIC, "옛한글 조합", "옛 자모와 겹자모를 조합합니다");
+        addSwitch(Prefs.SHIFT_ARCHAIC, "확장 자판 표시", "쉬프트 자리에 옛 자모를 표시합니다");
+        addSwitch(Prefs.LONG_PRESS_ARCHAIC, "아래로 밀어 옛 자모", "ㄹ·ㅇ·ㅎ·ㅏ 등 일부 키를 아래로 밀면 옛 자모가 입력됩니다");
+        addSwitch(Prefs.SPLIT_ON_SPACE, "공백으로 조합 분리", "공백을 눌러 옛한글 조합을 풀어 입력합니다");
 
-        addSection("ㅋ 연타");
-        addSwitch(Prefs.LONG_PRESS_KKK, "ㅋ 길게 눌러 ㅋㅋㅋ", "누르자마자 ㅋㅋㅋ, 누르고 있으면 점점 빨라집니다");
-        addLaughMix();
+        addSection("반복 입력");
+        addSwitch(Prefs.LONG_PRESS_KKK, "자음 반복 입력", "ㅋ를 길게 눌러 반복 입력합니다");
 
-        addSection("지우기");
-        addSwitch(Prefs.RECAPTURE, "자모 단위로 지우기", "치고 있는 단어는 안 → 아 → ㅇ 처럼 한 자모씩");
-        addSwitch(Prefs.FAST_DELETE, "길게 누르면 빠르게 지우기", "누르고 있으면 삼성 기본처럼 점점 빨라져 단어째 지웁니다");
+        addSection("삭제");
+        addSwitch(Prefs.RECAPTURE, "자모 단위 삭제", "입력 중인 음절을 자모 단위로 삭제합니다");
+        addSwitch(Prefs.FAST_DELETE, "빠른 삭제", "백스페이스를 길게 눌러 빠르게 삭제합니다");
 
-        addSection("호환");
-        addSwitch(Prefs.DIRECT_INPUT, "터미널 즉시 입력", "Termux 등에서 치는 즉시 글자가 보이게 합니다");
-        addSwitch(Prefs.UNLIMITED_SIZE, "키보드 크기 제한 풀기",
-                "삼성 설정 > 크기 및 투명도에서 더 작게(최소의 절반), 더 높게(최대의 1.6배) 조절 · 바꾸면 키보드 재시작");
-        addSwitch(Prefs.PRELOAD_JAPANESE, "일본어 미리 불러오기",
-                "삼성 키보드는 일본어로 처음 바꿀 때 사전을 불러오느라 멈추고 입력이 씹힙니다.\n"
-                        + "일본어를 한 번 쓰고 나면, 키보드가 켜질 때 뒤에서 미리 불러옵니다");
+        addSection("호환성");
+        addSwitch(Prefs.DIRECT_INPUT, "터미널 직접 입력", "Termux 등에서 입력 즉시 표시합니다");
+        addSwitch(Prefs.UNLIMITED_SIZE, "키보드 크기 확장", "삼성 키보드 크기 조절 범위를 넓힙니다");
+        addSwitch(Prefs.PRELOAD_JAPANESE, "일본어 미리 불러오기", "일본어 첫 전환 멈춤을 줄입니다 (일본어를 쓴 뒤부터)");
 
-        addSection("숫자");
-        addSwitch(Prefs.NUMBER_SWIPE, "윗줄 아래로 밀어 숫자",
-                "ㅂ ㅈ ㄷ ㄱ ㅅ ㅛ ㅕ ㅑ ㅐ ㅔ (q … p) 를 아래로 밀면 1 … 0\n"
-                        + "밀고 잠깐 멈추면 ¹ ₁ ① ½ 같은 변형이 뜨고, 옆으로 옮겨 고릅니다\n"
-                        + "숫자 줄을 없애려면 삼성 설정 > 레이아웃 > 숫자 키 끄기, 대체 문자 켜기");
+        addSection("도구 모음");
+        addSwitch(Prefs.TYPING_METER, "타자 속도 표시", "하단에 CPM/WPM을 작게 표시합니다 (0.5초마다 갱신)");
+        addSwitch(Prefs.CALC_TOOLS, "계산·단위 환산", "12+34, 10cm-ft 같은 식의 결과를 바로 보여줍니다");
+        addSwitch(Prefs.CURRENCY, "환율 변환", "100 usd, 5000원처럼 쓰면 환율을 계산해 보여줍니다");
+        addSwitch(Prefs.UNDO_BUTTON, "상단 실행취소 버튼", "끄면 삼성 툴바에서 숨깁니다 (삼성 툴바 편집에서 다시 꺼낼 수 있어요)");
+        if (BuildConfig.DEBUG) {
+            addSwitch(Prefs.DEBUG_LOG, "자세한 로그 (개발용)", "LSPosed 로그에 자세히 기록합니다", false);
+        }
+
+        addSection("추천 · 한자");
+        addSwitch(Prefs.SAMSUNG_SUGGEST, "삼성 추천·한자 연동", "한글 입력 중 삼성의 추천 단어·한자 후보를 함께 띄웁니다. 문제가 있으면 끄세요");
+
+        addSwitch(Prefs.CLIP_CHIP, "복사한 글 칩 유지", "붙여넣기 칩을 타이핑 중에도 후보 줄 옆에 남겨둡니다");
+
+        addSection("언어 전환");
+        addSwitch(Prefs.LANGUAGE_PAIR, "언어 키 짧게/길게", "짧게 누르면 영어↔한국어(또는 일본어)만 오가고, 길게 누르면 영한 → 영일처럼 짝을 바꿉니다");
+
+        addSection("숫자 입력");
+        addSwitch(Prefs.NUMBER_SWIPE, "아래로 밀어 숫자", "윗줄 자판을 아래로 밀어 숫자를 입력합니다");
 
         addSection("클립보드");
-        addChoice(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT, "한 줄에 보이는 칸 수  (칸이 적을수록 크게 보임)",
+        addChoice(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT, "표시 열 수",
                 new String[][] {{"0", "삼성 기본"}, {"2", "2칸"}, {"3", "3칸"}, {"4", "4칸"}});
-
-        addSection("기타");
-        addSwitch(Prefs.SHAKE_UNDO, "흔들어서 실행 취소",
-                "기기를 흔들면 편집기에 Ctrl+Z(실행 취소)를 보냅니다");
-
-        addSection("문제 해결");
-        addSwitch(Prefs.DEBUG_LOG, "진단 로그",
-                "문제를 알려줄 때만 켜세요 · LSPosed 로그에 OldHangul: 로 기록 · 켜고 끈 뒤 키보드 재시작\n"
-                        + "키보드가 멈춘 순간(0.12초 이상)과 그때 삼성 코드가 하던 일도 기록합니다", false);
 
         ScrollView scroll = new ScrollView(this);
         scroll.addView(list);
@@ -113,7 +112,7 @@ public final class SettingsActivity extends Activity {
         } catch (android.content.pm.PackageManager.NameNotFoundException ignored) {
             // Our own package is always installed.
         }
-        v.setText("삼성 키보드 옛한글" + version);
+        v.setText("삼성 키보드 옛한글 입력 보조" + version);
         v.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
         v.setPadding(0, dp(8), 0, 0);
         list.addView(v);
@@ -156,36 +155,6 @@ public final class SettingsActivity extends Activity {
             v.setPadding(0, 0, 0, dp(12));
             list.addView(v);
         }
-    }
-
-    private void addLaughMix() {
-        TextView title = new TextView(this);
-        title.setText("사이에 다른 글자 섞기  (처음 ㅋㅋㅋ 는 그대로)");
-        title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-        title.setPadding(0, dp(4), 0, 0);
-        list.addView(title);
-
-        String[][] options = {
-                {Prefs.LAUGH_MIX_OFF, "섞지 않기     ㅋㅋㅋㅋㅋㅋㅋ"},
-                {"cheonjiin", "천지인 느낌     ㅋㅋㅋㄱㅋㄱㄱㄲㅋ"},
-                {"qwerty", "쿼티 느낌     ㅋㅋㅋㅌㅋㅋㅌㅌㅋ"},
-        };
-        String current = prefs.getString(Prefs.LAUGH_MIX, Prefs.LAUGH_MIX_OFF);
-        RadioGroup group = new RadioGroup(this);
-        for (String[] option : options) {
-            RadioButton b = new RadioButton(this);
-            b.setId(View.generateViewId());
-            b.setText(option[1]);
-            b.setChecked(option[0].equals(current));
-            b.setOnCheckedChangeListener((v, checked) -> {
-                if (checked) {
-                    prefs.edit().putString(Prefs.LAUGH_MIX, option[0]).apply();
-                }
-            });
-            group.addView(b);
-        }
-        group.setPadding(0, 0, 0, dp(12));
-        list.addView(group);
     }
 
     private void addChoice(String key, String defaultValue, String titleText, String[][] options) {
