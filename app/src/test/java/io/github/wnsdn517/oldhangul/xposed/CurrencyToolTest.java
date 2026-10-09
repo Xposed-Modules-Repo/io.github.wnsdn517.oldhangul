@@ -52,6 +52,12 @@ public class CurrencyToolTest {
     public void explicitTargetAndMagnitudes() {
         assertEquals("$100.00 = ₩140,000", show("100 usd to krw"));
         assertEquals("$100.00 = ₩140,000", show("100usd-krw"));
+        assertEquals("$100.00 = ₩140,000", show("100usd2krw"));
+        assertEquals("¥1,000 = ₩9,333", show("1000엔-원"));
+        assertEquals("¥1,000 = ₩9,333", show("1000엔2원"));
+        assertEquals("¥1,000 = ₩9,333", show("1000jpy2krw"));
+        assertEquals("$100.00 = ₩140,000", show("100달러-원"));
+        assertEquals("$100.00 = ₩140,000", show("100달러2원"));
         assertEquals("$100.00 = ₩140,000", show("100달러 원"));
         assertEquals("₩10,000 = $7.14", show("1만원 달러"));
         assertEquals("NZD 10.00 = ₩8,235", show("10 nzd krw"));

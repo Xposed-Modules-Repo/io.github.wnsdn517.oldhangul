@@ -47,6 +47,12 @@ public class ToolSuggesterTest {
         assertEquals("10cm = 0.3281ft", ToolSuggester.suggest("10 cm-ft"));
         assertEquals("36.5°C = 97.7°F", ToolSuggester.suggest("36.5 C-F"));
         assertEquals("100km/h = 62.1371mph", ToolSuggester.suggest("100 km/h to mph"));
+        assertEquals("100cm = 1.0936yd", ToolSuggester.suggest("100cm yd"));
+        assertEquals("100cm = 1.0936yd", ToolSuggester.suggest("100cm2yd"));
+        assertEquals("100m² = 30.25평", ToolSuggester.suggest("100m2 py"));
+        assertEquals("100m² = 30.25평", ToolSuggester.suggest("100m22py"));
+        assertEquals("33평 = 109.0909m²", ToolSuggester.suggest("33평 m2"));
+        assertEquals("33평 = 109.0909m²", ToolSuggester.suggest("33평2m2"));
     }
 
     @Test

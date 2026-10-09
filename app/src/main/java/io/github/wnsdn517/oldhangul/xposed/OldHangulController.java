@@ -1735,14 +1735,19 @@ final class OldHangulController {
             if (typingOverlay.getWindowToken() == null) {
                 android.view.WindowManager wm = (android.view.WindowManager)
                         service.getSystemService(android.content.Context.WINDOW_SERVICE);
+                boolean hasCards = toolResult != null && !toolResult.cards.isEmpty();
+                int flags = android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                        | android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                        | android.view.WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+                if (!hasCards) {
+                    flags |= android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+                }
                 // Reduced height: 15dp (was 18dp), vertically centered
                 android.view.WindowManager.LayoutParams lp =
                         new android.view.WindowManager.LayoutParams(
                                 -2, (int) (overlayHeightDp * density + 0.5f),
                                 android.view.WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG,
-                                android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                                        | android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                                        | android.view.WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+                                flags,
                                 android.graphics.PixelFormat.TRANSLUCENT);
                 lp.token = decor.getWindowToken();
                 lp.gravity = android.view.Gravity.BOTTOM | android.view.Gravity.CENTER_HORIZONTAL;
@@ -1832,10 +1837,10 @@ final class OldHangulController {
             int screen = service.getResources().getDisplayMetrics().widthPixels;
             width = Math.min(toolCards.getMeasuredWidth(), screen - (int) (12 * density));
         }
-        resizeOverlay(density, cards ? 40 : 22, width);
+        resizeOverlay(density, cards ? 40 : 22, width, cards);
     }
 
-    private void resizeOverlay(float density, int heightDp, int widthPx) {
+    private void resizeOverlay(float density, int heightDp, int widthPx, boolean cards) {
         try {
             overlayHeightDp = heightDp;
             if (typingOverlay == null || typingOverlayManager == null || typingOverlay.getWindowToken() == null) {
@@ -1843,12 +1848,21 @@ final class OldHangulController {
             }
             android.view.WindowManager.LayoutParams lp =
                     (android.view.WindowManager.LayoutParams) typingOverlay.getLayoutParams();
+            if (lp == null) return;
             int height = (int) (heightDp * density + 0.5f);
-            if (lp == null || (lp.height == height && lp.width == widthPx)) return;
+            int flags = android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                    | android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                    | android.view.WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+            if (!cards) {
+                flags |= android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+            }
+            int bar = bottomBarHeight(service.getWindow().getWindow().getDecorView(), density);
+            int targetY = Math.max((int) (1 * density), (bar - height) / 2);
+            if (lp.height == height && lp.width == widthPx && lp.flags == flags && lp.y == targetY) return;
             lp.height = height;
             lp.width = widthPx;
-            int bar = bottomBarHeight(service.getWindow().getWindow().getDecorView(), density);
-            lp.y = Math.max((int) (1 * density), (bar - height) / 2);
+            lp.flags = flags;
+            lp.y = targetY;
             typingOverlayManager.updateViewLayout(typingOverlay, lp);
         } catch (RuntimeException e) {
             debug("overlay resize failed: " + e);

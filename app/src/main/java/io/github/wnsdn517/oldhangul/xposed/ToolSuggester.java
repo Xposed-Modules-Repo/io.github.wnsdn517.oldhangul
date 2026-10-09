@@ -192,11 +192,22 @@ final class ToolSuggester {
 
     // ------------------------------------------------------------ conversions
 
+    private static final String[] KNOWN_UNITS_LONGEST_FIRST = {
+            "inches", "inch", "yards", "yard", "miles", "mile", "feet", "foot",
+            "gram", "pound", "lbs", "ounce", "byte", "sec", "min", "hour", "hr", "day",
+            "°c", "°f", "°k", "℃", "℉", "m²", "ft²", "m2", "ft2", "평", "py", "ha",
+            "km/h", "kmh", "kph", "mph", "m/s", "mps", "mm", "㎝", "cm", "㎞", "km",
+            "㎜", "mg", "kg", "lb", "oz", "ton", "kb", "mb", "gb", "tb", "c", "f", "k",
+            "s", "h", "d", "ml", "gal", "m", "g", "b", "l", "in", "ft", "yd", "mi", "\"", "'"
+    };
+
+    static {
+        java.util.Arrays.sort(KNOWN_UNITS_LONGEST_FIRST, (a, b) -> b.length() - a.length());
+    }
+
     private static Result conversion(String expr) {
-        String t = expr.trim().toLowerCase(Locale.ROOT).replaceAll("\\s+(to|in)\\s+", "-").replace(" ", "");
-        java.util.regex.Matcher m = java.util.regex.Pattern.compile(
-                "^([0-9]+(?:\\.[0-9]+)?)([a-z'\"°℃℉²㎜㎝㎞/]+|평)"
-                        + "(?:(?:-|>|to|in|＝|=)([a-z'\"°℃℉²㎜㎝㎞/]+|평))?$").matcher(t);
+        String raw = expr.trim().toLowerCase(Locale.ROOT);
+        java.util.regex.Matcher m = java.util.regex.Pattern.compile("^([0-9]+(?:\\.[0-9]+)?)\\s*(.*)$").matcher(raw);
         if (!m.find()) return null;
         double value;
         try {
@@ -204,19 +215,53 @@ final class ToolSuggester {
         } catch (NumberFormatException e) {
             return null;
         }
-        String from = normUnit(m.group(2));
+        String rest = m.group(2).trim();
+        if (rest.isEmpty()) return null;
+
+        String matchedFrom = null;
+        for (String u : KNOWN_UNITS_LONGEST_FIRST) {
+            if (rest.startsWith(u) && endsWord(rest, u.length(), u)) {
+                matchedFrom = u;
+                break;
+            }
+        }
+        if (matchedFrom == null) return null;
+
+        String from = normUnit(matchedFrom);
         if (from == null) return null;
+
+        String afterFrom = rest.substring(matchedFrom.length()).trim();
+        String remaining = afterFrom;
+        if (afterFrom.startsWith("->") || afterFrom.startsWith("=>")) {
+            remaining = afterFrom.substring(2).trim();
+        } else if (!afterFrom.isEmpty() && "->=→>-~/ _:2".indexOf(afterFrom.charAt(0)) >= 0) {
+            remaining = afterFrom.substring(1).trim();
+        } else if (afterFrom.startsWith("to ") || afterFrom.startsWith("in ") || afterFrom.startsWith("into ")) {
+            remaining = afterFrom.substring(afterFrom.indexOf(' ') + 1).trim();
+        } else if (afterFrom.startsWith("로 ") || afterFrom.startsWith("으로 ")) {
+            remaining = afterFrom.substring(afterFrom.indexOf(' ') + 1).trim();
+        }
+
         String[] targets;
-        if (m.group(3) != null) {
-            String to = normUnit(m.group(3));
-            if (to == null) return null;
+        if (!remaining.isEmpty()) {
+            String matchedTo = null;
+            for (String u : KNOWN_UNITS_LONGEST_FIRST) {
+                if ((remaining.equals(u) || remaining.startsWith(u)) && endsWord(remaining, u.length(), u)) {
+                    matchedTo = u;
+                    break;
+                }
+            }
+            if (matchedTo == null) return null;
+            String to = normUnit(matchedTo);
+            if (to == null || to.equals(from)) return null;
             targets = new String[] {to};
         } else {
             // "10k", "5m", "3d" in running text are not unit questions: single letters need a target.
-            boolean symbol = m.group(2).matches(".*[°℃℉²㎜㎝㎞].*");
+            boolean symbol = matchedFrom.matches(".*[°℃℉²㎜㎝㎞].*");
             if (!symbol && AMBIGUOUS.contains(from)) return null;
             targets = targetsFor(from);
         }
+
         Double base = toBase(value, from);
         if (base == null) return null;
         StringBuilder display = new StringBuilder(format(value)).append(disp(from)).append(" = ");
@@ -237,6 +282,15 @@ final class ToolSuggester {
         r.cards.clear();
         r.cards.addAll(cards);
         return r;
+    }
+
+    private static boolean endsWord(String t, int length, String word) {
+        if (length >= t.length()) return true;
+        boolean latin = Character.isLetter(word.charAt(word.length() - 1))
+                && word.charAt(word.length() - 1) < 128;
+        if (!latin) return true;
+        char next = t.charAt(length);
+        return !(Character.isLetter(next) && next < 128);
     }
 
     private static final java.util.Set<String> AMBIGUOUS = new java.util.HashSet<>(java.util.Arrays.asList(

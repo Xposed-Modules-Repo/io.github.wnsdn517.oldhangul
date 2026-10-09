@@ -51,12 +51,12 @@ final class CurrencyTool {
     }
 
     static {
-        words("USD", "$", "us$", "usd", "dollar", "dollars", "달러", "불", "미국달러", "ドル", "美元", "弗", "bucks");
-        words("KRW", "₩", "krw", "won", "원", "한국원", "ウォン", "韩元", "韓元", "원화");
-        words("JPY", "¥", "jpy", "yen", "엔", "円", "엔화", "日元", "日圓", "￥");
-        words("CNY", "cny", "rmb", "yuan", "위안", "元", "人民币", "人民幣", "위안화", "cn¥");
-        words("EUR", "€", "eur", "euro", "euros", "유로", "ユーロ", "欧元", "歐元");
-        words("GBP", "£", "gbp", "파운드", "ポンド", "英镑", "英鎊", "sterling");
+        words("USD", "$", "us$", "usd", "dollar", "dollars", "달러", "달라", "불", "미국달러", "ドル", "美元", "弗", "bucks");
+        words("KRW", "₩", "krw", "won", "원", "한국원", "한화", "ウォン", "韩元", "韓元", "원화");
+        words("JPY", "¥", "jpy", "yen", "엔", "일엔", "円", "엔화", "日元", "日圓", "￥");
+        words("CNY", "cny", "rmb", "yuan", "위안", "인민폐", "元", "人民币", "人民幣", "위안화", "cn¥");
+        words("EUR", "€", "eur", "euro", "euros", "유로", "유로화", "ユーロ", "欧元", "歐元");
+        words("GBP", "£", "gbp", "파운드", "영국파운드", "ポンド", "英镑", "英鎊", "sterling");
         words("VND", "₫", "vnd", "dong", "동", "ドン", "越南盾", "베트남동");
         words("THB", "฿", "thb", "baht", "바트", "バーツ", "泰铢");
         words("INR", "₹", "inr", "rupee", "rupees", "루피", "ルピー", "卢比");
@@ -107,7 +107,8 @@ final class CurrencyTool {
 
     private static final Pattern AMOUNT = Pattern.compile(
             "^([0-9][0-9,]*(?:\\.[0-9]+)?)\\s*(만|천|억|조|k|thousand|million|mil)?\\s*");
-    private static final Pattern SEPARATOR = Pattern.compile("^\\s*(?:->|=>|→|=|>|-|to\\b|in\\b|into\\b|로|으로)?\\s*");
+    private static final Pattern SEPARATOR = Pattern.compile(
+            "^\\s*(?:->|=>|→|=|>|-|~|/|_|:|2|to\\b|in\\b|into\\b|로|으로)?\\s*");
 
     /** The conversion for an expression that ends the text, or null. */
     static ToolSuggester.Result parse(String expr) {
