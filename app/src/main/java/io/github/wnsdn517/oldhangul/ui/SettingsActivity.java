@@ -67,6 +67,8 @@ public final class SettingsActivity extends Activity {
         addChoice(Prefs.CLIPBOARD_COLUMNS, Prefs.CLIPBOARD_COLUMNS_DEFAULT, "클립보드 표시 열 수",
                 new String[][] {{"0", "삼성 기본"}, {"2", "2칸"}, {"3", "3칸"}, {"4", "4칸"}});
 
+        addSwitch(Prefs.TRANSLATE_SERVER, "서버 번역 사용", "다운로드한 언어팩 대신 삼성 서버로 번역합니다 (언어팩을 받을 수 없을 때)");
+
         addSection("기타 및 호환성");
         addCombinedSwitch(Prefs.DIRECT_INPUT,
                 new String[] {Prefs.DIRECT_INPUT, Prefs.UNLIMITED_SIZE, Prefs.PRELOAD_JAPANESE},

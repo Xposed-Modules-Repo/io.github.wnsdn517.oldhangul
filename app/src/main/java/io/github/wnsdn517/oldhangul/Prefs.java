@@ -25,6 +25,8 @@ public final class Prefs {
     public static final String NUMBER_SWIPE = "number_swipe";
     /** Lets Samsung's keyboard size handles go past its usual minimum and maximum. */
     public static final String UNLIMITED_SIZE = "unlimited_size";
+    /** Translates through Samsung's server instead of downloaded language packs (which may be missing). */
+    public static final String TRANSLATE_SERVER = "translate_server";
     /** Most tiles per row in Samsung's clipboard panel: "0" (Samsung's own), "2", "3", "4". */
     public static final String CLIPBOARD_COLUMNS = "clipboard_columns";
     public static final String CLIPBOARD_COLUMNS_DEFAULT = "3";

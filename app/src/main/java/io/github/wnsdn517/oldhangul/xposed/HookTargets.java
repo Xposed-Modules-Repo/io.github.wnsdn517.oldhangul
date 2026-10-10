@@ -59,10 +59,12 @@ final class HookTargets {
     Method previewShow;
     /** Language manager's toggleLanguage(boolean next). Optional. */
     Method languageToggle;
+    /** "Translate on the device" decision (no args, boolean). Optional: see ModuleMain.hookTranslationServer. */
+    Method translateOnDevice;
     /** Toolbar ("Bee world") members, all optional: the undo button is skipped if any is missing. */
     BeeTargets bee;
 
-    private static final int CACHE_VERSION = 8;
+    private static final int CACHE_VERSION = 9;
     private static final String BEE_UPDATE_ALL = "call updateAllBees";
     private static final String BEE_ADD = "addBee : already exist";
     private static final String BEE_SAVE = "saveCurrentBeeSet: ";
@@ -76,6 +78,7 @@ final class HookTargets {
     private static final String USES_IS_SHIFTED = "keycode change to lowercase for auto caps flick";
     private static final String ENGINE_FACTORY = "engineName is null";
     private static final String LANGUAGE_TOGGLE = "toggleLanguage : ";
+    private static final String TRANSLATE_RUNNING = "Lcom/samsung/android/honeyboard/base/chattranslate/ChatRoomConfig;->isTranslateRunning()Z";
     private static final String SIZE_CONFIG = "sizeConfig";
     private static final String PREVIEW_DATA = "PreviewBubbleData(previewBubbleType=";
     private static final String PREVIEW_SHOWN = "BubbleLayerManager Preview is not displayed, preview already has parent.";
@@ -189,6 +192,20 @@ final class HookTargets {
                 t.languageToggle.setAccessible(true);
             } catch (RuntimeException | ReflectiveOperationException e) {
                 XposedBridge.log("OldHangul: language toggle not found: " + e);
+            }
+            try {
+                List<MethodData> modes = new ArrayList<>();
+                for (MethodData m : bridge.findMethod(FindMethod.create().matcher(MethodMatcher.create()
+                        .paramCount(0).returnType("boolean", StringMatchType.Equals, false)
+                        .addInvoke(TRANSLATE_RUNNING)))) {
+                    if (m.isMethod() && !Modifier.isStatic(m.getModifiers())) {
+                        modes.add(m);
+                    }
+                }
+                t.translateOnDevice = single(modes, "translate on device").getMethodInstance(cl);
+                t.translateOnDevice.setAccessible(true);
+            } catch (RuntimeException | ReflectiveOperationException e) {
+                XposedBridge.log("OldHangul: translate mode not found, translation keeps Samsung's mode: " + e);
             }
             try {
                 t.bee = BeeTargets.search(bridge, cl, BEE_UPDATE_ALL, BEE_ADD, BEE_SAVE);
@@ -306,6 +323,7 @@ final class HookTargets {
         p.setProperty("keyTouch", touch.toString());
         p.setProperty("previewShow", previewShow == null ? "" : describe(previewShow));
         p.setProperty("languageToggle", languageToggle == null ? "" : describe(languageToggle));
+        p.setProperty("translateOnDevice", translateOnDevice == null ? "" : describe(translateOnDevice));
         p.setProperty("engineFactory", engineFactory == null ? "" : describe(engineFactory));
         p.setProperty("sizeHeightRatio", sizeHeightRatio == null ? "" : describe(sizeHeightRatio));
         p.setProperty("sizeWidthRatio", sizeWidthRatio == null ? "" : describe(sizeWidthRatio));
@@ -334,6 +352,8 @@ final class HookTargets {
         t.previewShow = preview.isEmpty() ? null : resolve(cl, preview);
         String toggle = p.getProperty("languageToggle", "");
         t.languageToggle = toggle.isEmpty() ? null : resolve(cl, toggle);
+        String mode = p.getProperty("translateOnDevice", "");
+        t.translateOnDevice = mode.isEmpty() ? null : resolve(cl, mode);
         String factory = p.getProperty("engineFactory", "");
         t.engineFactory = factory.isEmpty() ? null : resolve(cl, factory);
         String height = p.getProperty("sizeHeightRatio", "");

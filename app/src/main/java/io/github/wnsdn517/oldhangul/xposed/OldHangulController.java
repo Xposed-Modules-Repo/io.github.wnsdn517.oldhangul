@@ -77,6 +77,7 @@ final class OldHangulController {
     private boolean debugLog;
     private boolean preloadJapanese;
     private boolean unlimitedSize;
+    private boolean translateServer = true;
     private boolean numberSwipe;
     private int clipboardColumns;
     private boolean typingMeter = true;
@@ -225,6 +226,7 @@ final class OldHangulController {
         debugLog = prefs.getBoolean(Prefs.DEBUG_LOG, false);
         preloadJapanese = prefs.getBoolean(Prefs.PRELOAD_JAPANESE, true);
         unlimitedSize = prefs.getBoolean(Prefs.UNLIMITED_SIZE, true);
+        translateServer = prefs.getBoolean(Prefs.TRANSLATE_SERVER, true);
         numberSwipe = prefs.getBoolean(Prefs.NUMBER_SWIPE, true);
         try {
             clipboardColumns = Integer.parseInt(
@@ -476,6 +478,11 @@ final class OldHangulController {
 
     boolean numberSwipe() {
         return enabled && numberSwipe;
+    }
+
+    boolean translateServer() {
+        reloadPrefs();
+        return translateServer;
     }
 
     boolean unlimitedSize() {
@@ -1604,11 +1611,17 @@ final class OldHangulController {
                     }
                 }
             }
+            // The index's name differs between the jadx dump (f18874j) and the
+            // installed build ("j", the dump's "renamed from" comment).
             java.lang.reflect.Field named = null;
-            try {
-                named = wrapper.getClass().getDeclaredField("f18874j");
-            } catch (NoSuchFieldException ignored) {
-                // another build: look for the int that indexes the connections below
+            for (String name : new String[]{"f18874j", "j"}) {
+                try {
+                    named = wrapper.getClass().getDeclaredField(name);
+                    if (named.getType() == int.class) break;
+                    named = null;
+                } catch (NoSuchFieldException ignored) {
+                    // try the next name
+                }
             }
             wrapperIndex = named;
             if (wrapperIndex != null) wrapperIndex.setAccessible(true);
@@ -1754,9 +1767,9 @@ final class OldHangulController {
                 // Centered in Samsung's bottom bar (the strip under the keys, 48dp on
                 // this build), not stuck to the screen edge.
                 int overlayHeight = lp.height;
-                int barHeight = bottomBarHeight(decor, density);
-                lp.y = Math.max((int) (1 * density), (barHeight - overlayHeight) / 2);
-                debug("typing meter y=" + lp.y + " bar=" + barHeight + " overlay=" + overlayHeight);
+                lp.y = overlayY(density, overlayHeight);
+                lp.flags |= android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
+                debug("typing meter y=" + lp.y + " overlay=" + overlayHeight);
                 wm.addView(typingOverlay, lp);
                 typingOverlayManager = wm;
                 debug("typing meter overlay attached (content-sized, 15dp, centered)");
@@ -1767,29 +1780,15 @@ final class OldHangulController {
         UndoBee.refresh();
     }
 
-    /** Height of the strip below the keys: a full-width view touching the window's bottom edge, else 48dp. */
-    private static int bottomBarHeight(android.view.View decor, float density) {
-        int fallback = (int) (48 * density + 0.5f);
-        int found = findBottomBar(decor, decor.getHeight(), decor.getWidth(), density, 0);
-        return found > 0 ? found : fallback;
-    }
-
-    private static int findBottomBar(android.view.View v, int bottom, int width, float density, int depth) {
-        if (depth > 12 || v.getVisibility() != android.view.View.VISIBLE) return 0;
-        if (v.getHeight() >= 28 * density && v.getHeight() <= 72 * density
-                && v.getWidth() >= width * 0.9f && v.getBottom() >= 0) {
-            int[] loc = new int[2];
-            v.getLocationInWindow(loc);
-            if (Math.abs(loc[1] + v.getHeight() - bottom) <= 3) return v.getHeight();
-        }
-        if (v instanceof android.view.ViewGroup) {
-            android.view.ViewGroup g = (android.view.ViewGroup) v;
-            for (int i = g.getChildCount() - 1; i >= 0; i--) {
-                int r = findBottomBar(g.getChildAt(i), bottom, width, density, depth + 1);
-                if (r > 0) return r;
-            }
-        }
-        return 0;
+    /**
+     * Meter's bottom offset. The overlay is attached to the keyboard window, which
+     * ends above the 48dp strip under the keys (the system navigation area: 2154 of
+     * 2280 here, even when the decor reports the full height). A fixed 48dp offset
+     * therefore put the meter on the space bar; this centers it in that strip.
+     */
+    private int overlayY(float density, int overlayHeight) {
+        int strip = (int) (48 * density + 0.5f);
+        return -(strip + overlayHeight) / 2;
     }
 
     /**
@@ -1856,8 +1855,9 @@ final class OldHangulController {
             if (!cards) {
                 flags |= android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
             }
-            int bar = bottomBarHeight(service.getWindow().getWindow().getDecorView(), density);
-            int targetY = Math.max((int) (1 * density), (bar - height) / 2);
+            android.view.View decor = service.getWindow().getWindow().getDecorView();
+            flags |= android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
+            int targetY = overlayY(density, height);
             if (lp.height == height && lp.width == widthPx && lp.flags == flags && lp.y == targetY) return;
             lp.height = height;
             lp.width = widthPx;

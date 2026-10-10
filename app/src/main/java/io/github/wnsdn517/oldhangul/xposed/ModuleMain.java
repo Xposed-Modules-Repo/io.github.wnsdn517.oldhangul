@@ -72,6 +72,7 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
             hookCandidates(cl, controller);
             hookCandidatePick(cl, controller);
             hookSmartCandidate(cl, controller);
+            hookTranslationServer(targets, controller);
             XposedBridge.log("OldHangul: hooks installed");
         } catch (Throwable t) {
             XposedBridge.log("OldHangul: failed to hook Samsung Keyboard");
@@ -278,6 +279,8 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                         // p066c8.d cache, so recording here is safe.
                         if (controller.internalEditActive() || param.args[0] == null) return;
                         if (controller.isComposing()) return;
+                        // The translation box updates from a worker thread; the meter's views are main-thread only.
+                        if (android.os.Looper.myLooper() != android.os.Looper.getMainLooper()) return;
                         CharSequence text = (CharSequence) param.args[0];
                         if (text.length() > 64) return;
                         controller.onExternalComposing(text.toString());
@@ -876,6 +879,28 @@ public final class ModuleMain implements IXposedHookLoadPackage, IXposedHookZygo
                 XposedBridge.log("OldHangul: candidate pick hook unavailable (" + name + "): " + t);
             }
         }
+    }
+
+    /**
+     * Samsung's translation decides once whether to use downloaded language packs
+     * (on device) or the server. When the packs cannot be listed or downloaded
+     * (offline list is empty, "unsupported target for src") nothing translates, so
+     * this answers "not on device" and the keyboard's own server path runs. Controlled by the
+     * "translate_server" setting (on by default).
+     */
+    private static void hookTranslationServer(HookTargets targets, OldHangulController controller) {
+        if (targets.translateOnDevice == null) {
+            return;
+        }
+        XposedBridge.hookMethod(targets.translateOnDevice, new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) {
+                if (controller.translateServer()) {
+                    param.setResult(false);
+                }
+            }
+        });
+        XposedBridge.log("OldHangul: translation uses the server " + targets.translateOnDevice);
     }
 
     /** Intercepts Android Inline Suggestions API responses for candidate previews. */
